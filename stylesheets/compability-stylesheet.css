@@ -319,6 +319,11 @@ footer a:hover {
   content: '.';
 }
 
+.clearfix {display: inline-block;}
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+
+/* Compatibility */
 .yes {
   background-color: #00882D;
   color: #ffffff;
@@ -339,10 +344,6 @@ footer a:hover {
   color: #ffffff;
 }
 
-.name {
-  font-weight: bold;
-}
-
 .almost {
   background-color: #40A662;
   color: #ffffff;
@@ -350,6 +351,10 @@ footer a:hover {
 
 .untestable {
   color: #006699;
+}
+
+.name {
+  font-weight: bold;
 }
 
 dd {
@@ -361,9 +366,6 @@ dd + dd {
   margin-top: 0.4em;
 }
 
-.clearfix {display: inline-block;}
-* html .clearfix {height: 1%;}
-.clearfix {display: block;}
 
 /* #Media Queries
 ================================================== */
