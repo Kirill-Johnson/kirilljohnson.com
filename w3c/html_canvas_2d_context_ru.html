@@ -257,6 +257,9 @@
   <link href="https://www.w3.org/StyleSheets/TR/W3C-REC" rel="stylesheet" type="text/css">
 
    </head>
+
+  <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter36816840 = new Ya.Metrika({ id:36816840, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/36816840" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+
  <body>
 
 <p class="translator">
@@ -1565,44 +1568,26 @@ try {
 
   <div class="impl">
 
-  <p>The following methods allow authors to manipulate the <a href="#concept-path" title="concept-path">paths</a> of objects implementing the
-  <code><a href="#canvaspathmethods">CanvasPathMethods</a></code> interface.</p>
+  <p>Следующие методы позволяют авторам манипулировать <a href="#concept-path" title="concept-path">paths</a> объектов, реализующих интерфейс <code><a href="#canvaspathmethods">CanvasPathMethods</a></code> interface.</p>
 
-  <p>For <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> objects, the points and
-  lines added to <a href="#current-default-path">current default path</a> by these methods
-  must be transformed according to the <a href="#transformations" title="dom-context-2d-transformation">current transformation
-  matrix</a> before they are added to the path.</p>
+  <p>Для объектов <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>, точки и линии добавленные к <a href="#current-default-path">current default path</a> с помощью этих методов должны быть преобразованы в соответствии с <a href="#transformations" title="dom-context-2d-transformation">текущей матрицей трансформации</a> перед тем как быть добавлени к пути.</p>
 
 
-  <p>The <dfn id="dom-context-2d-moveto" title="dom-context-2d-moveTo"><code>moveTo(<var>x</var>, <var>y</var>)</code></dfn> method must
-  create a new subpath with the specified point as its first (and
-  only) point.</p>
+  <p>Метод <dfn id="dom-context-2d-moveto" title="dom-context-2d-moveTo"><code>moveTo(<var>x</var>, <var>y</var>)</code></dfn> должен создать новый подпуть с заданной точкой в качестве первой (и единственной) точки.</p>
 
-  <p>When the user agent is to <dfn id="ensure-there-is-a-subpath">ensure there is a subpath</dfn>
-  for a coordinate (<var>x</var>, <var>y</var>) on a
-  <a href="#concept-path" title="concept-path">path</a>, the user agent must check to
-  see if the <a href="#concept-path" title="concept-path">path</a> has any subpaths,
-  and if it does not, then the user agent must create a new subpath
-  with the point (<var>x</var>, <var>y</var>) as its
-  first (and only) point, as if the <code title="dom-context-2d-moveTo"><a href="#dom-context-2d-moveto">moveTo()</a></code> method had been
-  called.</p>
+  <p>Когда пользовательский агент должен <dfn id="ensure-there-is-a-subpath">обеспечить там подпуть</dfn> для координат (<var>x</var>, <var>y</var>) на
+  <a href="#concept-path" title="concept-path">path</a>, агент пользователя должен проверить, чтобы убедиться, что <a href="#concept-path" title="concept-path">path</a> имеет любые подпути,
+  и если нет, пользовательский агент должен создать новый подпуть с точкой (<var>x</var>, <var>y</var>) как его первой (и единственной) точкой, как если метод <code title="dom-context-2d-moveTo"><a href="#dom-context-2d-moveto">moveTo()</a></code> был вызван.</p>
 
 
-  <p>The <dfn id="dom-context-2d-closepath" title="dom-context-2d-closePath"><code>closePath()</code></dfn>
-  method must do nothing if the object's path has no subpaths.
-  Otherwise, it must mark the last subpath as closed, create a new
-  subpath whose first point is the same as the previous subpath's
-  first point, and finally add this new subpath to the path.</p>
+  <p>Метод <dfn id="dom-context-2d-closepath" title="dom-context-2d-closePath"><code>closePath()</code></dfn>
+  не должен ничего делать если путь объекта не имеет подпутей.
+  В другом случае, он должен пометить последний подпуть как закрытый, создать новый подпуть первая точка которого та же что и первая точка предыдущего подпути, и наконец довабить этот подпуть к path.</p>
 
-  <p class="note">If the last subpath had more than one point in its
-  list of points, then this is equivalent to adding a straight line
-  connecting the last point back to the first point, thus "closing"
-  the shape, and then repeating the last (possibly implied) <code title="dom-context-2d-moveTo"><a href="#dom-context-2d-moveto">moveTo()</a></code> call.</p>
+  <p class="note">Если последний подпуть имел больше чем одну точку в своем списке точек, то это эквивалентно добавлению прямой линии, соединяющей последнюю точку с первой точкой, таким образом "закрывает" форму, и потом повторяет последний (возможно подразумеваемый) вызов <code title="dom-context-2d-moveTo"><a href="#dom-context-2d-moveto">moveTo()</a></code>.</p>
 
 
-  <p>New points and the lines connecting them are added to subpaths
-  using the methods described below. In all cases, the methods only
-  modify the last subpath in the object's path.</p>
+  <p>Новые точки и линии соединяющие их добавлены в подпути, с помощью методов описанных ниже. Во всех случаях, методы изменяют только последний подпуть в пути объекта.</p>
 
 
   <p>The <dfn id="dom-context-2d-lineto" title="dom-context-2d-lineTo"><code>lineTo(<var>x</var>, <var>y</var>)</code></dfn> method must
@@ -4187,33 +4172,22 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <h2 id="drawing-model"><span class="secno">17 </span><dfn>Модель рисования</dfn></h2>
 
-  <p>When a shape or image is painted, user agents must follow these
-  steps, in the order given (or act as if they do):</p>
+  <p>Когда форма или изображение нарисованы, пользовательские агенты должны следовать этим шагам в указаном порядке (или действовать как будто следуют):</p>
 
   <ol>
 
-   <li><p>Render the shape or image onto an infinite transparent black
-   bitmap, creating image <var>A</var>, as described in the
-   previous sections. For shapes, the current fill, stroke, and line
-   styles must be honored, and the stroke must itself also be
-   subjected to the current transformation matrix.</p></li>
+   <li><p>Визуализировать форму или изображение на бесконечно прозрачное черное растровое изображение, создавая изображение <var>A</var>, как описано в предыдущих разделах. Для фигур текущее заполнение, обводки и стили должны быть выполнены, и ход должен сам по себе также должен быть подвергнут текущей матрице преобразования.</p></li>
 
-   <li><p><a href="#when-shadows-are-drawn">When shadows are drawn</a>, render the shadow from
-   image <var>A</var>, using the current shadow styles,
-   creating image <var>B</var>.</p></li>
+   <li><p><a href="#when-shadows-are-drawn">Когда тени нарисованы</a>, визуализировать тень с изображения <var>A</var>, используя текущие стили изображения, создавая изображение <var>B</var>.</p></li>
 
-   <li><p><a href="#when-shadows-are-drawn">When shadows are drawn</a>, multiply the alpha
-   component of every pixel in <var>B</var> by <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
+   <li><p><a href="#when-shadows-are-drawn">Когда тени нарисованы</a>, умножать альфа-компонент каждого пикселя в <var>B</var> с помощью <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
 
-   <li><p><a href="#when-shadows-are-drawn">When shadows are drawn</a>, composite <var>B</var> within the <a href="#clipping-region">clipping region</a> over the
-   current canvas bitmap using the current composition
-   operator.</p></li>
+   <li><p><a href="#when-shadows-are-drawn">Когда тени нарисованы</a>, добавить <var>B</var> в пределах <a href="#clipping-region">clipping region</a> над текущим растровым изображением холста с помощью текущего оператора композиции.</p></li>
 
-   <li><p>Multiply the alpha component of every pixel in <var>A</var> by <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
+   <li><p>Умножить альфа-компонент каждого пикселя в <var>A</var> с помощью <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
 
-   <li><p>Composite <var>A</var> within the <a href="#clipping-region">clipping
-   region</a> over the current canvas bitmap using the current
-   composition operator.</p></li>
+   <li><p>Добавить <var>A</var> в пределах <a href="#clipping-region">clipping
+   region</a> над текущим растровым изображением холста с помощью текущего оператора композиции.</p></li>
 
   </ol>
 
@@ -4223,7 +4197,7 @@ function AddCloud(data, x, y) { ... }</pre>
   <h2 id="best-practices"><span class="secno">18 </span>Лучшая практика</h2>
 
   <p><i>Этот раздел не является нормативным.</i></p>
-  <p>Когда холст (canvas) является интерактивным, авторы должны включать фокусируемые элементы в содержании запасного элемента, соответствующие каждой фокусируемой части холста.</p>
+  <p>Когда холст (canvas) является интерактивным, авторы должны включать фокусируемые элементы в содержание запасного элемента, соответствующие каждой фокусируемой части холста.</p>
 
   <p>To indicate which focusable part of the canvas is currently
   focused, authors should use the <code title="dom-context-2d-drawFocusIfNeeded"><a href="#dom-context-2d-drawfocusifneeded">drawFocusIfNeeded()</a></code>
