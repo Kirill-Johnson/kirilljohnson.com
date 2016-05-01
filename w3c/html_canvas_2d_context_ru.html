@@ -1568,7 +1568,7 @@ try {
 
   <div class="impl">
 
-  <p>Следующие методы позволяют авторам манипулировать <a href="#concept-path" title="concept-path">paths</a> объектов, реализующих интерфейс <code><a href="#canvaspathmethods">CanvasPathMethods</a></code> interface.</p>
+  <p>Следующие методы позволяют авторам манипулировать <a href="#concept-path" title="concept-path">paths</a> объектов, реализующих интерфейс <code><a href="#canvaspathmethods">CanvasPathMethods</a></code>.</p>
 
   <p>Для объектов <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>, точки и линии добавленные к <a href="#current-default-path">current default path</a> с помощью этих методов должны быть преобразованы в соответствии с <a href="#transformations" title="dom-context-2d-transformation">текущей матрицей трансформации</a> перед тем как быть добавлени к пути.</p>
 
@@ -1590,112 +1590,70 @@ try {
   <p>Новые точки и линии соединяющие их добавлены в подпути, с помощью методов описанных ниже. Во всех случаях, методы изменяют только последний подпуть в пути объекта.</p>
 
 
-  <p>The <dfn id="dom-context-2d-lineto" title="dom-context-2d-lineTo"><code>lineTo(<var>x</var>, <var>y</var>)</code></dfn> method must
-  <a href="#ensure-there-is-a-subpath">ensure there is a subpath</a> for <span>(<var>x</var>, <var>y</var>)</span> if the object's path
-  has no subpaths. Otherwise, it must connect the last point in the
-  subpath to the given point (<var>x</var>, <var>y</var>) using a straight line, and must then add the given
-  point (<var>x</var>, <var>y</var>) to the
-  subpath.</p>
+  <p>Метод <dfn id="dom-context-2d-lineto" title="dom-context-2d-lineTo"><code>lineTo(<var>x</var>, <var>y</var>)</code></dfn> должен
+  <a href="#ensure-there-is-a-subpath">обеспечить там подпуть</a> для <span>(<var>x</var>, <var>y</var>)</span> если путь объекта не имеет подпутей. В другом случае, он должен соединить последнюю точку в подпути с заданной точкой (<var>x</var>, <var>y</var>) используя прямую линию, и должен затем добавить заданную точку (<var>x</var>, <var>y</var>) в подпуть.</p>
 
 
-  <p>The <dfn id="dom-context-2d-quadraticcurveto" title="dom-context-2d-quadraticCurveTo"><code>quadraticCurveTo(<var>cpx</var>, <var>cpy</var>, <var>x</var>,
-  <var>y</var>)</code></dfn> method must <a href="#ensure-there-is-a-subpath">ensure there
-  is a subpath</a> for <span>(<var>cpx</var>,
-  <var>cpy</var>)</span>, and then must connect the last
-  point in the subpath to the given point (<var>x</var>, <var>y</var>) using a quadratic Bézier curve with control
-  point (<var>cpx</var>, <var>cpy</var>), and must
-  then add the given point (<var>x</var>, <var>y</var>) to the subpath. <a href="#refsBEZIER">[BEZIER]</a></p>
+  <p>Метод <dfn id="dom-context-2d-quadraticcurveto" title="dom-context-2d-quadraticCurveTo"><code>quadraticCurveTo(<var>cpx</var>, <var>cpy</var>, <var>x</var>,
+  <var>y</var>)</code></dfn> должен <a href="#ensure-there-is-a-subpath">обеспечить там подпуть</a> для <span>(<var>cpx</var>,
+  <var>cpy</var>)</span>, и затем должен соединить последнюю точку в подпути с заданной точной (<var>x</var>, <var>y</var>) используя квадратичную кривую Безье с контрольной точкой (<var>cpx</var>, <var>cpy</var>), и должен затем добавить заданную точку (<var>x</var>, <var>y</var>) в подпуть. <a href="#refsBEZIER">[BEZIER]</a></p>
 
 
-  <p>The <dfn id="dom-context-2d-beziercurveto" title="dom-context-2d-bezierCurveTo"><code>bezierCurveTo(<var>cp1x</var>, <var>cp1y</var>, <var>cp2x</var>, <var>cp2y</var>, <var>x</var>, <var>y</var>)</code></dfn> method must
-  <a href="#ensure-there-is-a-subpath">ensure there is a subpath</a> for <span>(<var>cp1x</var>, <var>cp1y</var>)</span>, and then must
-  connect the last point in the subpath to the given point (<var>x</var>, <var>y</var>) using a cubic Bézier
-  curve with control points (<var>cp1x</var>, <var>cp1y</var>) and (<var>cp2x</var>, <var>cp2y</var>). Then, it must add the point (<var>x</var>, <var>y</var>) to the subpath. <a href="#refsBEZIER">[BEZIER]</a></p>
+  <p>Метод <dfn id="dom-context-2d-beziercurveto" title="dom-context-2d-bezierCurveTo"><code>bezierCurveTo(<var>cp1x</var>, <var>cp1y</var>, <var>cp2x</var>, <var>cp2y</var>, <var>x</var>, <var>y</var>)</code></dfn> должен
+  <a href="#ensure-there-is-a-subpath">обеспечить там подпуть</a> для <span>(<var>cp1x</var>, <var>cp1y</var>)</span>, и затем должен соединить последнюю точку в подпути с заданной точкой (<var>x</var>, <var>y</var>) используя кубическую кривую Безье с контрольными точками (<var>cp1x</var>, <var>cp1y</var>) и (<var>cp2x</var>, <var>cp2y</var>). Затем, он должен добавить точку (<var>x</var>, <var>y</var>) в подпуть. <a href="#refsBEZIER">[BEZIER]</a></p>
 
   <hr>
 
-  <p>The <dfn id="dom-context-2d-arcto" title="dom-context-2d-arcTo"><code>arcTo(<var>x1</var>, <var>y1</var>, <var>x2</var>,
+  <p>Метод <dfn id="dom-context-2d-arcto" title="dom-context-2d-arcTo"><code>arcTo(<var>x1</var>, <var>y1</var>, <var>x2</var>,
   <var>y2</var>, <var>radius</var>)</code></dfn>
-  method must first <a href="#ensure-there-is-a-subpath">ensure there is a subpath</a> for <span>(<var>x1</var>, <var>y1</var>)</span>.
-  Then, the behavior depends on the arguments and the last point in
-  the subpath, as described below.</p>
+  должен сначала <a href="#ensure-there-is-a-subpath">обеспечить там подпуть</a> для <span>(<var>x1</var>, <var>y1</var>)</span>.
+  Затем поведение основывается на аргументах и последней точке подпути, как указано ниже.</p>
 
-  <p>Negative values for <var>radius</var> must cause the
-  implementation to throw an <code>IndexSizeError</code> exception.
+  <p>Отрицательные значения для <var>radius</var> должны вызвать показ <code>IndexSizeError</code> исключения.
 
-  </p><p>Let the point (<var>x0</var>, <var>y0</var>) be
-  the last point in the subpath.</p>
+  </p><p>Сделать точку (<var>x0</var>, <var>y0</var>) последней точкой в подпути.</p>
 
-  <p>If the point (<var>x0</var>, <var>y0</var>) is
-  equal to the point (<var>x1</var>, <var>y1</var>),
-  or if the point (<var>x1</var>, <var>y1</var>) is
-  equal to the point (<var>x2</var>, <var>y2</var>),
-  or if the radius <var>radius</var> is zero, then the method
-  must add the point (<var>x1</var>, <var>y1</var>)
-  to the subpath, and connect that point to the previous point (<var>x0</var>, <var>y0</var>) by a straight line.</p>
+  <p>Если точка (<var>x0</var>, <var>y0</var>) равняется точке (<var>x1</var>, <var>y1</var>),
+  или если точка (<var>x1</var>, <var>y1</var>) равняется точке (<var>x2</var>, <var>y2</var>),
+  или если радиус <var>radius</var> равен нолю, тогда метод должен добавить точку (<var>x1</var>, <var>y1</var>)
+  в подпуть и соединить эту точку с предыдущей точкой (<var>x0</var>, <var>y0</var>) прямой линией.</p>
 
-  <p>Otherwise, if the points (<var>x0</var>, <var>y0</var>), (<var>x1</var>, <var>y1</var>), and (<var>x2</var>, <var>y2</var>) all lie on a single straight line, then the
-  method must add the point (<var>x1</var>, <var>y1</var>) to the subpath, and connect that point to the
-  previous point (<var>x0</var>, <var>y0</var>) by a
-  straight line.</p>
+  <p>В другом случае, если точки (<var>x0</var>, <var>y0</var>), (<var>x1</var>, <var>y1</var>), и (<var>x2</var>, <var>y2</var>) все лежат на одной прямой линии, метод должен добавить точку (<var>x1</var>, <var>y1</var>) в подпутьи соединить эту точку с предыдущей точкой (<var>x0</var>, <var>y0</var>) прямой линией.</p>
 
-  <p>Otherwise, let <var>The Arc</var> be the shortest arc
-  given by circumference of the circle that has radius <var>radius</var>, and that has one point tangent to the half-infinite
-  line that crosses the point (<var>x0</var>, <var>y0</var>) and ends at the point (<var>x1</var>,
-  <var>y1</var>), and that has a different point tangent to
-  the half-infinite line that ends at the point (<var>x1</var>, <var>y1</var>), and crosses the point
-  (<var>x2</var>, <var>y2</var>). The points at
-  which this circle touches these two lines are called the start and
-  end tangent points respectively. The method must connect the point
-  (<var>x0</var>, <var>y0</var>) to the start
-  tangent point by a straight line, adding the start tangent point to
-  the subpath, and then must connect the start tangent point to the
-  end tangent point by <var>The Arc</var>, adding the end
-  tangent point to the subpath.</p>
+  <p>В другом случае, сделать <var>The Arc</var> самой короткой дугой
+  заданной окружностью имеющей радиус <var>radius</var> и которая имеет одну точку касательной к полубесконечной линии, которая пересекает точку (<var>x0</var>, <var>y0</var>) и заканчивает в точке (<var>x1</var>,
+  <var>y1</var>), и которая имеет другую точку касательную к полубесконечной линии, которая заканчивается в точке (<var>x1</var>, <var>y1</var>), и пересекает точку
+  (<var>x2</var>, <var>y2</var>). В точках, в которых этот круг прикасается, эти две называются началом и концом точки касания соответственно. Метод должен соединять точку
+  (<var>x0</var>, <var>y0</var>) с точкой касательной старта по прямой линии, добавляя начальную касательную точку в подпуть, затем должен соединить начальную касательную линию с конечной касательной линией к <var>The Arc</var>, добавляя конечную касательную точку в подпуть.</p>
 
   <hr>
 
-  <p>The <dfn id="dom-context-2d-arc" title="dom-context-2d-arc"><code>arc(<var>x</var>, <var>y</var>, <var>radius</var>,
-  <var>startAngle</var>, <var>endAngle</var>, <var>counterclockwise</var>)</code></dfn> method draws an arc.</p>
+  <p>Метод <dfn id="dom-context-2d-arc" title="dom-context-2d-arc"><code>arc(<var>x</var>, <var>y</var>, <var>radius</var>,
+  <var>startAngle</var>, <var>endAngle</var>, <var>counterclockwise</var>)</code></dfn> рисует арку.</p>
 
-  <p> If the context has any subpaths, then the method must add a straight
-  line from the last point in the subpath to the start point of the arc.
-  In any case, it must draw the arc between the start point of the arc and
-  the end point of the arc, and add the start and end points of the arc to
-  the subpath. The arc and its start and end points are defined as follows:</p>
+  <p> Если контекст имеет какие-либо подпути, то этот метод должен добавить прямую линию от последней точки в подпути к начальной точке дуги.
+  В любом случае, он должен нарисовать дугу между начальной точкой дуги и конечной точкой дуги, и добавить эти точки в подпуть. Дуга и ее начальная/конечная точки определяются как следующие:</p>
 
-  <p>Consider a circle that has its origin at (<var>x</var>, <var>y</var>),
-  and that has radius <var>radius</var>.
-  The points at <var>startAngle</var> and <var>endAngle</var> this circle's circumference, measured
-  in radians clockwise from the positive x-axis, are the start and end points respectively.</p>
+  <p>Рассмотрим круг, который имеет свое происхождение в (<var>x</var>, <var>y</var>)
+  и его радиус <var>radius</var>.
+  Точки в <var>startAngle</var> и <var>endAngle</var> окружности этого круга, измеренные в радианах по часовой стрелке от положительной оси х, являются начальной и конечной точкой соответственно.</p>
 
-  <p>If the <var>counterclockwise</var> argument false and <span><var>endAngle</var>-<var>startAngle</var></span> is equal to or greater than <span>2π</span>, or if the <var>counterclockwise</var>
-  argument is <em>true</em> and <span><var>startAngle</var>-<var>endAngle</var></span> is
-  equal to or greater than <span>2π</span>, then the arc
-  is the whole circumference of this circle.</p>
+  <p>Если аргумент <var>counterclockwise</var> ложный и <span><var>endAngle</var>-<var>startAngle</var></span> равняются или более чем <span>2π</span>, или если аргумент <var>counterclockwise</var>
+  является <em>true</em> и <span><var>startAngle</var>-<var>endAngle</var></span> равняются или более чем <span>2π</span>, то дуга это вся окружность этого круга.</p>
 
-  <p>Otherwise, the arc is the path along the circumference of this
-  circle from the start point to the end point, going anti-clockwise
-  if the <var>counterclockwise</var> argument is true, and
-  clockwise otherwise. Since the points are on the circle, as opposed
-  to being simply angles from zero, the arc can never cover an angle
-  greater than <span>2π</span> radians. If the two points are the
-  same, or if the radius is zero, then the arc is defined as being of
-  zero length in both directions.</p>
+  <p>В другом случае, дуга это путь по окружности круга от начальной до конечной точки, идущая против часовой стрелки если аргумент <var>counterclockwise</var> равен true, и по часовой стрелке если нет. Так как точки на окружности, а не просто углы от нуля, дуга никогда не может покрыть угол больше чем <span>2π</span> радиус. Если две точки одинаковы или радиус равен нулю, то дуга определяется нулевой длины в обоих направлениях.</p>
 
-  <p>Negative values for <var>radius</var> must cause the implementation to throw an
-  <code>IndexSizeError</code> exception.</p>
+  <p>Негативные значение для <var>radius</var> должны вызывать показ
+  <code>IndexSizeError</code> исключения.</p>
 
   <hr>
 
 
 
-  <p>The <dfn id="dom-context-2d-rect" title="dom-context-2d-rect"><code>rect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> method must create a new subpath
-  containing just the four points (<var>x</var>, <var>y</var>), (<var>x</var>+<var>w</var>,
+  <p>Метод <dfn id="dom-context-2d-rect" title="dom-context-2d-rect"><code>rect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> должен создавать новый подпуть
+  содержащий только 4 точки (<var>x</var>, <var>y</var>), (<var>x</var>+<var>w</var>,
   <var>y</var>), (<var>x</var>+<var>w</var>, <var>y</var>+<var>h</var>),
-  (<var>x</var>, <var>y</var>+<var>h</var>), with those four points connected by straight
-  lines, and must then mark the subpath as closed. It must then create
-  a new subpath with the point (<var>x</var>, <var>y</var>) as the only point in the subpath.</p>
+  (<var>x</var>, <var>y</var>+<var>h</var>), с этими четырьмя точками соединенными прямыми линиями, и затем должен пометить подпуть закрытым. Затем он должен создать новый подпуть с точкой (<var>x</var>, <var>y</var>) как единственной.</p>
 
 
   <!-- v6 feature request:
@@ -1708,33 +1666,23 @@ try {
 
   <h2 id="transformations"><span class="secno">6 </span><dfn title="dom-context-2d-transformation">Преобразования</dfn></h2>
 
-  <p>Each <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object has a
-  <i>current transformation matrix</i>, as well as methods (described
-  in this section) to manipulate it. When a
-  <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object is created, its
-  transformation matrix must be initialized to the identity
-  transform.</p>
+  <p>Каждый объект <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> имеет
+  <i>текущую матрицу преобразования</i>, как и методы (описанные в этом разделе) для управления им. Когда объект
+  <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> создан, его матрица преобразования должна быть инициализирована к идентичности преобразования.</p>
 
-  <p>The transformation matrix is applied to coordinates when creating
-  the current path, and when painting text,
-  shapes, and paths, on
-  <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> objects.</p> <!-- conformance
+  <p>Матрица преобразования применяется к координатам при создании текущего пути и когда рисуется текст,
+  формы, пути на объектах
+  <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>.</p> <!-- conformance
   criteria for actual drawing are described in the various sections
   below -->
 
-  <p class="note">Most of the API uses <code>SVGMatrix</code> objects
-  rather than this API. This API remains mostly for historical
-  reasons.</p>
+  <p class="note">Большая часть API использует объекты <code>SVGMatrix</code>, а не этого API. Этот API остается в основном по историческим причинам.</p>
 
   <div class="impl">
 
-  <p>The transformations must be performed in reverse order.</p>
+  <p>Преобразования должны быть выполнены в обратном порядке.</p>
 
-  <p class="note">For instance, if a scale transformation that doubles
-  the width is applied to the canvas, followed by a rotation
-  transformation that rotates drawing operations by a quarter turn,
-  and a rectangle twice as wide as it is tall is then drawn on the
-  canvas, the actual result will be a square.</p> <!-- q.v.
+  <p class="note">Например, если преобразование масштабированием, которое удваивает ширину, идет перед преобразованием поворотом, при рисовании прямоугольника ширина которого в два раза меньше высоты, фактически выйдет квадрат.</p> <!-- q.v.
   http://goo.gl/5RLrN -->
 
   </div>
@@ -1745,7 +1693,7 @@ try {
 
    <dd>
 
-    <p>Changes the transformation matrix to apply a scaling transformation with the given characteristics.</p>
+    <p>Меняет матрицу преобразования, чтобы применить преобразование масштабированием с заданными характеристиками.</p>
 
    </dd>
 
@@ -1753,7 +1701,7 @@ try {
 
    <dd>
 
-    <p>Changes the transformation matrix to apply a rotation transformation with the given characteristics. The angle is in radians.</p>
+    <p>Меняет матрицу преобразования, чтобы применить преобразование поворотом с заданными характеристиками. Угол в радианах.</p>
 
    </dd>
 
@@ -1761,7 +1709,7 @@ try {
 
    <dd>
 
-    <p>Changes the transformation matrix to apply a translation transformation with the given characteristics.</p>
+    <p>Меняет матрицу преобразования, чтобы применить преобразование перемещения с заданными характеристиками.</p>
 
    </dd>
 
@@ -1769,7 +1717,7 @@ try {
 
    <dd>
 
-    <p>Changes the transformation matrix to apply the matrix given by the arguments as described below.</p>
+    <p>Меняет матрицу преобразования, чтобы применить матрицу с заданными аргументами как описано ниже.</p>
 
    </dd>
 
@@ -1777,7 +1725,7 @@ try {
 
    <dd>
 
-    <p>Changes the transformation matrix <em>to</em> the matrix given by the arguments as described below.</p>
+    <p>Меняет матрицу преобразования <em>на</em> матрицу с заданными аргументами как описано ниже.</p>
 
    </dd>
 
@@ -1785,26 +1733,15 @@ try {
 
   <div class="impl">
 
-  <p>The <dfn id="dom-context-2d-scale" title="dom-context-2d-scale"><code>scale(<var>x</var>, <var>y</var>)</code></dfn> method must
-  add the scaling transformation described by the arguments to the
-  transformation matrix. The <var>x</var> argument represents
-  the scale factor in the horizontal direction and the <var>y</var> argument represents the scale factor in the
-  vertical direction. The factors are multiples.</p>
+  <p>Метод <dfn id="dom-context-2d-scale" title="dom-context-2d-scale"><code>scale(<var>x</var>, <var>y</var>)</code></dfn> должен добавить масштабирующее преобразование, описанное аргументами в матрице преобразования. Аргумент <var>x</var> представляет собой масштабный коэфициент в горизонтальном направлении, и аргумент <var>y</var> представляет собой масштабный коэфициент в вертикальном направлении. Факторы являются кратными.</p>
 
-  <p>The <dfn id="dom-context-2d-rotate" title="dom-context-2d-rotate"><code>rotate(<var>angle</var>)</code></dfn> method must add the rotation
-  transformation described by the argument to the transformation
-  matrix. The <var>angle</var> argument represents a
-  clockwise rotation angle expressed in radians.</p>
+  <p>Метод <dfn id="dom-context-2d-rotate" title="dom-context-2d-rotate"><code>rotate(<var>angle</var>)</code></dfn> должен добавить поворотное преобразование, описанное аргументами в матрице преобразования. Аргумент <var>angle</var> представляет собой
+  угол поворота по часовой стрелке выраженный в радианах.</p>
 
-  <p>The <dfn id="dom-context-2d-translate" title="dom-context-2d-translate"><code>translate(<var>x</var>, <var>y</var>)</code></dfn> method must
-  add the translation transformation described by the arguments to the
-  transformation matrix. The <var>x</var> argument represents
-  the translation distance in the horizontal direction and the <var>y</var> argument represents the translation distance in the
-  vertical direction. The arguments are in coordinate space units.</p>
+  <p>Метод <dfn id="dom-context-2d-translate" title="dom-context-2d-translate"><code>translate(<var>x</var>, <var>y</var>)</code></dfn> должен добавить преобразование перемещения, описанное аргументами в матрице преобразования. Аргумент <var>x</var> представляет собой
+  дистанцию перемещение в горизонтальном направлении, и аргумент <var>y</var> представляет собой дистанцию перемещения в вертикальном направлении. Аргументы в координатном пространстве единиц.</p>
 
-  <p>The <dfn id="dom-context-2d-transform" title="dom-context-2d-transform"><code>transform(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, <var>f</var>)</code></dfn> method must replace the current
-  transformation matrix with the result of multiplying the current
-  transformation matrix with the matrix described by:</p>
+  <p>Метод <dfn id="dom-context-2d-transform" title="dom-context-2d-transform"><code>transform(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, <var>f</var>)</code></dfn> должен заместить текущую матрицу преобразования результатом умножения текущей матрицы иматрицы описанной с помощью:</p>
 
   </div>
 
@@ -1826,73 +1763,52 @@ try {
    </tr>
   </tbody></table>
 
-  <p class="note">The arguments <var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, and <var>f</var> are sometimes called
+  <p class="note">Аргументы <var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, и <var>f</var> иногда называются
   <var>m11</var>, <var>m12</var>, <var>m21</var>, <var>m22</var>, <var>dx</var>,
-  and <var>dy</var> or <var>m11</var>, <var>m21</var>, <var>m12</var>, <var>m22</var>, <var>dx</var>, and <var>dy</var>. Care should be taken in particular with the order
-  of the second and third arguments (<var>b</var> and <var>c</var>) as their order varies from API to API and APIs
-  sometimes use the notation <var>m12</var>/<var>m21</var> and sometimes <var>m21</var>/<var>m12</var> for those positions.</p>
+  и <var>dy</var> или <var>m11</var>, <var>m21</var>, <var>m12</var>, <var>m22</var>, <var>dx</var>, и <var>dy</var>. Следует проявлять осторожность, в частности, с порядком второго и третьего аргументов (<var>b</var> and <var>c</var>), поскольку их порядок варьируется от API к API и они иногда используют обозначения <var>m12</var>/<var>m21</var> и иногда <var>m21</var>/<var>m12</var> для этих позиций.</p>
 
   <div class="impl">
 
-  <p>The <dfn id="dom-context-2d-settransform" title="dom-context-2d-setTransform"><code>setTransform(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>,
-  <var>f</var>)</code></dfn> method must reset the current
-  transform to the identity matrix, and then invoke the <code><a href="#dom-context-2d-transform" title="dom-context-2d-transform">transform</a>(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>,
-  <var>f</var>)</code> method with the same arguments.</p>
+  <p>Метод <dfn id="dom-context-2d-settransform" title="dom-context-2d-setTransform"><code>setTransform(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>,
+  <var>f</var>)</code></dfn> должен сбросить текущее преобразование к единичной матрице, затем вызвать метод <code><a href="#dom-context-2d-transform" title="dom-context-2d-transform">transform</a>(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>,
+  <var>f</var>)</code> с теми же аргументами.</p>
 
   </div>
 
   <h2 id="image-sources-for-2d-rendering-contexts"><span class="secno">7 </span>Источники изображений для 2D рендеринга</h2>
 
-<p>This union type allows objects implementing any of the following interfaces to be used as image
-  sources:</p>
+<p>Этот объединенный тип позволяет объектам реализовать любой из следующих интерфейсов как источник изображения:</p>
 
-  <ul><li><code id="image-sources-for-2d-rendering-contexts:htmlimageelement"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-img-element"><a href="http://www.w3.org/TR/html/embedded-content-0.html#the-img-element">img</a></code> elements)</li><li><code id="image-sources-for-2d-rendering-contexts:htmlvideoelement"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-video-element"><a href="http://www.w3.org/TR/html/embedded-content-0.html#the-video-element">video</a></code> elements)</li><li><code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-canvas-element"><a href="http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element">canvas</a></code> elements)</li></ul>
+  <ul><li><code id="image-sources-for-2d-rendering-contexts:htmlimageelement"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-img-element"><a href="http://www.w3.org/TR/html/embedded-content-0.html#the-img-element">img</a></code> элементы)</li><li><code id="image-sources-for-2d-rendering-contexts:htmlvideoelement"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-video-element"><a href="http://www.w3.org/TR/html/embedded-content-0.html#the-video-element">video</a></code> элементы)</li><li><code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-canvas-element"><a href="http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element">canvas</a></code> элементы)</li></ul>
 
-  <p>When a user agent is required to <dfn id="check-the-usability-of-the-image-argument">check the usability of the <var>image</var>
-  argument</dfn>, where <var>image</var> is a <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-2"><a href="#canvasimagesource">CanvasImageSource</a></code> object, the
-  user agent must run these steps, which return either <i>good</i>, <i>bad</i>, or
+  <p>Когда агент пользователя должен <dfn id="check-the-usability-of-the-image-argument">проверить пригодность аргумента <var>image</var></dfn>, где <var>image</var> является объектом <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-2"><a href="#canvasimagesource">CanvasImageSource</a></code>, агент пользователя должен следовать следующим шагам, которые возвращают <i>good</i>, <i>bad</i>, или
   <i>aborted</i>:</p>
 
-  <ol><li><p>If the <var>image</var> argument is an <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-2"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> object that
-   is in the <a href="http://www.w3.org/TR/html/embedded-content-0.html#img-error" id="image-sources-for-2d-rendering-contexts:img-error">broken</a> state, then throw an
-   <code id="image-sources-for-2d-rendering-contexts:invalidstateerror"><a href="http://www.w3.org/TR/WebIDL-1/#invalidstateerror">InvalidStateError</a></code> exception, return <i>aborted</i>, and abort these steps.</p>
+  <ol><li><p>Если аргумент <var>image</var> является объектом <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-2"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> в <a href="http://www.w3.org/TR/html/embedded-content-0.html#img-error" id="image-sources-for-2d-rendering-contexts:img-error">битом</a> состоянии, тогда показать
+   <code id="image-sources-for-2d-rendering-contexts:invalidstateerror"><a href="http://www.w3.org/TR/WebIDL-1/#invalidstateerror">InvalidStateError</a></code> исключение, возвратить <i>aborted</i> и прервать эти шаги.</p>
 
-   </li><li><p>If the <var>image</var> argument is an <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-3"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> object that
-   is not <a href="http://www.w3.org/TR/html/embedded-content-0.html#img-good" id="image-sources-for-2d-rendering-contexts:img-good">fully decodable</a>, or if the <var>image</var>
-   argument is an <code id="image-sources-for-2d-rendering-contexts:htmlvideoelement-2"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> object whose <code id="image-sources-for-2d-rendering-contexts:dom-media-readystate"><a href="http://www.w3.org/TR/html/embedded-content-0.html#dom-media-readystate">readyState</a></code> attribute is either <code id="image-sources-for-2d-rendering-contexts:dom-media-have_nothing"><a href="http://www.w3.org/TR/html/embedded-content-0.html#dom-media-have_nothing">HAVE_NOTHING</a></code> or <code id="image-sources-for-2d-rendering-contexts:dom-media-have_metadata"><a href="http://www.w3.org/TR/html/embedded-content-0.html#dom-media-have_metadata">HAVE_METADATA</a></code>, then return <i>bad</i> and abort these
-   steps.</p></li><li><p>If the <var>image</var> argument is an <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-4"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> object with
-   an intrinsic width or intrinsic height (or both) equal to zero, then return <i>bad</i> and abort
-   these steps.</p>
+   </li><li><p>Если аргумент <var>image</var> является объектом <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-3"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> который не <a href="http://www.w3.org/TR/html/embedded-content-0.html#img-good" id="image-sources-for-2d-rendering-contexts:img-good">полностью декодируемый</a> или если аргумент <var>image</var> является объектом <code id="image-sources-for-2d-rendering-contexts:htmlvideoelement-2"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> который <code id="image-sources-for-2d-rendering-contexts:dom-media-readystate"><a href="http://www.w3.org/TR/html/embedded-content-0.html#dom-media-readystate">readyState</a></code> атрибут либо <code id="image-sources-for-2d-rendering-contexts:dom-media-have_nothing"><a href="http://www.w3.org/TR/html/embedded-content-0.html#dom-media-have_nothing">ничего не содержит</a></code> или <code id="image-sources-for-2d-rendering-contexts:dom-media-have_metadata"><a href="http://www.w3.org/TR/html/embedded-content-0.html#dom-media-have_metadata">имеет метаданные</a></code>, тогда возвратить <i>bad</i> и прервать эти шаги.</p></li><li><p>Если аргумент <var>image</var> является объектом <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-4"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> с
+   шириной или высотой (или обоими) равными нулю, тогда возвратить <i>bad</i> и прервать эти шаги.</p>
 
-   </li><li><p>If the <var>image</var> argument is an <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-2"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code> object with
-   either a horizontal dimension or a vertical dimension equal to zero, then return <i>bad</i> and
-   abort these steps.</p>
+   </li><li><p>Если аргумент <var>image</var> является объектом <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-2"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code> с горизонтальной или вертикальной размерностью равными нулю, тогда возвратить <i>bad</i> и прервать эти шаги.</p>
 
-   </li><li><p>Return <i>good</i>.</p></li></ol>
+   </li><li><p>Возвратить <i>good</i>.</p></li></ol>
 
-  <p>When a <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-3"><a href="#canvasimagesource">CanvasImageSource</a></code> object represents an <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-5"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code>, the
-  element's image must be used as the source image.</p>
+  <p>Когда объект <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-3"><a href="#canvasimagesource">CanvasImageSource</a></code> представляет собой <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-5"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code>, изображение элемента должно использоваться как исходное изображение.</p>
 
-  <p>Specifically, when a <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-4"><a href="#canvasimagesource">CanvasImageSource</a></code> object represents an animated image in an
-  <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-6"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code>, the user agent must use the default image of the animation (the
-  one that the format defines is to be used when animation is not supported or is disabled), or, if
-  there is no such image, the first frame of the animation, when rendering the image for
-  <code id="image-sources-for-2d-rendering-contexts:canvasrenderingcontext2d-3"><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> APIs.</p>
+  <p>В частности, когда обект <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-4"><a href="#canvasimagesource">CanvasImageSource</a></code> представляет собой анимированное изображение в
+  <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-6"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code>, агент пользователя должен использовать дефолтное изображение анимации (то которое формат определяет быть использованным когда анимация не поддерживается или отключена), или если там нет такого изображения, первый кадр анимации при визуализации изображения для
+  <code id="image-sources-for-2d-rendering-contexts:canvasrenderingcontext2d-3"><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> API.</p>
 
-  <p>When a <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-5"><a href="#canvasimagesource">CanvasImageSource</a></code> object represents an <code id="image-sources-for-2d-rendering-contexts:htmlvideoelement-3"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code>, then
-  the frame at the <a id="image-sources-for-2d-rendering-contexts:current-playback-position" href="http://www.w3.org/TR/html/embedded-content-0.html#current-playback-position">current playback position</a> when the method with the argument is
-  invoked must be used as the source image when rendering the image for
-  <code id="image-sources-for-2d-rendering-contexts:canvasrenderingcontext2d-4"><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> APIs, and the source image's dimensions must be the <a href="http://www.w3.org/TR/html/embedded-content-0.html#concept-video-intrinsic-width" id="image-sources-for-2d-rendering-contexts:concept-video-intrinsic-width">intrinsic width</a> and <a href="http://www.w3.org/TR/html/embedded-content-0.html#concept-video-intrinsic-height" id="image-sources-for-2d-rendering-contexts:concept-video-intrinsic-height">intrinsic height</a> of the <a id="image-sources-for-2d-rendering-contexts:media-resource" href="http://www.w3.org/TR/html/embedded-content-0.html#media-resource">media resource</a>
-  (i.e. after any aspect-ratio correction has been applied).</p>
+  <p>Когда объект <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-5"><a href="#canvasimagesource">CanvasImageSource</a></code> представляет собой <code id="image-sources-for-2d-rendering-contexts:htmlvideoelement-3"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code>, тогда кадр в <a id="image-sources-for-2d-rendering-contexts:current-playback-position" href="http://www.w3.org/TR/html/embedded-content-0.html#current-playback-position">текущей playback позиции</a>. Когда метод с аргументом вызваны, должно быть использовано исходное изображение при визуализации изображения для
+  <code id="image-sources-for-2d-rendering-contexts:canvasrenderingcontext2d-4"><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> API, и размеры исходного изображения должны быть <a href="http://www.w3.org/TR/html/embedded-content-0.html#concept-video-intrinsic-width" id="image-sources-for-2d-rendering-contexts:concept-video-intrinsic-width">внутренней ширины</a> и <a href="http://www.w3.org/TR/html/embedded-content-0.html#concept-video-intrinsic-height" id="image-sources-for-2d-rendering-contexts:concept-video-intrinsic-height">внутренней высоты</a> от <a id="image-sources-for-2d-rendering-contexts:media-resource" href="http://www.w3.org/TR/html/embedded-content-0.html#media-resource">источника медиа</a>
+  (т.е. после того как любая коррекция соотношения была применена).</p>
 
-  <p>When a <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-6"><a href="#canvasimagesource">CanvasImageSource</a></code> object represents an <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-3"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code>, the
-  element's bitmap must be used as the source image.</p>
+  <p>Когда объект <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-6"><a href="#canvasimagesource">CanvasImageSource</a></code> представляет собой <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-3"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code>, растровое изображение элемента (bitmap) должно быть использовано как исходное изображение.</p>
 
-  <p><dfn id="the-image-argument-is-not-origin-clean">The <var>image argument</var> is not origin-clean</dfn> if it is an
-  <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-7"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> or <code id="image-sources-for-2d-rendering-contexts:htmlvideoelement-4"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> whose <a id="image-sources-for-2d-rendering-contexts:origin-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">origin</a> is not
-  the <a href="http://www.w3.org/TR/html/browsers.html#same-origin" id="image-sources-for-2d-rendering-contexts:same-origin">same</a> as the <a id="image-sources-for-2d-rendering-contexts:origin-2-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">origin</a> specified by the <a id="image-sources-for-2d-rendering-contexts:entry-settings-object" href="http://www.w3.org/TR/html/webappapis.html#entry-settings-object">entry
-  settings object</a>, or if it is an <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-4"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code> whose bitmap's <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="image-sources-for-2d-rendering-contexts:concept-canvas-origin-clean">origin-clean</a> flag is false, or if it is a
-  <code id="image-sources-for-2d-rendering-contexts:canvasrenderingcontext2d-7"><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object whose bitmap's <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="image-sources-for-2d-rendering-contexts:concept-canvas-origin-clean-2">origin-clean</a> flag is false.</p>
+  <p><dfn id="the-image-argument-is-not-origin-clean"><var>Аргумент image</var> не изначально чист</dfn> если это
+  <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-7"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> или <code id="image-sources-for-2d-rendering-contexts:htmlvideoelement-4"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> чье <a id="image-sources-for-2d-rendering-contexts:origin-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">начало</a> не <a href="http://www.w3.org/TR/html/browsers.html#same-origin" id="image-sources-for-2d-rendering-contexts:same-origin">то же</a> как <a id="image-sources-for-2d-rendering-contexts:origin-2-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">начало</a> заданное в <a id="image-sources-for-2d-rendering-contexts:entry-settings-object" href="http://www.w3.org/TR/html/webappapis.html#entry-settings-object">объекте настройки</a>, или если это <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-4"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code> битмап которого с ложным флагом <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="image-sources-for-2d-rendering-contexts:concept-canvas-origin-clean">origin-clean</a>, или если это объект
+  <code id="image-sources-for-2d-rendering-contexts:canvasrenderingcontext2d-7"><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> битмап которого с ложным флагом <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="image-sources-for-2d-rendering-contexts:concept-canvas-origin-clean-2">origin-clean</a>.</p>
 
   <h2 id="fill-and-stroke-styles"><span class="secno">8 </span>Стили заполнения и обводки</h2>
 
@@ -4022,7 +3938,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <h2 id="shadows"><span class="secno">16 </span><dfn>Тени</dfn></h2>
 
-  <p>Все операции рисования затронуты четерьмя глобальными теневыми атрибутами.</p>
+  <p>Все операции рисования затронуты четырьмя глобальными теневыми атрибутами.</p>
 
   <dl class="domintro">
 
