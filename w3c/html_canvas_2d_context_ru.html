@@ -1818,13 +1818,12 @@ try {
 
    <dd>
 
-    <p>Returns the current style used for filling shapes.</p>
+    <p>Возвращает текущий стиль используемый для заполнения форм.</p>
 
-    <p>Can be set, to change the fill style.</p>
+    <p>Может быть установлен, чтобы изменить стиль заполнения.</p>
 
-    <p>The style can be either a string containing a CSS color, or a
-    <code><a href="#canvasgradient">CanvasGradient</a></code> or <code><a href="#canvaspattern">CanvasPattern</a></code>
-    object. Invalid values are ignored.</p>
+    <p>Стиль может быть строкой, содержащей цвет CSS, либо
+    <code><a href="#canvasgradient">CanvasGradient</a></code> или объект <code><a href="#canvaspattern">CanvasPattern</a></code>. Неверные значения игнорируются.</p>
 
    </dd>
 
@@ -1832,13 +1831,12 @@ try {
 
    <dd>
 
-    <p>Returns the current style used for stroking shapes.</p>
+    <p>Возвращает текущий стиль используемый для сглаживания форм.</p>
 
-    <p>Can be set, to change the stroke style.</p>
+    <p>Может быть установлен, чтобы изменить стиль сглаживания.</p>
 
-    <p>The style can be either a string containing a CSS color, or a
-    <code><a href="#canvasgradient">CanvasGradient</a></code> or <code><a href="#canvaspattern">CanvasPattern</a></code>
-    object. Invalid values are ignored.</p>
+    <p>Стиль может быть строкой содержащей цвет CSS, либо
+    <code><a href="#canvasgradient">CanvasGradient</a></code> или объект <code><a href="#canvaspattern">CanvasPattern</a></code>. Неверные значения игнорируются.</p>
 
    </dd>
 
@@ -1873,87 +1871,30 @@ try {
 
   -->
 
-  <p>The <dfn id="dom-context-2d-fillstyle" title="dom-context-2d-fillStyle"><code>fillStyle</code></dfn>
-  attribute represents the color or style to use inside shapes, and
-  the <dfn id="dom-context-2d-strokestyle" title="dom-context-2d-strokeStyle"><code>strokeStyle</code></dfn>
-  attribute represents the color or style to use for the lines around
-  the shapes.</p>
+  <p>Атрибут <dfn id="dom-context-2d-fillstyle" title="dom-context-2d-fillStyle"><code>fillStyle</code></dfn>
+  представляет собой цвет или стиль используемый внутри форм, и атрибут <dfn id="dom-context-2d-strokestyle" title="dom-context-2d-strokeStyle"><code>strokeStyle</code></dfn>
+  представляет собой цвет или стиль используемый для линий вокруг форм.</p>
 
-  <p>Both attributes can be either strings,
-  <code><a href="#canvasgradient">CanvasGradient</a></code>s, or <code><a href="#canvaspattern">CanvasPattern</a></code>s. On
-  setting, strings must be <span title="parsed as a CSS <color>
-  value">parsed as CSS &lt;color&gt; values</span> and the color
-  assigned, and <code><a href="#canvasgradient">CanvasGradient</a></code> and
-  <code><a href="#canvaspattern">CanvasPattern</a></code> objects must be assigned themselves <a href="#refsCSSCOLOR">[CSSCOLOR]</a>. If the value is a string but
-  cannot be <span>parsed as a CSS &lt;color&gt; value</span>, or is
-  neither a string, a <code><a href="#canvasgradient">CanvasGradient</a></code>, nor a
-  <code><a href="#canvaspattern">CanvasPattern</a></code>, then it must be ignored, and the
-  attribute must retain its previous value.   If the new value is a <code id="fill-and-stroke-styles:canvaspattern-5"><a href="#canvaspattern">CanvasPattern</a></code> object that is marked as <a style="" href="#concept-canvas-pattern-not-origin-clean" id="fill-and-stroke-styles:concept-canvas-pattern-not-origin-clean">not origin-clean</a>, then the bitmap's <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="fill-and-stroke-styles:concept-canvas-origin-clean">origin-clean</a> flag must be set to
-  false.</p>
+  <p>Оба атрибута могут быть строки или
+  <code><a href="#canvasgradient">CanvasGradient</a></code>, или <code><a href="#canvaspattern">CanvasPattern</a></code>. При настройке, строки должны быть <span title="parsed as a CSS <color>
+  value">прочитаны как значения цвета CSS</span>. Объекты <code><a href="#canvasgradient">CanvasGradient</a></code> и
+  <code><a href="#canvaspattern">CanvasPattern</a></code> должны назначать сами себя <a href="#refsCSSCOLOR">[CSSCOLOR]</a>. Если значение строчное, но не может быть <span>прочитано как значение цвета CSS</span>, не является строкой <code><a href="#canvasgradient">CanvasGradient</a></code> или
+  <code><a href="#canvaspattern">CanvasPattern</a></code>, тогда должно быть проигнорировано и атрибут должен возвратиться к предыдущему значению. Если новое значение это объект <code id="fill-and-stroke-styles:canvaspattern-5"><a href="#canvaspattern">CanvasPattern</a></code> помеченный как <a style="" href="#concept-canvas-pattern-not-origin-clean" id="fill-and-stroke-styles:concept-canvas-pattern-not-origin-clean">not origin-clean</a>, тогда флаг битмапа <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="fill-and-stroke-styles:concept-canvas-origin-clean">origin-clean</a> должен быть поставлен ложный.</p>
 
-  <p>When set to a <code><a href="#canvaspattern">CanvasPattern</a></code> or
-  <code><a href="#canvasgradient">CanvasGradient</a></code> object, the assignment is
-  <span>live</span>, meaning that changes made to the object after the
-  assignment do affect subsequent stroking or filling of shapes.</p>
+  <p>Когда контекст создан, атрибуты <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> и <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code> должны изначально иметь строчное значение <code>#000000</code>.</p>
 
-  <p>On getting, if the value is a color, then the <a href="#serialization-of-a-color" title="serialization of a color">serialization of the color</a>
-  must be returned. Otherwise, if it is not a color but a
-  <code><a href="#canvasgradient">CanvasGradient</a></code> or <code><a href="#canvaspattern">CanvasPattern</a></code>, then the
-  respective object must be returned. (Such objects are opaque and
-  therefore only useful for assigning to other attributes or for
-  comparison to other gradients or patterns.)</p>
-
-  <p>The <dfn id="serialization-of-a-color">serialization of a color</dfn> for a color value is a
-  string, computed as follows: if it has alpha equal to 1.0, then the
-  string is a lowercase six-digit hex value, prefixed with a "#"
-  character (U+0023 NUMBER SIGN), with the first two digits
-  representing the red component, the next two digits representing the
-  green component, and the last two digits representing the blue
-  component, the digits being in the range 0-9 a-f (U+0030 to U+0039
-  and U+0061 to U+0066). Otherwise, the color value has alpha less
-  than 1.0, and the string is the color value in the CSS <code>rgba()</code> functional-notation format: the literal
-  string <code>rgba</code> (U+0072 U+0067 U+0062 U+0061)
-  followed by a U+0028 LEFT PARENTHESIS, a base-ten integer in the
-  range 0-255 representing the red component (using digits 0-9, U+0030
-  to U+0039, in the shortest form possible), a literal U+002C COMMA
-  and U+0020 SPACE, an integer for the green component, a comma and a
-  space, an integer for the blue component, another comma and space, a
-  U+0030 DIGIT ZERO, if the alpha value is greater than zero then a
-  U+002E FULL STOP (representing the decimal point), if the alpha
-  value is greater than zero then one or more digits in the range 0-9
-  (U+0030 to U+0039) representing the fractional part of the alpha<!--
-  value with no trailing zeros (implied by next sentence)-->, and
-  finally a U+0029 RIGHT PARENTHESIS. User agents must express the
-  fractional part of the alpha value, if any, with the level of
-  precision necessary for the alpha value, when reparsed, to be
-  interpreted as the same alpha value.</p> <!-- if people complain
-  this is unreadable, expand it into a <dl> with two nested <ol>s -->
-
-  <p>When the context is created, the <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> and <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code> attributes
-  must initially have the string value <code>#000000</code>.</p>
-
-  <p>When the value is a color, it must not be affected by the
-  transformation matrix when used to draw on the canvas.</p> <!-- so
+  <p>Если значение является цветом, на него не должна влиять матрица преобразования.</p> <!-- so
   singular matrices don't affect solid color fillStyles -->
 
   </div>
 
   <hr>
 
-  <p>There are two types of gradients, linear gradients and radial
-  gradients, both represented by objects implementing the opaque
-  <code><a href="#canvasgradient">CanvasGradient</a></code> interface.</p>
+  <p>Существует два типа градиентов, линейный градиент и радиальный, оба представлены объектами реализующими непрозрачный интерфейс <code><a href="#canvasgradient">CanvasGradient</a></code>.</p>
 
-  <p id="interpolation">Once a gradient has been created (see below),
-  stops are placed along it to define how the colors are distributed
-  along the gradient. <span class="impl">The color of the gradient at
-  each stop is the color specified for that stop. Between each such
-  stop, the colors and the alpha component must be linearly
-  interpolated over the RGBA space without premultiplying the alpha
-  value to find the color to use at that offset. Before the first
-  stop, the color must be the color of the first stop. After the last
-  stop, the color must be the color of the last stop. When there are
-  no stops, the gradient is transparent black.</span></p>
+  <p id="interpolation">Когда градиент был создан (смотрите выше),
+  остановки (stops) расположены вдоль него, чтобы определить, как цвета распределены вдоль градиента. <span class="impl">Цвет градиента на
+  каждой остановке это цвет указанный для нее. Между каждой такой остановкой цвета и альфа-компонент должны быть линейно интерполированы над RGBA пространством без умножения альфа значения, чтобы найти цвет используемый на этом смещении. Перед первой остановкой, цвет должен быть цветом первой остановки. После последней остановки, цвет должен быть цветом последней остановки. Когда нет остановок, градиент является прозрачным черным.</span></p>
 
   <dl class="domintro">
 
@@ -1961,13 +1902,9 @@ try {
 
    <dd>
 
-    <p>Adds a color stop with the given color to the gradient at the
-    given offset. 0.0 is the offset at one end of the gradient, 1.0 is
-    the offset at the other end.</p>
+    <p>Добавляет цвет остановки с заданным цветом градиента на заданное смещение. 0.0 это спещение на одном конце градиента, 1.0 - на другом.</p>
 
-    <p>Throws an <code>IndexSizeError</code> exception if the offset
-    is out of range. Throws a <code>SyntaxError</code> exception if the
-    color cannot be parsed.</p>
+    <p>Выдает исключение <code>IndexSizeError</code> если смещение не в диапазоне. Выдает исключение <code>SyntaxError</code> если цвет не может быть прочитан.</p>
 
    </dd>
 
@@ -1975,9 +1912,7 @@ try {
 
    <dd>
 
-    <p>Returns a <code><a href="#canvasgradient">CanvasGradient</a></code> object that represents a
-    linear gradient that paints along the line given by the
-    coordinates represented by the arguments.</p>
+    <p>Возвращает объект <code><a href="#canvasgradient">CanvasGradient</a></code> который представляет линейный градиент, рисующий вдоль заданной линии с помощью координат.</p>
 
    </dd>
 
@@ -1985,12 +1920,9 @@ try {
 
    <dd>
 
-    <p>Returns a <code><a href="#canvasgradient">CanvasGradient</a></code> object that represents a
-    radial gradient that paints along the cone given by the circles
-    represented by the arguments.</p>
+    <p>Возвращает объект <code><a href="#canvasgradient">CanvasGradient</a></code>, представляющий радиальный градиент, рисующий вдоль конуса с помощью кругов представленных в аргументах.</p>
 
-    <p>If either of the radii are negative, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> an
-    <code>IndexSizeError</code> exception.</p>
+    <p>Если какой-то из радиусов негативный, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">выдает</a> исключение <code>IndexSizeError</code>.</p>
 
    </dd>
 
@@ -1998,98 +1930,67 @@ try {
 
   <div class="impl">
 
-  <p>The <dfn id="dom-canvasgradient-addcolorstop" title="dom-canvasgradient-addColorStop"><code>addColorStop(<var>offset</var>, <var>color</var>)</code></dfn>
-  method on the <code><a href="#canvasgradient">CanvasGradient</a></code> interface adds a new stop
-  to a gradient. If the <var>offset</var> is less than 0 or
-  greater than 1 then an <code>IndexSizeError</code> exception must be
-  thrown. If the <var>color</var> cannot be <span>parsed as a
-  CSS &lt;color&gt; value</span>, then a <code>SyntaxError</code>
-  exception must be thrown. Otherwise, the gradient must have a new
-  stop placed, at offset <var>offset</var> relative to the
-  whole gradient, and with the color obtained by parsing <var>color</var> as a CSS &lt;color&gt; value. If multiple stops
-  are added at the same offset on a gradient, they must be placed in
-  the order added, with the first one closest to the start of the
-  gradient, and each subsequent one infinitesimally further along
-  towards the end point (in effect causing all but the first and last
-  stop added at each point to be ignored).</p>
+  <p>Метод <dfn id="dom-canvasgradient-addcolorstop" title="dom-canvasgradient-addColorStop"><code>addColorStop(<var>offset</var>, <var>color</var>)</code></dfn>
+  на интерфейсе <code><a href="#canvasgradient">CanvasGradient</a></code> добавляет новую остановку
+  в градиент. Если <var>offset</var> меньше чем 0 или больше чем 1, тогда должно быть показано исключение <code>IndexSizeError</code>. Если <var>color</var> не может быть <span>прочитан как значение
+  CSS &lt;color&gt;</span>, тогда показывается исключение <code>SyntaxError</code>. В другом случае, градиент должен иметь размещенную остановку на смещении <var>offset</var> по отношению ко всему градиенту и цветом полученным при чтении <var>color</var> как значения CSS &lt;color&gt;. Если множество остановок
+  добавляются в одно и тоже смещение, они должны быть расположены в порядке добавления, с первой на начале градиента и каждой последующей на ничтожном растоянии от друг друга вдоль линии.</p>
 
-  <p>The <dfn id="dom-context-2d-createlineargradient" title="dom-context-2d-createLinearGradient"><code>createLinearGradient(<var>x0</var>, <var>y0</var>, <var>x1</var>,
-  <var>y1</var>)</code></dfn> method takes four arguments
-  that represent the start point (<var>x0</var>, <var>y0</var>) and end point (<var>x1</var>, <var>y1</var>) of the gradient. The method must return a linear
-  <code><a href="#canvasgradient">CanvasGradient</a></code> initialized with the specified line.</p>
+  <p>Метод <dfn id="dom-context-2d-createlineargradient" title="dom-context-2d-createLinearGradient"><code>createLinearGradient(<var>x0</var>, <var>y0</var>, <var>x1</var>,
+  <var>y1</var>)</code></dfn> принимает четыре аргумента, которые представляют собой начальную точку (<var>x0</var>, <var>y0</var>) и конечную точку (<var>x1</var>, <var>y1</var>) градиента. Метод должен возвратить линейный
+  <code><a href="#canvasgradient">CanvasGradient</a></code> инициализируемый в указанной строке.</p>
 
-  <p>Linear gradients must be rendered such that all points on a line
-  perpendicular to the line that crosses the start and end points have
-  the color at the point where those two lines cross (with the colors
-  coming from the <a href="#interpolation">interpolation and
-  extrapolation</a> described above). The points in the linear
-  gradient must be transformed as described by the <a href="#transformations" title="dom-context-2d-transformation">current transformation
-  matrix</a> when rendering.</p>
+  <p>Линейные градиенты должны визуализироваться таким образом, чтоб все точки на линии
+  перпендикулярной к линии пересекающей начальную и конечную точку, имели
+  цвет в точке где эти две линии пересекаются (с цветами исходящими от <a href="#interpolation">интерполяции и экстраполяции</a> описанных выше). Точки в линейном градиенте должны преобразоваться как описано <a href="#transformations" title="dom-context-2d-transformation">текущей матрицей преобразования</a> при визуализации (рендеринге).</p>
 
-  <p>If <span><var>x0</var> = <var>x1</var></span> and <span><var>y0</var> = <var>y1</var></span>, then
-  the linear gradient must paint nothing.</p>
+  <p>Если <span><var>x0</var> = <var>x1</var></span> и <span><var>y0</var> = <var>y1</var></span>, тогда линейный градиент не должен рисовать ничего.</p>
 
-  <p>The <dfn id="dom-context-2d-createradialgradient" title="dom-context-2d-createRadialGradient"><code>createRadialGradient(<var>x0</var>, <var>y0</var>, <var>r0</var>,
-  <var>x1</var>, <var>y1</var>, <var>r1</var>)</code></dfn> method takes six arguments, the
-  first three representing the start circle with origin (<var>x0</var>, <var>y0</var>) and radius <var>r0</var>, and the last three representing the end circle
-  with origin (<var>x1</var>, <var>y1</var>) and
-  radius <var>r1</var>. The values are in coordinate space
-  units. If either of <var>r0</var> or <var>r1</var>
-  are negative, an <code>IndexSizeError</code> exception must be
-  thrown. Otherwise, the method must return a radial
-  <code><a href="#canvasgradient">CanvasGradient</a></code> initialized with the two specified
-  circles.</p>
+  <p>Метод <dfn id="dom-context-2d-createradialgradient" title="dom-context-2d-createRadialGradient"><code>createRadialGradient(<var>x0</var>, <var>y0</var>, <var>r0</var>,
+  <var>x1</var>, <var>y1</var>, <var>r1</var>)</code></dfn> принимает шесть аргументов, первые три представляют собой
+  начало круга с началом (<var>x0</var>, <var>y0</var>) и радиусом <var>r0</var>, последние три представляют собой конец круга
+  с началом (<var>x1</var>, <var>y1</var>) и радиусом <var>r1</var>. Значения в координатном пространстве единиц. Если что-то из <var>r0</var> или <var>r1</var>
+  являются негативными, должно показаться исключение <code>IndexSizeError</code>. В другом случае, метод должен возвратить радиальный
+  <code><a href="#canvasgradient">CanvasGradient</a></code> с двумя заданными кругами.</p>
 
-  <p>Radial gradients must be rendered by following these steps:</p>
+  <p>Радиальные градиенты должны быть визуализированны при помощи следующих шагов:</p>
 
   <ol>
 
-   <li><p>If <span><var>x<sub>0</sub></var> = <var>x<sub>1</sub></var></span> and <span><var>y<sub>0</sub></var> = <var>y<sub>1</sub></var></span> and <span><var>r<sub>0</sub></var> = <var>r<sub>1</sub></var></span>, then the radial gradient must
-   paint nothing. Abort these steps.</p></li>
+   <li><p>Если <span><var>x<sub>0</sub></var> = <var>x<sub>1</sub></var></span> и <span><var>y<sub>0</sub></var> = <var>y<sub>1</sub></var></span> и <span><var>r<sub>0</sub></var> = <var>r<sub>1</sub></var></span>, тогда радиальный градиент не должен рисовать ничего. Прервать эти шаги.</p></li>
 
    <li>
 
-    <p>Let <span>x(<var>ω</var>) = (<var>x<sub>1</sub></var>-<var>x<sub>0</sub></var>)<var>ω</var> + <var>x<sub>0</sub></var></span></p>
+    <p>Сделать <span>x(<var>ω</var>) = (<var>x<sub>1</sub></var>-<var>x<sub>0</sub></var>)<var>ω</var> + <var>x<sub>0</sub></var></span></p>
 
-    <p>Let <span>y(<var>ω</var>) = (<var>y<sub>1</sub></var>-<var>y<sub>0</sub></var>)<var>ω</var> + <var>y<sub>0</sub></var></span></p>
+    <p>Сделать <span>y(<var>ω</var>) = (<var>y<sub>1</sub></var>-<var>y<sub>0</sub></var>)<var>ω</var> + <var>y<sub>0</sub></var></span></p>
 
-    <p>Let <span>r(<var>ω</var>) = (<var>r<sub>1</sub></var>-<var>r<sub>0</sub></var>)<var>ω</var> + <var>r<sub>0</sub></var></span></p>
+    <p>Сделать <span>r(<var>ω</var>) = (<var>r<sub>1</sub></var>-<var>r<sub>0</sub></var>)<var>ω</var> + <var>r<sub>0</sub></var></span></p>
 
-    <p>Let the color at <var>ω</var> be the color at
-    that position on the gradient (with the colors coming from the <a href="#interpolation">interpolation and extrapolation</a>
-    described above).</p>
+    <p>Сделать цвет в <var>ω</var> цветом в позиции на градиенте (с цветами исходящими из <a href="#interpolation">интерполяции и экстраполяции</a>
+    описанных выше).</p>
 
    </li>
 
-   <li><p>For all values of <var>ω</var> where <span>r(<var>ω</var>) &gt; 0</span>,
-   starting with the value of <var>ω</var> nearest to
-   positive infinity and ending with the value of <var>ω</var> nearest to negative infinity, draw the
-   circumference of the circle with radius <span>r(<var>ω</var>)</span> at position (<span>x(<var>ω</var>)</span>, <span>y(<var>ω</var>)</span>), with the color at <var>ω</var>, but only painting on the parts of the
-   canvas that have not yet been painted on by earlier circles in this
-   step for this rendering of the gradient.</p></li>
+   <li><p>Для всех значений <var>ω</var> где <span>r(<var>ω</var>) &gt; 0</span>,
+   начинать со значения <var>ω</var> ближайшего к
+   положительной бесконечности и заканчивать со значением <var>ω</var> ближайшим к негативной бесконечности, нарисовать окружность с радиусом <span>r(<var>ω</var>)</span> на позиции (<span>x(<var>ω</var>)</span>, <span>y(<var>ω</var>)</span>), с цветом в <var>ω</var>, но только рисовать на частях холста (canvas) которые еще не были зарисованы раннее на этом шаге.</p></li>
 
   </ol>
 
-  <p class="note">This effectively creates a cone, touched by the two
-  circles defined in the creation of the gradient, with the part of
-  the cone before the start circle (0.0) using the color of the first
-  offset, the part of the cone after the end circle (1.0) using the
-  color of the last offset, and areas outside the cone untouched by
-  the gradient (transparent black).</p>
+  <p class="note">Это фактически создает конус, затронутый двумя кругами определенными в создании градиента, с частью конуса перед началом круга (0.0) цвета первого смещения и частью конуса после конечного круга (1.0) цвета последнего смещения, а зоны за конусом не затронуты градиентом (прозрачный черный).</p>
 
-  <p>The resulting radial gradient must then be transformed as
-  described by the <a href="#transformations" title="dom-context-2d-transformation">current
-  transformation matrix</a> when rendering.</p>
+  <p>Полученный в результате радиальный градиент должен затем быть преобразован как описано в <a href="#transformations" title="dom-context-2d-transformation">текущей матрице преобразования</a> когда визуализируется.</p>
 
-  <p>Gradients must be painted only where the relevant stroking or
-  filling effects requires that they be drawn.</p>
+  <p>Градиенты должны быть нарисованы только когда соответствующие сглаживания или
+  эффекты заполнения требуют чтобы они были нарисованы.</p>
 
   </div>
 
   <hr>
 
-  <p>Patterns are represented by objects implementing the opaque
-  <code><a href="#canvaspattern">CanvasPattern</a></code> interface.</p>
+  <p>Паттерны представлены объектами реализующими прозрачный
+  <code><a href="#canvaspattern">CanvasPattern</a></code> интерфейс.</p>
 
   <dl class="domintro">
 
@@ -2097,16 +1998,14 @@ try {
 
    <dd>
 
-    <p>Returns a <code><a href="#canvaspattern">CanvasPattern</a></code> object that uses the given image
-    and repeats in the direction(s) given by the <var>repetition</var> argument.</p>
+    <p>Возвращает объект <code><a href="#canvaspattern">CanvasPattern</a></code> который использует данное изображение
+    и повторяетв направлении заданном аргументом <var>repetition</var>.</p>
 
-    <p>The allowed values for <var>repetition</var> are "<code>repeat</code>" (both directions), "<code>repeat-x</code>" (horizontal only), "<code>repeat-y</code>" (vertical only), and "<code>no-repeat</code>" (neither). If the <var>repetition</var> argument is empty, the value <code>repeat</code> is used.</p>
+    <p>Допустимые значения <var>repetition</var>: "<code>repeat</code>" (оба направления), "<code>repeat-x</code>" (горизонтальное), "<code>repeat-y</code>" (вертикальное) и "<code>no-repeat</code>" (ни один). Если аргумент <var>repetition</var> пуст, значение <code>repeat</code> используется.</p>
 
-    <p>If the image has no image data, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> an
-    <code>InvalidStateError</code> exception. If the second argument
-    isn't one of the allowed values, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> a <code>SyntaxError</code>
-    exception. If the image isn't yet fully decoded, then the method
-    returns null.</p>
+    <p>Если изображение не имеет данных, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">выдается</a> исключение
+    <code>InvalidStateError</code>. Если второй аргумент
+    не один из допустимых, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">выдается</a> исключение <code>SyntaxError</code>. Если изображение еще не полностью декодировано, тогда аргумент возвращает null.</p>
 
    </dd>
 
@@ -2114,48 +2013,31 @@ try {
 
   <div class="impl">
 
-  <p>To create objects of this type, the <dfn id="dom-context-2d-createpattern" title="dom-context-2d-createPattern"><code>createPattern(<var>image</var>, <var>repetition</var>)</code></dfn>
-  method is used. When the method is invoked, the user agent must run the following steps:</p>
+  <p>Для создания объектов этого типа используется метод <dfn id="dom-context-2d-createpattern" title="dom-context-2d-createPattern"><code>createPattern(<var>image</var>, <var>repetition</var>)</code></dfn>. Когда метод вызван, пользовательский агент должен выполнить следующие шаги:</p>
 
   <ol>
-  <li>Let <var>image</var> be the first argument and <var>repetition</var> be the second argument.</li>
-  <li><a href="#check-the-usability-of-the-image-argument">Check the usability of the image argument</a>. If this returns <var>aborted</var>, then an exception has been thrown and the method doesn't return anything; abort these steps. If it returns <var>bad</var>, then return null and abort these steps. Otherwise it returns <var>good</var>; continue with these steps.</li>
-  <li>If <var>repetition</var> is the empty string, let it be "<code>repeat</code>".</li>
-  <li>If <var>repetition</var> is not a case-sensitive match for one of "<code>repeat</code>", "<code>repeat-x</code>", "<code>repeat-y</code>", or "<code>no-repeat</code>", throw a <var>SyntaxError</var> exception and abort these steps.</li>
-  <li>Create a new <code><a href="#canvaspattern">CanvasPattern</a></code> object with the image <var>image</var> and the repetition behavior given by <var>repetition</var>.</li>
-  <li>If <a href="#the-image-argument-is-not-origin-clean">the image argument is not origin-clean</a>, then mark the <code><a href="#canvaspattern">CanvasPattern</a></code> object as <dfn id="concept-canvas-pattern-not-origin-clean"><i>not origin-clean</i></dfn>.</li>
-  <li>Return the <code><a href="#canvaspattern">CanvasPattern</a></code> object.</li>
+  <li>Сделать <var>image</var> первым аргументом и <var>repetition</var> — вторым.</li>
+  <li><a href="#check-the-usability-of-the-image-argument">Проверить пригодность аргумента изображения</a>. Если это возвращает <var>aborted</var>, тогда показывается исключение и метод не возвращает ничего; прервать эти шаги. Если возвращает <var>bad</var>, тогда возвратить null прервать эти шаги. В другом случае это возвращает <var>good</var>; продолжить эти шаги.</li>
+  <li>Если <var>repetition</var> пустая строка, сделать ее "<code>repeat</code>".</li>
+  <li>Если <var>repetition</var> не один из: "<code>repeat</code>", "<code>repeat-x</code>", "<code>repeat-y</code>", or "<code>no-repeat</code>", выдать исключение <var>SyntaxError</var> и прервать эти шаги.</li>
+  <li>Создать новый объект <code><a href="#canvaspattern">CanvasPattern</a></code> с изображением <var>image</var> и поведением повторения заданным <var>repetition</var>.</li>
+  <li>Если <a href="#the-image-argument-is-not-origin-clean">если аргумент не origin-clean</a>, пометить объект <code><a href="#canvaspattern">CanvasPattern</a></code> как <dfn id="concept-canvas-pattern-not-origin-clean"><i>not origin-clean</i></dfn>.</li>
+  <li>Возвратить объект <code><a href="#canvaspattern">CanvasPattern</a></code>.</li>
   </ol>
   <p>
-  Modifying this <var>image</var> after calling the <code title="dom-context-2d-createPattern"><a href="#dom-context-2d-createpattern">createPattern()</a></code> method
-  must not affect the pattern. </p>
+  Изменения этого <var>изображения</var> после вызова метода <code title="dom-context-2d-createPattern"><a href="#dom-context-2d-createpattern">createPattern()</a></code> не должно влиять на паттерн. </p>
 
-  <p>Patterns must be painted so that the top left of the first image
-  is anchored at the origin of the coordinate space, and images are
-  then repeated horizontally to the left and right, if the
-  <code>repeat-x</code> string was specified, or vertically up and
-  down, if the <code>repeat-y</code> string was specified, or in all
-  four directions all over the canvas, if the <code>repeat</code>
-  string was specified, to create the repeated pattern that is used
-  for rendering. The images are not scaled by this process; one CSS
-  pixel of the image must be painted on one coordinate space unit in
-  generating the repeated pattern. When rendered, however, patterns
-  must actually be painted only where the stroking or filling effect
-  requires that they be drawn, and the repeated pattern must be
-  affected by the <a href="#transformations" title="dom-context-2d-transformation">current
-  transformation matrix</a>. Pixels not covered by the repeating
-  pattern (if the <code>repeat</code> string was not specified) must
-  be transparent black.</p>
+  <p>Паттерны должны быть нарисованы так что верхняя левая часть первого изображения
+  закреплена в начале координатного пространства, затем изображения повторяются по горизонтали слева направо, если
+  строка была задана строка <code>repeat-x</code>, или вертикально сверху
+  вниз, если была задана строка <code>repeat-y</code>, или во всех четырех направлениях всего холста, если была задана строка <code>repeat</code>. Изображения не масштабируются в этом процессе; один CSS
+  пиксель изображения должен быть нарисован на одной координатной единице. Когда отображено, однако, паттерны
+  должны быть нарисованы только там где эффекты сглаживания или заполнения
+  требуют этого, и паттерн повторения должен быть
+  затронут <a href="#transformations" title="dom-context-2d-transformation">текущей матрицей преобразования</a>. Пиксели не охватываемые паттерном повторения (если строка <code>repeat</code> не задана) должны быть прозрачными черными.</p>
 
-  <p>If the original image data is a bitmap image, the value painted
-  at a point in the area of the repetitions is computed by filtering
-  the original image data. The user agent may use any filtering
-  algorithm (for example bilinear interpolation or nearest-neighbor).
-  When the filtering algorithm requires a pixel value from outside the
-  original image data, it must instead use the value from wrapping the
-  pixel's coordinates to the original image's dimensions. (That is,
-  the filter uses 'repeat' behavior, regardless of the value of
-  <var>repetition</var>.)
+  <p>Если данные исходного изображения растровые, значение нарисованное
+  в точке в зоне повторений вычисляются фильтрованием данных исходного изображения. Пользовательский агент может использовать любой алгоритм фильтрования (например, билинейной интерполяции или схожий).
   <!-- drawImage() has a similar paragraph with different rules -->
 
   </p>
@@ -2173,12 +2055,12 @@ try {
 
   <hr>
 
-  <p>If a radial gradient or repeated pattern is used when the
-  transformation matrix is singular, the resulting style must be
-  transparent black (otherwise the gradient or pattern would be
-  collapsed to a point or line, leaving the other pixels undefined).
-  Linear gradients and solid colors always define all points even with
-  singular transformation matrices.</p>
+  <p>Если радиальный градиент или паттерн повторения используется когда
+  матрица преобразования сингулярна, в результате стиль должен быть
+  прозрачный черный (в другом случае градиент или паттерн
+  разрушились бы до точки или линии, оставив другие пиксели неопределенными).
+  Линейные градиенты и цвета всегда определяют все точки даже с
+  сингулярной матрицей преобразования.</p>
 
   </div>
 
