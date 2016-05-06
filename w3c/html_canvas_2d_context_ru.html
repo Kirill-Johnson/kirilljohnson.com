@@ -2069,25 +2069,18 @@ try {
 
   <h2 id="drawing-rectangles-to-the-canvas"><span class="secno">9 </span>Рисование прямоугольников на холсте</h2>
 
-  <p>There are three methods that immediately draw rectangles to the
-  bitmap. They each take four arguments; the first two give the <var>x</var> and <var>y</var> coordinates of the top
-  left of the rectangle, and the second two give the width <var>w</var> and height <var>h</var> of the rectangle,
-  respectively.</p>
+  <p>Есть три метода которые сразу рисуют прямоугольники на битмапе. Каждый из них принимают четыре аргумента; первые два задают координаты <var>x</var> и <var>y</var> верхнего левого угла, а вторые два задают ширину <var>w</var> и высоту <var>h</var> прямоугольника, соответственно.</p>
 
   <div class="impl">
 
-  <p>The <a href="#transformations" title="dom-context-2d-transformation">current
-  transformation matrix</a> must be applied to the following four
-  coordinates, which form the path that must then be closed to get the
-  specified rectangle: <span>(<var>x</var>, <var>y</var>)</span>, <span>(<span><var>x</var>+<var>w</var></span>, <var>y</var>)</span>,
+  <p><a href="#transformations" title="dom-context-2d-transformation">Текущая матрица преобразования</a> должна быть применена к следующим четырем координатам, которые формируют путь который затем должен быть закрыт чтобы получился заданный прямоугольник: <span>(<var>x</var>, <var>y</var>)</span>, <span>(<span><var>x</var>+<var>w</var></span>, <var>y</var>)</span>,
   <span>(<span><var>x</var>+<var>w</var></span>,
   <span><var>y</var>+<var>h</var></span>)</span>,
   <span>(<var>x</var>, <span><var>y</var>+<var>h</var></span>)</span>.</p>
 
-  <p>Shapes are painted without affecting the <a href="#current-default-path">current default
-  path</a>, and are subject to the <a href="#clipping-region" title="clipping
-  region">clipping region</a>, and, with the exception of <code title="dom-context-2d-clearRect"><a href="#dom-context-2d-clearrect">clearRect()</a></code>, also <a href="#shadows" title="shadows">shadow effects</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, and <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition
-  operators</a>.</p>
+  <p>Фигуры рисуются без влияния <a href="#current-default-path">current default
+  path</a> и подлежат <a href="#clipping-region" title="clipping
+  region">clipping region</a>, за исключением <code title="dom-context-2d-clearRect"><a href="#dom-context-2d-clearrect">clearRect()</a></code>, также <a href="#shadows" title="shadows">эффектов теней</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, and <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global операторов</a>.</p>
 
   </div>
 
@@ -2097,7 +2090,7 @@ try {
 
    <dd>
 
-    <p>Clears all pixels on the canvas in the given rectangle to transparent black.</p>
+    <p>Очищает все пиксели на холсте в заданном прямоугольнике к прозрачному черному.</p>
 
    </dd>
 
@@ -2105,7 +2098,7 @@ try {
 
    <dd>
 
-    <p>Paints the given rectangle onto the canvas, using the current fill style.</p>
+    <p>Рисует заданный прямоугольник на холсте, используя текущий стиль заполнения.</p>
 
    </dd>
 
@@ -2113,7 +2106,7 @@ try {
 
    <dd>
 
-    <p>Paints the box that outlines the given rectangle onto the canvas, using the current stroke style.</p>
+    <p>Рисует прямоугольник на холст, используя текущий строчный стиль.</p>
 
    </dd>
 
@@ -2121,44 +2114,33 @@ try {
 
   <div class="impl">
 
-  <p>The <dfn id="dom-context-2d-clearrect" title="dom-context-2d-clearRect"><code>clearRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> method must run the following steps:</p>
+  <p>Метод <dfn id="dom-context-2d-clearrect" title="dom-context-2d-clearRect"><code>clearRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> должен выполнить следующие шаги:</p>
 
   <ol>
 
-   <li><p>Let <var>pixels</var> be the set of pixels in
-   the specified rectangle that also intersect the current clipping
+   <li><p>Сделать<var>pixels</var> сэтом пикселей в заданном прямоугольнике, которые также пересекают текущий clipping
    region.</p></li>
 
-   <li><p>Clear the pixels in <var>pixels</var> to fully
-   transparent black, erasing any previous image.</p></li>
+   <li><p>Очистить пиксели в <var>pixels</var> к полностью прозрачному черному, удаляя любое предыдущее изображение.</p></li>
 
-   <li><p><span>Clear regions that cover the pixels</span> in <var>pixels</var> in the <code>canvas</code> element.</p></li>
+   <li><p><span>Очистить регионы которые покрывают пиксели</span> в <var>pixels</var> в элементе <code>canvas</code>.</p></li>
 
   </ol>
 
-  <p class="note">If either height or width are zero, this method has
-  no effect, since the set of pixels would be empty.</p>
+  <p class="note">Если высота или ширина равна нулю, этот метод не имеет эффекта, так как сэт пикселей будет пустым.</p>
 
-  <p>The <dfn id="dom-context-2d-fillrect" title="dom-context-2d-fillRect"><code>fillRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> method must paint the specified
-  rectangular area using the <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code>. If either height
-  or width are zero, this method has no effect.</p>
+  <p>Метод <dfn id="dom-context-2d-fillrect" title="dom-context-2d-fillRect"><code>fillRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> должен нарисовать указанную прямоугольную область в <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code>. Если шарина или высота равна нулю, этот метод не имеет эффекта.</p>
 
-  <p>The <dfn id="dom-context-2d-strokerect" title="dom-context-2d-strokeRect"><code>strokeRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> method must take the result of <a href="#trace-a-path" title="trace a path">tracing the path</a> described below, using
-  the <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object's line styles, and
-  fill it with the <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code>.</p>
+  <p>Метод <dfn id="dom-context-2d-strokerect" title="dom-context-2d-strokeRect"><code>strokeRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> должен принять результат от <a href="#trace-a-path" title="trace a path">tracing the path</a> описанного ниже, используя стили линий объекта <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> и
+  заполнить с <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code>.</p>
 
-  <p>If both <var>w</var> and <var>h</var> are zero,
-  the path has a single subpath with just one point (<var>x</var>, <var>y</var>), and no lines, and this
-  method thus has no effect (the <a href="#trace-a-path">trace a path</a> algorithm
-  returns an empty path in that case).</p>
+  <p>Если оба <var>w</var> и <var>h</var> равны нулю,
+  путь имеет один подпуть только с одной точкой (<var>x</var>, <var>y</var>), без линий, и этот метод не имеет эффекта (алгоритм <a href="#trace-a-path">trace a path</a> возвращает пустой путь в этом случае).</p>
 
-  <p>If just one of either <var>w</var> or <var>h</var> is zero, then the path has a single subpath
-  consisting of two points, with coordinates (<span><var>x</var></span>, <span><var>y</var></span>) and (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>+<var>h</var>), in that order,
-  connected by a single straight line.</p>
+  <p>Если только один из <var>w</var> и <var>h</var> равен нулю, тогда путь имеет один подпуть с двумя точками, с координатами (<span><var>x</var></span>, <span><var>y</var></span>) и (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>+<var>h</var>), в этом порядке,
+  соединенные одной прямой линией.</p>
 
-  <p>Otherwise, the path has a single subpath consisting of four points, with
-  coordinates (<span><var>x</var></span>, <span><var>y</var></span>), (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>), (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>+<var>h</var>), and (<span><var>x</var></span>, <span><var>y</var>+<var>h</var></span>), connected to each
-  other in that order by straight lines.</p>
+  <p>В другом случае, путь имееть один подпуть содержащий четыре точки с координатами (<span><var>x</var></span>, <span><var>y</var></span>), (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>), (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>+<var>h</var>) и (<span><var>x</var></span>, <span><var>y</var>+<var>h</var></span>), соединенные друг с другом прямыми линиями.</p>
 
   </div>
 
@@ -2173,9 +2155,7 @@ try {
 
    <dd>
 
-    <p>Fills or strokes (respectively) the given text at the given
-    position. If a maximum width is provided, the text will be scaled
-    to fit that width if necessary.</p>
+    <p>Заполнения и обводки (соответственно) заданного текста на заданной позиции. Если максимальная ширина задана, при необходимости текст будет отрегулирован чтобы соответствовать ей.</p>
 
    </dd>
 
@@ -2183,7 +2163,7 @@ try {
 
    <dd>
 
-    <p>Returns a <code><a href="#textmetrics">TextMetrics</a></code> object with the metrics of the given text in the current font.</p>
+    <p>Возвращает объект <code><a href="#textmetrics">TextMetrics</a></code> с метрикой данного текста в текущем шрифте.</p>
 
    </dd>
 
@@ -2191,9 +2171,8 @@ try {
 
    <dd>
 
-    <p>Returns the advance width of the text that was passed to the
-    <code title="dom-context-2d-measureText"><a href="#dom-context-2d-measuretext">measureText()</a></code>
-    method.</p>
+    <p>Возвращает ширину текста, который был передан методом
+    <code title="dom-context-2d-measureText"><a href="#dom-context-2d-measuretext">measureText()</a></code>.</p>
 
    </dd>
 
@@ -2201,58 +2180,42 @@ try {
 
   <div class="impl">
 
-  <p>The <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> interface provides the
-  following methods for rendering text directly to the canvas.</p>
+  <p>Интерфейс <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> обеспечивает следующие методы для отображения текста непосредственно на холст.</p>
 
-  <p>The <dfn id="dom-context-2d-filltext" title="dom-context-2d-fillText"><code>fillText()</code></dfn> and
+  <p>Методы <dfn id="dom-context-2d-filltext" title="dom-context-2d-fillText"><code>fillText()</code></dfn> и
   <dfn id="dom-context-2d-stroketext" title="dom-context-2d-strokeText"><code>strokeText()</code></dfn>
-  methods take three or four arguments, <var>text</var>, <var>x</var>, <var>y</var>, and optionally <var>maxWidth</var>, and render the given <var>text</var> at the given (<var>x</var>, <var>y</var>) coordinates ensuring that the text isn't wider
-  than <var>maxWidth</var> if specified, using the current
-  <code title="dom-context-2d-font"><a href="#dom-context-2d-font">font</a></code>, <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code>, and <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code>
-  values. Specifically, when the methods are called, the user agent
-  must run the following steps:</p>
+ принимают три или четыре аргумента: <var>text</var>, <var>x</var>, <var>y</var>, и опционально <var>maxWidth</var>, и отображают заданный <var>text</var> на заданных (<var>x</var>, <var>y</var>) координатах, обеспечивая текст не шире
+  чем <var>maxWidth</var> если это задано, используя текущие значения
+  <code title="dom-context-2d-font"><a href="#dom-context-2d-font">font</a></code>, <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> и <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code>. А именно, когда методы вызываются, агент пользователя должен выполнить следующие шаги:</p>
 
   <ol>
 
-   <li><p>Run the <a href="#text-preparation-algorithm">text preparation algorithm</a>, passing it
-   <var>text</var>, the <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>
-   object, and, if the <var>maxWidth</var> argument was
-   provided, that argument. Let <var>glyphs</var> be the
-   result.</p>
+   <li><p>Запустить <a href="#text-preparation-algorithm">алгоритм подготовки текста</a>, передавая ему
+   <var>text</var>, объект <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>
+   и, если аргумент <var>maxWidth</var> был задан, этот аргумент. Сделать <var>glyphs</var> результатом.</p>
 
-   </li><li><p>Move all the shapes in <var>glyphs</var> to the
-   right by <var>x</var> CSS pixels and down by <var>y</var> CSS pixels.</p></li>
+   </li><li><p>Переместить все фигуры в <var>glyphs</var> вправо на <var>x</var> CSS пикселей и вниз на <var>y</var> CSS пикселей.</p></li>
 
    <li>
 
-    <p>Paint the shapes given in <var>glyphs</var>, as
-    transformed by the <a href="#transformations" title="dom-context-2d-transformation">current transformation
-    matrix</a>, with each CSS pixel in the coordinate space of <var>glyphs</var> mapped to one coordinate space unit.</p>
+    <p>Нарисовать формы заданные в <var>glyphs</var>, как преобразованные с помощью <a href="#transformations" title="dom-context-2d-transformation">текущей матрицы преобразования</a>, с каждым CSS пикселем в координатном пространстве <var>glyphs</var>.</p>
 
-    <p>For <code title="dom-context-2d-fillText"><a href="#dom-context-2d-filltext">fillText()</a></code>,
-    <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> must be
-    applied to the shapes and <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code> must be
-    ignored. For <code title="dom-context-2d-strokeText"><a href="#dom-context-2d-stroketext">strokeText()</a></code>, the reverse
-    holds: <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code>
-    must be applied to the result of <a href="#trace-a-path" title="trace a
-    path">tracing</a> the shapes using the
-    <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object for the line styles,
-    and <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> must
-    be ignored.</p>
+    <p>Для <code title="dom-context-2d-fillText"><a href="#dom-context-2d-filltext">fillText()</a></code>,
+    <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> должен применяться к формам и <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code> должен быть проигнорирован. Для <code title="dom-context-2d-strokeText"><a href="#dom-context-2d-stroketext">strokeText()</a></code> наоборот: <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code>
+    должен примениться к результату <a href="#trace-a-path" title="trace a
+    path">отслеживания</a> с помощью объекта
+    <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> для стилей линий,
+    и <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> должен быть проигнорирован.</p>
 
-    <p>These shapes are painted without affecting the current path,
-    and are subject to <a href="#shadows" title="shadows">shadow effects</a>,
-    <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, the
-    <a href="#clipping-region" title="clipping region">clipping region</a>, and <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition
-    operators</a>.</p>
+    <p>Эти формы рисуются без влияния на текущий путь
+    и подлежат <a href="#shadows" title="shadows">эффектам теней</a>,
+    <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>,
+    <a href="#clipping-region" title="clipping region">clipping region</a> и <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition операторам</a>.</p>
 
    </li>
 
-   <li><p>If the <a href="#text-preparation-algorithm" id="drawing-text-to-the-bitmap:text-preparation-algorithm-2">text preparation algorithm</a> used a font that has an <a id="drawing-text-to-the-bitmap:origin-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">origin</a>
-   that is not the <a href="http://www.w3.org/TR/html/browsers.html#same-origin" id="drawing-text-to-the-bitmap:same-origin">same</a> as the <a id="drawing-text-to-the-bitmap:origin-2-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">origin</a> specified by
-   the <a id="drawing-text-to-the-bitmap:entry-settings-object" href="http://www.w3.org/TR/html/webappapis.html#entry-settings-object">entry settings object</a> (even if "using a font" means just checking if that font
-   has a particular glyph in it before falling back to another font), then set the bitmap's <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="drawing-text-to-the-bitmap:concept-canvas-origin-clean">origin-clean</a> flag to
-   false.</p></li>
+   <li><p>Если <a href="#text-preparation-algorithm" id="drawing-text-to-the-bitmap:text-preparation-algorithm-2">алгоритм подготовки текста</a> использует шрифт который имеет <a id="drawing-text-to-the-bitmap:origin-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">происхождение</a>,
+   это не <a href="http://www.w3.org/TR/html/browsers.html#same-origin" id="drawing-text-to-the-bitmap:same-origin">то же</a>, что <a id="drawing-text-to-the-bitmap:origin-2-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">происхождение</a> описанное с помощью <a id="drawing-text-to-the-bitmap:entry-settings-object" href="http://www.w3.org/TR/html/webappapis.html#entry-settings-object">entry settings object</a> (даже если "использование шрифта" означает просто проверку имеет ли этот шрифт особый глиф), тогда установить флаг битмапа <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="drawing-text-to-the-bitmap:concept-canvas-origin-clean">origin-clean</a> ложным.</p></li>
   </ol>
 
 <!--v6DVT - this is commented out until CSS can get its act together
