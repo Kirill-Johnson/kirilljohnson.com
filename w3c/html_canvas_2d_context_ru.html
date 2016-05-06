@@ -2215,7 +2215,7 @@ try {
    </li>
 
    <li><p>Если <a href="#text-preparation-algorithm" id="drawing-text-to-the-bitmap:text-preparation-algorithm-2">алгоритм подготовки текста</a> использует шрифт который имеет <a id="drawing-text-to-the-bitmap:origin-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">происхождение</a>,
-   это не <a href="http://www.w3.org/TR/html/browsers.html#same-origin" id="drawing-text-to-the-bitmap:same-origin">то же</a>, что <a id="drawing-text-to-the-bitmap:origin-2-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">происхождение</a> описанное с помощью <a id="drawing-text-to-the-bitmap:entry-settings-object" href="http://www.w3.org/TR/html/webappapis.html#entry-settings-object">entry settings object</a> (даже если "использование шрифта" означает просто проверку имеет ли этот шрифт особый глиф), тогда установить флаг битмапа <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="drawing-text-to-the-bitmap:concept-canvas-origin-clean">origin-clean</a> ложным.</p></li>
+   которое не <a href="http://www.w3.org/TR/html/browsers.html#same-origin" id="drawing-text-to-the-bitmap:same-origin">то же</a>, что <a id="drawing-text-to-the-bitmap:origin-2-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">происхождение</a> описанное в <a id="drawing-text-to-the-bitmap:entry-settings-object" href="http://www.w3.org/TR/html/webappapis.html#entry-settings-object">entry settings object</a> (даже если "использование шрифта" означает просто проверку имеет ли этот шрифт особый глиф, перед переходом к другому шрифту), тогда установить флаг битмапа <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="drawing-text-to-the-bitmap:concept-canvas-origin-clean">origin-clean</a> ложным.</p></li>
   </ol>
 
 <!--v6DVT - this is commented out until CSS can get its act together
@@ -2379,66 +2379,52 @@ HAVE REJIGGED HOW TEXT WORKS IN v5
 
 v6DVT (also check for '- -' bits in the part above) -->
 
-  <p>The <dfn id="dom-context-2d-measuretext" title="dom-context-2d-measureText"><code>measureText()</code></dfn>
-  method takes one argument, <var>text</var>. When the method
-  is invoked, the user agent must run the text preparation algorithm, pass
-  a new TextMetrics object with its attributes set as described in the following list.
-  If doing these measurements requires using a font that has an
-  <span>origin</span> that is not the <span title="same
-  origin">same</span> as that of the <code>Document</code> object that
-  owns the <code>canvas</code> element (even if "using a font" means
-  just checking if that font has a particular glyph in it before
-  falling back to another font), then the method must throw a
-  <code>SecurityError</code> exception.
-  Otherwise, it must return the new <code><a href="#textmetrics">TextMetrics</a></code> object.
+  <p>Метод <dfn id="dom-context-2d-measuretext" title="dom-context-2d-measureText"><code>measureText()</code></dfn>
+  принимает один аргумент, <var>text</var>. Когда метод
+  вызван, пользовательский агент должен запустить алгоритм подготовки текста, передать
+  новый объект TextMetrics с его атрибутами установленными как описано в следующем списке.
+  Если при выполнении этих измерений необходимо использовать шрифт, который имеет
+  <span>происхождение</span> которое не <span title="same
+  origin">то же</span> что у объекта <code>Document</code> который
+  содержит элемент <code>canvas</code> (даже если "использование шрифта" означает
+  просто проверку имеет ли этот шрифт особый глиф, перед
+  переходом к другому шрифту), тогда метод должен выдать исключение
+  <code>SecurityError</code>.
+  В другом случае, он должен возвратить новый объект <code><a href="#textmetrics">TextMetrics</a></code>.
   <a href="#refsCSS">[CSS]</a>
 
   </p>
 
   <dl>
-  <dt><dfn id="dom-textmetrics-width" title="dom-textmetrics-width"><code>width</code></dfn> attribute</dt>
+  <dt>Атрибут <dfn id="dom-textmetrics-width" title="dom-textmetrics-width"><code>width</code></dfn></dt>
 
    <dd>
-   <p>The width of that inline box, in CSS pixels. (The text's advance width.)</p>
+   <p>Ширина этого инлайн-бокса в CSS пикселях. (Расстояние между глифами в тексте.)</p>
    </dd>
 
   </dl>
 
 <!--ADD-TOPIC:Security-->
-  If doing these measurements requires using a font that has an
-  <span>origin</span> that is not the <span title="same
-  origin">same</span> as that of the <code>Document</code> object that
-  owns the <code>canvas</code> element (even if "using a font" means
-  just checking if that font has a particular glyph in it before
-  falling back to another font), then the method must throw a
-  <code>SecurityError</code> exception.
+  Если при выполнении этих измерений необходимо использовать шрифт, который имеет
+  <span>происхождение</span> которое не <span title="same
+  origin">то же</span> что у объекта <code>Document</code> который имеет
+  содержит элемент <code>canvas</code> (даже если "использование шрифта" означает
+  просто проверку имеет ли этот шрифт особый глиф, перед
+  переходом к другому шрифту), тогда метод должен выдать исключение
+  <code>SecurityError</code>.
 <!--REMOVE-TOPIC:Security-->
-  Otherwise, it must return the new <code><a href="#textmetrics">TextMetrics</a></code> object.
+  В другом случае, он должен возвратить новый объект <code><a href="#textmetrics">TextMetrics</a></code>.
   <a href="#refsCSS">[CSS]</a>
 
   <p></p>
 
-  <p>The <code><a href="#textmetrics">TextMetrics</a></code> interface is used for the objects
-  returned from <code title="dom-context-2d-measureText"><a href="#dom-context-2d-measuretext">measureText()</a></code>. It has one
-  attribute, <dfn id="dom-textmetrics-width-0" title="dom-textmetrics-width"><code>width</code></dfn>, which is set
-  by the <code title="dom-context-2d-measureText"><a href="#dom-context-2d-measuretext">measureText()</a></code>
-  method.</p>
-
-  <p class="note">Glyphs rendered using <code title="dom-context-2d-fillText"><a href="#dom-context-2d-filltext">fillText()</a></code> and <code title="dom-context-2d-strokeText"><a href="#dom-context-2d-stroketext">strokeText()</a></code> can spill out
-  of the box given by the font size (the em square size) and the width
-  returned by <code title="dom-context-2d-measureText"><a href="#dom-context-2d-measuretext">measureText()</a></code> (the text
-  width). This version of the specification does not provide a way to
-  obtain the bounding box dimensions of the text. If the text is to be
-  rendered and removed, care needs to be taken to replace the entire
-  area of the canvas that the clipping region covers, not just the box
-  given by the em square height and measured text width.</p>
+  <p>Интерфейс <code><a href="#textmetrics">TextMetrics</a></code> используется для объектов
+  возвращенных от <code title="dom-context-2d-measureText"><a href="#dom-context-2d-measuretext">measureText()</a></code>. Он имеет один атрибут, <dfn id="dom-textmetrics-width-0" title="dom-textmetrics-width"><code>width</code></dfn>, который устанавливается методом <code title="dom-context-2d-measureText"><a href="#dom-context-2d-measuretext">measureText()</a></code>.</p>
 
   </div>
 
-  <p class="note">A future version of the 2D context API may provide a
-  way to render fragments of documents, rendered using CSS, straight
-  to the canvas. This would be provided in preference to a dedicated
-  way of doing multiline layout.</p>
+  <p class="note">Будущая версия 2D context API может обеспечивать
+  путь к отображению фрагментов документов с помощью CSS, прямо на холст.</p>
 
 
 
