@@ -355,12 +355,12 @@
   </p>
 
  <p>
-    В период кандидатов в ремомендации, группа сделала доступный <a href="http://w3c.github.io/test-results/2dcontext/all.html">отчет о реализации</a> также как и <a href="https://www.w3.org/wiki/HTML/Canvas_Task_Force/CR-Test">дополнительный отчет для <code>drawFocusIfNeeded</code> и <code>addHitRegion</code></a>.
+    В период кандидатов в рекомендации, группа сделала доступный <a href="http://w3c.github.io/test-results/2dcontext/all.html">отчет о реализации</a> также как и <a href="https://www.w3.org/wiki/HTML/Canvas_Task_Force/CR-Test">дополнительный отчет для <code>drawFocusIfNeeded</code> и <code>addHitRegion</code></a>.
   </p>
 
   <p>Эта спецификация является расширением для языка HTML5. Все нормативное содержание в спецификации HTML5, если оно не было перезаписано в данной спецификации, предназначено стать основой для нее.</p>
 
-<p>Этот документ был подготовлен группой действуйщей под <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">Патентной политикой W3C от 5 февраля 2004</a>. W3C поддерживает публичный <a href="http://www.w3.org/2004/01/pp-impl/40318/status" rel="disclosure">список открытых патентов</a>, сделанных в связи с результатами деятельности группы; эта страница также включает в себя инструкции по раскрытию патента. Человек, который имеет фактическое знание патента, который удовлетворяет <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">основным требованиям</a>, должен раскрывать информацию в соответствии с разделом 6 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">патентной политики W3C</a>.</p>
+<p>Этот документ был подготовлен группой действующей под <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">Патентной политикой W3C от 5 февраля 2004</a>. W3C поддерживает публичный <a href="http://www.w3.org/2004/01/pp-impl/40318/status" rel="disclosure">список открытых патентов</a>, сделанных в связи с результатами деятельности группы; эта страница также включает в себя инструкции по раскрытию патента. Человек, который имеет фактическое знание патента, который удовлетворяет <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">основным требованиям</a>, должен раскрывать информацию в соответствии с разделом 6 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">патентной политики W3C</a>.</p>
 
 <p>Этот документ регулируется <a id="w3c_process_revision" href="http://www.w3.org/2005/10/Process-20051014/">W3C Process Document от 14 октября 2005 </a>. </p>
 
@@ -610,12 +610,12 @@ interface <dfn id="imagedata">ImageData</dfn> {
   -->
 
   <p>Всякий раз, когда значение CSS <code>currentColor</code> используется в качестве цвета в этом API, вычисленное значения свойства 'color'
-  для целей определения вычисленного значения <code>currentColor</code>, ключевым словом является вычесленное значение
+  для целей определения вычисленного значения <code>currentColor</code>, ключевым словом является вычисленное значение
   'color' элемента о котором идет речь, когда цвет задан (например когда соответствующий атрибут установлен или когда вызван метод; не тогда когда цвет визуализируется или в другом случае). Если вычисленное значение свойства 'color' не определено для конкретного случая (например, потому что элемент находится не
-  <span>в <code>Document</code></span>), то для определения вычесленного значения свойства 'color' определяется значением <code>currentColor</code>, ключевое слово полностью непрозрачный черный. <a href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
+  <span>в <code>Document</code></span>), то для определения вычисленного значения свойства 'color' определяется значением <code>currentColor</code>, ключевое слово полностью непрозрачный черный. <a href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
 
   <p>В случае с <code title="dom-canvasgradient-addColorStop"><a href="#dom-canvasgradient-addcolorstop">addColorStop()</a></code> на
-  <code><a href="#canvasgradient">CanvasGradient</a></code>, для целей определения вычесленного значения
+  <code><a href="#canvasgradient">CanvasGradient</a></code>, для целей определения вычисленного значения
   <code>currentColor</code> ключевое слово всегда полностью непрозрачный черный (нет связанного с ним элемента). <a href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
 
   <p class="note">Это потому что <code><a href="#canvasgradient">CanvasGradient</a></code> объекты <code>canvas</code>-нейтральные —
@@ -631,7 +631,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
 <!--FIXUP 2dcontext +4-->
   <h2 id="the-canvas-state"><span class="secno">2 </span>Состояние canvas</h2>
 
-  <p>Каждый context поддерживает стэк из drawing state. <dfn id="drawing-state" title="drawing state">Drawing state</dfn> состоит из:</p>
+  <p>Каждый context поддерживает стек из drawing state. <dfn id="drawing-state" title="drawing state">Drawing state</dfn> состоит из:</p>
 
   <ul class="brief">
    <li>Текущая <a href="#transformations" title="dom-context-2d-transformation">матрица преобразования</a>.</li>
@@ -650,7 +650,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
 
    <dd>
 
-    <p>Помещает текущее состояние с стэк.</p>
+    <p>Помещает текущее состояние с стек.</p>
 
    </dd>
 
@@ -667,10 +667,10 @@ interface <dfn id="imagedata">ImageData</dfn> {
   <div class="impl">
 
   <p>Метод <dfn id="dom-context-2d-save" title="dom-context-2d-save"><code>save()</code></dfn>
-  должен поместить копию текущего состояния на стэк
+  должен поместить копию текущего состояния на стек
   drawing state.</p>
 
-  <p>Метод <dfn id="dom-context-2d-restore" title="dom-context-2d-restore"><code>restore()</code></dfn> должен вывести верхний элемент в стэк состояния, и сбросить его описание. Если нет сохраненного состояния, метод не должен делать ничего.</p>
+  <p>Метод <dfn id="dom-context-2d-restore" title="dom-context-2d-restore"><code>restore()</code></dfn> должен вывести верхний элемент в стек состояния, и сбросить его описание. Если нет сохраненного состояния, метод не должен делать ничего.</p>
 
   <!-- v7
 idea from Mihai:
@@ -796,7 +796,7 @@ idea from Mihai:
   должно быть изменено на новое значение; другие значения должны игнорироваться и ничего не менять.</p>
 
   <p>Когда объект реализующий интерфейс <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code>
-  создан, атрибут <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code> должет изначально иметь значение "<code>butt</code>".</p>
+  создан, атрибут <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code> должен изначально иметь значение "<code>butt</code>".</p>
 
   <hr>
 
@@ -812,7 +812,7 @@ idea from Mihai:
 
   <hr>
 
-  <p>Когда отрибут <code title="dom-context-2d-lineJoin"><a href="#dom-context-2d-linejoin">lineJoin</a></code>
+  <p>Когда атрибут <code title="dom-context-2d-lineJoin"><a href="#dom-context-2d-linejoin">lineJoin</a></code>
   имеет значение "<code>miter</code>", штрихи используют значение miter
   limit чтобы решить как соединиться. Значение miter limit ratio can
   может быть задано атрибутом <dfn id="dom-context-2d-miterlimit" title="dom-context-2d-miterLimit"><code>miterLimit</code></dfn>. При получении, он должен вернуть текущее значение. При настройке,
@@ -990,7 +990,7 @@ idea from Mihai:
 
     <p><i>Convert</i>: Это шаг, который преобразует путь к новому пути, который представляет свой ход.</p>
 
-    <p>Создается новый <a href="#concept-path" title="concept-path">path</a>, который опысывает края областей которые будут покрыты, если прямая линия длиной равная <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code> была охвачена вдоль каждого пути в <var data-anolis-xref="">path</var> в то время как была под углом таким образом, что линия перпендикулярна к пути
+    <p>Создается новый <a href="#concept-path" title="concept-path">path</a>, который описывает края областей которые будут покрыты, если прямая линия длиной равная <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code> была охвачена вдоль каждого пути в <var data-anolis-xref="">path</var> в то время как была под углом таким образом, что линия перпендикулярна к пути
     была охвачена, заменив каждую точку с end cap, необходимой для удовлетворения атрибута <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code>, как описано выше и подробно рассмотрена ниже, и замена каждого соединения на соединение необходимое, чтобы удовлетворить тип <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineJoin"><a href="#dom-context-2d-linejoin">lineJoin</a></code>, как определено ниже.</p>
 
     <p><strong>Окончания</strong>: Каждая точка имеет плоский край, перпендикулярной к направлению линии выходящей из нее. Это их дополнение в соответствии со значением из <var data-anolis-xref="">styles</var> <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code>. Значение "<code>butt</code>"
@@ -1129,7 +1129,7 @@ transform. ack Shaun Morris. -->
   'initial'), они должны быть игнорированы, без назначения нового значения шрифта. <a href="#refsCSS">[CSS]</a></p>
 
   <p>Имена шрифтов должны интерпретироваться в контексте <span>font
-  style source node</span> таблицы стилей, когда шрифт будет использовать <code>@font-face</code>, поэтому таким образом шрифты должны быть доступны после того как однажды загружены. (Если отсылка к шрифту используется раньше чем он полностью загрузился, либо если <span>font style source node</span> не имеет данного шрифта, то он должнен рассматриваться как если бы это был неизвестный шрифт, как это описано в соответствующих спецификациях CSS.) <a href="#refsCSSFONTS">[CSSFONTS]</a></p>
+  style source node</span> таблицы стилей, когда шрифт будет использовать <code>@font-face</code>, поэтому таким образом шрифты должны быть доступны после того как однажды загружены. (Если отсылка к шрифту используется раньше чем он полностью загрузился, либо если <span>font style source node</span> не имеет данного шрифта, то он должен рассматриваться как если бы это был неизвестный шрифт, как это описано в соответствующих спецификациях CSS.) <a href="#refsCSSFONTS">[CSSFONTS]</a></p>
 
   <p>Только векторные шрифты должны использоваться агентом пользователя; если бы пользовательский агент использовал растровые шрифты, после преобразования, скорее всего, шрифты выглядели бы очень некрасиво.</p>
 
@@ -1145,13 +1145,13 @@ transform. ack Shaun Morris. -->
    <pre>context.font = 'italic 400 12px/2 Unknown Font, sans-serif';</pre>
 
    <p>...выражение <code>context.font</code> будет оценивать строку "<code>italic 12px "Unknown Font", sans-serif</code>". Значение
-   "400" font-weight не появлиется, потому что это значение по умолчанию. Высота линии не появляется потому что она приравнивается к "normal" по умолчанию.</p>
+   "400" font-weight не появляется, потому что это значение по умолчанию. Высота линии не появляется потому что она приравнивается к "normal" по умолчанию.</p>
 
   </div>
 
   <p>Когда контекст создается, шрифт контекста должен быть установлен в 10px
   sans-serif. Когда компонент 'font-size' установлен в длину с помощью процентов, 'em' или 'ex' единицами, или ключевыми словами 'larger' / 'smaller', они должны быть интерпретированы по отношению к расчетному значению свойства 'font-size' от <span>font style source
-  node</span> в то время как атрибут установлен, если это элемент. Когда компонент 'font-weight' установлен на относительные значение 'bolder' и 'lighter', они должны быть интерпретированы по отношению к вычесленному значению значению свойства 'font-weight' от <span>font
+  node</span> в то время как атрибут установлен, если это элемент. Когда компонент 'font-weight' установлен на относительные значение 'bolder' и 'lighter', они должны быть интерпретированы по отношению к вычисленному значению значению свойства 'font-weight' от <span>font
   style source node</span> в то время как атрибут установлен, если это элемент. Если вычисленные значения не определены для конкретного случая (например потому что <span>font style source
   node</span> не элемент или он не <span>в
   <code>Документе</code></span>), тогда относящиеся ключевые слова должны быть интерпретированы по отношению к normal-weight 10px sans-serif
@@ -1221,7 +1221,7 @@ transform. ack Shaun Morris. -->
      <dt>Если <var>target</var> объекта <span>font style
      source node</span> является элементом</dt>
 
-     <dd>Слелать <var>direction</var> <span>the
+     <dd>Сделать <var>direction</var> <span>the
      directionality</span> от <var>target</var> объекта
      <span>font style source node</span>.</dd>
 
@@ -1245,14 +1245,14 @@ transform. ack Shaun Morris. -->
 
    <li><p>Форма гипотетического бесконечно широкого CSS лайн-бокса, содержащая единственный инлайн-блок, содержащий текст <var>text</var>,
    со всеми свойствами в их изначальных значениях кроме свойства 'font',
-   в инлайн-боксе установливается <var>font</var>, свойство
+   в инлайн-боксе устанавливается <var>font</var>, свойство
    'direction' инлайн-бокса устанавливается <var>direction</var>, и свойство 'white-space' устанавливается к
    'pre'. <a href="#refsCSS">[CSS]</a></p></li>
 
    <!-- if you insert a step here, make sure to adjust the next step's
    final words -->
 
-   <li><p>Если <var>maxWidth</var> предоставлено и гипотетическая ширина инлайн-бокса в гипотетическом лайн-боксе больше чем <var>maxWidth</var> CSS пикселей, тогда изменить <var>font</var> чтобы иметь более обобщенный шрифт (если он доступен или достаточно читаемый, можно синтезировать с помощью горизонтального коэфициента для шрифта) или меньший шрифт, и вернуться к предыдущему шагу.</p></li>
+   <li><p>Если <var>maxWidth</var> предоставлено и гипотетическая ширина инлайн-бокса в гипотетическом лайн-боксе больше чем <var>maxWidth</var> CSS пикселей, тогда изменить <var>font</var> чтобы иметь более обобщенный шрифт (если он доступен или достаточно читаемый, можно синтезировать с помощью горизонтального коэффициента для шрифта) или меньший шрифт, и вернуться к предыдущему шагу.</p></li>
 
    <li>
 
@@ -1570,7 +1570,7 @@ try {
 
   <p>Следующие методы позволяют авторам манипулировать <a href="#concept-path" title="concept-path">paths</a> объектов, реализующих интерфейс <code><a href="#canvaspathmethods">CanvasPathMethods</a></code>.</p>
 
-  <p>Для объектов <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>, точки и линии добавленные к <a href="#current-default-path">current default path</a> с помощью этих методов должны быть преобразованы в соответствии с <a href="#transformations" title="dom-context-2d-transformation">текущей матрицей трансформации</a> перед тем как быть добавлени к пути.</p>
+  <p>Для объектов <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>, точки и линии добавленные к <a href="#current-default-path">current default path</a> с помощью этих методов должны быть преобразованы в соответствии с <a href="#transformations" title="dom-context-2d-transformation">текущей матрицей трансформации</a> перед тем как быть добавлены к пути.</p>
 
 
   <p>Метод <dfn id="dom-context-2d-moveto" title="dom-context-2d-moveTo"><code>moveTo(<var>x</var>, <var>y</var>)</code></dfn> должен создать новый подпуть с заданной точкой в качестве первой (и единственной) точки.</p>
@@ -1618,7 +1618,7 @@ try {
   или если радиус <var>radius</var> равен нолю, тогда метод должен добавить точку (<var>x1</var>, <var>y1</var>)
   в подпуть и соединить эту точку с предыдущей точкой (<var>x0</var>, <var>y0</var>) прямой линией.</p>
 
-  <p>В другом случае, если точки (<var>x0</var>, <var>y0</var>), (<var>x1</var>, <var>y1</var>), и (<var>x2</var>, <var>y2</var>) все лежат на одной прямой линии, метод должен добавить точку (<var>x1</var>, <var>y1</var>) в подпутьи соединить эту точку с предыдущей точкой (<var>x0</var>, <var>y0</var>) прямой линией.</p>
+  <p>В другом случае, если точки (<var>x0</var>, <var>y0</var>), (<var>x1</var>, <var>y1</var>), и (<var>x2</var>, <var>y2</var>) все лежат на одной прямой линии, метод должен добавить точку (<var>x1</var>, <var>y1</var>) в подпуть и соединить эту точку с предыдущей точкой (<var>x0</var>, <var>y0</var>) прямой линией.</p>
 
   <p>В другом случае, сделать <var>The Arc</var> самой короткой дугой
   заданной окружностью имеющей радиус <var>radius</var> и которая имеет одну точку касательной к полубесконечной линии, которая пересекает точку (<var>x0</var>, <var>y0</var>) и заканчивает в точке (<var>x1</var>,
@@ -1733,7 +1733,7 @@ try {
 
   <div class="impl">
 
-  <p>Метод <dfn id="dom-context-2d-scale" title="dom-context-2d-scale"><code>scale(<var>x</var>, <var>y</var>)</code></dfn> должен добавить масштабирующее преобразование, описанное аргументами в матрице преобразования. Аргумент <var>x</var> представляет собой масштабный коэфициент в горизонтальном направлении, и аргумент <var>y</var> представляет собой масштабный коэфициент в вертикальном направлении. Факторы являются кратными.</p>
+  <p>Метод <dfn id="dom-context-2d-scale" title="dom-context-2d-scale"><code>scale(<var>x</var>, <var>y</var>)</code></dfn> должен добавить масштабирующее преобразование, описанное аргументами в матрице преобразования. Аргумент <var>x</var> представляет собой масштабный коэффициент в горизонтальном направлении, и аргумент <var>y</var> представляет собой масштабный коэффициент в вертикальном направлении. Факторы являются кратными.</p>
 
   <p>Метод <dfn id="dom-context-2d-rotate" title="dom-context-2d-rotate"><code>rotate(<var>angle</var>)</code></dfn> должен добавить поворотное преобразование, описанное аргументами в матрице преобразования. Аргумент <var>angle</var> представляет собой
   угол поворота по часовой стрелке выраженный в радианах.</p>
@@ -1741,7 +1741,7 @@ try {
   <p>Метод <dfn id="dom-context-2d-translate" title="dom-context-2d-translate"><code>translate(<var>x</var>, <var>y</var>)</code></dfn> должен добавить преобразование перемещения, описанное аргументами в матрице преобразования. Аргумент <var>x</var> представляет собой
   дистанцию перемещение в горизонтальном направлении, и аргумент <var>y</var> представляет собой дистанцию перемещения в вертикальном направлении. Аргументы в координатном пространстве единиц.</p>
 
-  <p>Метод <dfn id="dom-context-2d-transform" title="dom-context-2d-transform"><code>transform(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, <var>f</var>)</code></dfn> должен заместить текущую матрицу преобразования результатом умножения текущей матрицы иматрицы описанной с помощью:</p>
+  <p>Метод <dfn id="dom-context-2d-transform" title="dom-context-2d-transform"><code>transform(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, <var>f</var>)</code></dfn> должен заместить текущую матрицу преобразования результатом умножения текущей матрицы и матрицы описанной с помощью:</p>
 
   </div>
 
@@ -1902,7 +1902,7 @@ try {
 
    <dd>
 
-    <p>Добавляет цвет остановки с заданным цветом градиента на заданное смещение. 0.0 это спещение на одном конце градиента, 1.0 - на другом.</p>
+    <p>Добавляет цвет остановки с заданным цветом градиента на заданное смещение. 0.0 это смещение на одном конце градиента, 1.0 - на другом.</p>
 
     <p>Выдает исключение <code>IndexSizeError</code> если смещение не в диапазоне. Выдает исключение <code>SyntaxError</code> если цвет не может быть прочитан.</p>
 
@@ -1953,7 +1953,7 @@ try {
   являются негативными, должно показаться исключение <code>IndexSizeError</code>. В другом случае, метод должен возвратить радиальный
   <code><a href="#canvasgradient">CanvasGradient</a></code> с двумя заданными кругами.</p>
 
-  <p>Радиальные градиенты должны быть визуализированны при помощи следующих шагов:</p>
+  <p>Радиальные градиенты должны быть визуализированы при помощи следующих шагов:</p>
 
   <ol>
 
@@ -1999,7 +1999,7 @@ try {
    <dd>
 
     <p>Возвращает объект <code><a href="#canvaspattern">CanvasPattern</a></code> который использует данное изображение
-    и повторяетв направлении заданном аргументом <var>repetition</var>.</p>
+    и повторяет в направлении заданном аргументом <var>repetition</var>.</p>
 
     <p>Допустимые значения <var>repetition</var>: "<code>repeat</code>" (оба направления), "<code>repeat-x</code>" (горизонтальное), "<code>repeat-y</code>" (вертикальное) и "<code>no-repeat</code>" (ни один). Если аргумент <var>repetition</var> пуст, значение <code>repeat</code> используется.</p>
 
@@ -2118,7 +2118,7 @@ try {
 
   <ol>
 
-   <li><p>Сделать<var>pixels</var> сэтом пикселей в заданном прямоугольнике, которые также пересекают текущий clipping
+   <li><p>Сделать<var>pixels</var> сетом пикселей в заданном прямоугольнике, которые также пересекают текущий clipping
    region.</p></li>
 
    <li><p>Очистить пиксели в <var>pixels</var> к полностью прозрачному черному, удаляя любое предыдущее изображение.</p></li>
@@ -2127,9 +2127,9 @@ try {
 
   </ol>
 
-  <p class="note">Если высота или ширина равна нулю, этот метод не имеет эффекта, так как сэт пикселей будет пустым.</p>
+  <p class="note">Если высота или ширина равна нулю, этот метод не имеет эффекта, так как сет пикселей будет пустым.</p>
 
-  <p>Метод <dfn id="dom-context-2d-fillrect" title="dom-context-2d-fillRect"><code>fillRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> должен нарисовать указанную прямоугольную область в <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code>. Если шарина или высота равна нулю, этот метод не имеет эффекта.</p>
+  <p>Метод <dfn id="dom-context-2d-fillrect" title="dom-context-2d-fillRect"><code>fillRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> должен нарисовать указанную прямоугольную область в <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code>. Если ширина или высота равна нулю, этот метод не имеет эффекта.</p>
 
   <p>Метод <dfn id="dom-context-2d-strokerect" title="dom-context-2d-strokeRect"><code>strokeRect(<var>x</var>, <var>y</var>, <var>w</var>, <var>h</var>)</code></dfn> должен принять результат от <a href="#trace-a-path" title="trace a path">tracing the path</a> описанного ниже, используя стили линий объекта <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> и
   заполнить с <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code>.</p>
@@ -2140,7 +2140,7 @@ try {
   <p>Если только один из <var>w</var> и <var>h</var> равен нулю, тогда путь имеет один подпуть с двумя точками, с координатами (<span><var>x</var></span>, <span><var>y</var></span>) и (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>+<var>h</var>), в этом порядке,
   соединенные одной прямой линией.</p>
 
-  <p>В другом случае, путь имееть один подпуть содержащий четыре точки с координатами (<span><var>x</var></span>, <span><var>y</var></span>), (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>), (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>+<var>h</var>) и (<span><var>x</var></span>, <span><var>y</var>+<var>h</var></span>), соединенные друг с другом прямыми линиями.</p>
+  <p>В другом случае, путь имеет один подпуть содержащий четыре точки с координатами (<span><var>x</var></span>, <span><var>y</var></span>), (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>), (<span><var>x</var>+<var>w</var></span>, <span><var>y</var></span>+<var>h</var>) и (<span><var>x</var></span>, <span><var>y</var>+<var>h</var></span>), соединенные друг с другом прямыми линиями.</p>
 
   </div>
 
@@ -3919,7 +3919,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <h2 id="drawing-model"><span class="secno">17 </span><dfn>Модель рисования</dfn></h2>
 
-  <p>Когда форма или изображение нарисованы, пользовательские агенты должны следовать этим шагам в указаном порядке (или действовать как будто следуют):</p>
+  <p>Когда форма или изображение нарисованы, пользовательские агенты должны следовать этим шагам в указанном порядке (или действовать как будто следуют):</p>
 
   <ol>
 
