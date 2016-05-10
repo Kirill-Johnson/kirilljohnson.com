@@ -164,7 +164,7 @@
        .note p:first-child, .warning p:first-child { margin-top: 0; }
        .note p:last-child, .warning p:last-child { margin-bottom: 0; }
        .warning:before { font-style: normal; }
-       p.Заметка:before { content: 'Заметка: '; font-weight: bolder;}
+       p.note:before { content: 'Заметка: '; font-weight: bolder;}
        p.warning:before { content: '\26A0 Warning! '; font-weight:bolder;}
        .critical {margin:1em; border:double red; padding:1em; background-color:#F9F0D4;}
 
@@ -2430,10 +2430,8 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <h2 id="drawing-paths-to-the-canvas"><span class="secno">11 </span>Рисование пути на холсте</h2>
 
-  <p>The context always has a <dfn id="current-default-path">current default path</dfn>. There
-  is only one current path, it is not part of the
-  <a href="#drawing-state">drawing state</a>. The current path is
-  a <a href="#concept-path" title="concept-path">path</a>, as described above.</p>
+  <p>Контекст всегда имеет <dfn id="current-default-path">текущий путь по умолчанию</dfn>. Есть только один текущий путь, это не часть
+  <a href="#drawing-state">состояния рисования</a>. Текущий путь является <a href="#concept-path" title="concept-path">path</a>, как описано выше.</p>
 
   <dl class="domintro">
 
@@ -2441,7 +2439,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    <dd>
 
-    <p>Resets the current path.</p>
+    <p>Сбрасывает текущий путь.</p>
 
    </dd>
 
@@ -2449,7 +2447,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    <dd>
 
-    <p>Fills the subpaths of the current path or the given path with the current fill style.</p>
+    <p>Заполняет подпути текущего пути или заданного пути текущим стилем заполнения.</p>
 
    </dd>
 
@@ -2458,7 +2456,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    <dd>
 
-    <p>Strokes the subpaths of the current path or the given path with the current stroke style.</p>
+    <p>Сглаживает подпути текущего или заданного пути текущим стилем сглаживания.</p>
 
    </dd>
 
@@ -2467,7 +2465,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    <dd>
 
-    <p>Informs the user of the canvas location for the fallback element, based on the current path. If the given element has focus, draws a focus outline around the current path following the platform or user agent conventions for focus outlines as defined by the user agent.</p>
+    <p>Информирует пользователя холста о месте запасного элемента, на основе текущего пути. Если заданный элемент имеет фокус, рисует обводку фокуса вокруг текущего пути, следуя правилам платформы или пользовательского агента.</p>
 
    </dd>
 
@@ -2476,7 +2474,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    <dd>
 
-    <p>Further constrains the clipping region to the current path.</p>
+    <p>В дальнейшем ограничивает clipping region текущему пути.</p>
 
    </dd>
 
@@ -2485,7 +2483,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    <dd>
 
-    <p>Returns true if the given point is in the current path.</p>
+    <p>Возвращает true если заданная точка имеется в текущем пути.</p>
 
    </dd>
 
@@ -2493,132 +2491,97 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <div class="impl">
 
-  <p>The <dfn id="dom-context-2d-beginpath" title="dom-context-2d-beginPath"><code>beginPath()</code></dfn>
-  method must empty the list of subpaths in the context's
-  current path so that the it once again has zero
-  subpaths.</p>
+  <p>Метод <dfn id="dom-context-2d-beginpath" title="dom-context-2d-beginPath"><code>beginPath()</code></dfn>
+  должен очистить список подпутей в текущем пути контекста, поэтому здесь в очередной раз ноль подпутей.</p>
 
-   <p>The <dfn id="dom-context-2d-fill" title="dom-context-2d-fill"><code>fill()</code></dfn>
-  method must fill all the subpaths of the current path, using <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code>, and using the
-  non-zero winding number rule. Open subpaths must be implicitly
-  closed when being filled (without affecting the actual
-  subpaths).</p>
+   <p>Метод <dfn id="dom-context-2d-fill" title="dom-context-2d-fill"><code>fill()</code></dfn>
+  должен заполнить все подпути текущего пути, используя <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code>. Открытые подпути должны быть неявно
+  закрыты при заполнении (без влияния на фактические
+  подпути).</p>
 
-  <p class="note">Thus, if two overlapping but otherwise independent
-  subpaths have opposite windings, they cancel out and result in no
-  fill. If they have the same winding, that area just gets painted
-  once.</p>
+  <p class="note">Таким образом, если пересекаются два подпути, имеющие разные витки, они компенсируются и не приводят к
+  заполнению. Если они имеют одинаковый виток, эта область просто рисуется
+  один раз.</p>
 
-  <p>The <dfn id="dom-context-2d-stroke" title="dom-context-2d-stroke"><code>stroke()</code></dfn> method
-  must <a href="#trace-a-path" title="trace a path">trace</a> the path,
-  using the <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object for the line
-  styles, and then fill the combined stroke area using the <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code> attribute.</p>
+  <p>Метод <dfn id="dom-context-2d-stroke" title="dom-context-2d-stroke"><code>stroke()</code></dfn>
+  должен <a href="#trace-a-path" title="trace a path">отслеживать</a> путь,
+  используя объект <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> для стилей
+  линий, а затем заполнить общую площадь сглаживания с помощью атрибута <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code>.</p>
 
-  <p class="note">As a result of how the algorithm to <a href="#trace-a-path">trace a
-  path</a> is defined, overlapping parts of the paths in one stroke
-  operation are treated as if their union was what was painted.</p>
+  <p class="note"><em>Стиль</em> сглаживания зависит от
+  преобразования во время рисования, даже если путь это
+  <a href="#current-default-path">текущий путь по умолчанию</a>.</p>
 
-  <p class="note">The stroke <em>style</em> is affected by the
-  transformation during painting, even if the path is the
-  <a href="#current-default-path">current default path</a>.</p>
+  <p>Пути, при заполнении или сглаживании, должны быть нарисованы без влияния на
+  текущий путь и должны подвергаться <a href="#shadows" title="shadows">теневым эффектам</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global
+  alpha</a>, <a href="#clipping-region" title="clipping region">clipping
+  region</a> и <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition
+  операторов</a>.</p>
 
-  <p>Paths, when filled or stroked, must be painted without affecting
-  the current path, and must be subject to <a href="#shadows" title="shadows">shadow
-  effects</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global
-  alpha</a>, the <a href="#clipping-region" title="clipping region">clipping
-  region</a>, and <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition
-  operators</a>.</p>
-
-  <p>Zero-length line segments must be pruned before stroking a path.
-  Empty subpaths must be ignored.</p>
+  <p>Сегменты линий нулевой длины убираются перед тем как сглаживать путь.
+  Пустые подпути должны быть проигнорированы.</p>
 
   <hr>
 
-  <p id="dom-context-2d-focusoutline">The <dfn id="dom-context-2d-drawfocusifneeded" title="dom-context-2d-drawFocusIfNeeded"><code>drawFocusIfNeeded(<var>element</var>)</code></dfn> method, when invoked, must run
-  the following steps:</p>
+  <p id="dom-context-2d-focusoutline">Метод <dfn id="dom-context-2d-drawfocusifneeded" title="dom-context-2d-drawFocusIfNeeded"><code>drawFocusIfNeeded(<var>element</var>)</code></dfn> при вызове должен выполнить следующие шаги:</p>
 
   <ol>
    <li>
    <p>
-   If the current path has zero subpaths, then abort these steps.
+   Если текущий путь имееть ноль подпутей, тогда прервать эти шаги.
    </p>
    </li>
-   <li><p>If <var>element</var> is not focused or is not a
-   descendant of the element with whose context the method is
-   associated, then abort these steps.</p></li>
+   <li><p>Если <var>element</var> не сфокусирован или не является
+   вложенным элемента с которым контекст ассоциирован, прервать эти шаги.</p></li>
 
    <li>
 
-    <p>If the user has requested the use of particular focus outlines
-    (e.g. high-contrast focus outlines), or if the <var>element</var> would have a focus outline drawn around it,
-    then draw a focus outline of the appropriate style along the intended
-    path, following platform conventions.</p>
+    <p>Если пользователь запросил использование отдельных контуров фокуса
+    (например высококонтрастных контуров) или <var>element</var> будет иметь контур нарисованный вокруг него,
+    тогда нарисовать контур фокуса соответствующего стиля вдоль намеченного
+    пути, следуя правилам платформы.</p>
 
-    <p class="note">Some platforms only draw focus outlines around
-    elements that have been focused from the keyboard, and not those
-    focused from the mouse. Other platforms simply don't draw focus
-    outlines around some elements at all unless relevant accessibility
-    features are enabled. This API is intended to follow these
-    conventions. User agents that implement distinctions based on the
-    manner in which the element was focused are encouraged to classify
-    focus driven by the <code title="dom-focus">focus()</code> method
-    based on the kind of user interaction event from which the call
-    was triggered (if any).</p>
+    <p class="note">Некоторые платформы рисуют только линии фокуса вокруг
+    элементов которые сфокусированы с помощью клавиатуры, а не с помощью
+    мышки. Другие платформы вообще не рисуют линии фокуса вокруг некоторых элементов, если только соответствующая
+    функция не включена. Этот API предназначен чтобы следовать данным правилам. Пользовательские агенты, которые реализуют это в зависимости от способа которым элемент был сфокусирован, поощраются делать это с помощью метода <code title="dom-focus">focus()</code>
+    основанном на способе вызова (если он был).</p>
 
-    <p>The focus outline should not be subject to the <a href="#shadows" title="shadows">shadow effects</a>, the <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, or the
+    <p>Контуры фокуса не должны подвергаться <a href="#shadows" title="shadows">эффектам теней</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, или
     <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global
-    composition operators</a>, but <em>should</em> be subject to
-    the <a href="#clipping-region" title="clipping region">clipping region</a>.
-    When the focus area is clipped by the canvas element, only the visual
-	representation of the focus outline is clipped to the clipping region.
+    composition операторам</a>, но <em>должны</em> подвергаться <a href="#clipping-region" title="clipping region">clipping region</a>.
+    Когда зона фокуса обрезана с помощью элемента canvas, только визуальное представление контура фокуса вырезается в clipping region.
 
 	</p>
 
 	<p>
-    If the focus area is not on the screen, then scroll the focus outline
-    into view when it receives focus.
+    Если зона фокуса не в пределах экрана, нужно прокрутить в видимую зону, тогда она получит фокус.
 	</p>
 
    </li>
 
    <li>
 
-    <p><a href="#inform">Inform the user</a> of the location
-	given by the path. The full location
-	of the corresponding fallback element is passed to the
-	accessibility API, if supported. User agents may wait until the next
-	time the <span>event loop</span> reaches its "update the
-	rendering" step to inform the user. </p>
-
+    <p><a href="#inform">Проинформировать пользователя</a> о заданном расположении. Полное расположение
+	соответствующего запасного элемента передается к
+	доступному API, если оно поддерживается. Пользовательские агенты могут ждать до следующего
+	раза, когда <span>цикл обработки</span> достигает своего шага "обновить рендеринг".
    </li>
 
   </ol>
 
-  <p class="note" id="inform">"Inform the user", as used in this
-  section, could mean calling a system accessibility API, which would
-  notify assistive technologies such as magnification tools. To
-  properly drive magnification based on a focus change, a system
-  accessibility API driving a screen magnifier needs the bounds for
-  the newly focused object. The methods above are intended to enable
-  this by allowing the user agent to report the bounding box of the
-  path used to render the focus outline as the bounds of the <var>element</var> element passed as an argument, if that
-  element is focused, and the bounding box of the area to which the
-  user agent is scrolling as the bounding box of the current
-  selection.</p>
+  <p class="note" id="inform">"Проинформировать пользователя", используемое в этом разделе, может означать вызов доступного API системы, которое будет уведомлять вспомогательные технологии, такие как инструменты увеличения.</p>
 
   <hr>
 
-  <p>The <dfn id="dom-context-2d-clip" title="dom-context-2d-clip"><code>clip()</code></dfn>
-  method must create a new <dfn id="clipping-region">clipping region</dfn> by calculating
-  the intersection of the current clipping region and the area
-  described by the path, using the non-zero winding number
-  rule. Open subpaths must be implicitly closed when computing the
-  clipping region, without affecting the actual subpaths. The new
-  clipping region replaces the current clipping region.</p>
+  <p>Метод <dfn id="dom-context-2d-clip" title="dom-context-2d-clip"><code>clip()</code></dfn>
+  должен создать новый <dfn id="clipping-region">clipping region</dfn> путем вычисления
+  пересечения текущей вырезанной области и зоной
+  описаной с помощью пути, используя правило ненулевого индекса. Открытые подпути должны быть неявно закрыты при вычислении (без влияния на фактические подпути). Новая вырезанная область
+  (clipping region) заменяет текущую вырезанную область.</p>
 
-  <p>When the context is initialized, the clipping region must be set
-  to the rectangle with the top left corner at (0,0) and the width and
-  height of the coordinate space.</p>
+  <p>При инициализации контекста, вырезанная область (clipping region) должна быть установлена
+  прямоугольником с верхним левым углом на (0,0), с шириной и высотой координатного пространства.</p>
 
   <!-- v6
    Jordan OSETE suggests:
@@ -2633,14 +2596,11 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <hr>
 
-  <p>The <dfn id="dom-context-2d-ispointinpath" title="dom-context-2d-isPointInPath"><code>isPointInPath()</code></dfn>
-  method must return true if the point given by the <var>x</var> and <var>y</var> coordinates passed to the
-  method, when treated as coordinates in the canvas coordinate space
-  unaffected by the current transformation, is inside the intended
-  path as determined by the non-zero winding number rule; and must
-  return false otherwise. Points on the path itself must be considered
-  to be inside the path. If either of the arguments is infinite or
-  NaN, then the method must return false.</p>
+  <p>Метод <dfn id="dom-context-2d-ispointinpath" title="dom-context-2d-isPointInPath"><code>isPointInPath()</code></dfn>
+  должен возвращать true если точка заданная с помощью координат <var>x</var> и <var>y</var> при обработке как координат в координатном пространстве холста,
+  не зависимо от текущего преобразования, внутри предполагаемого
+  пути как определено правилом ненулевого индекса; и должен возвратить false в другом случае. Точки на самом пути должны рассматриваться как внутри пути. Если какой-то из аргументов равен бесконечности или
+  NaN, тогда метод должен возвратить false.</p>
 
   <hr>
 
