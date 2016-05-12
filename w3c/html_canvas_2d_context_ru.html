@@ -2207,7 +2207,7 @@ try {
     <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> для стилей линий,
     и <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> должен быть проигнорирован.</p>
 
-    <p>Эти формы рисуются без влияния на текущий путь
+    <p>Эти формы рисуются без влияния текущего пути
     и подлежат <a href="#shadows" title="shadows">эффектам теней</a>,
     <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>,
     <a href="#clipping-region" title="clipping region">clipping region</a> и <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition операторам</a>.</p>
@@ -2512,8 +2512,8 @@ v6DVT (also check for '- -' bits in the part above) -->
   преобразования во время рисования, даже если путь это
   <a href="#current-default-path">текущий путь по умолчанию</a>.</p>
 
-  <p>Пути, при заполнении или сглаживании, должны быть нарисованы без влияния на
-  текущий путь и должны подвергаться <a href="#shadows" title="shadows">теневым эффектам</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global
+  <p>Пути, при заполнении или сглаживании, должны быть нарисованы без влияния
+  текущего пути, но должны подвергаться <a href="#shadows" title="shadows">эффектам теней</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global
   alpha</a>, <a href="#clipping-region" title="clipping region">clipping
   region</a> и <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition
   операторов</a>.</p>
@@ -2674,48 +2674,29 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    </li><li><p>Если один из аргументов <var>sw</var> или <var>sh</var> равен нулю, прервать эти шаги. Ничего не рисуется.</p></li><li>
 
-    <p>Paint the region of the <var>image</var> argument specified by the source rectangle
-    on the region of the rendering context's bitmap specified by the
-    destination rectangle, after applying the <a href="#transformations" id="drawing-images:transformations">current
-    transformation matrix</a> to the destination rectangle.</p>
+    <p>Нарисовать зону аргумента <var>image</var> заданную исходным прямоугольником
+    на зоне растрового изображения (битмапа) контекста заданной конечным прямоугольником, после применения <a href="#transformations" id="drawing-images:transformations">текущей матрицы преобразования</a> на конечном прямоугольнике.</p>
 
-    <p>The image data must be processed in the original direction, even if the dimensions given are
-    negative. </p>
+    <p>Данные изображения должны быть обработаны в изначальном направлении, даже если указаны отрицательные размеры. </p>
 
-  <p class="note">This specification does not define the algorithm to
-  use when scaling the image, if necessary.</p>
+  <p class="note">Данная спецификация не определяет алгоритм, используемый при масштабировании изображения.</p>
 
-  <p class="note">When a canvas is drawn onto itself, the <a href="#drawing-model">drawing
-  model</a> requires the source to be copied before the image is drawn
-  back onto the canvas, so it is possible to copy parts of a canvas
-  onto overlapping parts of itself.</p>
+  <p class="note">Когда холст рисуется, <a href="#drawing-model">модель рисования</a> требует источник для копирования перед тем как изображение нарисуется на холсте, так что можно скопировать части холста на перекрывающие его части.</p>
 
-    <p>If the original image data is a bitmap image, the value painted at a point in the destination
-    rectangle is computed by filtering the original image data. The user agent may use any filtering
-    algorithm (for example bilinear interpolation or nearest-neighbor). When the filtering algorithm
-    requires a pixel value from outside the original image data, it must instead use the value from
-    the nearest edge pixel. (That is, the filter uses 'clamp-to-edge' behaviour.) When the filtering
-    algorithm requires a pixel value from outside the source rectangle but inside the original image
-    data, then the value from the original image data must be used.</p>
+    <p>Если исходное изображение является растровым изображением, значение нарисованное на месте конечного прямоугольника
+    вычисляется с помощью фильтрации данных исходного изображения. Пользовательский агент может использовать любой алгоритм
+    фильтрации (например, билинейной интерполяции или схожий). Когда алгоритм фильтрации
+    требует значение пикселя за пределами оригинального изображения, он должен вместо этого использовать значение ближайшего пикселя с краю. Когда алгоритм фильтрации запрашивает значение пикселя извне исходного прямоугольника, но внутри оригинального изображения, следует использовать значение из оригинального изображения.</p>
 
 
 
-    <p class="note">Thus, scaling an image in parts or in whole will have the same effect. This does
-    mean that when sprites coming from a single sprite sheet are to be scaled, adjacent images in
-    the sprite sheet can interfere. This can be avoided by ensuring each sprite in the sheet is
-    surrounded by a border of transparent black, or by copying sprites to be scaled into temporary
-    <code id="drawing-images:the-canvas-element-3"><a href=http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element>canvas</a></code> elements and drawing the scaled sprites from there.</p>
+    <p class="note">Таким образом, масштабирование изображения по частям или в целом будет иметь тот же эффект.</p>
 
-    <p>Images are painted without affecting the current path, and are subject to <a href="#shadows" id="drawing-images:shadows">shadow effects</a>, <a href="#dom-context-2d-globalalpha" id="drawing-images:dom-context-2d-globalalpha">global
-    alpha</a>, the <a href="#clipping-region" id="drawing-images:clipping-region">clipping region</a>, and <a href="#dom-context-2d-globalcompositeoperation" id="drawing-images:dom-context-2d-globalcompositeoperation">global composition operators</a>.</p>
+    <p>Изображения рисуются без влияния текущего пути (current path), но подлежат <a href="#shadows" title="shadows">эффектам теней</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, <a href="#clipping-region" title="clipping region">clipping region</a> и <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition операторам</a>.</p>
 
-   </li><li><p>If <a href="#the-image-argument-is-not-origin-clean" id="drawing-images:the-image-argument-is-not-origin-clean">the <var>image argument</var> is not origin-clean</a>, set the
-  bitmap's <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="drawing-images:concept-canvas-origin-clean">origin-clean</a> flag
-   to false.</p></li></ol>
+   </li><li><p>Если <a href="#the-image-argument-is-not-origin-clean" id="drawing-images:the-image-argument-is-not-origin-clean"><var>image argument</var> не origin-clean</a>, установить флаг <var>origin-clean</var> битмапа ложным.</p></li></ol>
 
-  <p>Images are painted without affecting the current path, and are
-  subject to <a href="#shadows" title="shadows">shadow effects</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, the <a href="#clipping-region" title="clipping region">clipping region</a>, and <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition
-  operators</a>.</p>
+  <p>Изображения рисуются без влияния текущего пути (current path), но подлежат <a href="#shadows" title="shadows">эффектам теней</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, <a href="#clipping-region" title="clipping region">clipping region</a> и <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition операторам</a>.</p>
 
   </div>
 
