@@ -777,11 +777,11 @@ idea from Mihai:
   <div class="impl">
 
   <p>Объекты, которые реализуют интерфейс <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code>
-  имеют атрибуты и методы (определенные в этом разделе), который контролирует как линии обрабатываются объектом.</p>
+  имеют атрибуты и методы (определенные в этом разделе), которые контролируют как линии обрабатываются объектом.</p>
 
   <p>Атрибут <dfn id="dom-context-2d-linewidth" title="dom-context-2d-lineWidth"><code>lineWidth</code></dfn>
-  дает ширину линий в координатном пространстве единиц. При получении, он должен вернуть текущее значение. При установке, zero,
-  negative, infinite, и NaN значения должны быть проигнорированы, оставляя значение без изменений; другие значения должны изменить его на текущее значение.</p>
+  дает ширину линий в координатном пространстве единиц. При получении, он должен вернуть текущее значение. При установке нулевого,
+  негативного, бесконечного и NaN, значения должны быть проигнорированы, оставляя значение без изменений; другие значения должны изменить его на текущее значение.</p>
 
   <p>Когда создается реализующий интерфейс объект <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code>, атрибут <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code> должен изначально иметь значение <code>1.0</code>.</p>
 
@@ -1004,7 +1004,7 @@ idea from Mihai:
 
     <p>Значение "<code>bevel</code>" означает что это всё отображено в соединениях.</p>
 
-    <p>Значение "<code>round</code>" означает, что заполненная дуга, соединяющая два вышеупомянутых угла соединения, примыкает (а не перекрывает) к вышеупомянутому треугольнику, с диаметром, равным ширине линии и началом координат в точке соединения, должен быть добавлен в соединения.</p>
+    <p>Значение "<code>round</code>" означает, что заполненная дуга, соединяющая два вышеупомянутых угла соединения, примыкает (а не перекрывает) к вышеупомянутому треугольнику, с диаметром, равным ширине линии и началом координат в точке соединения, должна быть добавлена в соединения.</p>
 
     <p>Значение "<code>miter</code>" означает что второй заполненный треугольник должен (если он может с учетом длины скоса) быть добавлен в соединение, с одной линией, будучи линией между двумя вышеупомянутыми углами.</p>
 
@@ -1037,7 +1037,7 @@ idea from Mihai:
 </div>
 
 
-    <p>Подпути во вновь созданном пути должен проходить по часовой стрелке, независимо от направления путей в <var data-anolis-xref="">path</var>.</p>
+    <p>Подпути во вновь созданном пути должны проходить по часовой стрелке, независимо от направления путей в <var data-anolis-xref="">path</var>.</p>
 
     <!-- ...because both of these examples result in two lines (assuming non-zero winding rules,
     things are different under even/odd), there's no "hole" where the lines overlap:
@@ -1568,7 +1568,7 @@ try {
 
   <div class="impl">
 
-  <p>Следующие методы позволяют авторам манипулировать <a href="#concept-path" title="concept-path">paths</a> объектов, реализующих интерфейс <code><a href="#canvaspathmethods">CanvasPathMethods</a></code>.</p>
+  <p>Следующие методы позволяют авторам манипулировать <a href="#concept-path" title="concept-path">путями</a> объектов, реализующих интерфейс <code><a href="#canvaspathmethods">CanvasPathMethods</a></code>.</p>
 
   <p>Для объектов <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>, точки и линии добавленные к <a href="#current-default-path">current default path</a> с помощью этих методов должны быть преобразованы в соответствии с <a href="#transformations" title="dom-context-2d-transformation">текущей матрицей трансформации</a> перед тем как быть добавлены к пути.</p>
 
@@ -2608,10 +2608,9 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <h2 id="drawing-images-to-the-canvas"><span class="secno">12 </span>Рисование изображений на холсте</h2>
 
-  <p>To draw images onto the canvas, the <dfn id="dom-context-2d-drawimage" title="dom-context-2d-drawImage"><code>drawImage</code></dfn> method
-  can be used.</p>
+  <p>Для того чтобы нарисовать изображение на холсте, используется метод <dfn id="dom-context-2d-drawimage" title="dom-context-2d-drawImage"><code>drawImage</code></dfn>.</p>
 
-  <p>This method can be invoked with three different sets of arguments:</p>
+  <p>Этот метод может быть вызван с тремя различными наборами аргументов:</p>
 
   <ul class="brief">
    <li><code>drawImage(<var>image</var>, <var>dx</var>, <var>dy</var>)</code>
@@ -2621,10 +2620,8 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <!-- v3: drawImage() of an ImageData object might make sense (when resizing as well as filtering) - ack Charles Pritchard -->
 
-  <p>Each of those three can take either an
-  <code>HTMLImageElement</code>, an <code>HTMLCanvasElement</code>, or
-  an <code>HTMLVideoElement</code> for the <var>image</var>
-  argument.</p>
+  <p>Каждый из них может принять
+  <code>HTMLImageElement</code>, <code>HTMLCanvasElement</code> или <code>HTMLVideoElement</code> для аргумента изображения <var>image</var>.</p>
 
   <dl class="domintro">
 
@@ -2634,18 +2631,15 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    <dd>
 
-    <p>Draws the given image onto the canvas. The arguments are
-    interpreted as follows:</p>
+    <p>Рисует заданное изображение на холст. Аргументы интерпретируются следующим образом:</p>
 
     <p><img alt="The sx and sy parameters give the x and y coordinates of the source rectangle; the sw and sh arguments give the width and height of the source rectangle; the dx and dy give the x and y coordinates of the destination rectangle; and the dw and dh arguments give the width and height of the destination rectangle." height="356" src="./drawImage.png" width="356"></p>
 
-    <p>If the first argument isn't an <code>img</code>,
-    <code>canvas</code>, or <code>video</code> element, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> a
-    <code>TypeMismatchError</code> exception. If the image has no
-    image data, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> an <code>InvalidStateError</code> exception. If
-    the one of the source rectangle dimensions is zero, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">throws</a> an
-    <code>IndexSizeError</code> exception. If the image isn't yet
-    fully decoded, then nothing is drawn.</p>
+    <p>Если первый аргумент не является элементом <code>img</code>,
+    <code>canvas</code> или <code>video</code>, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">выдается</a> исключение
+    <code>TypeMismatchError</code>. Если изображение не содержит данных, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">выдается</a> исключение <code>InvalidStateError</code>. Если
+    один из размеров исходного прямоугольника равен нулю, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">выдается</a> исключение
+    <code>IndexSizeError</code>. Если изображение (еще) не полностью декодировано, ничего не рисуется.</p>
 
    </dd>
 
@@ -2653,43 +2647,32 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <div class="impl">
 
-<p>When the <code id="drawing-images:dom-context-2d-drawimage-4"><a href="#dom-context-2d-drawimage">drawImage()</a></code> method is invoked, the user
-  agent must run the following steps:</p>
+<p>Когда метод <code id="drawing-images:dom-context-2d-drawimage-4"><a href="#dom-context-2d-drawimage">drawImage()</a></code> вызван, пользовательский агент должен выполнить шаги:</p>
 
-  <ol><li><p><a href="#check-the-usability-of-the-image-argument" id="drawing-images:check-the-usability-of-the-image-argument">Check the usability of the <var>image</var> argument</a>. If this
-   returns <i>aborted</i>, then an exception has been thrown and the method doesn't return anything;
-   abort these steps. If it returns <i>bad</i>, then abort these steps without drawing anything.
-   Otherwise it returns <i>good</i>; continue with these steps.</p></li><li>
+  <ol><li><p><a href="#check-the-usability-of-the-image-argument" id="drawing-images:check-the-usability-of-the-image-argument">Проверить пригодность аргумента<var>image</var></a>. Если возвращается
+   <i>aborted</i>, то исключение было выдано и метод не выдает ничего;
+   прервать эти шаги. Если возвращается <i>bad</i>, то прервать эти шаги ничего не рисуя.
+   В другом случае возвращается <i>good</i>; продолжить.</p></li><li>
 
-    <p>Establish the source and destination rectangles as follows:</p>
+    <p>Установить источник и назначение прямоугольников как:</p>
 
-    <p>If not specified, the <var>dw</var> and <var>dh</var> arguments must default to the values of
-    <var>sw</var> and <var>sh</var>, interpreted such that one CSS pixel in the image is treated as
-    one unit in the bitmap's coordinate space. If the <var>sx</var>,
-    <var>sy</var>, <var>sw</var>, and <var>sh</var> arguments are not specified, they must default to 0,
-    0, the image's intrinsic width in image pixels, and the image's intrinsic height in image
-    pixels, respectively. If the image has no intrinsic dimensions, the <i>concrete object size</i>
-    must be used instead, as determined using the CSS "<a href="http://www.w3.org/TR/css3-images/#default-sizing">Concrete Object Size Resolution</a>"
-    algorithm, with the <i>specified size</i> having neither a definite width nor height, nor any
-    additional constraints, the object's intrinsic properties being those of the <var>image</var>
-    argument, and the <a id="drawing-images:default-object-size" href="http://www.w3.org/TR/css3-images/#default-object-size">default object size</a> being the size of the bitmap. <a href="#refsCSSIMAGES">[CSSIMAGES]</a></p>
+    <p>Если не задано, аргументы <var>dw</var> и <var>dh</var> должны по умолчанию быть
+    <var>sw</var> и <var>sh</var>, интерпретируемые таким образом, что один CSS пиксель в изображении рассматривается как единица в координатном пространстве единиц битмапа. Если аргументы <var>sx</var>,
+    <var>sy</var>, <var>sw</var> и <var>sh</var> не заданы, по умолчанию они равняются 0,
+    0, внутренней ширине изображения в пикселях и внутренней высоте изображения в пикселях, соответственно. Если изображение не имеет внутренних размеров, должен быть использован <i>конкретный размер объекта</i>, как определено CSS алгоритмом "<a href="http://www.w3.org/TR/css3-images/#default-sizing">Concrete Object Size Resolution</a>". Если же <i>заданный размер</i> не имеет указанных ширины/высоты и прочих параметров, внутренние данные объекта будут взяты из аргумента <var>image</var>, и <a id="drawing-images:default-object-size" href="http://www.w3.org/TR/css3-images/#default-object-size">размером объекта по умолчанию</a> будет размер битмапа. <a href="#refsCSSIMAGES">[CSSIMAGES]</a></p>
 
-    <p>The source rectangle is the rectangle whose corners are the four points (<var>sx</var>, <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <span><var>sy</var>+<var>sh</var></span>),
+    <p>Исходный прямоугольник — прямоугольник с углами в точках (<var>sx</var>, <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <span><var>sy</var>+<var>sh</var></span>),
     (<var>sx</var>, <span><var>sy</var>+<var>sh</var></span>).</p>
 
-    <p>The destination rectangle is the rectangle whose corners are the four points (<var>dx</var>, <var>dy</var>), (<span><var>dx</var>+<var>dw</var></span>, <var>dy</var>), (<span><var>dx</var>+<var>dw</var></span>, <span><var>dy</var>+<var>dh</var></span>),
+    <p>Конечный прямоугольник — с углами в точках (<var>dx</var>, <var>dy</var>), (<span><var>dx</var>+<var>dw</var></span>, <var>dy</var>), (<span><var>dx</var>+<var>dw</var></span>, <span><var>dy</var>+<var>dh</var></span>),
     (<var>dx</var>, <span><var>dy</var>+<var>dh</var></span>).</p>
 
-    <p>When the source rectangle is outside the source image, the source rectangle must be clipped
-    to the source image and the destination rectangle must be clipped in the same proportion.</p>
+    <p>Когда исходный прямоугольник за пределами исходного изображения, исходный прямоугольник должен быть обрезан под исходное изображение
+    и конечный прямоугольник обрезан в той же пропорции.</p>
 
-    <p class="note">When the destination rectangle is outside the destination image (the
-    bitmap), the pixels that land outside the bitmap are
-    discarded, as if the destination was an infinite canvas whose rendering was clipped to the
-    dimensions of the bitmap.</p>
+    <p class="note">Когда конечный прямоугольник за пределами конечного изображения (битмапа), пиксели которые за пределами отбрасываются.</p>
 
-   </li><li><p>If one of the <var>sw</var> or <var>sh</var> arguments is zero, abort
-   these steps. Nothing is painted.</p></li><li>
+   </li><li><p>Если один из аргументов <var>sw</var> или <var>sh</var> равен нулю, прервать эти шаги. Ничего не рисуется.</p></li><li>
 
     <p>Paint the region of the <var>image</var> argument specified by the source rectangle
     on the region of the rendering context's bitmap specified by the
