@@ -251,7 +251,7 @@
 
        @media print {#authorButton { display:none;}}
 
-       .translator { border: solid 2px black; padding: 5px; background-color: yellow; font-size: 15px; }
+       .translator { border: solid 2px black; background-color: #EEE9E9; padding: 5px; font-size: 15px; }
 
   </style>
   <link href="https://www.w3.org/StyleSheets/TR/W3C-REC" rel="stylesheet" type="text/css">
@@ -263,7 +263,7 @@
  <body>
 
 <p class="translator">
-Этот документ является неофициальным переводом исходной английской версии <a href="https://www.w3.org/TR/2dcontext/">HTML Canvas 2D Context</a>. Обратите внимание на то, что оригинальная версия документа существует <b>только</b> на английском языке. Данный перевод может содержать неточности и ошибки. Перевод выполнил <strong><a href="http://topolyan.com/" target="_blank">Кирилл Топольян</a></strong>, 2016.</p>
+Этот документ является неофициальным переводом исходной английской версии <a href="https://www.w3.org/TR/2dcontext/" target="_blank" rel="nofollow">HTML Canvas 2D Context</a>. Обратите внимание на то, что оригинальная версия документа существует <ins>только</ins> на английском языке. Данный перевод может содержать неточности и ошибки. Перевод выполнил <strong><a href="http://topolyan.com/" target="_blank">Кирилл Топольян</a></strong>, 2016.</p>
 
   <div class="head" id="head">
 <header>
@@ -290,9 +290,9 @@
       <dd>WHATWG:</dd>
       <dd><a href="mailto:ian@hixie.ch">Ian Hickson</a>, Google, Inc.</dd>
    </dl>
-   <p>Проверьте <a href="http://www.w3.org/2015/11/2dcontext-errata.html"><strong>страницу исправлений</strong></a> этого документа, которая может включать в себя изменения после публикации.</p>
+   <p>Посмотрите <a href="http://www.w3.org/2015/11/2dcontext-errata.html"><strong>страницу исправлений</strong></a> этого документа, которая может включать в себя изменения после публикации.</p>
 
-   <p>Смотрите также <a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=2dcontext"> <strong>переводы</strong></a>.</p>
+   <p>Также смотрите <a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=2dcontext"> <strong>переводы</strong></a>.</p>
 
    <p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2015 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C придерживается правил <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">ответственности</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">торговой марки</a> и <a href="http://www.w3.org/Consortium/Legal/copyright-documents">использования документов</a>.</p>
 
@@ -304,8 +304,8 @@
 
   <h2 class="no-num no-toc" id="abstract">Аннотация</h2>
 
-  <p>Эта спецификация определяет 2D Context для HTML
-  <a href='http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element'><code>canvas</code></a> элемента. 2D Context предоставляет
+  <p>Эта спецификация определяет 2D Context для HTML элемента
+  <a href='http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element'><code>canvas</code></a>. 2D Context предоставляет
    объекты, методы, и свойства для рисования и манипуляции
    графиков на <code>canvas</code> поверхности рисования.</p>
 
@@ -314,14 +314,14 @@
 <p><em>Этот раздел описывает статус данного документа на момент его публикации. Другие документы могут заменять этот документ. Со списком текущих публикаций W3C и последней ревизией этого технического доклада можно ознакомиться в <a href="http://www.w3.org/TR/">индексе технических докладов W3C</a>, http://www.w3.org/TR/.</em></p>
 
     <p>
-      Эта спецификация для 2D Context для HTML canvas элемента опубликована <a href='http://www.w3.org/html/wg/'>Рабочей группой HTML</a>.
+      Эта спецификация для 2D Context для HTML элемента canvas опубликована <a href='http://www.w3.org/html/wg/'>Рабочей группой HTML</a>.
     </p>
 
 
     <p>Если вы хотите оставить комментарии к этому документу в порядке
-    который отслеживается W3C, пожалуйста добавьте их с помощью <a href="https://github.com/w3c/2dcontext/issues">нашего публичного списка вопросов</a>. Если вы не можете сделать это, вы можете отправить e-mail на <a href="mailto:public-canvas-api@w3.org">public-canvas-api@w3.org</a>
+    который отслеживается W3C, пожалуйста добавьте их с помощью <a href="https://github.com/w3c/2dcontext/issues" target="_blank" rel="nofollow">нашего публичного списка вопросов</a>. Если вы не можете сделать это, вы можете отправить e-mail на <a href="mailto:public-canvas-api@w3.org">public-canvas-api@w3.org</a>
     (<a href="mailto:public-canvas-api-request@w3.org?subject=subscribe">подписка</a>,
-    <a href="http://lists.w3.org/Archives/Public/public-canvas-api/">архивы</a>),
+    <a href="http://lists.w3.org/Archives/Public/public-canvas-api/" target="_blank" rel="nofollow">архивы</a>),
     и мы примем меры чтобы перенести комментарии в нашу
     публичную базу данных багов. Любая обратная связь приветствуется.</p>
     <p>
@@ -344,7 +344,7 @@
   HTML спецификации с рабочими стандартами WHATWG, в рамках <a href="http://www.w3.org/2013/09/html-charter.html">устава рабочей группы W3C HTML</a>. Есть разные способы следить за этой работой в WHATWG:</p>
   <ul>
       <li>Наблюдать за почтовым коммит-листом (полное исходное сравнение): <a href="http://lists.whatwg.org/listinfo.cgi/commit-watchers-whatwg.org">http://lists.whatwg.org/listinfo.cgi/commit-watchers-whatwg.org</a></li>
-      <li>Коммиты на Github: <a href="https://github.com/whatwg/html/commits">https://github.com/whatwg/html/commits</a></li>
+      <li>Коммиты на Github: <a href="https://github.com/whatwg/html/commits" target="_blank" rel="nofollow">https://github.com/whatwg/html/commits</a></li>
   </ul>
 
 
@@ -394,7 +394,7 @@
 
   <h2 id="conformance-requirements"><span class="secno">1 </span>Требования к соответствию</h2>
 
-  <p>Эта спецификация является HTML спецификацией. Все требования на соответствие, соответствие классов, определения, зависимости, терминология и типографские конвенции, описанные в спецификации ядра HTML5 применимы к данной спецификации. <a href="#refsHTML">[HTML]</a></p>
+  <p>Эта спецификация является спецификацией HTML. Все требования на соответствие, соответствие классов, определения, зависимости, терминология и типографские конвенции, описанные в спецификации ядра HTML5, применимы к данной спецификации. <a href="#refsHTML">[HTML]</a></p>
 
   <p>Интерфейсы определяются в терминах Web IDL. <a href="#refsWEBIDL">[WEBIDL]</a></p>
 
@@ -591,8 +591,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
   <div class="impl">
 
   <p>Атрибут <dfn id="dom-context-2d-canvas" title="dom-context-2d-canvas"><code>canvas</code></dfn>
-  должен возвращать <code>canvas</code> элемент который
-  нарисовал context.</p>
+  должен возвращать элемент <code>canvas</code>, нарисованный контекстом.</p>
 
   <p>За исключением случаев когда указано иное, для 2D context интерфейса,
   <strong>любой вызов метода с числовым аргументом, значение которого бесконечно либо NaN, должен быть проигнорирован</strong>.</p>
@@ -631,7 +630,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
 <!--FIXUP 2dcontext +4-->
   <h2 id="the-canvas-state"><span class="secno">2 </span>Состояние canvas</h2>
 
-  <p>Каждый context поддерживает стек из drawing state. <dfn id="drawing-state" title="drawing state">Drawing state</dfn> состоит из:</p>
+  <p>Каждый контекст поддерживает стек из состояний рисования. <dfn id="drawing-state" title="drawing state">Состояние рисования</dfn> состоит из:</p>
 
   <ul class="brief">
    <li>Текущая <a href="#transformations" title="dom-context-2d-transformation">матрица преобразования</a>.</li>
@@ -639,10 +638,9 @@ interface <dfn id="imagedata">ImageData</dfn> {
    <li>Текущие значения следующих атрибутов: <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code>, <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code>, <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>, <code title="dom-context-2d-lineWidth"><a href="#dom-context-2d-linewidth">lineWidth</a></code>, <code title="dom-context-2d-lineCap"><a href="#dom-context-2d-linecap">lineCap</a></code>, <code title="dom-context-2d-lineJoin"><a href="#dom-context-2d-linejoin">lineJoin</a></code>, <code title="dom-context-2d-miterLimit"><a href="#dom-context-2d-miterlimit">miterLimit</a></code>, <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code>, <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code>, <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code>, <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code>, <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code>, <code title="dom-context-2d-font"><a href="#dom-context-2d-font">font</a></code>, <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code>, <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code>.</li>
   </ul>
 
-  <p class="note">Текущий путь и текущий битовый вектор не являются частью drawing state. <span>current
-  path</span> постоянен и может быть сброшен только с помощью
-  <code title="dom-context-2d-beginPath"><a href="#dom-context-2d-beginpath">beginPath()</a></code> метода.
-  Текущий битовый вектор является свойством canvas, а не context.</p>
+  <p class="note">Текущий путь и текущий битмап не являются частью состояния рисования. <span>Текущий путь</span> постоянен и может быть сброшен только с помощью
+  метода <code title="dom-context-2d-beginPath"><a href="#dom-context-2d-beginpath">beginPath()</a></code>.
+  Текущий битмап является свойством холста, а не контекста.</p>
 
   <dl class="domintro">
 
@@ -667,8 +665,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
   <div class="impl">
 
   <p>Метод <dfn id="dom-context-2d-save" title="dom-context-2d-save"><code>save()</code></dfn>
-  должен поместить копию текущего состояния на стек
-  drawing state.</p>
+  должен поместить копию текущего состояния на стек состояния рисования.</p>
 
   <p>Метод <dfn id="dom-context-2d-restore" title="dom-context-2d-restore"><code>restore()</code></dfn> должен вывести верхний элемент в стек состояния, и сбросить его описание. Если нет сохраненного состояния, метод не должен делать ничего.</p>
 
@@ -711,7 +708,7 @@ idea from Mihai:
 
    <dd>
 
-    <p>Возвращает стиль предела линии.</p>
+    <p>Возвращает стиль окончания линии.</p>
 
     <p>Может быть установлен для изменения стиля линии.</p>
 
@@ -748,7 +745,7 @@ idea from Mihai:
 
    <dd>
 
-    <p>Устанавливает текущий шаблон линии тире (используется при сглаживании). Аргумент представляет собой массив расстояний.</p>
+    <p>Устанавливает текущий шаблон линии пунктирной линии (используется при сглаживании). Аргумент представляет собой массив расстояний.</p>
 
    </dd>
 
@@ -757,7 +754,7 @@ idea from Mihai:
 
    <dd>
 
-    <p>Возвращает копию текущего шаблона линии тире. Возвращаемый массив всегда будет иметь четное количество записей (т.е. картина нормализуется).</p>
+    <p>Возвращает копию текущего шаблона пунктирной линии. Возвращаемый массив всегда будет иметь четное количество записей (т.е. картина нормализуется).</p>
 
    </dd>
 
@@ -1781,7 +1778,7 @@ try {
 
   <ul><li><code id="image-sources-for-2d-rendering-contexts:htmlimageelement"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-img-element"><a href="http://www.w3.org/TR/html/embedded-content-0.html#the-img-element">img</a></code> элементы)</li><li><code id="image-sources-for-2d-rendering-contexts:htmlvideoelement"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-video-element"><a href="http://www.w3.org/TR/html/embedded-content-0.html#the-video-element">video</a></code> элементы)</li><li><code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code> (<code id="image-sources-for-2d-rendering-contexts:the-canvas-element"><a href="http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element">canvas</a></code> элементы)</li></ul>
 
-  <p>Когда агент пользователя должен <dfn id="check-the-usability-of-the-image-argument">проверить пригодность аргумента <var>image</var></dfn>, где <var>image</var> является объектом <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-2"><a href="#canvasimagesource">CanvasImageSource</a></code>, агент пользователя должен следовать следующим шагам, которые возвращают <i>good</i>, <i>bad</i>, или
+  <p>Когда агент пользователя должен <dfn id="check-the-usability-of-the-image-argument">проверить пригодность аргумента <var>image</var></dfn>, где <var>image</var> является объектом <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-2"><a href="#canvasimagesource">CanvasImageSource</a></code>, агент пользователя должен следовать следующим шагам, которые возвращают <i>good</i>, <i>bad</i> или
   <i>aborted</i>:</p>
 
   <ol><li><p>Если аргумент <var>image</var> является объектом <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-2"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> в <a href="http://www.w3.org/TR/html/embedded-content-0.html#img-error" id="image-sources-for-2d-rendering-contexts:img-error">битом</a> состоянии, тогда показать
@@ -2702,39 +2699,27 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <h2 id="hit-regions"><span class="secno">13 </span>Hit области</h2>
 
-  <p>Each <code>canvas</code> element whose <span>primary
-  context</span> is a <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object
-  must have a <dfn id="hit-region-list">hit region list</dfn> associated with its
-  bitmap.</p>
+  <p>Каждый элемент <code>canvas</code> чей <span>основной контекст</span> это объект <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>,
+  должен иметь <dfn id="hit-region-list">список hit областей</dfn> связанный с его битмапом.</p>
 
-  <p>The <a href="#hit-region-list">hit region list</a> is a list of <a href="#hit-region" title="hit
-  region">hit regions</a>.</p>
+  <p><a href="#hit-region-list">Список hit областей</a> это список из <a href="#hit-region" title="hit
+  region">hit областей</a>.</p>
 
-  <p>Each <dfn id="hit-region">hit region</dfn> consists of the following
-  information:</p>
+  <p>Каждая <dfn id="hit-region">hit область</dfn> содержит следующую информацию:</p>
 
   <ul>
 
-  <li><p>A <dfn id="hit-region's-path" title="hit region's path"> path</dfn> on the <code>canvas</code> element's bitmap for which
-  this region is responsible.</p></li>
+  <li><p><dfn id="hit-region's-path" title="hit region's path">Путь</dfn> на битмапе элемента <code>canvas</code> для которого он предназначен.</p></li>
 
-  <li><p>A <dfn id="hit-region's-bounding-circumference" title="hit region's bounding circumference">bounding
-  circumference</dfn> on the <code>canvas</code> element's bitmap
-  that surrounds the <a href="#hit-region's-path">hit region's path</a> as it
-  stood when it was created.</p></li>
+  <li><p><dfn id="hit-region's-bounding-circumference" title="hit region's bounding circumference">Ограничивающую окружность</dfn> на битмапе элемента <code>canvas</code>, которая окружает <a href="#hit-region's-path">путь hit области</a> в том виде котором он создан.</p></li>
 
-  <li><p>Optionally, a non-empty string representing an <dfn id="hit-region's-id" title="hit region's ID">ID</dfn> for distinguishing the region
-  from others.</p></li>
+  <li><p>Опционально, непустая строка, представляющая <dfn id="hit-region's-id" title="hit region's ID">ID</dfn> для отличия этой области от других.</p></li>
 
    <li>
-   <p>Optionally, a <a href="#hit-region's-control" title="hit region's control">control</a>.</p>
+   <p>Опционально, элемент управления <a href="#hit-region's-control" title="hit region's control">control</a>.</p>
 
-   <p>A <dfn id="hit-region's-control" title="hit region's control">control</dfn> is a
-   reference to an <code>Element</code> node, to which, in certain
-   conditions, the user agent will route events, and from which the
-   user agent will determine the state of the hit region for the
-   purposes of accessibility tools. (The control is ignored when it
-   is not a descendant of the canvas element.)</p>
+   <p><dfn id="hit-region's-control" title="hit region's control">Control</dfn> это ссылка на узел <code>Element</code>, к которому, в определенных условиях, пользовательский агент будет отправлять события, и из которого агент пользователя будет определять состояние hit области для целей доступных инструментов. (Control игнорируется когда он
+   не является потомком элемента canvas.)</p>
 
    </li>
   </ul>
@@ -2745,41 +2730,39 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <dd>
 
-   <p>Adds a hit region to the canvas bitmap based on the current
-   default path. The argument is an object with the following members:</p>
+   <p>Добавляет hit область на холст, на основе текущего пути по умолчанию. Аргумент это объект со следующими членами:</p>
 
    <dl>
 
-    <dt><code title="dom-HitRegionOptions-id">id</code> (default empty string)
+    <dt><code title="dom-HitRegionOptions-id">id</code> (по умолчанию пустая строка)
 
-	</dt><dd>The ID to use for this region. This is used in
-     <code>MouseEvent</code> events on the <code>canvas</code> (<code title="dom-MouseEvent-region"><a href="#dom-mouseevent-region">event.region</a></code>) and as a way
-     to reference this region in later calls to <code title="dom-context-2d-addHitRegion"><a href="#dom-context-2d-addhitregion">addHitRegion()</a></code>.</dd>
-     <dt><code title="dom-HitRegionOptions-control">control</code> (default null)
+	</dt><dd>ID используемый для этой области. Он используется в событиях
+     <code>MouseEvent</code> на <code>canvas</code> (<code title="dom-MouseEvent-region"><a href="#dom-mouseevent-region">event.region</a></code>) и как путь
+    к вызову этой области в последующих вызовах к <code title="dom-context-2d-addHitRegion"><a href="#dom-context-2d-addhitregion">addHitRegion()</a></code>.</dd>
+     <dt><code title="dom-HitRegionOptions-control">control</code> (по умолчанию null)
 
-     </dt><dd>An element (that is a descendant of the <code>canvas</code>)
-     to which events are to be routed, and which accessibility tools
-     are to use as a surrogate for describing and interacting with
-     this region.</dd>
+     </dt><dd>Элемент (потомок <code>canvas</code>)
+     к которому события должны быть направлены, и который доступные инструменты
+     используют как суррогат для описания и взаимодействия с этой областью.</dd>
 
     </dl>
 
-   <p>Hit regions can be used for a variety of purposes:</p>
+   <p>Hit области могут быть использованы для различных целей:</p>
 
    <ul>
-    <li>With an ID, they can make hit detection easier by having the
-    user agent check which region the mouse is over and include the
-    ID in the mouse events.</li>
+    <li>С ID, они могут сделать обнаружение hit проще с помощью
+    проверки агентом пользователя на какую область наведена мышь и включить
+    ID в события мыши.</li>
 
-    <li>With a control, they can make routing events to DOM elements
-    automatic, allowing e.g. clicks on a canvas to automatically
-    submit a form via a <code>button</code> element.</li>
+    <li>С control, они могут сделать передачу событий к DOM элементам
+    автоматической, что позволяет, например, кликнуть на холст чтобы автоматически
+    отправить форму с помощью <code>button</code> элемента.</li>
 
     </ul>
 
-    <p class="note">While both ID and control are optional, when calling
-	addHitRegion, at least one of the two needs to be present
-    to create a hit region. </p>
+    <p class="note">В то время как ID и control не являются обязательными, при вызове
+	addHitRegion, как минимум один из двух должен быть предоставлен
+   чтобы создать hit область. </p>
 
 
 	</dd>
@@ -2789,13 +2772,10 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <dd>
 
-   <p>Removes a hit region from the canvas
-   bitmap. The argument is the ID of a region added using <code title="dom-context-2d-addHitRegion"><a href="#dom-context-2d-addhitregion">addHitRegion()</a></code>.</p>
+   <p>Удаляет hit область с битмапа холста. Аргумент это ID области заданный с помощью <code title="dom-context-2d-addHitRegion"><a href="#dom-context-2d-addhitregion">addHitRegion()</a></code>.</p>
 
-  <p>The path that was covered by this region are effectively
-   cleared by this operation, leaving the regions
-   non-interactive. In particular, regions that occupied the same
-   path before the removed regions were added, do not resume their previous roles.</p>
+  <p>Путь который был покрыт этой областью в результате этой операции очищается, оставляя область не-интерактивной. В частности, области которые занимали тот же путь
+   перед тем как удаленные области были добавлены, не возобновляют свои прежние роли.</p>
 
    </dd>
 
@@ -2804,12 +2784,10 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <dd>
 
-   <p>Removes all hit regions from the canvas
-   bitmap. </p>
+   <p>Удаляет все hit области с битмапа холста. </p>
 
-  <p>The paths that were covered by these regions are effectively
-   cleared by this operation, leaving all regions
-   non-interactive. </p>
+  <p>Пути которые были покрыты этими областями в результате
+   очищаются, оставляя все области не-интерактивными. </p>
 
    </dd>
 
@@ -3847,7 +3825,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <ol>
 
-   <li><p>Визуализировать форму или изображение на бесконечно прозрачное черное растровое изображение, создавая изображение <var>A</var>, как описано в предыдущих разделах. Для фигур текущее заполнение, обводки и стили должны быть выполнены, и ход должен сам по себе также должен быть подвергнут текущей матрице преобразования.</p></li>
+   <li><p>Визуализировать форму или изображение на бесконечно прозрачное черное растровое изображение, создавая изображение <var>A</var>, как описано в предыдущих разделах. Для фигур текущее заполнение, обводки и стили должны быть выполнены, и сглаживание также должено быть подвергнуто текущей матрице преобразования.</p></li>
 
    <li><p><a href="#when-shadows-are-drawn">Когда тени нарисованы</a>, визуализировать тень с изображения <var>A</var>, используя текущие стили изображения, создавая изображение <var>B</var>.</p></li>
 
@@ -4021,7 +3999,7 @@ function AddCloud(data, x, y) { ... }</pre>
    -->
    <dd><cite><a href="http://www.w3.org/TR/css3-color/">CSS Color
    Module Level 3</a> (URL: <a href="http://www.w3.org/TR/css3-color/">http://www.w3.org/TR/css3-color/</a>)</cite>, T. Çelik, C. Lilley, L.
-   Baron. 7 June 2011. W3C Recommendation.</dd>
+   Baron. 7 June 2011. Рекомендация W3C.</dd>
 
    <dt id="refsCSSFONTS">[CSSFONTS]</dt>
    <dd><cite><a href="http://www.w3.org/TR/css3-fonts/">CSS Fonts
@@ -4057,7 +4035,7 @@ function AddCloud(data, x, y) { ... }</pre>
    -->
 
    <dt id="refsHTML">[HTML]</dt>
-   <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. <a href="http://www.w3.org/TR/html5/"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/">http://www.w3.org/TR/html5/</a></dd>
+   <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. <a href="http://www.w3.org/TR/html5/"><cite>HTML5</cite></a>. 28 октября 2014. Рекомендация W3C. URL: <a href="http://www.w3.org/TR/html5/">http://www.w3.org/TR/html5/</a></dd>
 
    <!--
    <dd>(Non-normative) <cite><a
@@ -4071,8 +4049,7 @@ function AddCloud(data, x, y) { ... }</pre>
    -->
    <dt id="refsPORTERDUFF">[PORTERDUFF]</dt>
    <dd><cite><a href="http://keithp.com/~keithp/porterduff/p253-porter.pdf">Compositing
-   Digital Images</a> (URL: <a href="http://keithp.com/~keithp/porterduff/p253-porter.pdf">http://keithp.com/~keithp/porterduff/p253-porter.pdf</a>)</cite>, T. Porter, T. Duff. In <cite>Computer
-   graphics</cite>, volume 18, number 3, pp. 253-259. ACM Press, July
+   Digital Images</a> (URL: <a href="http://keithp.com/~keithp/porterduff/p253-porter.pdf">http://keithp.com/~keithp/porterduff/p253-porter.pdf</a>)</cite>, T. Porter, T. Duff. В <cite>Компьютерной графике</cite>, том 18, номер 3, стр. 253-259. ACM Press, июль
    1984.</dd>
 
    <!-- for text/plain and
