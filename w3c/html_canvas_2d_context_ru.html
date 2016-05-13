@@ -306,8 +306,8 @@
 
   <p>Эта спецификация определяет 2D Context для HTML элемента
   <a href='http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element'><code>canvas</code></a>. 2D Context предоставляет
-   объекты, методы, и свойства для рисования и манипуляции
-   графиков на <code>canvas</code> поверхности рисования.</p>
+   объекты, методы и свойства для рисования и управления
+   графиками на поверхности рисования <code>canvas</code>.</p>
 
   <h2 class="no-num no-toc" id="status-of-this-document">Статус этого документа</h2>
 
@@ -402,8 +402,7 @@
 
   <div class="impl">
 
-  <p>Когда метод <a href='http://www.w3.org/TR/html5/scripting-1.html#dom-canvas-getcontext'><code title="dom-canvas-getContext">getContext()</code></a> <a href='http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element'><code>canvas</code></a> элемента <span title="getContext-return">возвращает новый объект для <var>contextId</var></span> <code title="canvas-context-2d"><a href="#canvas-context-2d">2d</a></code>, user agent должен возвратить
-  новый <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> объект. Любые дополнительные аргументы игнорируются.</p>
+  <p>Когда метод <a href='http://www.w3.org/TR/html5/scripting-1.html#dom-canvas-getcontext'><code title="dom-canvas-getContext">getContext()</code></a> элемента <a href='http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element'><code>canvas</code></a> <span title="getContext-return">возвращает новый объект для <var>contextId</var></span> <code title="canvas-context-2d"><a href="#canvas-context-2d">2d</a></code>, пользовательский агент должен вернуть новый объект <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>. Любые дополнительные аргументы игнорируются.</p>
 
   </div>
 
@@ -582,7 +581,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
 
    <dd>
 
-    <p>Возвращает <code>canvas</code> элемент.</p>
+    <p>Возвращает элемент <code>canvas</code>.</p>
 
    </dd>
 
@@ -617,8 +616,8 @@ interface <dfn id="imagedata">ImageData</dfn> {
   <code><a href="#canvasgradient">CanvasGradient</a></code>, для целей определения вычисленного значения
   <code>currentColor</code> ключевое слово всегда полностью непрозрачный черный (нет связанного с ним элемента). <a href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
 
-  <p class="note">Это потому что <code><a href="#canvasgradient">CanvasGradient</a></code> объекты <code>canvas</code>-нейтральные —
-  <code><a href="#canvasgradient">CanvasGradient</a></code> объект созданный одним <code>canvas</code> может использоваться другим, и поэтому
+  <p class="note">Это потому что объекты <code><a href="#canvasgradient">CanvasGradient</a></code> <code>canvas</code>-нейтральные —
+  объект <code><a href="#canvasgradient">CanvasGradient</a></code> созданный одним <code>canvas</code> может использоваться другим, и поэтому
   нет способа узнать "элемент в деле" в то время как цвет определен.</p>
 
   <p class="note">Схожие проблемы существуют и со шрифтами, правила для них подробно описаны в разделе ниже.</p>
@@ -648,7 +647,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
 
    <dd>
 
-    <p>Помещает текущее состояние с стек.</p>
+    <p>Сохраняет текущее состояние в стек.</p>
 
    </dd>
 
@@ -656,7 +655,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
 
    <dd>
 
-    <p>Выводит верхнее состояние в стеке, восстанавливая контекст этого состояния.</p>
+    <p>Убирает верхнее состояние в стеке, восстанавливая контекст к этому состоянию.</p>
 
    </dd>
 
@@ -667,7 +666,7 @@ interface <dfn id="imagedata">ImageData</dfn> {
   <p>Метод <dfn id="dom-context-2d-save" title="dom-context-2d-save"><code>save()</code></dfn>
   должен поместить копию текущего состояния на стек состояния рисования.</p>
 
-  <p>Метод <dfn id="dom-context-2d-restore" title="dom-context-2d-restore"><code>restore()</code></dfn> должен вывести верхний элемент в стек состояния, и сбросить его описание. Если нет сохраненного состояния, метод не должен делать ничего.</p>
+  <p>Метод <dfn id="dom-context-2d-restore" title="dom-context-2d-restore"><code>restore()</code></dfn> должен взять верхний элемент в стеке состояния, и сбросить состояние которое он описывает. Если нет сохраненного состояния, метод не должен делать ничего.</p>
 
   <!-- v7
 idea from Mihai:
@@ -798,7 +797,7 @@ idea from Mihai:
   <hr>
 
   <p>Атрибут <dfn id="dom-context-2d-linejoin" title="dom-context-2d-lineJoin"><code>lineJoin</code></dfn>
-  определяет тип углом которые ПА поместит туда где две линии встречаются. Есть три валидных значения: "<code>bevel</code>",
+  определяет тип соединения, которое пользовательский агент поместит туда где две линии встречаются. Есть три валидных значения: "<code>bevel</code>",
   "<code>round</code>", и "<code>miter</code>".</p>
 
   <p>При получении, он должен вернуть текущее значение. При настройке, если новое значение буквально "<code>bevel</code>",
@@ -843,7 +842,7 @@ idea from Mihai:
 
   <p>Когда вызывается метод <dfn id="dom-context-2d-getlinedash" title="dom-context-2d-getLineDash"><code>getLineDash()</code></dfn>, он должен вернуть вновь созданный массив, значения которого являются значениями объекта <a href="#dash-list">dash list</a>, в том же порядке.</p>
 
-  <p>Иногда полезно изменить "фазу" dash паттерна, например для достижения эффекта "бегущих муравьев". Фаза может быть установлена с  помощью атрибута <dfn id="dom-context-2d-linedashoffset" title="dom-context-2d-lineDashOffset"><code>lineDashOffset</code></dfn>. При получении, он должен возвратить текущее значение. При настройке,
+  <p>Иногда полезно изменить "фазу" паттерна пунктира, например для достижения эффекта "бегущих муравьев". Фаза может быть установлена с  помощью атрибута <dfn id="dom-context-2d-linedashoffset" title="dom-context-2d-lineDashOffset"><code>lineDashOffset</code></dfn>. При получении, он должен возвратить текущее значение. При настройке,
   бесконечные и NaN значения должны быть проигнорированы, оставив значение без изменений; другие значения должны изменить текущее значение на новое.</p>
 
   <p>Когда объект реализующий интерфейс <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code>
@@ -852,12 +851,12 @@ idea from Mihai:
 
    <hr>
 
-  <p>Когда пользовательский агент <dfn id="trace-a-path">отслеживает <span title="concept-path">путь</span></dfn>, <!-- <dfn>trace a path</dfn> -->
-  дает объект <var data-anolis-xref="">style</var> который реализует интерфейс <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code>, он должен выполнить следующий алгоритм. Этот алгоритм возвращает новый <a href="#concept-path" title="concept-path">путь</a>.</p>
+  <p>Когда пользовательский агент <dfn id="trace-a-path">чертит <span title="concept-path">путь</span></dfn>, <!-- <dfn>trace a path</dfn> -->
+  заданный объектом <var data-anolis-xref="">style</var>, который реализует интерфейс <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code>, он должен выполнить следующий алгоритм. Этот алгоритм возвращает новый <a href="#concept-path" title="concept-path">путь</a>.</p>
 
   <ol>
 
-   <li><p>Сделать <var data-anolis-xref="">path</var> пути который отслеживается.</p></li>
+   <li><p>Сделать <var data-anolis-xref="">path</var> пути который чертится.</p></li>
 
    <!-- PATH SANITIZATION -->
 
@@ -1142,7 +1141,7 @@ transform. ack Shaun Morris. -->
    <pre>context.font = 'italic 400 12px/2 Unknown Font, sans-serif';</pre>
 
    <p>...выражение <code>context.font</code> будет оценивать строку "<code>italic 12px "Unknown Font", sans-serif</code>". Значение
-   "400" font-weight не появляется, потому что это значение по умолчанию. Высота линии не появляется потому что она приравнивается к "normal" по умолчанию.</p>
+   "400" font-weight не появляется, потому что это значение по умолчанию. Высота линии не появляется, потому что она приравнивается к "normal" по умолчанию.</p>
 
   </div>
 
@@ -1154,18 +1153,18 @@ transform. ack Shaun Morris. -->
   <code>Документе</code></span>), тогда относящиеся ключевые слова должны быть интерпретированы по отношению к normal-weight 10px sans-serif
   по умолчанию.</p>
 
-  <p>Атрибут IDL <dfn id="dom-context-2d-textalign" title="dom-context-2d-textAlign"><code>textAlign</code></dfn>, при получении, должен возвращать текущее значение. При настройке, если значение одно из "<code>start</code>", "<code>end</code>", "<code>left</code>", "<code>right</code>", или "<code>center</code>", тогда значение должно быть изменено на новое значение. В другом случае, новое значение должно быть проигнорировано. Когда контекст создан, атрибут <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> должен изначально иметь значение "<code>start</code>".</p>
+  <p>Атрибут IDL <dfn id="dom-context-2d-textalign" title="dom-context-2d-textAlign"><code>textAlign</code></dfn>, при получении, должен возвращать текущее значение. При настройке, если значение одно из "<code>start</code>", "<code>end</code>", "<code>left</code>", "<code>right</code>", или "<code>center</code>", то значение должно быть изменено на новое значение. В другом случае, новое значение должно быть проигнорировано. Когда контекст создан, атрибут <code title="dom-context-2d-textAlign"><a href="#dom-context-2d-textalign">textAlign</a></code> должен изначально иметь значение "<code>start</code>".</p>
 
   <p>Атрибут IDL <dfn id="dom-context-2d-textbaseline" title="dom-context-2d-textBaseline"><code>textBaseline</code></dfn>, при получении, должен возвращать текущее значение. При настройке, если значение одно из "<code title="dom-context-2d-textBaseline-top"><a href="#dom-context-2d-textbaseline-top">top</a></code>", "<code title="dom-context-2d-textBaseline-hanging"><a href="#dom-context-2d-textbaseline-hanging">hanging</a></code>", "<code title="dom-context-2d-textBaseline-middle"><a href="#dom-context-2d-textbaseline-middle">middle</a></code>", "<code title="dom-context-2d-textBaseline-alphabetic"><a href="#dom-context-2d-textbaseline-alphabetic">alphabetic</a></code>",
   "<code title="dom-context-2d-textBaseline-ideographic"><a href="#dom-context-2d-textbaseline-ideographic">ideographic</a></code>",
   или "<code title="dom-context-2d-textBaseline-bottom"><a href="#dom-context-2d-textbaseline-bottom">bottom</a></code>",
-  тогда значение должно быть изменено на новое значение. В другом случае, новое значение должно быть проигнорировано. Когда объект реализующий интерфейс
+  то значение должно быть изменено на новое значение. В другом случае, новое значение должно быть проигнорировано. Когда объект реализующий интерфейс
   <code><a href="#canvasdrawingstyles">CanvasDrawingStyles</a></code> создан, атрибут <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code> должен изначально иметь значение "<code>alphabetic</code>".</p>
 
   </div>
 
   <p>Атрибут <code title="dom-context-2d-textBaseline"><a href="#dom-context-2d-textbaseline">textBaseline</a></code>
-  разрешает ключевым словам соответствовать точкам выравнивания шрифта:</p>
+  дает ключевым словам соответствие точкам выравнивания шрифта:</p>
 
   <!-- this is filler to make sure the TCP packet boundary doesn't fall in the middle of one of the NCRs below -->
   <!-- (because otherwise the parser in anolis screws it up) -->
@@ -1714,7 +1713,7 @@ try {
 
    <dd>
 
-    <p>Меняет матрицу преобразования, чтобы применить матрицу с заданными аргументами как описано ниже.</p>
+    <p>Меняет матрицу преобразования, чтобы применить матрицу с заданными аргументами, как описано ниже.</p>
 
    </dd>
 
@@ -1722,7 +1721,7 @@ try {
 
    <dd>
 
-    <p>Меняет матрицу преобразования <em>на</em> матрицу с заданными аргументами как описано ниже.</p>
+    <p>Меняет матрицу преобразования <em>на</em> матрицу с заданными аргументами, как описано ниже.</p>
 
    </dd>
 
@@ -1941,7 +1940,7 @@ try {
   перпендикулярной к линии пересекающей начальную и конечную точку, имели
   цвет в точке где эти две линии пересекаются (с цветами исходящими от <a href="#interpolation">интерполяции и экстраполяции</a> описанных выше). Точки в линейном градиенте должны преобразоваться как описано <a href="#transformations" title="dom-context-2d-transformation">текущей матрицей преобразования</a> при визуализации (рендеринге).</p>
 
-  <p>Если <span><var>x0</var> = <var>x1</var></span> и <span><var>y0</var> = <var>y1</var></span>, тогда линейный градиент не должен рисовать ничего.</p>
+  <p>Если <span><var>x0</var> = <var>x1</var></span> и <span><var>y0</var> = <var>y1</var></span>, то линейный градиент не должен рисовать ничего.</p>
 
   <p>Метод <dfn id="dom-context-2d-createradialgradient" title="dom-context-2d-createRadialGradient"><code>createRadialGradient(<var>x0</var>, <var>y0</var>, <var>r0</var>,
   <var>x1</var>, <var>y1</var>, <var>r1</var>)</code></dfn> принимает шесть аргументов, первые три представляют собой
@@ -1954,7 +1953,7 @@ try {
 
   <ol>
 
-   <li><p>Если <span><var>x<sub>0</sub></var> = <var>x<sub>1</sub></var></span> и <span><var>y<sub>0</sub></var> = <var>y<sub>1</sub></var></span> и <span><var>r<sub>0</sub></var> = <var>r<sub>1</sub></var></span>, тогда радиальный градиент не должен рисовать ничего. Прервать эти шаги.</p></li>
+   <li><p>Если <span><var>x<sub>0</sub></var> = <var>x<sub>1</sub></var></span> и <span><var>y<sub>0</sub></var> = <var>y<sub>1</sub></var></span> и <span><var>r<sub>0</sub></var> = <var>r<sub>1</sub></var></span>, то радиальный градиент не должен рисовать ничего. Прервать эти шаги.</p></li>
 
    <li>
 
@@ -2002,7 +2001,7 @@ try {
 
     <p>Если изображение не имеет данных, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">выдается</a> исключение
     <code>InvalidStateError</code>. Если второй аргумент
-    не один из допустимых, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">выдается</a> исключение <code>SyntaxError</code>. Если изображение еще не полностью декодировано, тогда аргумент возвращает null.</p>
+    не один из допустимых, <a href="http://www.w3.org/TR/WebIDL-1/#dfn-throw">выдается</a> исключение <code>SyntaxError</code>. Если изображение еще не полностью декодировано, то аргумент возвращает null.</p>
 
    </dd>
 
@@ -2066,7 +2065,7 @@ try {
 
   <h2 id="drawing-rectangles-to-the-canvas"><span class="secno">9 </span>Рисование прямоугольников на холсте</h2>
 
-  <p>Есть три метода которые сразу рисуют прямоугольники на битмапе. Каждый из них принимают четыре аргумента; первые два задают координаты <var>x</var> и <var>y</var> верхнего левого угла, а вторые два задают ширину <var>w</var> и высоту <var>h</var> прямоугольника, соответственно.</p>
+  <p>Есть три метода которые сразу рисуют прямоугольники на битмапе. Каждый из них принимает четыре аргумента; первые два задают координаты <var>x</var> и <var>y</var> верхнего левого угла, а вторые два задают ширину <var>w</var> и высоту <var>h</var> прямоугольника, соответственно.</p>
 
   <div class="impl">
 
@@ -2200,7 +2199,7 @@ try {
     <p>Для <code title="dom-context-2d-fillText"><a href="#dom-context-2d-filltext">fillText()</a></code>,
     <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> должен применяться к формам и <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code> должен быть проигнорирован. Для <code title="dom-context-2d-strokeText"><a href="#dom-context-2d-stroketext">strokeText()</a></code> наоборот: <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code>
     должен примениться к результату <a href="#trace-a-path" title="trace a
-    path">отслеживания</a> с помощью объекта
+    path">начертания</a> с помощью объекта
     <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> для стилей линий,
     и <code title="dom-context-2d-fillStyle"><a href="#dom-context-2d-fillstyle">fillStyle</a></code> должен быть проигнорирован.</p>
 
@@ -2501,7 +2500,7 @@ v6DVT (also check for '- -' bits in the part above) -->
   один раз.</p>
 
   <p>Метод <dfn id="dom-context-2d-stroke" title="dom-context-2d-stroke"><code>stroke()</code></dfn>
-  должен <a href="#trace-a-path" title="trace a path">отслеживать</a> путь,
+  должен <a href="#trace-a-path" title="trace a path">чертить</a> путь,
   используя объект <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> для стилей
   линий, а затем заполнить общую площадь сглаживания с помощью атрибута <code title="dom-context-2d-strokeStyle"><a href="#dom-context-2d-strokestyle">strokeStyle</a></code>.</p>
 
