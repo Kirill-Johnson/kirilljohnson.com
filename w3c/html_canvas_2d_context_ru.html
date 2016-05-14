@@ -856,7 +856,7 @@ idea from Mihai:
 
   <ol>
 
-   <li><p>Сделать <var data-anolis-xref="">path</var> пути который чертится.</p></li>
+   <li><p>Сделать <var data-anolis-xref="">path</var> копией пути который чертится.</p></li>
 
    <!-- PATH SANITIZATION -->
 
@@ -901,10 +901,10 @@ idea from Mihai:
      <li><p>Сделать <var data-anolis-xref="">current state</var> равным <i>off</i> (другие состояния являются <i>on</i>
      и <i>zero-on</i>).</p></li>
 
-     <li><p><i id='step-dash-on'>Dash on</i>: Сделать <var data-anolis-xref="">segment length</var> равным значению <var data-anolis-xref="">styles</var> <a href="#dash-list">dash
-     list</a>'s <var data-anolis-xref="">index</var>-й записью.</p></li>
+     <li><p><i id='step-dash-on'>Dash on</i>: Сделать <var data-anolis-xref="">segment length</var> значением стилей <var data-anolis-xref="">styles</var> списка тире <a href="#dash-list">dash
+     list</a> записью номер <var data-anolis-xref="">index</var>.</p></li>
 
-     <li><p>Инкрементировать <var data-anolis-xref="">position</var> по <var data-anolis-xref="">segment length</var>.</p></li>
+     <li><p>Увеличить <var data-anolis-xref="">position</var> на <var data-anolis-xref="">segment length</var>.</p></li>
 
      <li><p>Если <var data-anolis-xref="">position</var> больше чем <var data-anolis-xref="">subpath width</var>, тогда закончить эти подэтапы для этих подпутей и начать их снова для следующего подпути; если больше нет подпутей, тогда перейти к шагу помеченному как <i>convert</i>.</p></li>
 
