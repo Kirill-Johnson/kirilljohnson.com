@@ -406,7 +406,7 @@
 
   </div>
 
-  <p>2D context представляет собой плоскую декартову поверхность, начало которой
+  <p>2D context представляет собой прямоугольную систему координат, начало которой
   (0,0) находится в верхнем левом углу, с координатами пространства, где значения
   <var>x</var> идут вправо и значения <var>y</var> идут вниз.</p>
 
@@ -1798,7 +1798,7 @@ try {
   <code id="image-sources-for-2d-rendering-contexts:canvasrenderingcontext2d-4"><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> API, и размеры исходного изображения должны быть <a href="http://www.w3.org/TR/html/embedded-content-0.html#concept-video-intrinsic-width" id="image-sources-for-2d-rendering-contexts:concept-video-intrinsic-width">внутренней ширины</a> и <a href="http://www.w3.org/TR/html/embedded-content-0.html#concept-video-intrinsic-height" id="image-sources-for-2d-rendering-contexts:concept-video-intrinsic-height">внутренней высоты</a> от <a id="image-sources-for-2d-rendering-contexts:media-resource" href="http://www.w3.org/TR/html/embedded-content-0.html#media-resource">источника медиа</a>
   (т.е. после того как любая коррекция соотношения была применена).</p>
 
-  <p>Когда объект <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-6"><a href="#canvasimagesource">CanvasImageSource</a></code> представляет собой <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-3"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code>, растровое изображение элемента (bitmap) должно быть использовано как исходное изображение.</p>
+  <p>Когда объект <code id="image-sources-for-2d-rendering-contexts:canvasimagesource-6"><a href="#canvasimagesource">CanvasImageSource</a></code> представляет собой <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-3"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code>, битмап элемента должен быть использован как исходное изображение.</p>
 
   <p><dfn id="the-image-argument-is-not-origin-clean"><var>Аргумент image</var> не изначально чист</dfn> если это
   <code id="image-sources-for-2d-rendering-contexts:htmlimageelement-7"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlimageelement">HTMLImageElement</a></code> или <code id="image-sources-for-2d-rendering-contexts:htmlvideoelement-4"><a href="http://www.w3.org/TR/html/embedded-content-0.html#htmlvideoelement">HTMLVideoElement</a></code> чье <a id="image-sources-for-2d-rendering-contexts:origin-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">начало</a> не <a href="http://www.w3.org/TR/html/browsers.html#same-origin" id="image-sources-for-2d-rendering-contexts:same-origin">то же</a> как <a id="image-sources-for-2d-rendering-contexts:origin-2-2" href="http://www.w3.org/TR/html/browsers.html#origin-0">начало</a> заданное в <a id="image-sources-for-2d-rendering-contexts:entry-settings-object" href="http://www.w3.org/TR/html/webappapis.html#entry-settings-object">объекте настройки</a>, или если это <code id="image-sources-for-2d-rendering-contexts:htmlcanvaselement-4"><a href="http://www.w3.org/TR/html5/scripting-1.html#htmlcanvaselement">HTMLCanvasElement</a></code> битмап которого с ложным флагом <a href="http://www.w3.org/TR/html/scripting-1.html#concept-canvas-origin-clean" id="image-sources-for-2d-rendering-contexts:concept-canvas-origin-clean">origin-clean</a>, или если это объект
@@ -2678,7 +2678,7 @@ v6DVT (also check for '- -' bits in the part above) -->
   <p class="note">Когда холст рисуется, <a href="#drawing-model">модель рисования</a> требует источник для копирования перед тем как изображение нарисуется на холсте, так что можно скопировать части холста на перекрывающие его части.</p>
 
     <p>Если исходное изображение является растровым изображением, значение нарисованное на месте конечного прямоугольника
-    вычисляется с помощью фильтрации данных исходного изображения. Пользовательский агент может использовать любой алгоритм
+    вычисляется с помощью фильтрации данных исходного изображения. Агент пользователя может использовать любой алгоритм
     фильтрации (например, билинейной интерполяции или схожий). Когда алгоритм фильтрации
     требует значение пикселя за пределами оригинального изображения, он должен вместо этого использовать значение ближайшего пикселя с краю. Когда алгоритм фильтрации запрашивает значение пикселя извне исходного прямоугольника, но внутри оригинального изображения, следует использовать значение из оригинального изображения.</p>
 
@@ -2715,7 +2715,7 @@ v6DVT (also check for '- -' bits in the part above) -->
    <li>
    <p>Опционально, элемент управления <a href="#hit-region's-control" title="hit region's control">control</a>.</p>
 
-   <p><dfn id="hit-region's-control" title="hit region's control">Control</dfn> это ссылка на узел <code>Element</code>, к которому, в определенных условиях, пользовательский агент будет отправлять события, и из которого агент пользователя будет определять состояние hit области для целей доступных инструментов. (Control игнорируется когда он
+   <p><dfn id="hit-region's-control" title="hit region's control">Control</dfn> это ссылка на узел <code>Element</code>, к которому, в определенных условиях, агент пользователя будет отправлять события, и из которого агент пользователя будет определять состояние hit области для целей доступных инструментов. (Control игнорируется когда он
    не является потомком элемента canvas.)</p>
 
    </li>
@@ -2808,61 +2808,51 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   </ol>
 
-  <p><dfn id="the-region-representing-the-control">The region representing the control</dfn> <var>control</var> for a bitmap <var>bitmap</var> is the value returned by the following
-  algorithm (which can return a <a href="#hit-region">hit region</a> or
-  nothing):</p>
+  <p><dfn id="the-region-representing-the-control">Область представляющая элемент управления</dfn> <var>control</var> для битмапа <var>bitmap</var> это значение возвращенное с помощью следующиего
+  алгоритма (который может вернуть <a href="#hit-region">hit область</a> или ничего):</p>
 
   <ol>
 
-   <li><p>If <var>control</var> is null, return
-   nothing and abort these steps.</p></li>
+   <li><p>Если <var>control</var> равен null, не возвращать ничего и прервать эти шаги.</p></li>
 
-   <li><p>Let <var>list</var> be the <a href="#hit-region-list">hit region
-   list</a> associated with <var>bitmap</var>.</p></li>
+   <li><p>Сделать <var>list</var> <a href="#hit-region-list">списком hit областей</a> связанным с <var>bitmap</var>.</p></li>
 
-   <li><p>If there is a <a href="#hit-region">hit region</a> in <var>list</var> whose <a href="#hit-region's-control" title="hit region's
-   control">control</a> is <var>control</var>, then
-   return that <a href="#hit-region">hit region</a> and abort these
-   steps.</p></li>
+   <li><p>Если есть <a href="#hit-region">hit область</a> в <var>list</var> чей <a href="#hit-region's-control" title="hit region's
+   control">control</a> равен <var>control</var>, то
+   возвратить эту <a href="#hit-region">hit область</a> и прервать эти шаги.</p></li>
 
-   <li><p>Otherwise, return nothing.</p></li>
+   <li><p>В другом случае, не возвращать ничего.</p></li>
 
   </ol>
 
-  <p><dfn id="the-control-represented-by-a-region">The control represented by a region</dfn> <var>region</var> for a <code>canvas</code> element <var>ancestor</var> is the value returned by the following
-  algorithm (which can return an element or nothing):</p>
+  <p><dfn id="the-control-represented-by-a-region">Элемент управления представленный областью</dfn> <var>region</var> для <code>canvas</code> элемента <var>ancestor</var> это значение возвращаемое следующим алгоритмом (который может вернуть элемент или ничего):</p>
 
   <ol>
 
-   <li><p>If <var>region</var> has no <a href="#hit-region's-control" title="hit
-   region's control">control</a>, return nothing and abort these
-   steps.</p></li>
+   <li><p>Если <var>region</var> не имеет <a href="#hit-region's-control" title="hit
+   region's control">control</a>, не возвращать ничего и прервать эти шаги.</p></li>
 
-   <li><p>Let <var>control</var> be <var>region</var>'s <a href="#hit-region's-control" title="hit region's
-   control">control</a>.</p></li>
+   <li><p>Сделать <var>control</var> <a href="#hit-region's-control" title="hit region's
+   control">элементом управления</a> области <var>region</var>.</p></li>
 
-   <li><p>If <var>control</var> is not a descendant of <var>ancestor</var>, then return nothing and abort these
-   steps.</p></li>
+   <li><p>Если <var>control</var> не наследник <var>ancestor</var>, то не выдавать ничего и прервать эти шаги.</p></li>
 
-   <li><p>Otherwise, return <var>control</var>.</p></li>
+   <li><p>В другом случае, возвратить <var>control</var>.</p></li>
 
   </ol>
 
-  <p><dfn id="the-region-for-a-pixel">The region for a pixel</dfn> <var>pixel</var> on a bitmap
-  <var>bitmap</var> is the value returned by the following
-  algorithm (which can return a
-  <a href="#hit-region">hit region</a> or nothing):</p>
+  <p><dfn id="the-region-for-a-pixel">Область для пикселя</dfn> <var>pixel</var> на битмапе
+  <var>bitmap</var> это значение выдаваемое следующим алгоритмом (который может вернуть
+  <a href="#hit-region">hit region</a> или ничего):</p>
 
   <ol>
 
-   <li><p>Let <var>list</var> be the <a href="#hit-region-list">hit region
-   list</a> associated with <var>bitmap</var>.</p></li>
+   <li><p>Сделать <var>list</var> <a href="#hit-region-list">списком hit областей</a> связанным с <var>bitmap</var>.</p></li>
 
-   <li><p>If there is a <a href="#hit-region">hit region</a> in <var>list</var> whose <a href="#hit-region's-path">path</a> contains <var>pixel</var>,
-   then return that <a href="#hit-region">hit region</a> and abort these
-   steps.</p></li>
+   <li><p>Если есть <a href="#hit-region">hit область</a> в <var>list</var> чей <a href="#hit-region's-path">путь</a> содержит <var>pixel</var>,
+   то возвратить эту <a href="#hit-region">hit область</a> и прервать эти шаги.</p></li>
 
-   <li><p>Otherwise, return nothing.</p></li>
+   <li><p>В другом случае, не возвращать ничего.</p></li>
 
   </ol>
 <!--
@@ -2888,29 +2878,23 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <hr>
 
-  <p>When the <dfn id="dom-context-2d-addhitregion" title="dom-context-2d-addHitRegion"><code>addHitRegion()</code></dfn>
-  method is invoked, the user agent must run the following steps:</p>
+  <p>Когда вызван метод <dfn id="dom-context-2d-addhitregion" title="dom-context-2d-addHitRegion"><code>addHitRegion()</code></dfn>, агент пользователя должен выполнить следующие шаги:</p>
 
   <ol>
 
-   <li><p>Let <var>arguments</var> be the dictionary object
-   provided as the method's argument.</p></li>
+   <li><p>Сделать <var>arguments</var> объектом для аргументов метода.</p></li>
 
-   <li><p>Let <var title="dom-HitRegionOptions-path">source path</var> be the <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>
-   object's <a href="#current-default-path">current default path</a>.</p></li>
+   <li><p>Сделать <var title="dom-HitRegionOptions-path">source path</var> <a href="#current-default-path">текущим путем по умолчанию</a> объекта <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>.</p></li>
 
-   <li><p>Let <var>specified pixels</var> be the pixels
-   contained in <var>source path</var>.
+   <li><p>Сделать <var>specified pixels</var> пикселями внутри <var>source path</var>.
 
-   </p></li><li><p>Remove from <var>specified pixels</var> any pixels not contained within the <a href='#clipping-region'>clipping
+   </p></li><li><p>Удалить из <var>specified pixels</var> все пиксели которые не содержатся внутри <a href='#clipping-region'>clipping
    region</a>.</p></li>
 
-   <li><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is an
-   empty string, let it be null instead.</p></li>
+   <li><p>Если <code title="dom-HitRegionOptions-id">id</code> объекта <var>arguments</var> является пустой строкой, сделать его null.</p></li>
 
-   <li><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is null and the <var>arguments</var>
-   object's <code title="dom-HitRegionOptions-control">control</code> member is null,
-   throw a <code>NotSupportedError</code> exception and abort these steps.</p></li>
+   <li><p>Если <code title="dom-HitRegionOptions-id">id</code> объекта <var>arguments</var> является null и <code title="dom-HitRegionOptions-control">control</code> объекта <var>arguments</var> является null,
+   выдать исключение <code>NotSupportedError</code> и прервать эти шаги.</p></li>
 
    <li><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is not null, then
    let <var>previous region for this ID</var> be <a href="#the-region-identified-by-the-id">the
@@ -3663,7 +3647,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <h2 id="shadows"><span class="secno">16 </span><dfn>Тени</dfn></h2>
 
-  <p>Все операции рисования затронуты четырьмя глобальными теневыми атрибутами.</p>
+  <p>Все операции рисования затрагиваются четырьмя глобальными атрибутами теней.</p>
 
   <dl class="domintro">
 
@@ -3684,7 +3668,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
     <p>Возвращает текущее смещение тени.</p>
 
-    <p>Может быть настроен, чтобы изменить смешение тени. Значения отличные от конечных чисел, игнорируются.</p>
+    <p>Может быть настроен, чтобы изменить смешение тени. Значения отличные от конечных чисел игнорируются.</p>
 
    </dd>
 
@@ -3813,22 +3797,22 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <h2 id="drawing-model"><span class="secno">17 </span><dfn>Модель рисования</dfn></h2>
 
-  <p>Когда форма или изображение нарисованы, пользовательские агенты должны следовать этим шагам в указанном порядке (или действовать как будто следуют):</p>
+  <p>Когда форма или изображение нарисованы, агенты пользователей должны следовать этим шагам в указанном порядке (или действовать как будто следуют):</p>
 
   <ol>
 
-   <li><p>Визуализировать форму или изображение на бесконечно прозрачное черное растровое изображение, создавая изображение <var>A</var>, как описано в предыдущих разделах. Для фигур текущее заполнение, обводки и стили должны быть выполнены, и сглаживание также должено быть подвергнуто текущей матрице преобразования.</p></li>
+   <li><p>Визуализировать форму или изображение на бесконечно прозрачный черный битмап, создавая изображение <var>A</var>, как описано в предыдущих разделах. Для фигур текущее заполнение, обводки и стили должны быть выполнены, и сглаживание также должено быть подвергнуто текущей матрице преобразования.</p></li>
 
    <li><p><a href="#when-shadows-are-drawn">Когда тени нарисованы</a>, визуализировать тень с изображения <var>A</var>, используя текущие стили изображения, создавая изображение <var>B</var>.</p></li>
 
-   <li><p><a href="#when-shadows-are-drawn">Когда тени нарисованы</a>, умножать альфа-компонент каждого пикселя в <var>B</var> с помощью <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
+   <li><p><a href="#when-shadows-are-drawn">Когда тени нарисованы</a>, умножить альфа-компонент каждого пикселя в <var>B</var> с помощью <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
 
-   <li><p><a href="#when-shadows-are-drawn">Когда тени нарисованы</a>, добавить <var>B</var> в пределах <a href="#clipping-region">clipping region</a> над текущим растровым изображением холста с помощью текущего оператора композиции.</p></li>
+   <li><p><a href="#when-shadows-are-drawn">Когда тени нарисованы</a>, добавить <var>B</var> в пределах <a href="#clipping-region">clipping region</a> над текущим битмапом холста с помощью current composition operator.</p></li>
 
    <li><p>Умножить альфа-компонент каждого пикселя в <var>A</var> с помощью <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>.</p></li>
 
    <li><p>Добавить <var>A</var> в пределах <a href="#clipping-region">clipping
-   region</a> над текущим растровым изображением холста с помощью текущего оператора композиции.</p></li>
+   region</a> над текущим битмапом холста с помощью current composition operator.</p></li>
 
   </ol>
 
@@ -3838,64 +3822,16 @@ function AddCloud(data, x, y) { ... }</pre>
   <h2 id="best-practices"><span class="secno">18 </span>Лучшая практика</h2>
 
   <p><i>Этот раздел не является нормативным.</i></p>
-  <p>Когда холст (canvas) является интерактивным, авторы должны включать фокусируемые элементы в содержание запасного элемента, соответствующие каждой фокусируемой части холста.</p>
+  <p>Когда холст (canvas) является интерактивным, авторы должны включать фокусируемые элементы в содержание резерва элемента, соответствующие каждой фокусируемой части холста.</p>
 
-  <p>To indicate which focusable part of the canvas is currently
-  focused, authors should use the <code title="dom-context-2d-drawFocusIfNeeded"><a href="#dom-context-2d-drawfocusifneeded">drawFocusIfNeeded()</a></code>
-  method, passing it the element for which an outline is being drawn. This
-  method only draws the focus outline if the element is focused, so that
-  it can simply be called whenever drawing the element, without
-  checking whether the element is focused or not first.</p>
+  <p>Для того чтобы указать какая часть холста сейчас сфокусирована, авторы должны использовать метод <code title="dom-context-2d-drawFocusIfNeeded"><a href="#dom-context-2d-drawfocusifneeded">drawFocusIfNeeded()</a></code>, передавая ему элемент для которого рисуется контур. Этот метод рисует контур только если элемент сфокусирован, так что он может просто быть вызван при рисовании элемента, без проверки является ли элемент сфокусированым или нет.</p>
+<hr>
 
-  <p>Authors should avoid implementing text editing controls using the
-  <code>canvas</code> element. Doing so has a large number of
-  disadvantages:</p>
+  <p>Авторы должны избегать реализации элементов редактирования текста при использовании
+  <code>canvas</code>, потому что это имеет множество минусов: придется переписывать всё начиная от движения знака вставки до нативных возможностей типа копировать-вставить.</p>
 
-  <ul>
-
-   <li>Mouse placement of the caret has to be reimplemented.</li>
-
-   <li>Keyboard movement of the caret has to be reimplemented (possibly across lines, for multiline text input).</li>
-
-   <li>Scrolling of the text field has to be implemented (horizontally for long lines, vertically for multiline input).</li>
-
-   <li>Native features such as copy-and-paste have to be reimplemented.</li>
-
-   <li>Native features such as spell-checking have to be reimplemented.</li>
-
-   <li>Native features such as drag-and-drop have to be reimplemented.</li>
-
-   <li>Native features such as page-wide text search have to be reimplemented.</li>
-
-   <li>Native features specific to the user, for example custom text
-   services, have to be reimplemented. This is close to impossible
-   since each user might have different services installed, and there
-   is an unbounded set of possible such services.</li>
-
-   <li>Bidirectional text editing has to be reimplemented.</li>
-
-   <li>For multiline text editing, line wrapping has to be implemented for all relevant languages.</li>
-
-   <li>Text selection has to be reimplemented.</li>
-
-   <li>Dragging of bidirectional text selections has to be reimplemented.</li>
-
-   <li>Platform-native keyboard shortcuts have to be reimplemented.</li>
-
-   <li>Platform-native input method editors (IMEs) have to be reimplemented.</li>
-
-   <li>Undo and redo functionality has to be reimplemented.</li>
-
-   <li>Accessibility features such as magnification following the
-   caret or selection have to be reimplemented.</li>
-
-  </ul>
-
-  <p>This is a huge amount of work, and authors are most strongly
-  encouraged to avoid doing any of it by instead using the
-  <code>input</code> element, the <code>textarea</code> element, or
-  the <code title="attr-contenteditable">contenteditable</code>
-  attribute.</p>
+  <p>Это огромный объем работы, поэтому авторы должны быть сильно мотивированы не делать этого. Вместо этого можно использовать элемент
+  <code>input</code>, элемент <code>textarea</code> или атрибут <code title="attr-contenteditable">contenteditable</code>.</p>
 
 
   <h2 id="examples"><span class="secno">19 </span>Примеры</h2>
