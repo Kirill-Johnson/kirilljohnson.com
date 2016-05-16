@@ -402,7 +402,7 @@
 
   <div class="impl">
 
-  <p>Когда метод <a href='http://www.w3.org/TR/html5/scripting-1.html#dom-canvas-getcontext'><code title="dom-canvas-getContext">getContext()</code></a> элемента <a href='http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element'><code>canvas</code></a> <span title="getContext-return">возвращает новый объект для <var>contextId</var></span> <code title="canvas-context-2d"><a href="#canvas-context-2d">2d</a></code>, пользовательский агент должен вернуть новый объект <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>. Любые дополнительные аргументы игнорируются.</p>
+  <p>Когда метод <a href='http://www.w3.org/TR/html5/scripting-1.html#dom-canvas-getcontext'><code title="dom-canvas-getContext">getContext()</code></a> элемента <a href='http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element'><code>canvas</code></a> <span title="getContext-return">возвращает новый объект для <var>contextId</var></span> <code title="canvas-context-2d"><a href="#canvas-context-2d">2d</a></code>, агент пользователя должен вернуть новый объект <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code>. Любые дополнительные аргументы игнорируются.</p>
 
   </div>
 
@@ -840,7 +840,7 @@ idea from Mihai:
 
   </ol>
 
-  <p>Когда вызывается метод <dfn id="dom-context-2d-getlinedash" title="dom-context-2d-getLineDash"><code>getLineDash()</code></dfn>, он должен вернуть вновь созданный массив, значения которого являются значениями объекта <a href="#dash-list">dash list</a>, в том же порядке.</p>
+  <p>Когда вызывается метод <dfn id="dom-context-2d-getlinedash" title="dom-context-2d-getLineDash"><code>getLineDash()</code></dfn>, он должен вернуть созданный массив, значения которого являются значениями объекта <a href="#dash-list">dash list</a>, в том же порядке.</p>
 
   <p>Иногда полезно изменить "фазу" паттерна пунктира, например для достижения эффекта "бегущих муравьев". Фаза может быть установлена с  помощью атрибута <dfn id="dom-context-2d-linedashoffset" title="dom-context-2d-lineDashOffset"><code>lineDashOffset</code></dfn>. При получении, он должен возвратить текущее значение. При настройке,
   бесконечные и NaN значения должны быть проигнорированы, оставив значение без изменений; другие значения должны изменить текущее значение на новое.</p>
@@ -1033,7 +1033,7 @@ idea from Mihai:
 </div>
 
 
-    <p>Подпути во вновь созданном пути должны проходить по часовой стрелке, независимо от направления путей в <var data-anolis-xref="">path</var>.</p>
+    <p>Подпути во созданном пути должны проходить по часовой стрелке, независимо от направления путей в <var data-anolis-xref="">path</var>.</p>
 
     <!-- ...because both of these examples result in two lines (assuming non-zero winding rules,
     things are different under even/odd), there's no "hole" where the lines overlap:
@@ -1576,7 +1576,7 @@ try {
 
   <p>Метод <dfn id="dom-context-2d-closepath" title="dom-context-2d-closePath"><code>closePath()</code></dfn>
   не должен ничего делать если путь объекта не имеет подпутей.
-  В другом случае, он должен пометить последний подпуть как закрытый, создать новый подпуть первая точка которого та же что и первая точка предыдущего подпути, и наконец довабить этот подпуть к path.</p>
+  В другом случае, он должен пометить последний подпуть как закрытый, создать новый подпуть первая точка которого та же что и первая точка предыдущего подпути, и наконец добавить этот подпуть к path.</p>
 
   <p class="note">Если последний подпуть имел больше чем одну точку в своем списке точек, то это эквивалентно добавлению прямой линии, соединяющей последнюю точку с первой точкой, таким образом "закрывает" форму, и потом повторяет последний (возможно подразумеваемый) вызов <code title="dom-context-2d-moveTo"><a href="#dom-context-2d-moveto">moveTo()</a></code>.</p>
 
@@ -1733,7 +1733,7 @@ try {
   угол поворота по часовой стрелке выраженный в радианах.</p>
 
   <p>Метод <dfn id="dom-context-2d-translate" title="dom-context-2d-translate"><code>translate(<var>x</var>, <var>y</var>)</code></dfn> должен добавить преобразование перемещения, описанное аргументами в матрице преобразования. Аргумент <var>x</var> представляет собой
-  дистанцию перемещение в горизонтальном направлении, и аргумент <var>y</var> представляет собой дистанцию перемещения в вертикальном направлении. Аргументы в координатном пространстве единиц.</p>
+  дистанцию перемещения в горизонтальном направлении, и аргумент <var>y</var> представляет собой дистанцию перемещения в вертикальном направлении. Аргументы в координатном пространстве единиц.</p>
 
   <p>Метод <dfn id="dom-context-2d-transform" title="dom-context-2d-transform"><code>transform(<var>a</var>, <var>b</var>, <var>c</var>, <var>d</var>, <var>e</var>, <var>f</var>)</code></dfn> должен заместить текущую матрицу преобразования результатом умножения текущей матрицы и матрицы описанной с помощью:</p>
 
@@ -2401,7 +2401,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 <!--ADD-TOPIC:Security-->
   Если при выполнении этих измерений необходимо использовать шрифт, который имеет
   <span>происхождение</span> которое не <span title="same
-  origin">то же</span> что у объекта <code>Document</code> который имеет
+  origin">то же</span> что у объекта <code>Document</code> который
   содержит элемент <code>canvas</code> (даже если "использование шрифта" означает
   просто проверку имеет ли этот шрифт особый глиф, перед
   переходом к другому шрифту), тогда метод должен выдать исключение
@@ -2896,89 +2896,74 @@ v6DVT (also check for '- -' bits in the part above) -->
    <li><p>Если <code title="dom-HitRegionOptions-id">id</code> объекта <var>arguments</var> является null и <code title="dom-HitRegionOptions-control">control</code> объекта <var>arguments</var> является null,
    выдать исключение <code>NotSupportedError</code> и прервать эти шаги.</p></li>
 
-   <li><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is not null, then
-   let <var>previous region for this ID</var> be <a href="#the-region-identified-by-the-id">the
-   region identified by the ID</a> given by the <code title="dom-HitRegionOptions-id">id</code> member's value in this
-   <code>canvas</code> element. If the <code title="dom-HitRegionOptions-id">id</code> member is null or no such
-   region currently exists, let <var>previous region for this
-   ID</var> be null.</p></li>
+   <li><p>Если <code title="dom-HitRegionOptions-id">id</code> объекта <var>arguments</var> является null, то сделать <var>previous region for this ID</var> <a href="#the-region-identified-by-the-id">областью идентифицируемой ID</a> заданным значением <code title="dom-HitRegionOptions-id">id</code> для этого
+   <code>canvas</code>. Если <code title="dom-HitRegionOptions-id">id</code> является null или такой области сейчас нет, сделать <var>previous region for this ID</var> равным null.</p></li>
 
    <li>
-    <p>If the <var>specified pixels</var> has no pixels, throw a
-    <code>NotSupportedError</code> exception and abort these
-    steps.</p>
+    <p>Если <var>specified pixels</var> не содержат пикселей, выдать исключение
+    <code>NotSupportedError</code> и прервать эти шаги.</p>
 
    </li>
 
 
    <li>
 
-    <p>Let <var>region</var> be a newly created <a href="#hit-region">hit
-    region</a>, with its information configured as follows:</p>
+    <p>Сделать <var>region</var> созданной <a href="#hit-region">hit
+    областью</a>, с ее информацией настроенной как:</p>
 
     <dl>
 
-     <dt><a href="#hit-region's-path">Hit region's path</a>
+     <dt><a href="#hit-region's-path">Путь hit области</a>
 
-     </dt><dd><p>The <var>specified pixels</var>.
+     </dt><dd><p><var>specified pixels</var>.
 
 
-     </p></dd><dt><a href="#hit-region's-bounding-circumference">Hit region's bounding circumference</a>
+     </p></dd><dt><a href="#hit-region's-bounding-circumference">Ограничивающая окружность hit области</a>
 
-     </dt><dd><p>A user-agent-defined shape that wraps the pixels contained
-     in <var>source path</var>. (In the simplest case, this
-     can just be the bounding rectangle; this specification allows it
-     to be any shape in order to allow other interfaces.)
+     </dt><dd><p>Определенная агентом пользователя форма которая оборачивает пиксели содержащиеся в <var>source path</var>. (В простом случае, это может быть просто ограничивающий прямоугольник; эта спецификация позволяет ему иметь любую форму, чтобы поддерживать разные интерфейсы.)
 
-     </p></dd><dt><a href="#hit-region's-id">Hit region's ID</a>
+     </p></dd><dt><a href="#hit-region's-id">ID hit области</a>
 
-     </dt><dd><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-id">id</code> member is not null: the
-     value of the <code title="dom-HitRegionOptions-id">id</code>
-     member. Otherwise, <var>region</var> has no <a href="#hit-region's-id" title="hit region's id">id</a>.
+     </dt><dd><p>Если <code title="dom-HitRegionOptions-id">id</code> объекта <var>arguments</var> не является null: то значение <code title="dom-HitRegionOptions-id">id</code>. В другом случае, <var>region</var> не имеет <a href="#hit-region's-id" title="hit region's id">id</a>.
 
      </p></dd><dt><a href="#hit-region's-control">Hit region's control</a>
 
-     </dt><dd><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-control">control</code> member is not
-     null: the value of the <code title="dom-HitRegionOptions-control">control</code> member.
-     Otherwise, <var>region</var> has no <a href="#hit-region's-control" title="hit
+     </dt><dd><p>Если <code title="dom-HitRegionOptions-control">control</code> объекта <var>arguments</var> не является
+     null: то значение <code title="dom-HitRegionOptions-control">control</code>.
+     В другом случае, <var>region</var> не имеет <a href="#hit-region's-control" title="hit
      region's control">control</a>.
 
     </p></dd></dl>
 
    </li>
 
-   <li><p>If the <var>arguments</var> object's <code title="dom-HitRegionOptions-control">control</code> member is not
-   null, then let <var>previous region for the control</var>
-   be <a href="#the-region-representing-the-control">the region representing the control</a> given by the
-   <code title="dom-HitRegionOptions-control">control</code> member's
-   value for this <code>canvas</code> element, if any. If the <code title="dom-HitRegionOptions-control">control</code> member is null
-   or no such region currently exists, let <var>previous
-   region for the control</var> be null.</p></li>
+   <li><p>Если <code title="dom-HitRegionOptions-control">control</code> объекта <var>arguments</var> не является
+   null, то сделать <var>previous region for the control</var>
+   <a href="#the-region-representing-the-control">областью представляющей control</a> заданным с
+   <code title="dom-HitRegionOptions-control">control</code> значением этого <code>canvas</code> элемента. Если <code title="dom-HitRegionOptions-control">control</code> является null
+   или такой области сейчас нет, сделать <var>previous
+   region for the control</var> равным null.</p></li>
 
 
-   <li><p>If there is a <var>previous region with this
-   control</var>, remove it from the <code>canvas</code> element's
-   <a href="#hit-region-list">hit region list</a>.</p></li>
+   <li><p>Если есть <var>previous region with this
+   control</var>, удалить его с <a href="#hit-region-list">списка hit областей</a>  <code>canvas</code>.</p></li>
 
-   <li><p>If the arguments object's <code title="dom-HitRegionOptions-control">
-   control</code> member is not null, <a href='#inform'>inform the user</a> of the location of the region
-   representing the <code title="dom-HitRegionOptions-control">control</code>
-   given by the control member's value for this <code>canvas</code> element, if any.
-   The full location of the corresponding fallback element, pertaining
-   to the <code title="dom-HitRegionOptions-control">control</code>,
-   as represented by the region is passed to the  accessibility API, if supported.</p></li>
+   <li><p>Если <code title="dom-HitRegionOptions-control">
+   control</code> объекта arguments не является null, <a href='#inform'>проинформировать пользователя</a> о расположении области
+   представляющей <code title="dom-HitRegionOptions-control">control</code>
+   заданный с помощью значения control для этого элемента <code>canvas</code>.
+   Полное местонахождение соответствующего резервного элемента,
+   относящегося к <code title="dom-HitRegionOptions-control">control</code>,
+   передается к доступному API, если поддерживается.</p></li>
 
-   <li><p>If there is a <var>previous region with this
-   ID</var>, remove it from the <code>canvas</code> element's <a href="#hit-region-list">hit region
-   list</a>.</p></li>
+   <li><p>Если есть <var>previous region with this
+   ID</var>, удалить его со <a href="#hit-region-list">списка hit областей</a> <code>canvas</code> .</p></li>
 
-   <li><p>Add <var>region</var> to the <code>canvas</code>
-   element's <a href="#hit-region-list">hit region list</a>.</p></li>
+   <li><p>Добавить <var>region</var> на <a href="#hit-region-list">список hit областей</a> <code>canvas</code>.</p></li>
 
   </ol>
 
-  <p>When the <dfn id="dom-context-2d-removehitregion" title="dom-context-2d-removeHitRegion"><code>removeHitRegion()</code></dfn>
-  method is invoked, the user agent must run the following steps:</p>
+  <p>Когда вызван метод <dfn id="dom-context-2d-removehitregion" title="dom-context-2d-removeHitRegion"><code>removeHitRegion()</code></dfn>, агент пользователя должен выполнить следующие шаги:</p>
 
   <ol>
 
@@ -3822,7 +3807,7 @@ function AddCloud(data, x, y) { ... }</pre>
   <h2 id="best-practices"><span class="secno">18 </span>Лучшая практика</h2>
 
   <p><i>Этот раздел не является нормативным.</i></p>
-  <p>Когда холст (canvas) является интерактивным, авторы должны включать фокусируемые элементы в содержание резерва элемента, соответствующие каждой фокусируемой части холста.</p>
+  <p>Когда холст является интерактивным, авторы должны включать фокусируемые элементы в содержание резерва элемента, соответствующие каждой фокусируемой части холста.</p>
 
   <p>Для того чтобы указать какая часть холста сейчас сфокусирована, авторы должны использовать метод <code title="dom-context-2d-drawFocusIfNeeded"><a href="#dom-context-2d-drawfocusifneeded">drawFocusIfNeeded()</a></code>, передавая ему элемент для которого рисуется контур. Этот метод рисует контур только если элемент сфокусирован, так что он может просто быть вызван при рисовании элемента, без проверки является ли элемент сфокусированым или нет.</p>
 <hr>
