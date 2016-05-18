@@ -3048,43 +3048,29 @@ partial dictionary <span>MouseEventInit</span> {
 
   </ol>
 
-  <p class="note">This approach simplifies event handling by not
-  <a href="#dom-mouseevent-region">re-targeting
-  the event</a>.  The event is dispatched as normal once the event.region
-  attribute is initialized to the active hit region's ID.  The event is
-  received by the canvas element allowing the author to define the
-  behavior of the event.</p>
+  <p class="note">Такой подход упрощает обработку событий, <a href="#dom-mouseevent-region">не перенацеливая событие</a>. Событие отправляется в обычном режиме как только атрибут event.region установлен к активному ID hit области.  Событие полученное с помощью элемента canvas позволяет автору определять поведение события.</p>
   <hr>
 
-  <p>User agents are encouraged to make use of the information present
-  in a <code>canvas</code> element's <a href="#hit-region-list">hit region list</a> to
-  improve the accessibility of <code>canvas</code> elements.</p>
+  <p>Агентам пользователя рекомендуется использовать информацию, предоставленную в <a href="#hit-region-list">списке hit областей</a> элемента <code>canvas</code> для улучшения доступности элементов <code>canvas</code>.</p>
 
-  <p>Each <a href="#hit-region">hit region</a> should be handled in a fashion
-  equivalent to a node in a virtual DOM tree rooted at the
-  <code>canvas</code> element. The hierarchy of this virtual DOM tree
-  must match the hierarchy of the <a href="#hit-region" title="hit region">hit
-  regions</a>. <!--, as described by the <span title="hit region's
+  <p>Каждая <a href="#hit-region">hit область</a> должна быть обработана в эквиваленте узла в виртуальном дереве DOM с корнем на
+  <code>canvas</code> элементе. Иерархия этого виртуального дерева DOM
+  должна соответствовать иерархии <a href="#hit-region" title="hit region">hit
+  областей</a>. <!--, as described by the <span title="hit region's
   parent">parent</span> of each region. Regions without a <span
   title="hit region's parent">parent</span> must be treated as
   children of the <code>canvas</code> element for the purpose of this
-  virtual DOM tree.--> For each node in such a DOM tree, the <a href="#hit-region's-bounding-circumference">hit
-  region's bounding circumference</a> gives the region of the
-  screen to use when representing the node (if appropriate).</p>
+  virtual DOM tree.--> Для каждого узла в таком дереве DOM, <a href="#hit-region's-bounding-circumference">ограничивающая окружность hit области</a> задает область экрана для использования при представлении узла (если необходимо).</p>
 
-  <p>The semantics of a <a href="#hit-region">hit region</a> for the purposes of
-  this virtual DOM tree are those of the <a href="#hit-region's-control">hit region's
-  control</a>, if it has one.<!--, or else of a non-interactive element
+  <p>Семантика <a href="#hit-region">hit области</a> для целей
+  этого виртуального дерева DOM это <a href="#hit-region's-control">control hit области</a>, если имеется.<!--, or else of a non-interactive element
   whose ARIA role, if any, is that given by the <span>hit region's
   ARIA role</span>, and whose textual representation, if any, is given
   by the <span>hit region's label</span>.--></p>
 
-  <p>For the purposes of accessibility tools, when an element <var>C</var> is a descendant of a <code>canvas</code> element
-  and there is <a href="#the-region-representing-the-control" title="the region representing the control">a
-  region representing the control</a> <var>C</var> for that
-  <code>canvas</code> element, then the element's position relative to
-  the document should be presented as if it was that region in the
-  <code>canvas</code> element's virtual DOM tree.</p>
+  <p>Для целей доступных инструментов, когда элемент <var>C</var> является потомком элемента <code>canvas</code>
+  и есть <a href="#the-region-representing-the-control" title="the region representing the control">область представляющая control</a> <var>C</var>, то позиция элемента относительно документа должна быть представлена как если бы эта область была в виртуальном дереве DOM элемента
+  <code>canvas</code>.</p>
 
   <hr>
 
