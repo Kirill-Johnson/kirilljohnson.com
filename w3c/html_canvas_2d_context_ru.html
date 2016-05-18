@@ -2967,45 +2967,36 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   <ol>
 
-   <li><p>Let <var>region</var> be <a href="#the-region-identified-by-the-id">the region
-   identified by the ID</a> given by the method's argument in this
-   <code>canvas</code> element, if any. If no such region currently
-   exists, abort these steps.</p>
+   <li><p>Сделать <var>region</var> <a href="#the-region-identified-by-the-id">областью идентифицируемой с помощью ID</a> заданным с помощью аргумента метода в этом
+   <code>canvas</code> элементе, если есть. Если нет такой области на данный момент, прервать эти шаги.</p>
 
-   <p class="note"> If the method's argument is an empty string, then no region will match.</p>
+   <p class="note"> Если аргумент метода это пустая строка, то ни одна область не будет соответствовать.</p>
 
-   </li><li><p>Remove <var>region</var> from the <code>canvas</code> element's
-   <a href="#hit-region-list">hit region list</a>.</p></li>
+   </li><li><p>Удалить <var>region</var> со <a href="#hit-region-list">списка hit областей</a> элемента <code>canvas</code>.</p></li>
 
 
 
   </ol>
 
-    <p>When the <dfn id="dom-context-2d-clearhitregions" title="dom-context-2d-clearHitRegions"><code>clearHitRegions()</code></dfn>
-  method is invoked, the user agent must run the following steps:</p>
+    <p>Когда вызван метод <dfn id="dom-context-2d-clearhitregions" title="dom-context-2d-clearHitRegions"><code>clearHitRegions()</code></dfn>, агент пользователя должен выполнить следующие шаги:</p>
 
   <ol>
 
-   <li><p>Remove all <var>hit regions</var>
-   from the <code>canvas</code> element and clear the element's <a href="#hit-region-list">hit region list</a>. If no regions currently
-   exist, abort these steps.</p></li>
+   <li><p>Удалить все <var>hit regions</var>
+   с элемента <code>canvas</code> и очистить его <a href="#hit-region-list">список hit областей</a>. Если нет областей на данный момент, прервать эти шаги.</p></li>
 
   </ol>
 
-  <p class="note">Calling <code title="dom-context-2d-clearRect"><a href="#dom-context-2d-clearrect">clearRect()</a></code> is a way
-  to clear all or some hit regions. Calling clearHitRegions()
-  removes all hit regions and clears the hit region list. The <a href="#hit-region-list">hit region
-  list</a> itself is also reset when the rendering context is reset.
-  For example, when a <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> object is
-  bound to or unbound from a <code>canvas</code>, or the dimensions of the bitmap are changed.</p>
+  <p class="note">Вызов <code title="dom-context-2d-clearRect"><a href="#dom-context-2d-clearrect">clearRect()</a></code> это способ очистить все или некоторые области. Вызов clearHitRegions()
+  удаляет все hit области и очищает список hit областей. <a href="#hit-region-list">Список hit областей</a> сбрасывается также когда визуализируемый контекст сброшен.
+  Например, когда объект <code><a href="#canvasrenderingcontext2d">CanvasRenderingContext2D</a></code> привязывается или отвязывается от <code>canvas</code>, или размеры битмапа меняются.</p>
 
 
   </div>
 
   <hr>
 
-  <p>The <code>MouseEvent</code> interface is extended to support hit
-  regions:</p>
+  <p>Интерфейс <code>MouseEvent</code> расширен для поддержки hit областей:</p>
 
   <pre class="idl">partial interface <span>MouseEvent</span> {
   readonly attribute DOMString? <a href="#dom-mouseevent-region" title="dom-MouseEvent-region">region</a>;
@@ -3021,9 +3012,9 @@ partial dictionary <span>MouseEventInit</span> {
 
    <dd>
 
-    <p>If the mouse was over a <a href="#hit-region">hit region</a>, then this returns the <a href="#hit-region's-id">hit region's ID</a> if it has one.</p>
+    <p>Если мышь была над <a href="#hit-region">hit областью</a>, то возвращает <a href="#hit-region's-id">ID hit области</a>, если она имеет его.</p>
 
-    <p>Otherwise, returns null.</p>
+    <p>В другом случае, возвращает null.</p>
 
    </dd>
 
@@ -3031,42 +3022,29 @@ partial dictionary <span>MouseEventInit</span> {
 
   <div class="impl">
 
-  <p>The <dfn id="dom-mouseevent-region" title="dom-MouseEvent-region"><code>region</code></dfn>
-  attribute on <code>MouseEvent</code> objects must return the value
-  it was initialized to. When the object is created, this attribute
-  must be initialized to null. It represents the <a href="#hit-region's-id">hit region's
-  ID</a> if the mouse was over a hit region when the event was
-  fired.</p>
+  <p>Атрибут <dfn id="dom-mouseevent-region" title="dom-MouseEvent-region"><code>region</code></dfn>
+  на объектах <code>MouseEvent</code> должен возвратить значение на котором был инициализирован. Когда объект создан, этот атрибут должен быть установлен к null.</p>
 
-  <p>When a <code>MouseEvent</code> is to be fired at a
-  <code>canvas</code> element by the user agent in response to a
-  pointing device action, if the <code>canvas</code> element has a hit region list,
-  the user agent must instead follow these
-  steps. If these steps say to <i>act as normal</i>, that means that
-  the event must be fired as it would have had these requirements not
-  been applied.</p>
+  <p>Когда <code>MouseEvent</code> генерируется на элементе
+  <code>canvas</code> с помощью агента пользователя в ответ на
+наведение мышки, если элемент <code>canvas</code> имеет список hit областей,
+  агент пользователя должен вместо этого выполнить следующие шаги. Если здесь указано <i>действовать в обычном режиме</i>, это означает что событие должно быть сгенерировано как если бы эти требования не были применены.</p>
 
   <ol>
 
-   <li><p>If the pointing device is not indicating a pixel on the
-   canvas, <i>act as normal</i> and abort these steps.</p></li>
+   <li><p>Если указательное устройство (мышь или др.) не указывает на пиксель на холсте, <i>действовать в обычном режиме</i> и прервать эти шаги.</p></li>
 
-   <li><p>If the canvas element has no hit region list, act as
-   normal and abort these steps.</p></li>
+   <li><p>Если элемент canvas не имеет списка hit областей, действовать в обычном режиме и прервать эти шаги.</p></li>
 
-   <li><p>Let pixel be the pixel indicated by the pointing device.</p></li>
+   <li><p>Сделать пиксель указанным с помощью указательного устройства.</p></li>
 
-   <li><p>Let region be the hit region that is the region for the pixel <var>pixel</var> on this canvas element's bitmap, if any.</p></li>
+   <li><p>Сделать область hit областью для пикселя <var>pixel</var> на этом битмапе элемента canvas.</p></li>
 
-   <li><p>Let <var>id</var> be the <var>region</var>'s <a href="#hit-region's-id" title="hit region's ID">ID</a>, if
-   any.</p></li>
+   <li><p>Сделать <var>id</var> значением <a href="#hit-region's-id" title="hit region's ID">ID</a> области <var>region</var>, если есть.</p></li>
 
-   <li><p>If there is an <var>id</var>, then initialize the
-   event object's <code title="dom-MouseEvent-region"><a href="#dom-mouseevent-region">region</a></code>
-   attribute to <var>id</var>.</p></li>
+   <li><p>Если есть <var>id</var>, то установить атрибут объекта события <code title="dom-MouseEvent-region"><a href="#dom-mouseevent-region">region</a></code> к <var>id</var>.</p></li>
 
-   <li><p>Dispatch the event, but with the updated event object as
-   given in the above steps.</p></li>
+   <li><p>Отправить событие, но с обновлением объекта события как задано предыдущими шагами.</p></li>
 
   </ol>
 
