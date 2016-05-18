@@ -998,7 +998,7 @@ idea from Mihai:
     <p><strong>Соединения</strong>: В дополнение к точке где происходит соединение, две дополнительные точки
     присоединяются к каждой, одна для каждой линии: одна перпендикулярная для каждой линии, линия на каждой стороне наиболее удаленной от другой линии.</p>
 
-    <p>Значение "<code>bevel</code>" означает что это всё отображено в соединениях.</p>
+    <p>Значение "<code>bevel</code>" означает что это всё что отображено в соединениях.</p>
 
     <p>Значение "<code>round</code>" означает, что заполненная дуга, соединяющая два вышеупомянутых угла соединения, примыкает (а не перекрывает) к вышеупомянутому треугольнику, с диаметром, равным ширине линии и началом координат в точке соединения, должна быть добавлена в соединения.</p>
 
@@ -3051,7 +3051,7 @@ partial dictionary <span>MouseEventInit</span> {
   <p class="note">Такой подход упрощает обработку событий, <a href="#dom-mouseevent-region">не перенацеливая событие</a>. Событие отправляется в обычном режиме как только атрибут event.region установлен к активному ID hit области.  Событие полученное с помощью элемента canvas позволяет автору определять поведение события.</p>
   <hr>
 
-  <p>Агентам пользователя рекомендуется использовать информацию, предоставленную в <a href="#hit-region-list">списке hit областей</a> элемента <code>canvas</code> для улучшения доступности элементов <code>canvas</code>.</p>
+  <p>Агентам пользователя рекомендуется использовать информацию, предоставленную в <a href="#hit-region-list">списке hit областей</a> элемента <code>canvas</code>, для улучшения доступности элементов <code>canvas</code>.</p>
 
   <p>Каждая <a href="#hit-region">hit область</a> должна быть обработана в эквиваленте узла в виртуальном дереве DOM с корнем на
   <code>canvas</code> элементе. Иерархия этого виртуального дерева DOM
@@ -3087,10 +3087,8 @@ partial dictionary <span>MouseEventInit</span> {
 
    <dd>
 
-    <p>Returns an <code><a href="#imagedata">ImageData</a></code> object with the given
-    dimensions in CSS pixels (which might map to a different number of
-    actual device pixels exposed by the object itself). All the pixels
-    in the returned object are transparent black.</p>
+    <p>Возвращает объект <code><a href="#imagedata">ImageData</a></code> с заданными
+    размерами в пикселях CSS (которые могут отображаться в другом количестве фактических пикселей устройства). Все пиксели в возвращаемом объекте — прозрачные черные.</p>
 
    </dd>
 
@@ -3098,9 +3096,7 @@ partial dictionary <span>MouseEventInit</span> {
 
    <dd>
 
-    <p>Returns an <code><a href="#imagedata">ImageData</a></code> object with the same
-    dimensions as the argument. All the pixels in the returned object
-    are transparent black.</p>
+    <p>Возвращает объект <code><a href="#imagedata">ImageData</a></code> с теми же размерами как в аргументе. Все пиксели в возвращаемом объекте — прозрачные черные.</p>
 
    </dd>
 
@@ -3108,14 +3104,11 @@ partial dictionary <span>MouseEventInit</span> {
 
    <dd>
 
-    <p>Returns an <code><a href="#imagedata">ImageData</a></code> object containing the image
-    data for the given rectangle of the canvas.</p>
+    <p>Возвращает объект <code><a href="#imagedata">ImageData</a></code> содержащий данные изображения для заданного прямоугольника на холсте.</p>
 
-    <p>Throws an <code>IndexSizeError</code> exception if the either
-    of the width or height arguments are zero.</p>
+    <p>Выдает исключение <code>IndexSizeError</code> если ширина или высота равны нулю.</p>
 
-    <p>The data will be returned with one pixel of image data for each
-    coordinate space unit on the canvas (ignoring transforms).</p>
+    <p>Данные будут возвращены с одним пикселем данных изображения для каждого единицы координатного пространства на холсте (игнорируя преобразования).</p>
 
    </dd>
 
@@ -3124,7 +3117,7 @@ partial dictionary <span>MouseEventInit</span> {
 
    <dd>
 
-    <p>Returns the actual dimensions of the data in the <code><a href="#imagedata">ImageData</a></code> object, in device pixels.</p>
+    <p>Возвращает фактические размеры данных в объекте <code><a href="#imagedata">ImageData</a></code>, в пикселях устройства.</p>
 
    </dd>
 
@@ -3132,7 +3125,7 @@ partial dictionary <span>MouseEventInit</span> {
 
    <dd>
 
-    <p>Returns the one-dimensional array containing the data in RGBA order, as integers in the range 0 to 255.</p>
+    <p>Возвращает одномерный массив содержащий данные в порядке RGBA, такие как целые числа в диапазоне от 0 до 255.</p>
 
    </dd>
 
@@ -3140,19 +3133,13 @@ partial dictionary <span>MouseEventInit</span> {
 
    <dd>
 
-    <p>Paints the data from the given <code><a href="#imagedata">ImageData</a></code> object
-    onto the canvas. If a dirty rectangle is provided, only the pixels
-    from that rectangle are painted.</p>
+    <p>Рисует данные с заданного объекта <code><a href="#imagedata">ImageData</a></code> на холст. Если предоставлен dirty прямоугольник, рисуются только пиксели с этого прямоугольника.</p>
 
-    <p>The <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>
-    and <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code>
-    attributes, as well as the shadow attributes, are ignored for the
-    purposes of this method call; pixels in the canvas are replaced
-    wholesale, with no composition, alpha blending, no shadows,
-    etc.</p>
+    <p>Атрибуты <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code>
+    и <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code>, также как и атрибуты теней, игнорируются для
+    целей вызова этого метода; пиксели на холсте заменяются оптом, без композиции, альфа-смешивания, без теней и т.д.</p>
 
-    <p>Throws a <code>NotSupportedError</code> exception if any of the
-    arguments are not finite.</p>
+    <p>Выдает исключение <code>NotSupportedError</code> если какой-то из этих аргументов не конечное число.</p>
 
    </dd>
 
@@ -3160,51 +3147,40 @@ partial dictionary <span>MouseEventInit</span> {
 
   <div class="impl">
 
-  <p>The <dfn id="dom-context-2d-createimagedata" title="dom-context-2d-createImageData"><code>createImageData()</code></dfn>
-  method is used to instantiate new blank <code><a href="#imagedata">ImageData</a></code>
-  objects. When the method is invoked with two arguments <var>sw</var> and <var>sh</var>, it must return an
-  <code><a href="#imagedata">ImageData</a></code> object representing a rectangle with a width
-  in CSS pixels equal to the absolute magnitude of <var>sw</var> and a height in CSS pixels equal to the absolute
-  magnitude of <var>sh</var>. When invoked with a single <var>imagedata</var> argument, it must return an
-  <code><a href="#imagedata">ImageData</a></code> object representing a rectangle with the same
-  dimensions as the <code><a href="#imagedata">ImageData</a></code> object passed as the
-  argument. The <code><a href="#imagedata">ImageData</a></code> object returned must be filled
-  with transparent black.</p>
+  <p>Метод <dfn id="dom-context-2d-createimagedata" title="dom-context-2d-createImageData"><code>createImageData()</code></dfn>
+  используется для создания экземпляров новых пустых объектов <code><a href="#imagedata">ImageData</a></code>. Когда метод вызван с двумя аргументами <var>sw</var> и <var>sh</var>, он должен вернуть объект
+  <code><a href="#imagedata">ImageData</a></code> представляющий прямоугольник с шириной
+  в пикселях CSS равной абсолютной величине <var>sw</var> и высотой в пикселях CSS равной абсолютной величине <var>sh</var>. Когда вызван только с аргументом <var>imagedata</var>, он должен возвратить объект
+  <code><a href="#imagedata">ImageData</a></code> представляющий прямоугольник с
+  теми же размерами что и объект <code><a href="#imagedata">ImageData</a></code>
+  как передано аргументом. Возвращенный объект <code><a href="#imagedata">ImageData</a></code> должен быть заполнен прозрачным черным.</p>
 
-  <p>The <dfn id="dom-context-2d-getimagedata" title="dom-context-2d-getImageData"><code>getImageData(<var>sx</var>, <var>sy</var>, <var>sw</var>,
-  <var>sh</var>)</code></dfn> method must,
+  <p>Метод <dfn id="dom-context-2d-getimagedata" title="dom-context-2d-getImageData"><code>getImageData(<var>sx</var>, <var>sy</var>, <var>sw</var>,
+  <var>sh</var>)</code></dfn> должен,
 <!--ADD-TOPIC:Security-->
-  if the bitmap of the <code>canvas</code> element's <i>origin-clean</i> flag is set
-  to false, throw a <code>SecurityError</code> exception; otherwise, it
+  если флаг битмап элемента <code>canvas</code> <i>origin-clean</i> установлен ложный, выдать исключение <code>SecurityError</code>; в другом случае, должен
 <!--REMOVE-TOPIC:Security-->
-  must return an <code><a href="#imagedata">ImageData</a></code> object representing the
-  underlying pixel data for the area of the canvas denoted by the
-  rectangle whose corners are the four points (<var>sx</var>,
+  возвратить объект <code><a href="#imagedata">ImageData</a></code> представляющий
+  базовые данные пикселей для области холста, обозначаемой
+  прямоугольником, чьи углы в четырех точках (<var>sx</var>,
   <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <var>sy</var>), (<span><var>sx</var>+<var>sw</var></span>, <span><var>sy</var>+<var>sh</var></span>),
-  (<var>sx</var>, <span><var>sy</var>+<var>sh</var></span>), in canvas coordinate space units. Pixels
-  outside the canvas must be returned as transparent black. Pixels
-  must be returned as non-premultiplied alpha values.</p>
+  (<var>sx</var>, <span><var>sy</var>+<var>sh</var></span>), в координатном пространстве canvas. Пиксели за пределами холста должны быть возвращены как прозрачный черный. Пиксели возвращаются как не предварительно умноженные альфа значения.</p>
 
-  <p>If any of the arguments to <code title="dom-context-2d-createImageData"><a href="#dom-context-2d-createimagedata">createImageData()</a></code> or
-  <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code>
-  are infinite or NaN, the method must instead throw a
-  <code>NotSupportedError</code> exception. If either the <var>sw</var> or <var>sh</var> arguments are zero,
-  the method must instead throw an <code>IndexSizeError</code>
-  exception.</p>
+  <p>Если любые аргументы <code title="dom-context-2d-createImageData"><a href="#dom-context-2d-createimagedata">createImageData()</a></code> или <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code>
+  бесконечны или NaN, метод должен выдать исключение
+  <code>NotSupportedError</code>. Если один из аргументов <var>sw</var> или <var>sh</var> равен нолю,
+  метод должен выдать исключение <code>IndexSizeError</code>.</p>
 
-  <p><code><a href="#imagedata">ImageData</a></code> objects must be initialized so that their
-  <dfn id="dom-imagedata-width" title="dom-imagedata-width"><code>width</code></dfn> attribute
-  is set to <var>w</var>, the number of physical device
-  pixels per row in the image data, their <dfn id="dom-imagedata-height" title="dom-imagedata-height"><code>height</code></dfn> attribute is
-  set to <var>h</var>, the number of rows in the image data,
-  and their <dfn id="dom-imagedata-data" title="dom-imagedata-data"><code>data</code></dfn>
-  attribute is initialized to a <code>Uint8ClampedArray</code> object.
-  The <code>Uint8ClampedArray</code> object must use a <a href="#canvas-pixel-arraybuffer">Canvas
-  Pixel <code>ArrayBuffer</code></a> for its storage, and must have
-  a zero start offset and a length equal to the length of its storage,
-  in bytes. The <a href="#canvas-pixel-arraybuffer">Canvas Pixel <code>ArrayBuffer</code></a>
-  must contain the image data. At least one pixel's worth of image
-  data must be returned. <a href="#refsTYPEDARRAY">[TYPEDARRAY]</a></p>
+  <p>Объекты <code><a href="#imagedata">ImageData</a></code> должны быть инициализированы так, чтобы их атрибут
+  <dfn id="dom-imagedata-width" title="dom-imagedata-width"><code>width</code></dfn>
+  был установлен <var>w</var>, количество пикселей в строке устройства в данных изображения, их атрибут <dfn id="dom-imagedata-height" title="dom-imagedata-height"><code>height</code></dfn> был установлен к <var>h</var>, количество строк в данных изображения,
+  и их атрибут <dfn id="dom-imagedata-data" title="dom-imagedata-data"><code>data</code></dfn>
+  инициализирован к объекту <code>Uint8ClampedArray</code>.
+  Объект <code>Uint8ClampedArray</code> должен использовать <a href="#canvas-pixel-arraybuffer">Canvas
+  Pixel <code>ArrayBuffer</code></a> для его хранения, и должен иметь
+  нулевое начальное смещение, и длину равную длине его хранилища
+  в байтах. <a href="#canvas-pixel-arraybuffer">Canvas Pixel <code>ArrayBuffer</code></a>
+  должен содержать данные изображения. Как минимум одина сумма пикселя данных изображения должна быть возвращена. <a href="#refsTYPEDARRAY">[TYPEDARRAY]</a></p>
 
   <p>A <dfn id="canvas-pixel-arraybuffer">Canvas Pixel <code>ArrayBuffer</code></dfn> is an
   <code>ArrayBuffer</code> that whose data is represented in
