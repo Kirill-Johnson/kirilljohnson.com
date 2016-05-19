@@ -2808,7 +2808,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   </ol>
 
-  <p><dfn id="the-region-representing-the-control">Область представляющая элемент управления</dfn> <var>control</var> для битмапа <var>bitmap</var> это значение возвращенное с помощью следующиего
+  <p><dfn id="the-region-representing-the-control">Область представляющая элемент управления</dfn> <var>control</var> для битмапа <var>bitmap</var> это значение возвращенное с помощью следующего
   алгоритма (который может вернуть <a href="#hit-region">hit область</a> или ничего):</p>
 
   <ol>
@@ -3180,30 +3180,21 @@ partial dictionary <span>MouseEventInit</span> {
   Pixel <code>ArrayBuffer</code></a> для его хранения, и должен иметь
   нулевое начальное смещение, и длину равную длине его хранилища
   в байтах. <a href="#canvas-pixel-arraybuffer">Canvas Pixel <code>ArrayBuffer</code></a>
-  должен содержать данные изображения. Как минимум одина сумма пикселя данных изображения должна быть возвращена. <a href="#refsTYPEDARRAY">[TYPEDARRAY]</a></p>
+  должен содержать данные изображения. Как минимум одна сумма пикселя данных изображения должна быть возвращена. <a href="#refsTYPEDARRAY">[TYPEDARRAY]</a></p>
 
-  <p>A <dfn id="canvas-pixel-arraybuffer">Canvas Pixel <code>ArrayBuffer</code></dfn> is an
-  <code>ArrayBuffer</code> that whose data is represented in
-  left-to-right order, row by row top to bottom, starting with the top
-  left, with each pixel's red, green, blue, and alpha components being
-  given in that order for each pixel. Each component of each device
-  pixel represented in this array must be in the range 0..255,
-  representing the 8 bit value for that component. The components must
-  be assigned consecutive indices starting with 0 for the top left
-  pixel's red component. <a href="#refsTYPEDARRAY">[TYPEDARRAY]</a></p>
+  <p><dfn id="canvas-pixel-arraybuffer">Canvas Pixel <code>ArrayBuffer</code></dfn> это
+  <code>ArrayBuffer</code>, данные которого представлены в
+  порядке справа-налево, построчно сверху вниз, начиная с верха слева, с каждым красным, зеленым, синим и альфа-компонентом пикселя, приведенными в этом порядке для каждого пикселя. Каждый компонент каждого пикселя устройства
+представленный в этом массиве должен находиться в диапазоне 0..255, представляя 8-битное значение для этого компонента. Компонентам должны быть назначены последовательные индексы начиная с 0 для верхнего левого красного компонента пикселя. <a href="#refsTYPEDARRAY">[TYPEDARRAY]</a></p>
 
-  <p>The <dfn id="dom-context-2d-putimagedata" title="dom-context-2d-putImageData"><code>putImageData(<var>imagedata</var>, <var>dx</var>, <var>dy</var>, <var>dirtyX</var>, <var>dirtyY</var>, <var>dirtyWidth</var>, <var>dirtyHeight</var>)</code></dfn> method writes data from
-  <code><a href="#imagedata">ImageData</a></code> structures back to the canvas.</p>
+  <p>Метод <dfn id="dom-context-2d-putimagedata" title="dom-context-2d-putImageData"><code>putImageData(<var>imagedata</var>, <var>dx</var>, <var>dy</var>, <var>dirtyX</var>, <var>dirtyY</var>, <var>dirtyWidth</var>, <var>dirtyHeight</var>)</code></dfn> записывает данные со структур
+  <code><a href="#imagedata">ImageData</a></code> обратно на холст.</p>
 
-  <p>If any of the arguments to the method are infinite or NaN, the
-  method must throw a <code>NotSupportedError</code> exception.</p>
+  <p>Если какой-то из аргументов в методе бесконечен или NaN, метод должен выдать исключение <code>NotSupportedError</code>.</p>
 
-  <p>When the last four arguments are omitted, they must be assumed to
-  have the values 0, 0, the <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> member of the <var>imagedata</var> structure, and the <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> member of the <var>imagedata</var> structure, respectively.</p>
+  <p>Когда последние четыре аргументе опущены, они должны считаться со значениями 0, 0 — <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> структуры <var>imagedata</var> и <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> структуры <var>imagedata</var>, соответственно.</p>
 
-  <p>When invoked with arguments that do not, per the last few
-  paragraphs, cause an exception to be thrown, the <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData()</a></code> method
-  must act as follows:</p>
+  <p>Когда вызван с аргументами, которые не выдают исключение, метод <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData()</a></code> должен действовать следующим образом:</p>
 
   <ol>
 
