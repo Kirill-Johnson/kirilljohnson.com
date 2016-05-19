@@ -1607,7 +1607,7 @@ try {
 
   </p><p>Сделать точку (<var>x0</var>, <var>y0</var>) последней точкой в подпути.</p>
 
-  <p>Если точка (<var>x0</var>, <var>y0</var>) равняется точке (<var>x1</var>, <var>y1</var>),
+  <p>Если точка (<var>x0</var>, <var>y0</var>) равняется точке (<var>x1</var>, <var>y1</var>)
   или если точка (<var>x1</var>, <var>y1</var>) равняется точке (<var>x2</var>, <var>y2</var>),
   или если радиус <var>radius</var> равен нолю, тогда метод должен добавить точку (<var>x1</var>, <var>y1</var>)
   в подпуть и соединить эту точку с предыдущей точкой (<var>x0</var>, <var>y0</var>) прямой линией.</p>
@@ -1623,7 +1623,7 @@ try {
   <hr>
 
   <p>Метод <dfn id="dom-context-2d-arc" title="dom-context-2d-arc"><code>arc(<var>x</var>, <var>y</var>, <var>radius</var>,
-  <var>startAngle</var>, <var>endAngle</var>, <var>counterclockwise</var>)</code></dfn> рисует арку.</p>
+  <var>startAngle</var>, <var>endAngle</var>, <var>counterclockwise</var>)</code></dfn> рисует дугу.</p>
 
   <p> Если контекст имеет какие-либо подпути, то этот метод должен добавить прямую линию от последней точки в подпути к начальной точке дуги.
   В любом случае, он должен нарисовать дугу между начальной точкой дуги и конечной точкой дуги, и добавить эти точки в подпуть. Дуга и ее начальная/конечная точки определяются как следующие:</p>
@@ -3200,111 +3200,69 @@ partial dictionary <span>MouseEventInit</span> {
 
    <li>
 
-    <p>Let <var>dx<sub>device</sub></var> be the x-coordinate
-    of the device pixel in the underlying pixel data of the canvas
-    corresponding to the <var>dx</var> coordinate in the
-    canvas coordinate space.</p>
+    <p>Сделать <var>dx<sub>device</sub></var> x-координатой
+    пикселей устройства,
+    соответствующей <var>dx</var> координатам в координатном пространстве canvas.</p>
 
-    <p>Let <var>dy<sub>device</sub></var> be the y-coordinate
-    of the device pixel in the underlying pixel data of the canvas
-    corresponding to the <var>dy</var> coordinate in the
-    canvas coordinate space.</p>
+    <p>Сделать <var>dy<sub>device</sub></var> y-координатой
+    пикселей устройства,
+   соответствующей  <var>dy</var> координатам в координатном пространстве canvas.</p>
 
    </li>
 
    <li>
 
-    <p>If <var>dirtyWidth</var> is negative, let <var>dirtyX</var> be <span><var>dirtyX</var>+<var>dirtyWidth</var></span>, and let <var>dirtyWidth</var> be equal to the absolute magnitude of
+    <p>Если значение <var>dirtyWidth</var> негативное, сделать <var>dirtyX</var> <span><var>dirtyX</var>+<var>dirtyWidth</var></span> и сделать <var>dirtyWidth</var> равным абсолютной величине
     <var>dirtyWidth</var>.</p>
 
-    <p>If <var>dirtyHeight</var> is negative, let <var>dirtyY</var> be <span><var>dirtyY</var>+<var>dirtyHeight</var></span>, and let <var>dirtyHeight</var> be equal to the absolute magnitude of
+    <p>Если значение <var>dirtyHeight</var> негативное, сделать <var>dirtyY</var> <span><var>dirtyY</var>+<var>dirtyHeight</var></span> и сделать <var>dirtyHeight</var> равным абсолютной величине
     <var>dirtyHeight</var>.</p>
 
    </li>
 
    <li>
 
-    <p>If <var>dirtyX</var> is negative, let <var>dirtyWidth</var> be <span><var>dirtyWidth</var>+<var>dirtyX</var></span>, and
-    let <var>dirtyX</var> be zero.</p>
+    <p>Если значение <var>dirtyX</var> негативное, сделать <var>dirtyWidth</var> <span><var>dirtyWidth</var>+<var>dirtyX</var></span> и
+    сделать <var>dirtyX</var> равным нулю.</p>
 
-    <p>If <var>dirtyY</var> is negative, let <var>dirtyHeight</var> be <span><var>dirtyHeight</var>+<var>dirtyY</var></span>, and
-    let <var>dirtyY</var> be zero.</p>
-
-   </li>
-
-   <li>
-
-    <p>If <span><var>dirtyX</var>+<var>dirtyWidth</var></span> is greater than the <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> attribute of the <var>imagedata</var> argument, let <var>dirtyWidth</var> be the value of that <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> attribute, minus the
-    value of <var>dirtyX</var>.</p>
-
-    <p>If <span><var>dirtyY</var>+<var>dirtyHeight</var></span> is greater than the <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> attribute of the <var>imagedata</var> argument, let <var>dirtyHeight</var> be the value of that <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> attribute, minus the
-    value of <var>dirtyY</var>.</p>
+    <p>Если значение <var>dirtyY</var> негативное, сделать <var>dirtyHeight</var> <span><var>dirtyHeight</var>+<var>dirtyY</var></span> и
+    сделать <var>dirtyY</var> равным нулю.</p>
 
    </li>
 
    <li>
 
-    <p>If, after those changes, either <var>dirtyWidth</var>
-    or <var>dirtyHeight</var> is negative or zero, stop these
-    steps without affecting the canvas.</p>
+    <p>Если <span><var>dirtyX</var>+<var>dirtyWidth</var></span> больше чем атрибут <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> аргумента <var>imagedata</var>, сделать <var>dirtyWidth</var> значением атрибута <code title="dom-imagedata-width"><a href="#dom-imagedata-width">width</a></code> минус значение <var>dirtyX</var>.</p>
+
+    <p>Если <span><var>dirtyY</var>+<var>dirtyHeight</var></span> больше чем атрибут <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> аргумента <var>imagedata</var>, сделать <var>dirtyHeight</var> значением атрибута <code title="dom-imagedata-height"><a href="#dom-imagedata-height">height</a></code> минус значение <var>dirtyY</var>.</p>
 
    </li>
 
-   <li><p>Otherwise, for all integer values of <var>x</var>
-   and <var>y</var> where <span><var>dirtyX</var> ≤ <var>x</var> &lt; <span><var>dirtyX</var>+<var>dirtyWidth</var></span></span>
-   and <span><var>dirtyY</var> ≤ <var>y</var> &lt; <span><var>dirtyY</var>+<var>dirtyHeight</var></span></span>, copy the four channels of
-   the pixel with coordinate (<var>x</var>, <var>y</var>) in the <var>imagedata</var> data
-   structure to the pixel with coordinate (<span><var>dx<sub>device</sub></var>+<var>x</var></span>,
-   <span><var>dy<sub>device</sub></var>+<var>y</var></span>) in the underlying pixel data of the
-   canvas.</p></li>
+   <li>
+
+    <p>Если после этих изменений одно из <var>dirtyWidth</var>
+    или <var>dirtyHeight</var> равно нолю или меньше ноля, остановить эти шаги без влияния на холст.</p>
+
+   </li>
+
+   <li><p>В другом случае, для всех целых значений <var>x</var>
+   и <var>y</var>, где <span><var>dirtyX</var> ≤ <var>x</var> &lt; <span><var>dirtyX</var>+<var>dirtyWidth</var></span></span>
+   и <span><var>dirtyY</var> ≤ <var>y</var> &lt; <span><var>dirtyY</var>+<var>dirtyHeight</var></span></span>, копировать четыре канала пикселя с координатами (<var>x</var>, <var>y</var>) из данных структуры <var>imagedata</var>
+   на пиксель с координатами (<span><var>dx<sub>device</sub></var>+<var>x</var></span>,
+   <span><var>dy<sub>device</sub></var>+<var>y</var></span>) базовых данных пикселей canvas.</p></li>
 
   </ol>
 
-  <p>The handling of pixel rounding when the specified coordinates do
-  not exactly map to the device coordinate space is not defined by
-  this specification, except that the following must result in no
-  visible changes to the rendering:</p>
-
-  <pre>context.putImageData(context.getImageData(x, y, w, h), p, q);</pre>
-
-  <p>...for any value of <var>x</var>, <var>y</var>,
-  <var>w</var>, and <var>h</var> and where <var>p</var> is the smaller of <var>x</var> and the sum
-  of <var>x</var> and <var>w</var>, and <var>q</var> is the smaller of <var>y</var> and the sum
-  of <var>y</var> and <var>h</var>; and except that
-  the following two calls:</p>
-
-  <pre>context.createImageData(w, h);
-context.getImageData(0, 0, w, h);</pre>
-
-  <p>...must return <code><a href="#imagedata">ImageData</a></code> objects with the same
-  dimensions, for any value of <var>w</var> and <var>h</var>. In other words, while user agents may round the
-  arguments of these methods so that they map to device pixel
-  boundaries, any rounding performed must be performed consistently
-  for all of the <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">createImageData()</a></code>, <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code> and <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData()</a></code>
-  operations.</p>
-
-  <p class="note">This implies that the data returned by <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code> is at the
-  resolution of the canvas backing store. This is likely to not be one
-  device pixel to each CSS pixel if the display used is a high
-  resolution display.</p>
-
-  <p class="note">Due to the lossy nature of converting to and from
-  premultiplied alpha color values, pixels that have just been set
-  using <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData()</a></code> might be
-  returned to an equivalent <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code> as
-  different values.</p>
-
-  <p>The current path, <a href="#transformations" title="dom-context-2d-transformation">transformation matrix</a>,
-  <a href="#shadows" title="shadows">shadow attributes</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, the <a href="#clipping-region" title="clipping region">clipping region</a>, and <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition
-  operator</a> must not affect the <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code> and <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData()</a></code>
-  methods.</p>
-
+  <p>Текущий путь, <a href="#transformations" title="dom-context-2d-transformation">матрица преобразования</a>,
+  <a href="#shadows" title="shadows">атрибуты теней</a>, <a href="#dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha">global alpha</a>, <a href="#clipping-region" title="clipping region">clipping region</a> и <a href="#dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation">global composition
+  оператор</a> не должны влиять на методы <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code> и <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData()</a></code>.</p>
+<hr>
   </div>
 
   <div class="example">
 
-   <p>In the following example, the script generates an
-   <code><a href="#imagedata">ImageData</a></code> object so that it can draw onto it.</p>
+   <p>В следующем примере, скрипт генерирует объект
+   <code><a href="#imagedata">ImageData</a></code> таким образом, что он может рисовать на нем.</p>
 
    <pre>// canvas is a reference to a &lt;canvas&gt; element
 var context = canvas.getContext('2d');
@@ -3329,8 +3287,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <div class="example">
 
-   <p>Here is an example of using <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code> and <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData()</a></code> to
-   implement an edge detection filter.</p>
+   <p>Ниже приведен пример использования <code title="dom-context-2d-getImageData"><a href="#dom-context-2d-getimagedata">getImageData()</a></code> и <code title="dom-context-2d-putImageData"><a href="#dom-context-2d-putimagedata">putImageData()</a></code> для реализации фильтра обнаружения края.</p>
 
    <pre>&lt;!DOCTYPE HTML&gt;
 &lt;html&gt;
