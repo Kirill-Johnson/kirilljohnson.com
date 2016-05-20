@@ -3397,50 +3397,36 @@ function AddCloud(data, x, y) { ... }</pre>
 
    <dt><dfn id="gcop-source-atop" title="gcop-source-atop"><code>source-atop</code></dfn></dt>
 
-   <dd><var>A</var> atop <var>B</var>. <span class="note">Display the
-   source image wherever both images are opaque. Display the
-   destination image wherever the destination image is opaque but the
-   source image is transparent. Display transparency elsewhere.</span></dd>
+   <dd><var>A</var> сверху <var>B</var>. <span class="note">Отображается исходное изображение везде где оба изображения непрозрачны. Отображается конечное изображение везде где конечное изображение непрозрачное, но исходное изображение прозрачное. Отображается прозрачность в других местах.</span></dd>
 
    <dt><dfn id="gcop-source-in" title="gcop-source-in"><code>source-in</code></dfn></dt>
 
-   <dd><var>A</var> in <var>B</var>. <span class="note">Display the
-   source image wherever both the source image and destination image
-   are opaque. Display transparency elsewhere.</span></dd>
+   <dd><var>A</var> в <var>B</var>. <span class="note">Отображается исходное изображение везде где оба изображения непрозрачны. Отображается прозрачность в других местах.</span></dd>
 
    <dt><dfn id="gcop-source-out" title="gcop-source-out"><code>source-out</code></dfn></dt>
 
-   <dd><var>A</var> out <var>B</var>. <span class="note">Display the
-   source image wherever the source image is opaque and the
-   destination image is transparent. Display transparency
-   elsewhere.</span></dd>
+   <dd><var>A</var> вне <var>B</var>. <span class="note">Отображается исходное изображение везде где исходное изображение непрозрачно и конечное изображение прозрачно. Отображается прозрачность в других местах.</span></dd>
 
-   <dt><dfn id="gcop-source-over" title="gcop-source-over"><code>source-over</code></dfn> (default)</dt>
+   <dt><dfn id="gcop-source-over" title="gcop-source-over"><code>source-over</code></dfn> (по умолчанию)</dt>
 
-   <dd><var>A</var> over <var>B</var>. <span class="note">Display the
-   source image wherever the source image is opaque. Display the
-   destination image elsewhere.</span></dd>
+   <dd><var>A</var> над <var>B</var>. <span class="note">Отображается исходное изображение везде где исходное изображение непрозрачно. Отображается конечное изображение в других местах.</span></dd>
 
 
    <dt><dfn id="gcop-destination-atop" title="gcop-destination-atop"><code>destination-atop</code></dfn></dt>
 
-   <dd><var>B</var> atop <var>A</var>. <span class="note">Same as <code title="gcop-source-atop"><a href="#gcop-source-atop">source-atop</a></code> but using the
-   destination image instead of the source image and vice versa.</span></dd>
+   <dd><var>B</var> сверху <var>A</var>. <span class="note">То же что и <code title="gcop-source-atop"><a href="#gcop-source-atop">source-atop</a></code>, но используя конечное изображение вместо исходного изображения и наоборот.</span></dd>
 
    <dt><dfn id="gcop-destination-in" title="gcop-destination-in"><code>destination-in</code></dfn></dt>
 
-   <dd><var>B</var> in <var>A</var>. <span class="note">Same as <code title="gcop-source-in"><a href="#gcop-source-in">source-in</a></code> but using the destination
-   image instead of the source image and vice versa.</span></dd>
+   <dd><var>B</var> в <var>A</var>. <span class="note">То же что и <code title="gcop-source-in"><a href="#gcop-source-in">source-in</a></code>, но используя конечное изображение вместо исходного и наоборот.</span></dd>
 
    <dt><dfn id="gcop-destination-out" title="gcop-destination-out"><code>destination-out</code></dfn></dt>
 
-   <dd><var>B</var> out <var>A</var>. <span class="note">Same as <code title="gcop-source-out"><a href="#gcop-source-out">source-out</a></code> but using the destination
-   image instead of the source image and vice versa.</span></dd>
+   <dd><var>B</var> вне <var>A</var>. <span class="note">То же что и <code title="gcop-source-out"><a href="#gcop-source-out">source-out</a></code>, но используя конечное изображение вместо исходного и наоборот.</span></dd>
 
    <dt><dfn id="gcop-destination-over" title="gcop-destination-over"><code>destination-over</code></dfn></dt>
 
-   <dd><var>B</var> over <var>A</var>. <span class="note">Same as <code title="gcop-source-over"><a href="#gcop-source-over">source-over</a></code> but using the
-   destination image instead of the source image and vice versa.</span></dd>
+   <dd><var>B</var> над <var>A</var>. <span class="note">То же что и <code title="gcop-source-over"><a href="#gcop-source-over">source-over</a></code>, но используя конечное изображение вместо исходного и наоборот.</span></dd>
 
 
 <!-- no clear definition of this operator (doesn't correspond to a PorterDuff operator)
@@ -3452,52 +3438,39 @@ function AddCloud(data, x, y) { ... }</pre>
 
    <dt><dfn id="gcop-lighter" title="gcop-lighter"><code>lighter</code></dfn></dt>
 
-   <dd><var>A</var> plus <var>B</var>. <span class="note">Display the
-   sum of the source image and destination image, with color values
-   approaching 255 (100%) as a limit.</span></dd>
+   <dd><var>A</var> плюс <var>B</var>. <span class="note">Отображается сумма исходного и конечного изображений, со значениями цвета до 255 (100%) как лимит.</span></dd>
 
 
    <dt><dfn id="gcop-copy" title="gcop-copy"><code>copy</code></dfn></dt>
 
-   <dd><var>A</var> (<var>B</var> is
-   ignored). <span class="note">Display the source image instead of the destination
-   image.</span></dd>
+   <dd><var>A</var> (<var>B</var> игнорируется). <span class="note">Отображать исходное изображение вместо конечного изображения.</span></dd>
 
 
    <dt><dfn id="gcop-xor" title="gcop-xor"><code>xor</code></dfn></dt>
 
-   <dd><var>A</var> xor <var>B</var>. <span class="note">Exclusive OR
-   of the source image and destination image.</span></dd>
+   <dd><var>A</var> xor <var>B</var>. <span class="note">Исключается OR
+   исходного и конечного изображений.</span></dd>
 
 
    <dt class="impl"><code><var>vendorName</var>-<var>operationName</var></code></dt>
 
-   <dd class="impl">Vendor-specific extensions to the list of
-   composition operators should use this syntax.</dd>
+   <dd class="impl">Заданные вендором расширения этого списка должны использовать этот синтаксис.</dd>
 
   </dl>
 
   <div class="impl">
 
-  <p>The operators in the above list must be treated as described by
-  the Porter-Duff operator given at the start of their description
-  (e.g. <var>A</var> over <var>B</var>). They are to
-  be applied as part of the <a href="#drawing-model">drawing model</a>, at which point the
-  <a href="#clipping-region">clipping region</a> is also applied. (Without a clipping
-  region, these operators act on the whole bitmap with every
-  operation.) <a href="#refsPORTERDUFF">[PORTERDUFF]</a></p>
+  <p>Операторы из списка выше должны быть обработаны как описано
+  оператором данным в начале их описания
+  (например, <var>A</var> над <var>B</var>). Они должны быть применены как часть <a href="#drawing-model">модели рисования</a>, при которой также применяется
+  <a href="#clipping-region">clipping region</a>. (Без clipping
+  region, эти операторы действуют на всем битмапе с каждой операцией.) <a href="#refsPORTERDUFF">[PORTERDUFF]</a></p>
 
-  <p>These values are all case-sensitive — they must be used
-  exactly as shown. User agents must not recognize values that are not
-  a <span>case-sensitive</span> match for one of the values given
-  above.</p>
+  <p>Эти значения чувствительны к регистру — они должны использоваться точно как показано. Агенты пользователей должны не распознавать значений, которые не <span>чувствительны к регистру</span> для каждого значения из данных выше.</p>
 
-  <p>On setting, if the user agent does not recognize the specified
-  value, it must be ignored, leaving the value of <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code>
-  unaffected.</p>
+  <p>При настройке, если агент пользователя не распознает заданное значение, оно игнорируется, оставляя значение <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code> не затронутым.</p>
 
-  <p>When the context is created, the <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code>
-  attribute must initially have the value
+  <p>Когда контекст создан, атрибут <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code> должен изначально иметь значение
   <code>source-over</code>.</p>
 
   </div>
