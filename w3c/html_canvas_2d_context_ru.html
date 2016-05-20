@@ -382,7 +382,7 @@
  <li><a href="#drawing-images-to-the-canvas"><span class="secno">12 </span>Рисование изображений на холсте</a></li>
  <li><a href="#hit-regions"><span class="secno">13 </span>Hit области</a></li>
  <li><a href="#pixel-manipulation"><span class="secno">14 </span>Пиксельная манипуляция</a></li>
- <li><a href="#compositing"><span class="secno">15 </span>Совмещение</a></li>
+ <li><a href="#compositing"><span class="secno">15 </span>Композиция</a></li>
  <li><a href="#shadows"><span class="secno">16 </span>Тени</a></li>
  <li><a href="#drawing-model"><span class="secno">17 </span>Модель рисования</a></li>
  <li><a href="#best-practices"><span class="secno">18 </span>Лучшая практика</a></li>
@@ -3348,7 +3348,7 @@ function AddCloud(data, x, y) { ... }</pre>
 
 
 
-  <h2 id="compositing"><span class="secno">15 </span>Совмещение</h2>
+  <h2 id="compositing"><span class="secno">15 </span>Композиция</h2>
 
   <dl class="domintro">
 
@@ -3356,10 +3356,9 @@ function AddCloud(data, x, y) { ... }</pre>
 
    <dd>
 
-    <p>Returns the current alpha value applied to rendering operations.</p>
+    <p>Возвращает текущее альфа значение применяемое к операциям визуализиции.</p>
 
-    <p>Can be set, to change the alpha value. Values outside of the
-    range 0.0 .. 1.0 are ignored.</p>
+    <p>Может быть установлен, чтобы изменить альфа значение. Значения вне диапазона 0.0 .. 1.0 игнорируются.</p>
 
    </dd>
 
@@ -3368,10 +3367,9 @@ function AddCloud(data, x, y) { ... }</pre>
 
    <dd>
 
-    <p>Returns the current composition operation, from the list below.</p>
+    <p>Возвращает текущую операцию композиции, из приведенного ниже списка.</p>
 
-    <p>Can be set, to change the composition operation. Unknown values
-    are ignored.</p>
+    <p>Может быть установлен, чтобы изменить операцию композиции. Неизвестные значения игнорируются.</p>
 
    </dd>
 
@@ -3379,30 +3377,19 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <div class="impl">
 
-  <p>All drawing operations are affected by the global compositing
-  attributes, <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code> and <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code>.</p>
+  <p>Все операции рисования затрагиваются global compositing
+  атрибутами, <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code> и <code title="dom-context-2d-globalCompositeOperation"><a href="#dom-context-2d-globalcompositeoperation">globalCompositeOperation</a></code>.</p>
 
   <!-- conformance criteria for painting are described in the "drawing
   model" section below -->
 
-  <p>The <dfn id="dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha"><code>globalAlpha</code></dfn>
-  attribute gives an alpha value that is applied to shapes and images
-  before they are composited onto the canvas. The value must be in the
-  range from 0.0 (fully transparent) to 1.0 (no additional
-  transparency). If an attempt is made to set the attribute to a value
-  outside this range, including Infinity and Not-a-Number (NaN)
-  values, the attribute must retain its previous value. When the
-  context is created, the <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code> attribute must
-  initially have the value 1.0.</p>
+  <p>Атрибут <dfn id="dom-context-2d-globalalpha" title="dom-context-2d-globalAlpha"><code>globalAlpha</code></dfn>
+  задает альфа значение которое применяется к формам и изображениям
+  перед тем как они компонуются на холст. Значение должно быть в диапазоне от 0.0 (полностью прозрачный) до 1.0 (без прозрачности). При попытках установить атрибут к значению вне диапазона, включая бесконечность и NaN, атрибут должен вернуться к предыдущему значению. Когда контекст создан, атрибут <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code> должен изначально иметь значение 1.0.</p>
 
-  <p>The <dfn id="dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation"><code>globalCompositeOperation</code></dfn>
-  attribute sets how shapes and images are drawn onto the existing
-  bitmap, once they have had <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code> and the
-  current transformation matrix applied. It must be set to a value
-  from the following list. In the descriptions below, the source
-  image, <var>A</var>, is the shape or image being rendered,
-  and the destination image, <var>B</var>, is the current
-  state of the bitmap.</p>
+  <p>Атрибут <dfn id="dom-context-2d-globalcompositeoperation" title="dom-context-2d-globalCompositeOperation"><code>globalCompositeOperation</code></dfn>
+  устанавливает как формы и изображения рисуются на существующий битмап, как только они приняли <code title="dom-context-2d-globalAlpha"><a href="#dom-context-2d-globalalpha">globalAlpha</a></code> и текущую матрицу преобразования. Он должен быть установлен к значению из следующего списка. В описании ниже, исходное изображение, <var>A</var>, это визуализируемые форма или изображение,
+  и конечное изображение, <var>B</var>, это текущее состояние битмапа.</p>
 
   </div>
 
@@ -3559,110 +3546,79 @@ function AddCloud(data, x, y) { ... }</pre>
 
   <div class="impl">
 
-  <p>The <dfn id="dom-context-2d-shadowcolor" title="dom-context-2d-shadowColor"><code>shadowColor</code></dfn>
-  attribute sets the color of the shadow.</p>
+  <p>Атрибут <dfn id="dom-context-2d-shadowcolor" title="dom-context-2d-shadowColor"><code>shadowColor</code></dfn> устанавливает цвет тени.</p>
 
-  <p>When the context is created, the <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code> attribute
-  initially must be fully-transparent black.</p>
+  <p>Когда контекст создан, атрибут <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code> изначально должен быть полностью прозрачным черным.</p>
 
-  <p>On getting, the <a href="#serialization-of-a-color" title="serialization of a
-  color">serialization of the color</a> must be returned.</p>
+  <p>При получении, должна быть возвращена <a href="#serialization-of-a-color" title="serialization of a
+  color">последовательность цвета</a>.</p>
 
-  <p>On setting, the new value must be <span>parsed as a CSS
-  &lt;color&gt; value</span> and the color assigned. If the value
-  cannot be parsed as a CSS &lt;color&gt; value then it must be
-  ignored, and the attribute must retain its previous value. <a href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
+  <p>При настройке, новое значение должно <span>читаться как значение CSS
+  &lt;color&gt;</span>. Если значение не может читаться как значение CSS &lt;color&gt;, то оно игнорируется, и атрибут должен возвратиться к предыдущему значению. <a href="#refsCSSCOLOR">[CSSCOLOR]</a></p>
 
-  <p>The <dfn id="dom-context-2d-shadowoffsetx" title="dom-context-2d-shadowOffsetX"><code>shadowOffsetX</code></dfn>
-  and <dfn id="dom-context-2d-shadowoffsety" title="dom-context-2d-shadowOffsetY"><code>shadowOffsetY</code></dfn>
-  attributes specify the distance that the shadow will be offset in
-  the positive horizontal and positive vertical distance
-  respectively. Their values are in coordinate space units. They are
-  not affected by the current transformation matrix.</p>
+  <p>Атрибуты <dfn id="dom-context-2d-shadowoffsetx" title="dom-context-2d-shadowOffsetX"><code>shadowOffsetX</code></dfn>
+  и <dfn id="dom-context-2d-shadowoffsety" title="dom-context-2d-shadowOffsetY"><code>shadowOffsetY</code></dfn>
+  должны указать расстояние смещения тени в положительном горизонтальном и вертикальном расстоянии соответственно. Значения в координатном пространстве единиц. Они не затрагиваются текущей матрицей преобразования.</p>
 
-  <p>When the context is created, the shadow offset attributes must
-  initially have the value <code>0</code>.</p>
+  <p>Когда контекст создан, атрибуты смещения тени должны изначально иметь значение <code>0</code>.</p>
 
-  <p>On getting, they must return their current value. On setting, the
-  attribute being set must be set to the new value, except if the
-  value is infinite or NaN, in which case the new value must be
-  ignored.</p>
+  <p>При получении, они должны вернуть текущее значение. При настройке, значение должно меняться на новое значение, кроме случая если оно бесконечное или NaN, тогда новое значение игнорируется.</p>
 
-  <p>The <dfn id="dom-context-2d-shadowblur" title="dom-context-2d-shadowBlur"><code>shadowBlur</code></dfn>
-  attribute specifies the level of the blurring effect. (The units do
-  not map to coordinate space units, and are not affected by the
-  current transformation matrix.)</p>
+  <p>Атрибут <dfn id="dom-context-2d-shadowblur" title="dom-context-2d-shadowBlur"><code>shadowBlur</code></dfn>
+  определяет уровень эффекта размытия. (Единицы не связаны с координатным пространством и не затрагиваются текущей матрицей преобразования.)</p>
 
-  <p>When the context is created, the <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code> attribute must
-  initially have the value <code>0</code>.</p>
+  <p>Когда контекст создан, атрибут <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code> должен изначально иметь значение <code>0</code>.</p>
 
-  <p>On getting, the attribute must return its current value. On
-  setting the attribute must be set to the new value, except if the
-  value is negative, infinite or NaN, in which case the new value must
-  be ignored.</p>
+  <p>При получении, атрибут должен возвращать текущее значение. При настройке он меняется на новое значение, кроме случая если оно негативное, бесконечное или NaN, тогда новое значение игнорируется.</p>
 
-  <p><dfn id="when-shadows-are-drawn" title="when shadows are drawn">Shadows are only drawn
-  if</dfn> the opacity component of the alpha component of the color
-  of <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code> is
-  non-zero and at leasty one of <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code>, <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code>, or <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code> is
-  non-zero.</p>
+  <p><dfn id="when-shadows-are-drawn" title="when shadows are drawn">Тени рисуются только если</dfn> альфа компонент цвета <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code> не нулевой и хотя бы один из <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code>, <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code> или <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code> не нулевой.</p>
 
-  <p class="critical">It is likely that this will change: browser
-  vendors have indicated an interest in changing the processing model
-  for shadows such that they only draw when the composition operator
-  is "source-over" (the default). <a href="http://lists.whatwg.org/htdig.cgi/whatwg-whatwg.org/2011-May/thread.html#31457">Read
-  more...</a></p>
+  <p class="critical">Вполне вероятно, что это изменится: разработчики браузеров выразили заинтересованность в изменении модели обработки для теней таким образом, что они рисуются только когда оператор композиции имеет значение "source-over" (по умолчанию). <a href="http://lists.whatwg.org/htdig.cgi/whatwg-whatwg.org/2011-May/thread.html#31457" target="_blank" rel="nofollow">Прочитать больше...</a></p>
 
-  <p><a href="#when-shadows-are-drawn">When shadows are drawn</a>, they must be rendered as follows:</p>
+  <p><a href="#when-shadows-are-drawn">Когда тени нарисованы</a>, они должны быть визуализированы следующим образом:</p>
 
   <ol>
 
-   <li> <p>Let <var>A</var> be an infinite transparent black
-   bitmap on which the source image for which a shadow is being
-   created has been rendered.</p> </li>
+   <li> <p>Сделать <var>A</var> бесконечным прозрачным черным
+   битмапом с исходным изображением для которого созданная тень была визуализирована.</p> </li>
 
-   <li> <p>Let <var>B</var> be an infinite transparent black
-   bitmap, with a coordinate space and an origin identical to <var>A</var>.</p> </li>
+   <li> <p>Сделать <var>B</var> бесконечным прозрачным черным битмапом, чье координатное пространство и происхождение идентичны к <var>A</var>.</p> </li>
 
-   <li> <p>Copy the alpha channel of <var>A</var> to <var>B</var>, offset by <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code> in the
-   positive <var>x</var> direction, and <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code> in the
-   positive <var>y</var> direction.</p> </li>
+   <li> <p>Копировать альфа-канал <var>A</var> на <var>B</var>, смещение <code title="dom-context-2d-shadowOffsetX"><a href="#dom-context-2d-shadowoffsetx">shadowOffsetX</a></code> в положительном направлении <var>x</var>, и <code title="dom-context-2d-shadowOffsetY"><a href="#dom-context-2d-shadowoffsety">shadowOffsetY</a></code> в положительном направлении <var>y</var>.</p> </li>
 
-   <li> <p>If <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code> is greater than
-   0:</p>
+   <li> <p>Если <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code> больше чем 0:</p>
 
     <ol>
 
-     <li> <p>Let <var>σ</var> be half the value of
+     <li> <p>Сделать <var>σ</var> половиной значения от
      <code title="dom-context-2d-shadowBlur"><a href="#dom-context-2d-shadowblur">shadowBlur</a></code>.</p></li>
 
-     <li> <p>Perform a 2D Gaussian Blur on <var>B</var>,
-     using <var>σ</var> as the standard deviation.</p>
+     <li> <p>Выполнить 2D размытие по Гауссу на <var>B</var>,
+     используя <var>σ</var> как стандартное отклонение.</p>
      <!-- wish i could find a reference for this --> </li>
 
     </ol>
 
-    <p>User agents may limit values of <var>σ</var> to
-    an implementation-specific maximum value to avoid exceeding
-    hardware limitations during the Gaussian blur operation.</p>
+    <p>Агенты пользователя могут ограничивать значения <var>σ</var> для
+    реализации собственного максимального значения, чтоб избежать
+    аппаратных ограничений во время операции размытия по Гауссу.</p>
 
    </li>
 
-   <li> <p>Set the red, green, and blue components of every pixel in
-   <var>B</var> to the red, green, and blue components
-   (respectively) of the color of <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code>.</p> </li>
+   <li> <p>Установить красный, зеленый и синий компоненты каждого пикселя в
+   <var>B</var> к красному, зеленому и синему компонентам
+   (соответственно) цвета в <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code>.</p> </li>
 
-   <li> <p>Multiply the alpha component of every pixel in <var>B</var> by the alpha component of the color of <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code>.</p> </li>
+   <li> <p>Умножить альфа компонент каждого пикселя в <var>B</var> на альфа компонент цвета <code title="dom-context-2d-shadowColor"><a href="#dom-context-2d-shadowcolor">shadowColor</a></code>.</p> </li>
 
-   <li> <p>The shadow is in the bitmap <var>B</var>, and is
-   rendered as part of the <a href="#drawing-model">drawing model</a> described below.</p> </li>
+   <li> <p>Тень на битмапе <var>B</var> и она визуализируется как часть <a href="#drawing-model">модели рисования</a> описанной ниже.</p> </li>
 
   </ol>
 
   </div>
 
-  <p>If the current composition operation is <code title="gcop-copy"><a href="#gcop-copy">copy</a></code>, shadows effectively won't render
-  (since the shape will overwrite the shadow).</p>
+  <p>Если текущая операция композиции это <code title="gcop-copy"><a href="#gcop-copy">copy</a></code>, тени не будут отображаться
+  (т.к. фигура перекроет тень).</p>
 
 
 
