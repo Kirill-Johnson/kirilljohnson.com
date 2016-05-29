@@ -383,7 +383,7 @@
  <li><a href="#compositing"><span class="secno">15 </span>Композиция</a></li>
  <li><a href="#shadows"><span class="secno">16 </span>Тени</a></li>
  <li><a href="#drawing-model"><span class="secno">17 </span>Модель рисования</a></li>
- <li><a href="#best-practices"><span class="secno">18 </span>Советы</a></li>
+ <li><a href="#best-practices"><span class="secno">18 </span>Лучшая практика</a></li>
  <li><a href="#examples"><span class="secno">19 </span>Примеры</a></li>
  <li><a class="no-num" href="#references">Ссылки</a></li></ol>
 <!--end-toc-->
@@ -3619,7 +3619,7 @@ function AddCloud(data, x, y) { ... }</pre>
   </div>
 
 
-  <h2 id="best-practices"><span class="secno">18 </span>Советы</h2>
+  <h2 id="best-practices"><span class="secno">18 </span>Лучшая практика</h2>
 
   <p><i>Этот раздел не является нормативным.</i></p>
   <p>Когда холст является интерактивным, авторы должны включать фокусируемые элементы в содержание резерва элемента, соответствующие каждой фокусируемой части холста.</p>
