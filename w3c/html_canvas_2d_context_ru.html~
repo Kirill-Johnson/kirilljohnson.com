@@ -288,7 +288,7 @@
       <dd>WHATWG:</dd>
       <dd><a href="mailto:ian@hixie.ch">Ian Hickson</a>, Google, Inc.</dd>
    </dl>
-   <p>Посмотрите <a href="http://www.w3.org/2015/11/2dcontext-errata.html"><strong>страницу исправлений</strong></a> этого документа, которая может включать в себя изменения после публикации.</p>
+   <p>Смотрите <a href="http://www.w3.org/2015/11/2dcontext-errata.html"><strong>страницу исправлений</strong></a> этого документа, которая может включать в себя изменения после публикации.</p>
 
    <p>Также смотрите <a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=2dcontext"> <strong>переводы</strong></a>.</p>
 
@@ -309,7 +309,7 @@
 
   <h2 class="no-num no-toc" id="status-of-this-document">Статус этого документа</h2>
 
-<p><em>Этот раздел описывает статус данного документа на момент его публикации. Другие документы могут заменять этот документ. Со списком текущих публикаций W3C и последней ревизией этого технического доклада можно ознакомиться в <a href="http://www.w3.org/TR/">индексе технических докладов W3C</a>, http://www.w3.org/TR/.</em></p>
+<p><em>Этот раздел описывает статус данного документа на момент его публикации. Другие документы могут заменять этот документ. Со списком текущих публикаций W3C и последней ревизией этого технического доклада можно ознакомиться в <a href="http://www.w3.org/TR/">индексе технических отчетов W3C</a>, http://www.w3.org/TR/.</em></p>
 
     <p>
       Эта спецификация для 2D Context для HTML элемента canvas опубликована <a href='http://www.w3.org/html/wg/'>Рабочей группой HTML</a>.
@@ -2790,7 +2790,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
    <div class="impl">
 
-   <p><dfn id="the-region-identified-by-the-id">Область идентифицируемая с помощью ID</dfn> <var>ID</var> в битмапе <var>bitmap</var> это значение возвращаемое следующим алгоритмом (который может вернуть <a href="#hit-region">hit область</a> или ничего):</p>
+   <p><dfn id="the-region-identified-by-the-id">Область идентифицируемая с помощью ID</dfn> <var>ID</var> в битмапе <var>bitmap</var>, это значение возвращаемое следующим алгоритмом (который может вернуть <a href="#hit-region">hit область</a> или ничего):</p>
 
    <ol>
 
@@ -2823,7 +2823,7 @@ v6DVT (also check for '- -' bits in the part above) -->
 
   </ol>
 
-  <p><dfn id="the-control-represented-by-a-region">Элемент управления представленный областью</dfn> <var>region</var> для <code>canvas</code> элемента <var>ancestor</var> это значение возвращаемое следующим алгоритмом (который может вернуть элемент или ничего):</p>
+  <p><dfn id="the-control-represented-by-a-region">Элемент управления представленный областью</dfn> <var>region</var> для <code>canvas</code> элемента <var>ancestor</var>, это значение возвращаемое следующим алгоритмом (который может вернуть элемент или ничего):</p>
 
   <ol>
 
