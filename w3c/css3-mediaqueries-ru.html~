@@ -24,7 +24,7 @@
   <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter36816840 = new Ya.Metrika({ id:36816840, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/36816840" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
 <p class="translator">
-Этот документ является неофициальным переводом исходной английской версии <a href="https://www.w3.org/TR/css3-mediaqueries/" target="_blank" rel="nofollow">Media Queries</a>. Обратите внимание на то, что оригинальная версия документа существует только на английском языке. Данный перевод может содержать неточности и ошибки. Перевод выполнил <strong><a href="http://topolyan.com/" target="_blank">Кирилл Топольян</a></strong>, 2016.</p>
+Этот документ является неофициальным переводом исходной английской версии <a href="https://www.w3.org/TR/css3-mediaqueries/" target="_blank" rel="nofollow">Media Queries</a>. Обратите внимание на то, что оригинальная версия документа существует только на английском языке. Данный перевод может содержать неточности и ошибки. Перевод выполнил <a href="http://topolyan.com/" target="_blank">Кирилл Топольян</a>, 2016.</p>
 
   <div class=head> <!--begin-logo-->
    <p><a href="http://www.w3.org/"><img alt=W3C height=48
@@ -123,7 +123,7 @@
 
   <p>Медиа-запрос состоит из медиа-типа и нуля или больше выражений, которые
    проверяют условия конкретных <em>медиа-функций</em>. Среди
-   медиа-возможностей, которые могут использоваться в медиа-запросах, есть &lsquo;<code
+   медиа-функций, которые могут использоваться в медиа-запросах, есть &lsquo;<code
    class=css>width</code>&rsquo;, &lsquo;<code
    class=css>height</code>&rsquo;, и &lsquo;<code
    class=css>color</code>&rsquo;. С помощью использования медиа-запросов, документы могут быть
@@ -182,7 +182,7 @@
      <li><a href="#error-handling"><span class=secno>3.1. </span>Обработка ошибок</a>
     </ul>
 
-   <li><a href="#media1"><span class=secno>4. </span>Медиа-возможности</a>
+   <li><a href="#media1"><span class=secno>4. </span>Медиа-функции</a>
     <ul class=toc>
      <li><a href="#width"><span class=secno>4.1. </span>width</a>
 
@@ -240,18 +240,17 @@
   <p>(Этот раздел не является нормативным.)
 
   <p>HTML4 <a href="#HTML401" rel=biblioentry>[HTML401]<!--{{HTML401}}--></a>
-   and CSS2 <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
-   currently support media-dependent style sheets tailored for different
-   media types. For example, a document may use different style sheets for
-   screen and print. In HTML4, this can be written as:
+   и CSS2 <a href="#CSS21" rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
+   на данный момент поддерживают медиа-зависимые таблицы стилей адаптированные для разных
+   медиа-типов. Например, документ может использовать разные таблицы стилей для
+   экрана и для печати. В HTML4, это может быть написано как:
 
   <div class=example>
    <pre><code>&lt;link rel="stylesheet" type="text/css" media="screen" href="sans-serif.css">
 &lt;link rel="stylesheet" type="text/css" media="print" href="serif.css"></code></pre>
   </div>
 
-  <p>Inside a CSS style sheet, one can declare that sections apply to certain
-   media types:
+  <p>Внутри таблицы стилей CSS, можно заявить что разделы применяются к определенным медиа-типам:
 
   <div class=example>
    <pre><code>@media screen {
@@ -259,182 +258,162 @@
 }</code></pre>
   </div>
 
-  <p>The &lsquo;<code class=css>print</code>&rsquo; and &lsquo;<code
-   class=css>screen</code>&rsquo; media types are defined in HTML4. The
-   complete list of media types in HTML4 is: &lsquo;<code
+  <p>Медиа-типы &lsquo;<code class=css>print</code>&rsquo; и &lsquo;<code
+   class=css>screen</code>&rsquo; определены в HTML4. Полный список медиа-типов в HTML4 это: &lsquo;<code
    class=css>aural</code>&rsquo;, &lsquo;<code
    class=css>braille</code>&rsquo;, &lsquo;<code
    class=css>handheld</code>&rsquo;, &lsquo;<code
    class=css>print</code>&rsquo;, &lsquo;<code
    class=css>projection</code>&rsquo;, &lsquo;<code
    class=css>screen</code>&rsquo;, &lsquo;<code class=css>tty</code>&rsquo;,
-   &lsquo;<code class=css>tv</code>&rsquo;. CSS2 defines the same list,
-   deprecates &lsquo;<code class=css>aural</code>&rsquo; and adds
-   &lsquo;<code class=css>embossed</code>&rsquo; and &lsquo;<code
-   class=css>speech</code>&rsquo;. Also, &lsquo;<code
-   class=css>all</code>&rsquo; is used to indicate that the style sheet
-   applies to all media types.
+   &lsquo;<code class=css>tv</code>&rsquo;. CSS2 определяет тот же список,
+   осуждая &lsquo;<code class=css>aural</code>&rsquo;, и добавляя
+   &lsquo;<code class=css>embossed</code>&rsquo; и &lsquo;<code
+   class=css>speech</code>&rsquo;. Также &lsquo;<code
+   class=css>all</code>&rsquo; используется для указания того, что таблица стилей применяется ко всем медиа-типам.
 
-  <p>Media-specific style sheets are supported by several user agents. The
-   most commonly used feature is to distinguish between &lsquo;<code
-   class=css>screen</code>&rsquo; and &lsquo;<code
+  <p>Медиа-специфические таблицы стилей поддерживаются многими агентами пользователя. Наиболее часто используемая функция это различие для &lsquo;<code
+   class=css>screen</code>&rsquo; и &lsquo;<code
    class=css>print</code>&rsquo;.
 
-  <p>There have been requests for ways to describe in more detail what type
-   of output devices a style sheet applies to. Fortunately HTML4 foresaw
-   these requests and defined a forward-compatible syntax for media types.
-   Here is a quote from <a
+  <p>Были просьбы о способах более подробного описания к какому типа
+   устройств вывода применяется таблица стилей. К счастью, HTML4 предусмотрел
+   эти просьбы и определил  forward-совместимый синтаксис для медиа-типов.
+   Ниже цитата из <a
    href="http://www.w3.org/TR/1999/REC-html401-19991224/types.html#h-6.13">HTML4,
-   section 6.13</a>:
+   раздел 6.13</a>:
 
   <blockquote
    cite="http://www.w3.org/TR/1999/REC-html401-19991224/types.html#h-6.13">
-   <p>Future versions of HTML may introduce new values and may allow
-    parameterized values. To facilitate the introduction of these extensions,
-    conforming user agents must be able to parse the <a
+   <p>Будущие версии HTML могут ввести новые значения и могут позволить
+    параметризованные значения. Чтобы облегчить введение этих расширений,
+    соответствующие агенты пользователя должны иметь возможность парсить значение атрибута <a
     href="http://www.w3.org/TR/1999/REC-html401-19991224/present/styles.html#adef-media"><samp>media</samp></a>
-    attribute value as follows:
+    как следующее:
 
    <ol>
-    <li>The value is a comma-separated list of entries. For example,
+    <li>Значение это разделенный запяток список записей. Например,
      <pre><code>media="screen, 3d-glasses, print and resolution > 90dpi"</code></pre>
 
-     <p>is mapped to:</p>
+     <p>соответствует:</p>
 
      <pre><code>"screen"
 "3d-glasses"
 "print and resolution > 90dpi"</code></pre>
 
-    <li>Each entry is truncated just before the first character that isn't a
-     US ASCII letter [a-zA-Z] (Unicode decimal 65-90, 97-122), digit [0-9]
-     (Unicode hex 30-39), or hyphen (45). In the example, this gives:
+    <li>Каждая запись укорачивается сразу перед первым символом который не является
+     буквой US ASCII [a-zA-Z] (Unicode десятичные 65-90, 97-122), цифрой [0-9]
+     (Unicode шестнадцат. 30-39) или дефисом (45). В этом примере, это дает:
      <pre><code>"screen"
 "3d-glasses"
 "print"</code></pre>
    </ol>
   </blockquote>
 
-  <p>Media queries, as described in this specification, build on the
-   mechanism outlined in HTML4. The syntax of media queries fit into the
-   media type syntax reserved in HTML4. The <code class=html>media</code>
-   attribute of HTML4 also exists in XHTML and generic XML. The same syntax
-   can also be used inside in the &lsquo;<code class=css>@media</code>&rsquo;
-   and &lsquo;<code class=css>@import</code>&rsquo; rules of CSS.
+  <p>Медиа-запросы, как описано в этой спецификации, построены на механизме,
+   изложенном в HTML4. Синтаксис медиа-запросов тот же, что и
+   синтаксис медиа-типов определенный в HTML4. Атрибут <code class=html>media</code>
+   в HTML4 также существует в XHTML и общем XML. Тот же синтаксис
+   может также использоваться внутри &lsquo;<code class=css>@media</code>&rsquo;
+   и &lsquo;<code class=css>@import</code>&rsquo; правил CSS.
 
-  <p>However, the parsing rules for media queries are incompatible with those
-   of HTML4 so that they are consistent with those of media queries used in
-   CSS.
+  <p>Тем не менее, парсинг правил для медиа-запросов не совместим
+   с HTML4, так что они соответствуют медиа-запросам используемым в CSS.
 
   <p class=note>HTML5 <a href="#HTML5"
-   rel=biblioentry>[HTML5]<!--{{HTML5}}--></a> (at the moment of writing
-   still work in progress) references the Media Queries specification
-   directly and thus updates the rules for HTML.
+   rel=biblioentry>[HTML5]<!--{{HTML5}}--></a> (на момент написания работа все еще в процессе) ссылается на спецификацию Медиа-запросов напрямую и таким образом обновляет правила для HTML.
 
   <h2 id=media0><span class=secno>2. </span>Медиа-запросы</h2>
 
-  <p>A media query consists of a media type and zero or more <span
-   class=index id=expressions>expressions</span> that check for the
-   conditions of particular <span class=index id=media-features>media
-   features</span>.
+  <p>Медиа-запрос состоит из медиа-типа и нуля или больше <span
+   class=index id=expressions>выражений</span>, которые проверяют условия конкретных <span class=index id=media-features>медиа-функций</span>.
 
-  <p>Statements regarding media queries in this section assume the <a
-   href="#syntax">syntax section</a> is followed. Media queries that do not
-   conform to the syntax are discussed in the <a href="#error-handling">error
-   handling section</a>. I.e. the syntax takes precedence over requirements
-   in this section.
-
+  <p>Заявление относительно медиа-запросов в данном разделе предполагают <a
+   href="#syntax">синтаксис</a> описанный ниже. Медиа-запросы которые не
+   соответствуют синтаксису, обсуждаются в <a href="#error-handling">разделе обработки ошибок</a>. Т.е. синтаксис имеет приоритет над требованиями в данном разделе.
   <div class=example>
-   <p>Here is a simple example written in HTML:</p>
+   <p>Ниже простой пример, написанный на HTML:</p>
 
    <pre><code>&lt;link rel="stylesheet" media="screen and (color)" href="example.css" /></code></pre>
 
-   <p>This example expresses that a certain style sheet
-    (<code>example.css</code>) applies to devices of a certain media type
-    (&lsquo;<code class=css>screen</code>&rsquo;) with certain feature (it
-    must be a color screen).</p>
+   <p>Этот пример выражает, что определенная таблица стилей
+    (<code>example.css</code>) применяется к устройствам определенного медиа-типа
+    (&lsquo;<code class=css>screen</code>&rsquo;) с определенной возможностью (это должен быть цветной экран).</p>
   </div>
 
   <div class=example>
-   <p>Here the same media query written in an @import-rule in CSS:</p>
+   <p>Ниже тот же медиа-запрос, написанный в @import-правиле в CSS:</p>
 
    <pre><code>@import url(color.css) screen and (color);</code></pre>
   </div>
 
-  <p>A media query is a logical expression that is either true or false. A
-   media query is true if the media type of the media query matches the media
-   type of the device where the user agent is running (as defined in the
-   "Applies to" line), and all expressions in the media query are true.
+  <p>Медиа-запрос является логическим выражением, которое является истинным или ложным. Медиа-запрос является истинным если медиа-тип медиа-запроса соответствует медиа-типу устройства на котором запущен агент пользователя (как определенно в строке
+   "Относится к"), и все выражения в медиа-запросе истинны.
 
-  <p>A shorthand syntax is offered for media queries that apply to all media
-   types; the keyword &lsquo;<code class=css>all</code>&rsquo; can be left
-   out (along with the trailing &lsquo;<code class=css>and</code>&rsquo;).
-   I.e. if the media type is not explicitly given it is &lsquo;<code
+  <p>Сокращенный синтаксис предлагается для всех медиа-запросов, которые применяются ко всем медиа-типам; ключевое слово &lsquo;<code class=css>all</code>&rsquo; можно не ставить (наряду с &lsquo;<code class=css>and</code>&rsquo;).
+   Т.к. если медиа-тип явно не указан, это &lsquo;<code
    class=css>all</code>&rsquo;.
 
   <div class=example>
-   <p>I.e. these are identical:</p>
+   <p>То есть это идентично:</p>
 
    <pre><code>@media all and (min-width:500px) { &hellip; }
 @media (min-width:500px) { &hellip; }</code></pre>
 
-   <p>As are these:</p>
+   <p>Этому:</p>
 
    <pre><code>@media (orientation: portrait) { &hellip; }
 @media all and (orientation: portrait) { &hellip; }</code></pre>
   </div>
 
-  <p>Several media queries can be combined in a media query list. A
-   comma-separated list of media queries. If one or more of the media queries
-   in the comma-separated list are true, the whole list is true, and
-   otherwise false. In the media queries syntax, the comma expresses a
-   logical OR, while the &lsquo;<code class=css>and</code>&rsquo; keyword
-   expresses a logical AND.
+  <p>Несколько медиа-запросов можно объединить в список. Разделенный запятыми список медиа-запросов. Если один или более медиа-запросов
+   в разделенном запятыми списке истинны, весь список является истинным, и
+   в другом случае ложным. В синтаксисе медиа-запросов, запятая выражает
+   логическое ИЛИ, в то время как ключевое слово &lsquo;<code class=css>and</code>&rsquo; выражает логическое И.
 
   <div class=example>
-   <p>Here is an example of several media queries in a comma-separated list
-    using the an @media-rule in CSS:</p>
+   <p>Ниже приведен пример нескольких медиа-запросов в разделенном запятыми списке, с
+    использованием @media-правила в CSS:</p>
 
    <pre><code>@media <em>screen and (color), projection and (color)</em> { &hellip; }</code></pre>
   </div>
 
-  <p>If the media query list is empty (i.e. the declaration is the empty
-   string or consists solely of whitespace) it evaluates to true.
+  <p>Если список медиа-запросов пуст (т.е. заявление является пустой
+   строкой или состоит только из пробелов), он оценивается как истинный.
 
   <div class=example>
-   <p>I.e. these are equivalent:</p>
+   <p>То есть это эквивалентно:</p>
 
    <pre><code>@media all { &hellip; }
 @media { &hellip; }</code></pre>
   </div>
 
-  <p>The logical NOT can be expressed through the &lsquo;<code
-   class=css>not</code>&rsquo; keyword. The presence of the keyword
-   &lsquo;<code class=css>not</code>&rsquo; at the beginning of the media
-   query negates the result. I.e., if the media query had been true without
-   the &lsquo;<code class=css>not</code>&rsquo; keyword it will become false,
-   and vice versa. User agents that only support media types (as described in
-   HTML4) will not recognize the &lsquo;<code class=css>not</code>&rsquo;
-   keyword and the associated style sheet is therefore not applied.
+  <p>Логическое НЕ может быть выражено ключевым словом &lsquo;<code
+   class=css>not</code>&rsquo;. Наличие ключевого слова
+   &lsquo;<code class=css>not</code>&rsquo; в начале медиа-запроса обращает результат. Т.е., если медиа-запрос был истинным без
+   &lsquo;<code class=css>not</code>&rsquo;, он станет ложным,
+   и наоборот. Агенты пользователей которые поддерживают только медиа-типы (как описано в
+   HTML4) не распознают ключевое слово &lsquo;<code class=css>not</code>&rsquo;
+   и, следовательно, связанные с ним таблицы стилей не применятся.
 
   <div class=example>
    <pre><code>&lt;link rel="stylesheet" media="<em>not screen and (color)</em>" href="example.css" /&gt;</code></pre>
   </div>
 
-  <p>The keyword &lsquo;<code class=css>only</code>&rsquo; can also be used
-   to hide style sheets from older user agents. User agents must process
-   media queries starting with &lsquo;<code class=css>only</code>&rsquo; as
-   if the &lsquo;<code class=css>only</code>&rsquo; keyword was not present.
+  <p>Ключевое слово &lsquo;<code class=css>only</code>&rsquo; может использоваться
+   для скрытия таблиц стилей от устаревших агентов пользователя. Агенты пользователя должны обрабатывать
+   медиа-запросы начинающиеся с &lsquo;<code class=css>only</code>&rsquo; как если бы &lsquo;<code class=css>only</code>&rsquo; не было.
 
   <div class=example>
    <pre><code>&lt;link rel="stylesheet" media="<em>only screen and (color)</em>" href="example.css" /&gt;</code></pre>
   </div>
 
-  <p>The media queries syntax can be used with HTML, XHTML, XML <a
-   href="#XMLSTYLE" rel=biblioentry>[XMLSTYLE]<!--{{XMLSTYLE}}--></a> and the
-   @import and @media rules of CSS.
+  <p>Синтаксис медиа-запросов может использоваться с HTML, XHTML, XML <a
+   href="#XMLSTYLE" rel=biblioentry>[XMLSTYLE]<!--{{XMLSTYLE}}--></a>, и
+   @import и @media правилами CSS.
 
   <div class=example>
-   <p>Here is the same example written in HTML, XHTML, XML, @import and
+   <p>Ниже один и тот же пример написан на HTML, XHTML, XML, @import и
     @media:</p>
 
    <pre><code>&lt;link rel="stylesheet" media="<em>screen and (color), projection and (color)</em>" rel="stylesheet" href="example.css"></code></pre>
@@ -447,57 +426,43 @@
 
    <pre><code>@media <em>screen and (color), projection and (color)</em> { &hellip; }</code></pre>
 
-   <p class=note>The <a href="#XMLSTYLE"
-    rel=biblioentry>[XMLSTYLE]<!--{{XMLSTYLE}}--></a> specification has not
-    yet been updated to use media queries in the <code>media</code>
-    pseudo-attribute.</p>
+   <p class=note>Спецификация <a href="#XMLSTYLE"
+    rel=biblioentry>[XMLSTYLE]<!--{{XMLSTYLE}}--></a> еще не была обновлена для использования медиа-запросов в псевдо-атрибуте <code>media</code>.</p>
   </div>
 
-  <p>If a media feature does not apply to the device where the UA is running,
-   expressions involving the media feature will be false.
-
+  <p>Если медиа-функция не применяется к устройству где запущен ПА,
+   выражения с медиа-функцией будет ложным.
   <div class=example>
-   <p>The media feature &lsquo;<code
-    class=css>device-aspect-ratio</code>&rsquo; only applies to visual
-    devices. On an aural device, expressions involving &lsquo;<code
-    class=css>device-aspect-ratio</code>&rsquo; will therefore always be
-    false:</p>
+   <p>Медиа-функция &lsquo;<code
+    class=css>device-aspect-ratio</code>&rsquo; применяется только к визуальным устройствам. Поэтому на слуховых устройствах выражения с &lsquo;<code
+    class=css>device-aspect-ratio</code>&rsquo; будут всегда ложными:</p>
 
    <pre><code>&lt;link rel="stylesheet" media="aural and (device-aspect-ratio: 16/9)" href="example.css" /&gt;</code></pre>
   </div>
 
-  <p>Expressions will always be false if the unit of measurement does not
-   apply to the device.
+  <p>Выражения всегда будут ложными, если единица измерения не относится к устройству.
 
   <div class=example>
-   <p>The &lsquo;<code class=css>px</code>&rsquo; unit does not apply to
-    &lsquo;<code class=css>speech</code>&rsquo; devices so the following
-    media query is always false:</p>
+   <p>Единица &lsquo;<code class=css>px</code>&rsquo; не применяется к (речевым)
+    &lsquo;<code class=css>speech</code>&rsquo; устройствам, поэтому следующий медиа-запрос всегда будет ложным:</p>
 
    <pre><code>&lt;link rel="stylesheet" media="speech and (min-device-width: 800px)" href="example.css" /&gt;</code></pre>
 
-   <p>Note that the media queries in this example would have been true if the
-    keyword &lsquo;<code class=css>not</code>&rsquo; had been added to the
-    beginning of the media query.</p>
+   <p>Заметьте, что медиа-запросы в этом примере были бы истинными, если бы было добавлено ключевое слово &lsquo;<code class=css>not</code>&rsquo; в начале медиа-запроса.</p>
   </div>
 
-  <p>To avoid circular dependencies, it is never necessary to apply the style
-   sheet in order to evaluate expressions. For example, the aspect ratio of a
-   printed document may be influenced by a style sheet, but expressions
-   involving &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; will be
-   based on the default aspect ratio of the user agent.
+  <p>Чтобы избежать цикличных зависимостей, никогда не следует применять таблицу стилей для оценки выражений. Например, соотношение сторон печатного документа может быть зависеть от таблицы стилей, но выражения с &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; будут основаны на соотношении сторон по умолчанию агента пользователя.
 
-  <p class=note>User agents are expected, but not required, to re-evaluate
-   and re-layout the page in response to changes in the user environment, for
-   example if the device is tilted from landscape to portrait mode.
+  <p class=note>Агенты пользователя желательно, но не обязательно, должны пересчитать
+   и перекомпоновать страницу в ответ на изменения в среде пользователя, например если девайс наклонен от горизонтального к портретному режиму.
 
   <h2 id=syntax><span class=secno>3. </span>Синтаксис</h2>
 
-  <p>The media query syntax is described in terms of the <a
-   href="http://www.w3.org/TR/CSS21/grammar.html">CSS2 grammar</a>. As such,
-   rules not defined here are defined in CSS2. The
-   <code>media_query_list</code> production defined below replaces the
-   <code>media_list</code> production from CSS2. <a href="#CSS21"
+  <p>Синтаксис медиа-запросов определен в терминах <a
+   href="http://www.w3.org/TR/CSS21/grammar.html">грамматики CSS2</a>. Таким образом,
+   правила не определенные здесь, определены в CSS2. Релиз
+   <code>media_query_list</code> определенный ниже, заменяет релиз
+   <code>media_list</code> из CSS2. <a href="#CSS21"
    rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
 
   <pre>media_query_list
@@ -517,33 +482,29 @@ media_feature
  : IDENT
  ;</pre>
 
-  <p>COMMENT tokens, as defined by CSS2, do not occur in the grammar (to keep
-   it readable), but any number of these tokens may appear anywhere between
-   other tokens. <a href="#CSS21"
+  <p>Токены комментариев, как определенно CSS2, не встречаются в грамматике (чтобы сохранять ее читабельной), но любое количество этих символов может быть между другими токенами. <a href="#CSS21"
    rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
 
-  <p>The following new definitions are introduced:
+  <p>Введены следующие новые определения:
 
   <pre>L  l|\\0{0,4}(4c|6c)(\r\n|[ \t\r\n\f])?|\\l
 Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
-  <p>The following new tokens are introduced:
+  <p>Введены следующие новые токены:
 
-  <pre>{O}{N}{L}{Y}      {return ONLY;}
-{N}{O}{T}         {return NOT;}
-{A}{N}{D}         {return AND;}
-{num}{D}{P}{I}    {return RESOLUTION;}
-{num}{D}{P}{C}{M} {return RESOLUTION;}</pre>
+  <pre>{O}{N}{L}{Y}      {возвращает ONLY;}
+{N}{O}{T}         {возвращает NOT;}
+{A}{N}{D}         {возвращает AND;}
+{num}{D}{P}{I}    {возвращает RESOLUTION;}
+{num}{D}{P}{C}{M} {возвращает RESOLUTION;}</pre>
 
-  <p><code>RESOLUTION</code> is to be added to the CSS2 <code>term</code>
-   production.
+  <p><code>RESOLUTION</code> должен быть добавлен к CSS2 <code>term</code>
+   релизу.
 
-  <p>CSS style sheets are generally case-insensitive, and this is also the
-   case for media queries.
+  <p>Таблицы стилей CSS, как правило, не чувствительны к регистру, и это так же в случае медиа-запросов.
 
-  <p>In addition to conforming to the syntax, each media query needs to use
-   media types and media features according to their respective specification
-   in order to be considered conforming.
+  <p>В дополнение к соответствию синтаксиса, каждый медиа-запрос должен использовать
+   медиа-типы и медиа-функции в соответствии с их спецификациями, чтобы рассматриваться соответствующим.
 
   <div class=example>
    <p>Only the first media query is conforming in the example below because
@@ -648,7 +609,7 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
     </div>
   </ul>
 
-  <h2 id=media1><span class=secno>4. </span>Медиа-возможности</h2>
+  <h2 id=media1><span class=secno>4. </span>Медиа-функции</h2>
 
   <p>Syntactically, media features resemble CSS properties: they have names
    and accept certain values. There are, however, several important
