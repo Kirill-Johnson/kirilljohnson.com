@@ -507,8 +507,7 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
    медиа-типы и медиа-функции в соответствии с их спецификациями, чтобы рассматриваться соответствующим.
 
   <div class=example>
-   <p>Only the first media query is conforming in the example below because
-    the "example" media type does not exist.</p>
+   <p>Только первый медиа-запрос соответствующий в примере ниже, потому что не существует медиа-типа "example".</p>
 
    <pre><code>@media all { body { background:lime } }
 @media example { body { background:red } }</code></pre>
@@ -516,141 +515,116 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
   <h3 id=error-handling><span class=secno>3.1. </span>Обработка ошибок</h3>
 
-  <p>For media queries that are not conforming user agents need to follow the
-   rules described in this section.
+  <p>Для медиа-запросов которые не соответствуют, пользовательские агенты должны следовать правилам описанным в этом разделе.
 
   <ul>
    <li>
-    <p><strong>Unknown media types.</strong> Unknown media types evaluate to
-     false. Effectively, they are treated identically to known media types
-     that do not match the media type of the device.</p>
+    <p><strong>Неизвестные медиа-типы.</strong> Неизвестные медиа-типы оцениваются как ложные. По сути, они обрабатываются как и известные медиа-типы, которые не соответствуют медиа-типу устройства.</p>
 
     <div class=example>
-     <p>The media query "<code>unknown</code>" will evaluate to false, unless
-      <code>unknown</code> is actually a supported media type. Similarly,
-      "<code>not unknown</code>" will evaluate to true.</p>
+     <p>Медиа-запрос "<code>unknown</code>" будет оцениваться как ложный, кроме как если
+      <code>unknown</code> является на самом деле поддерживаемым медиа-типом. Таким же образом,
+      "<code>not unknown</code>" будет оцениваться как истинный.</p>
     </div>
 
-    <p class=note>Unknown media types are distinct from media types that do
-     not actually match the IDENT production. Those fall under the malformed
-     media query clause.</p>
+    <p class=note>Неизвестные медиа-типы отличаются от медиа-типов которые
+     на самом деле не соответствуют поставляемым IDENT. Они подпадают под некорректные
+     медиа-запросы.</p>
 
    <li>
-    <p><strong>Unknown media features.</strong> User agents are to represent
-     a media query as "<code>not all</code>" when one of the specified media
-     features is not known.</p>
+    <p><strong>Неизвестные медиа-функции.</strong> Пользовательские агенты должны представлять
+     медия запрос как "<code>not all</code>", когда одна из заданных медиа-функций не известна.</p>
 
     <div class=example>
      <pre><code>&lt;link rel="stylesheet" media="screen and (max-weight: 3kg) and (color), (color)" href="example.css" /&gt;</code></pre>
 
-     <p>In this example, the first media query will be represented as
-      "<code>not all</code>" and evaluate to false and the second media query
-      is evaluated as if the first had not been specified, effectively.</p>
+     <p>В этом примере, первый медиа-запрос будет представлен как
+      "<code>not all</code>" и оцениваться ложным, а второй медиа-запрос
+      оцениваться как если бы первый не был задан, фактически.</p>
     </div>
 
     <div class=example>
      <pre><code>@media (min-orientation:portrait) { &hellip; }</code></pre>
 
-     <p>Is represented as "<code>not all</code>" because the &lsquo;<code
-      class=css>orientation</code>&rsquo; feature does not accept the
-      &lsquo;<code class=css>min-</code>&rsquo; prefix.</p>
+     <p>Представляется как "<code>not all</code>", потому что функция &lsquo;<code
+      class=css>orientation</code>&rsquo; не принимает префикс
+      &lsquo;<code class=css>min-</code>&rsquo;.</p>
     </div>
 
    <li>
-    <p><strong>Unknown media feature values.</strong> As with unknown media
-     features, user agents are to represent a media query as "<code>not
-     all</code>" when one of the specified media feature values is not known.</p>
+    <p><strong>Неизвестные значения медиа-функций.</strong> Как и с неизвестными медиа-функциями, пользовательские агенты должны представлять медиа-запрос как "<code>not
+     all</code>", когда одна из заданных медиа-функций не известна.</p>
 
     <div class=example>
-     <p>The media query <code>(color:20example)</code> specifies an unknown
-      value for the &lsquo;<code class=css>color</code>&rsquo; media feature
-      and is therefore represented as "<code>not all</code>".</p>
+     <p>Медиа-запрос <code>(color:20example)</code> задает неизвестное значение для медиа-функции &lsquo;<code class=css>color</code>&rsquo; и поэтому представляется как "<code>not all</code>".</p>
     </div>
 
     <div class=example>
-     <p>This media query is represented as "<code>not all</code>" because
-      negative lengths are not allowed for the &lsquo;<code
-      class=css>width</code>&rsquo; media feature:</p>
+     <p>Этот медиа-запрос представляется как "<code>not all</code>", потому что отрицательные значения не допускаются для медиа-функции &lsquo;<code
+      class=css>width</code>&rsquo;:</p>
 
      <pre><code>@media (min-width: -100px) { &hellip; }</code></pre>
     </div>
 
    <li>
-    <p><strong>Malformed media query.</strong> User agents are to handle
-     unexpected tokens encountered while parsing a media query by reading
-     until the end of the media query, while observing <a
-     href="http://www.w3.org/TR/CSS21/syndata.html#block">the rules for
-     matching pairs</a> of (), [], {}, "", and &#39;&#39;, and correctly
-     handling escapes. Media queries with unexpected tokens are represented
-     as "<code>not all</code>". <a href="#CSS21"
+    <p><strong>Некорректный медиа-запрос.</strong> Пользовательские агенты должны обрабатывать
+     неожиданные токены, с которыми сталкиваются при парсинге медиа-запроса, с помощью чтения
+     до конца медиа-запроса, соблюдая <a
+     href="http://www.w3.org/TR/CSS21/syndata.html#block">правила совпадающей пары</a> (), [], {}, "", и &#39;&#39;, и корректно
+     обрабатывать исключения. Медиа-запросы с неожиданными токенами представляются
+     как "<code>not all</code>". <a href="#CSS21"
      rel=biblioentry>[CSS21]<!--{{!CSS21}}--></a>
 
     <div class=example>
-     <pre><code>@media (example, all,), speech { /* only applicable to speech devices */ }
-@media &amp;test, screen           { /* only applicable to screen devices */ }</code></pre>
+     <pre><code>@media (example, all,), speech { /* применяется только для речевых устройств */ }
+@media &amp;test, screen           { /* применяется только для экранных устройств */ }</code></pre>
     </div>
 
     <div class=example>
-     <p>The following is an malformed media query because having no space
-      between &lsquo;<code class=css>and</code>&rsquo; and the expression is
-      not allowed. (That is reserved for the functional notation syntax.)</p>
+     <p>Ниже приведен некорректный медиа-запрос, потому что отсутствие пробела
+      между &lsquo;<code class=css>and</code>&rsquo; и выражением
+      не допускается. (Это предназначено для синтаксиса функционального обозначения.)</p>
 
      <pre><code>@media all and(color) { &hellip; }</code></pre>
     </div>
 
-    <p>Media queries are expected to follow the error handling rules of the
-     host language as well.</p>
+    <p>Медиа-запросы также должны следовать правилам обработки ошибок языка в котором представлены.</p>
 
     <div class=example>
      <pre><code>@media test;,all { body { background:lime } }</code></pre>
 
-     <p>&hellip; will not apply because the semicolon terminates the
-      <code>@media</code> rule in CSS.</p>
+     <p>&hellip; не будет применяться, потому что точка с запятой закрывает
+      <code>@media</code> правило в CSS.</p>
     </div>
   </ul>
 
   <h2 id=media1><span class=secno>4. </span>Медиа-функции</h2>
 
-  <p>Syntactically, media features resemble CSS properties: they have names
-   and accept certain values. There are, however, several important
-   differences between properties and media features:
+  <p>Синтаксически, медиа-функции напоминают свойства CSS: они имеют имена и принимают определенные значения. Есть, тем не менее, несколько важных различий между свойствами и медиа-функциями:
 
   <ul>
-   <li>Properties are used in <em>declarations</em> to give information about
-    how to present a document. Media features are used in
-    <em>expressions</em> to describe requirements of the output device.
+   <li>Свойства используются в <em>заявлениях</em>, чтобы задать информацию о
+    том как отображается документ. Медиа-функции используются в
+    <em>выражениях</em>, чтобы описать требования устройства вывода.
 
-   <li>Most media features accept optional &lsquo;<code
-    class=css>min-</code>&rsquo; or &lsquo;<code class=css>max-</code>&rsquo;
-    prefixes to express "greater or equal to" and "smaller or equal to"
-    constraints. This syntax is used to avoid "&lt;" and "&gt;" characters
-    which may conflict with HTML and XML. Those media features that accept
-    prefixes will most often be used with prefixes, but can also be used
-    alone.
+   <li>Большинство медиа-функций опционально принимают префиксы &lsquo;<code
+    class=css>min-</code>&rsquo; или &lsquo;<code class=css>max-</code>&rsquo;
+    чтобы выразить ограничения "больше или равно" и "меньше или равно". Этот синтаксис используется для избежания символов "&lt;" и "&gt;", которые могут конфликтовать с HTML и XML. Те медиа-функции которые принимают префиксы, будут чаще всего использоваться с префиксами, но также могут использоваться в одиночку.
 
-   <li>Properties always require a value to form a declaration. Media
-    features, on the other hand, can also be used without a value. For a
-    media feature <var>feature</var>, <code>(<var>feature</var>)</code> will
-    evaluate to true if <code>(<var>feature</var>:<var>x</var>)</code> will
-    evaluate to true for a value <var>x</var> other than zero or zero
-    followed by a unit identifier (i.e., other than <code>0</code>,
-    <code>0px</code>, <code>0em</code>, etc.). Media features that are
-    prefixed by min/max cannot be used without a value. When a media feature
-    prefixed with min/max is used without a value it makes the media query
-    malformed.
+   <li>Свойства всегда требуют значения для формирования декларации. Медиа-функции, с другой стороны, могут также использоваться без значения. Для медиа-функции <var>feature</var>, <code>(<var>feature</var>)</code> будет оцениваться истинным если <code>(<var>feature</var>:<var>x</var>)</code> будет оцениваться истинным для значения <var>x</var> отличного от нуля или нуля
+    за которым следует идентификатор единицы (т.е. отличный от <code>0</code>,
+    <code>0px</code>, <code>0em</code> и т.д.). Медиа-функции имеющие префикс min/max не могут использоваться без значения. Когда медиа-функция имеющая префикс min/max используется без значения, это делает медиа-запрос некорректным.
 
-   <li>Properties may accept more complex values, e.g., calculations that
-    involve several other values. Media features only accept single values:
-    one keyword, one number, or a number with a unit identifier. (The only
-    exceptions are the &lsquo;<code class=css>aspect-ratio</code>&rsquo; and
-    &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; media features.)
+   <li>Свойства могут принимать комплексные значение, например расчеты которые
+    включают в себя несколько других значений. Медиа-функции принимают только одиночные значения:
+    одно ключевое слово, одно цифра или число с идентификатором единиц. (Единственными исключениями являются &lsquo;<code class=css>aspect-ratio</code>&rsquo; и
+    &lsquo;<code class=css>device-aspect-ratio</code>&rsquo; медиа-функции.)
     
   </ul>
 
   <div class=example>
-   <p>For example, the &lsquo;<code class=css>color</code>&rsquo; media
-    feature can form expressions without a value (&lsquo;<code
-    class=css>(color)</code>&rsquo;), or with a value (&lsquo;<code
+   <p>Например, медиа-функция &lsquo;<code class=css>color</code>&rsquo; может формировать заявления без значения (&lsquo;<code
+    class=css>(color)</code>&rsquo;) или со значением (&lsquo;<code
     class=css>(min-color: 1)</code>&rsquo;).</p>
   </div>
 
