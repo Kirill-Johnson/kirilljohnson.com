@@ -975,23 +975,21 @@ Y  y|\\0{0,4}(59|79)(\r\n|[ \t\r\n\f])?|\\y</pre>
 
   <h3 id=resolution0><span class=secno>6.1. </span>Разрешение</h3>
 
-  <p>The &lsquo;<code class=css>dpi</code>&rsquo; and &lsquo;<code
-   class=css>dpcm</code>&rsquo; units describe the resolution of an output
-   device, i.e., the density of device pixels. Resolution unit identifiers
-   are:
+  <p>Единицы &lsquo;<code class=css>dpi</code>&rsquo; и &lsquo;<code
+   class=css>dpcm</code>&rsquo; описывают разрешение выходного устройства, т.е. плотность пикселей устройства. Идентификаторы единиц разрешения это:
 
   <dl>
    <dt>dpi
 
-   <dd>dots per CSS &lsquo;<code class=css>inch</code>&rsquo;
+   <dd>точек на CSS &lsquo;<code class=css>inch</code>&rsquo;
 
    <dt>dpcm
 
-   <dd>dots per CSS &lsquo;<code class=css>centimeter</code>&rsquo;
+   <dd>точек на CSS &lsquo;<code class=css>centimeter</code>&rsquo;
   </dl>
 
-  <p>In this specification, these units are only used in the &lsquo;<code
-   class=css>resolution</code>&rsquo; media feature.
+  <p>В этой спецификации, эти единицы используются только в медиа-функции &lsquo;<code
+   class=css>resolution</code>&rsquo;.
 
   
   <h2 class=no-num id=acknowledgments>Благодарности</h2>
