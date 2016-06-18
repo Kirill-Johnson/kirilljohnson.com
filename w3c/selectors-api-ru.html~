@@ -274,7 +274,7 @@ for (var i = 0; i &lt; groups.length; i++) {
 
    <p>Заметьте, что скрипт работает на DOM, и работает независимо от
     синтаксиса используемого при создании документа. Таким образом, этот скрипт также будет правильно
-    работать для такой же таблицы созданной в правильном XHTML вместо HTML, или динамически созданным и вставленым в документ с помощью DOM API.
+    работать для такой же таблицы созданной в правильном XHTML вместо HTML, или динамически созданным и вставленным в документ с помощью DOM API.
   </div>
 
   <h2 id=conformance><span class=secno>2. </span>Требования к соответствию</h2>
@@ -382,15 +382,12 @@ for (var i = 0; i &lt; vlinks.length; i++) {
 
   <p>Термин <dfn id=first>первый</dfn> используемый в определениях
    методов описанных этой спецификацией, означает <em>первый в порядке документа</em>. Термин <dfn id=document-order>порядок документа</dfn> означает поиск в глубину прямого порядка обхода дерева DOM или поддерева в вопросе.
-   Термин <dfn id=context-node>context node</dfn> refers to the node upon
-   which the method was invoked. The term <dfn id=subtrees>subtrees</dfn>
-   refers to the collection of elements that are descendants of the <a
-   href="#context-node">context node</a>. The term <dfn
-   id=matching-element-node>matching <code>Element</code> node</dfn> refers
-   to an <a href="#element"><code>Element</code></a> node that matches the <a
-   href="#selector-string">selector string</a> (<var>selectors</var>) that
-   was passed to the method, according to the rules for matching elements
-   defined in Selectors <a href="#SELECT"
+   Термин <dfn id=context-node>контекстная нода</dfn> относится к ноде
+   на которой метод был вызван. Термин <dfn id=subtrees>поддеревья</dfn>
+   относится к набору элементов, которые являются потомками <a
+   href="#context-node">контекстной ноды</a>. Термин <dfn
+   id=matching-element-node>соответствующая <code>Element</code> нода</dfn> относится к <a href="#element"><code>Element</code></a> ноде которая соответствует <a
+   href="#selector-string">строке селектора</a> (<var>selectors</var>) которая была передана методу, в соответствии с правилами соответствия элементов определенных Селекторами <a href="#SELECT"
    rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a>.
 
   <h3 id=interface-definitions><span class=secno>6.1. </span>Определение интерфейсов</h3>
@@ -426,73 +423,59 @@ partial interface <a
 
   <h3 id=findelements><span class=secno>6.2. </span>Поиск элементов</h3>
 
-  <p>The <var>selectors</var> argument for the <a
-   href="#queryselector"><code>querySelector</code></a> and <a
-   href="#queryselectorall"><code>querySelectorAll</code></a> methods accepts
-   a <a href="#selector-string">selector string</a>.
+  <p>Аргумент <var>selectors</var> для методов <a
+   href="#queryselector"><code>querySelector</code></a> и <a
+   href="#queryselectorall"><code>querySelectorAll</code></a> принимает <a href="#selector-string">строку селекторов</a>.
 
-  <p>The <dfn id=queryselector
-   title=queryselector><code>querySelector()</code></dfn> methods on the <a
+  <p>Методы <dfn id=queryselector
+   title=queryselector><code>querySelector()</code></dfn> на интерфейсах <a
    href="#document"><code title=dom-document>Document</code></a>, <a
-   href="#documentfragment"><code>DocumentFragment</code></a>, and <a
-   href="#element"><code>Element</code></a> interfaces <em class=ct>must</em>
-   return the <a href="#first">first</a> matching <a
-   href="#element"><code>Element</code></a> node within the <a
-   href="#subtrees">subtrees</a> of the <a href="#context-node">context
-   node</a>. If there is no matching <a
-   href="#element"><code>Element</code></a>, the method <em
-   class=ct>must</em> return <code>null</code>.
+   href="#documentfragment"><code>DocumentFragment</code></a> и <a
+   href="#element"><code>Element</code></a> должны (<em class=ct>must</em>)
+   возвратить <a href="#first">первую</a> соответствующую <a
+   href="#element"><code>Element</code></a> ноду в пределах <a
+   href="#subtrees">поддеревьев</a> <a href="#context-node">контекстной ноды</a>. Если нет соответствующего <a
+   href="#element"><code>Element</code></a>, метод должен (<em
+   class=ct>must</em>) возвратить <code>null</code>.
 
-  <p>The <dfn id=queryselectorall
-   title=queryselectorall><code>querySelectorAll()</code></dfn> methods on
-   the <a href="#document"><code title=dom-document>Document</code></a>, <a
-   href="#documentfragment"><code>DocumentFragment</code></a>, and <a
-   href="#element"><code>Element</code></a> interfaces <em class=ct>must</em>
-   return a <a href="#nodelist"><code>NodeList</code></a> containing all of
-   the matching <a href="#element"><code>Element</code></a> nodes within the
-   <a href="#subtrees">subtrees</a> of the <a href="#context-node">context
-   node</a>, in <a href="#document-order">document order</a>. If there are no
-   matching nodes, the method <em class=ct>must</em> return an empty <a
+  <p>Методы <dfn id=queryselectorall
+   title=queryselectorall><code>querySelectorAll()</code></dfn> на интерфейсах <a href="#document"><code title=dom-document>Document</code></a>, <a
+   href="#documentfragment"><code>DocumentFragment</code></a> и <a
+   href="#element"><code>Element</code></a> должны (<em class=ct>must</em>)
+   возвратить <a href="#nodelist"><code>NodeList</code></a> содержащий все соответствующие <a href="#element"><code>Element</code></a> ноды в пределах
+   <a href="#subtrees">поддеревьев</a> <a href="#context-node">контекстной ноды</a>, в <a href="#document-order">порядке документа</a>. Если нет соответствующих нод, метод должен (<em class=ct>must</em>) вернуть пустой <a
    href="#nodelist"><code>NodeList</code></a>.
 
-  <p>When either <a href="#queryselector"><code>querySelector</code></a> or
-   <a href="#queryselectorall"><code>querySelectorAll</code></a> are invoked,
-   the implementation <em class=ct>must</em> follow these steps:
+  <p>Когда вызван <a href="#queryselector"><code>querySelector</code></a> или
+   <a href="#queryselectorall"><code>querySelectorAll</code></a>, реализация должна (<em class=ct>must</em>) следовать этим шагам:
 
   <ol>
    <li>
-    <p>Let <var>parsed selector</var> be the result of running the algorithm
-     to <a href="#parse-a-selector">parse a selector</a> with
-     <var>selectors</var> as the input.
+    <p>Сделать <var>parsed selector</var> результатом работы алгоритма <a href="#parse-a-selector">обработки селектора</a> с
+     <var>selectors</var> в качестве входного.
 
    <li>
-    <p>The implementation must then run the algorithm to <a
-     href="#evaluate-a-selector">evaluate a selector</a> against element
-     nodes in the specified <span title=concept-tree>tree</span> or <a
-     href="#subtrees">subtrees</a> using <var>parsed selector</var> as the
-     selector to return the required result for the invoked method.
+    <p>Реализация должна затем запустить алгоритм <a
+     href="#evaluate-a-selector">оценки селектора</a> к нодам элемента в заданном <span title=concept-tree>дереве</span> или <a
+     href="#subtrees">поддеревьях</a>, используя <var>parsed selector</var> как селектор для возвращения необходимого результата вызванного метода.
   </ol>
 
-  <p>The <a href="#nodelist"><code>NodeList</code></a> object returned by the
-   <code>querySelectorAll()</code> method <em class=ct>must</em> be static,
-   not <a href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#td-live"
-   title="Document Object Model Core">live</a> (<a href="#DOM-LEVEL-3-CORE"
+  <p>Объект <a href="#nodelist"><code>NodeList</code></a> возвращенный методом
+   <code>querySelectorAll()</code>, должен (<em class=ct>must</em>) быть статичным,
+   а не <a href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#td-live"
+   title="Document Object Model Core">живым</a> (<a href="#DOM-LEVEL-3-CORE"
    rel=biblioentry>[DOM-LEVEL-3-CORE]<!--{{!DOM-LEVEL-3-CORE}}--></a>,
-   section 1.1.1). Subsequent changes to the structure of the underlying
-   document <em class=ct>must not</em> be reflected in the <a
-   href="#nodelist"><code>NodeList</code></a> object. This means that the
-   object will instead contain a list of matching <a
-   href="#element"><code>Element</code></a> nodes that were in the document
-   at the time the list was created.
+   раздел 1.1.1). Последующие изменения в структуре базового документа не должны (<em class=ct>must not</em>) затрагиваться в объекте <a
+   href="#nodelist"><code>NodeList</code></a>. Это означает, что объект будет содержать список соответствующих <a
+   href="#element"><code>Element</code></a> нод, которые были в документе на момент создания списка.
 
   <h3 id=grammar><span class=secno>6.3. </span>Грамматика</h3>
 
-  <p>A <dfn id=selector-string>selector string</dfn> is a list of one or more
-   <a href="http://dev.w3.org/csswg/selectors4/#complex">group of
-   selectors</a> (<a href="#SELECT"
-   rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a>, section 5) that <em
-   class=ct>may</em> be surrounded by whitespace and matches the
-   <code>dom_selectors_group</code> production.
+  <p><dfn id=selector-string>Строка селектора</dfn> это список из одной или более
+   <a href="http://dev.w3.org/csswg/selectors4/#complex">групп селекторов</a> (<a href="#SELECT"
+   rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a>, раздел 5), которые могут (<em
+   class=ct>may</em>) быть окружены пробелами и соответствовать
+   <code>dom_selectors_group</code>.
 
   <pre>
 dom_selectors_group
@@ -500,39 +483,33 @@ dom_selectors_group
   ;
 </pre>
 
-  <p>The productions for <code>selectors_group</code> is defined in Selectors
+  <p>Грамматика для <code>selectors_group</code> определена в Selectors
    Level 3 (<a href="#SELECT" rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a>,
-   section 10.1). These groups of selectors <em class=ct>should not</em> use
+   раздел 10.1). Эти группы селекторов не должны (<em class=ct>should not</em>) использовать
    <a href="#namespace-prefix-needs-to-be-resolved"
-   title=need-to-resolve>namespace prefixes that need to be resolved</a>.
+   title=need-to-resolve>префиксы пространств имет которые должны быть разрешены</a>.
 
-  <p class=note>Implementers are advised that if <code>null</code> or
-   <code>undefined</code> are passed as the value of the <var>selectors</var>
-   parameter, they are to be handled as defined in WebIDL <a
+  <p class=note>Реализаторам советуется, что если значение <code>null</code> или
+   <code>undefined</code> передано как значение параметра <var>selectors</var>, оно должно быть обработано как описано в WebIDL <a
    href="#DOM-BINDINGS"
-   rel=biblioentry>[DOM-BINDINGS]<!--{{!DOM-BINDINGS}}--></a>. Authors are
-   advised to avoid passing these values.
+   rel=biblioentry>[DOM-BINDINGS]<!--{{!DOM-BINDINGS}}--></a>. Авторы советуют избегать передачи этих значений.
 
-  <p class=note>Authors are advised that while the use of pseudo-elements in
-   selectors is permitted, they will not match any elements in the document,
-   and thus would not result in any elements being returned. Therefore,
-   authors are advised to avoid the use of pseudo-elements in selectors that
-   are passed to the methods defined in this specification.
+  <p class=note>В то время как использование псевдо-элементов в селекторах допускается, они не будут соответствовать каким-либо элементам в документе, и поэтому не приводят в возвращению элементов. Поэтому
+   авторы советуют избегать использования псевдо-элементов в селекторах которые
+   передаются к методам описанным в этой спецификации.
 
   <h3 id=processing-selectors><span class=secno>6.4. </span>Обработка селекторов</h3>
 
-  <p>The steps to <dfn id=parse-a-selector>parse a selector</dfn> are as
-   follows:
+  <p>Шаги для <dfn id=parse-a-selector>обработки селектора</dfn> являются следующими:
 
   <ol>
    <li>
-    <p>Let <var>selectors</var> be the <a href="#selector-string">selector
-     string</a> input to this algorithm.
+    <p>Сделать <var>selectors</var> <a href="#selector-string">строкой селектора</a> введенной в этот алгоритм.
 
    <li>
-    <p>Let <var>result</var> be the group of selectors returned as a result
-     of parsing the <var>selectors</var> according to the grammar for
-     <code>dom_selectors_group</code> defined above.
+    <p>Сделать <var>result</var> группой селекторов возвращенных как результат
+     обработки <var>selectors</var> согласно грамматике для
+     <code>dom_selectors_group</code> описанной выше.
 
    <li>
     <p>If <var>result</var> is <a
