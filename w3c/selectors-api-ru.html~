@@ -1,21 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 
 <html lang="ru">
- <head profile="http://dublincore.org/documents/2008/08/04/dc-html/ ">
   <meta content="text/html;charset=UTF-8" http-equiv=Content-Type>
   <title>Selectors API Level 1 — W3C</title>
 
-  <link href="http://purl.org/dc/terms/" rel=schema.dcterms>
-  <link href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright"
-   rel=dcterms.rights>
-  <meta content="Selectors API Level 1" name=dcterms.title>
-  <meta content=text name=dcterms.type>
-  <meta content=2013-02-21 name=dcterms.issued>
-  <meta content="Anne van Kesteren" name=dcterms.creator>
-  <meta content="Lachlan Hunt" name=dcterms.creator>
-  <meta content=W3C name=dcterms.publisher>
-  <meta content="http://www.w3.org/TR/2013/REC-selectors-api-20130221/"
-   name=dcterms.identifier>
   <style type="text/css">
 	pre.idl { border:solid thin; background:#eee; color:#000; padding:0.5em }
 	pre.idl :link, pre.idl :visited { color:inherit; background:transparent }
@@ -24,7 +12,7 @@
 	dfn { font-style:normal; font-weight:bolder }
 	em.ct { font-style:normal; font-weight:normal; font-variant:small-caps }
 	p.note {  margin-left:2em; color:green; font-style:italic; font-weight:bold }
-	p.note:before { content:"Note: " }
+	p.note:before { content:"Заметка: " }
 	.issue { padding:.5em; border:solid red }
 	.issue:before { content:"Issue: " }
 	code { color:#FF4500; }
@@ -38,7 +26,7 @@
   <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter36816840 = new Ya.Metrika({ id:36816840, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/36816840" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
 <p class="translator">
-Этот документ является неофициальным переводом исходной английской версии <a href="https://www.w3.org/TR/selectors-api/" target="_blank" rel="nofollow">Selectors API Level 1</a>. Обратите внимание на то, что оригинальная версия документа существует только на английском языке. Данный перевод может содержать неточности и ошибки. Перевод выполнил <strong><a href="http://topolyan.com/" target="_blank">Кирилл Топольян</a></strong>, 2016.</p>
+Этот документ является неофициальным переводом исходной английской версии <a href="https://www.w3.org/TR/selectors-api/" target="_blank" rel="nofollow">Selectors API Level 1</a>. Обратите внимание на то, что оригинальная версия документа существует только на английском языке. Данный перевод может содержать неточности и ошибки. Перевод выполнил <a href="http://topolyan.com/" target="_blank">Кирилл Топольян</a>, 2016.</p>
 
   <div class=head>
    <p><a href="http://www.w3.org/"><img alt=W3C height=48
@@ -222,23 +210,22 @@
 
   <h2 id=introduction><span class=secno>1. </span>Введение</h2>
 
-  <p><em>This section is non-normative.</em>
+  <p><em>Этот раздел не является нормативным.</em>
 
-  <p>This specification provides methods for selecting and testing elements
-   based on whether or not they match a given selector. With these methods,
-   it is easier to match a set of <a href="#element"><code>Element</code></a>
-   nodes based on specific criteria, than having to subsequently filter the
-   result of calling other methods like <code>getElementsByTagName()</code>.
+  <p>Эта спецификация предоставляет методы для выбора и тестирования элементов
+   в зависимости от того соответствуют ли они заданному селектору. С этими методами проще
+   сопоставлять сет нод <a href="#element"><code>Element</code></a>
+   основываясь на специальном критерии, чем в дальнейшем фильтровать результат вызова других методов, таких как <code>getElementsByTagName()</code>.
 
   <h3 id=examples><span class=secno>1.1. </span>Примеры</h3>
 
-  <p><em>This section is non-normative.</em>
+  <p><em>Этот раздел не является нормативным.</em>
 
-  <p>Some ECMAScript <a href="#ECMA-262-5.1"
-   rel=biblioentry>[ECMA-262-5.1]<!--{{ECMA-262-5.1}}--></a> examples:
+  <p>Некоторые примеры на ECMAScript <a href="#ECMA-262-5.1"
+   rel=biblioentry>[ECMA-262-5.1]<!--{{ECMA-262-5.1}}--></a>:
 
   <div class=example>
-   <p>This is an example table written in HTML 4.01.
+   <p>Этот пример таблицы написан на HTML 4.01.
 
    <pre>&lt;table id="score">
   &lt;thead>
@@ -261,12 +248,12 @@
       &lt;td>81%
 &lt;/table></pre>
 
-   <p>In order to obtain the cells containing the results in the table, which
-    might be done, for example, to plot the values on a graph, there are at
-    least two approaches that may be taken. Using only the APIs from DOM
-    Level 2, it requires a script like the following that iterates through
-    each <code>tr</code> within each <code>tbody</code> in the
-    <code>table</code> to find the second cell of each row.
+   <p>Для того чтобы получить ячейки, содержащие результаты таблицы, что может
+    быть сделано, к примеру, чтобы построить график значений, есть как
+    минимум два подхода, которые можно использовать. Использование только API для DOM
+    Level 2, это требует скрипт вроде следующего, который перебирает
+    каждый <code>tr</code> внутри каждого <code>tbody</code> в
+    <code>table</code>, чтобы найти вторую ячейку каждой строки.
 
    <pre>var table = document.getElementById("score");
 var groups = table.tBodies;
@@ -280,129 +267,105 @@ for (var i = 0; i &lt; groups.length; i++) {
   }
 }</pre>
 
-   <p>Alternatively, using the <code
-    title=document-selectallelements>querySelectorAll()</code> method, that
-    script becomes much more concise.
+   <p>Второй метод это использование метода <code
+    title=document-selectallelements>querySelectorAll()</code>, с которым скрипт становится намного более кратким.
 
    <pre>var cells = document.querySelectorAll("#score&gt;tbody&gt;tr&gt;td:nth-of-type(2)");</pre>
 
-   <p>Note that the script operates on the DOM and works independently from
-    the syntax used to create the document. Thus this script will also work
-    correctly for an equivalent table created from well-formed XHTML instead
-    of HTML, or dynamically created and inserted into a document using DOM
-    APIs.
+   <p>Заметьте, что скрипт работает на DOM, и работает независимо от
+    синтаксиса используемого при создании документа. Таким образом, этот скрипт также будет правильно
+    работать для такой же таблицы созданной в правильном XHTML вместо HTML, или динамически созданным и вставленым в документ с помощью DOM API.
   </div>
 
   <h2 id=conformance><span class=secno>2. </span>Требования к соответствию</h2>
 
-  <p>All diagrams, examples and notes in this specification are
-   non-normative, as are all sections explicitly marked non-normative.
-   Everything else in this specification is normative.
+  <p>Все диаграммы, примеры и заметки в данной спецификации не являются нормативными, также как все разделы помеченные не-нормативными.
+   Все остальное в данном спецификации является нормативным.
 
-  <p>The key words <em class=ct>must</em>, <em class=ct>must not</em>, <em
-   class=ct>should</em>, <em class=ct>may</em> and <em
-   class=ct>recommended</em> in the normative parts of this document are to
-   be interpreted as described in RFC 2119 <a href="#RFC2119"
+  <p>Ключевые слова <em class=ct>must</em>, <em class=ct>must not</em>, <em
+   class=ct>should</em>, <em class=ct>may</em> и <em
+   class=ct>recommended</em> в нормативных частях этого документа должны интерпретироваться как описано в RFC 2119 <a href="#RFC2119"
    rel=biblioentry>[RFC2119]<!--{{!RFC2119}}--></a>.
 
-  <p>The following conformance classes are defined (and considered) by this
-   specification:
+  <p>Следующие классы соответствия определены (и рассматриваются) данной спецификацией:
 
   <dl>
-   <dt><dfn id=conforming-user-agent>conforming user agent</dfn>
+   <dt><dfn id=conforming-user-agent>соответствующий агент пользователя</dfn>
 
-   <dd>A user agent that implements the interfaces described in this
-    specification and conforms to all <em class=ct>must</em>-level criteria
-    that apply to implementations.
+   <dd>Агент пользователя реализующий интерфейсы описанные данной спецификацией и соответствует всем <em class=ct>must</em>-level критериям, которые применяются к реализациям.
 
-   <dt><dfn id=conforming-application>conforming application</dfn>
+   <dt><dfn id=conforming-application>соответствующее приложение</dfn>
 
-   <dd>An application that uses the interfaces defined in this specification
-    and conforms to all <em class=ct>must</em>-level criteria that apply to
-    applications.
+   <dd>Приложение использующее интерфейсы описанные данной спецификацией
+    и соответствующие всем <em class=ct>must</em>-level критериям, которые применяются к приложениям.
   </dl>
 
   <h3 id=terminology><span class=secno>2.1. </span>Терминология и соглашения</h3>
 
-  <p>The terminology used in this specification is that from Selectors <a
+  <p>Терминология используемая в данной спецификации та же, что и в Селекторах <a
    href="#SELECT" rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a>.
 
-  <p>The following features are defined in the DOM Level 3 Core specification
+  <p>Следующие функции определены в спецификации DOM Level 3 Core
    <a href="#DOM-LEVEL-3-CORE"
    rel=biblioentry>[DOM-LEVEL-3-CORE]<!--{{!DOM-LEVEL-3-CORE}}--></a>:
 
   <ul>
    <li><dfn id=document title=dom-document><code>Document</code></dfn>
-    interface.
+    интерфейс.
 
    <li><dfn id=documentfragment><code>DocumentFragment</code></dfn>
-    interface.
+    интерфейс.
 
-   <li><dfn id=element><code>Element</code></dfn> interface.
+   <li><dfn id=element><code>Element</code></dfn> интерфейс.
 
-   <li><dfn id=nodelist><code>NodeList</code></dfn> interface.
+   <li><dfn id=nodelist><code>NodeList</code></dfn> интерфейс.
   </ul>
 
-  <p>Conformance requirements phrased as algorithms or specific steps <em
-   class=ct>may</em> be implemented in any manner, so long as the end result
-   is equivalent.
+  <p>Требования соответствия выраженные в виде алгоритмов или конкретных шагов могут (<em
+   class=ct>may</em>) быть реализованы любым способом, до тех пор пока конечный результат эквивалентен.
 
-  <p>The IDL used in this specification uses the syntax defined in Web IDL <a
+  <p>IDL используемый в этой спецификации использует синтаксис определенный в Web IDL <a
    href="#DOM-BINDINGS"
    rel=biblioentry>[DOM-BINDINGS]<!--{{!DOM-BINDINGS}}--></a>.
 
-  <p>The construction "<code>Foo</code> object", where <code>Foo</code> is
-   actually an interface, is sometimes used instead of the more accurate
-   "object implementing the <code>Foo</code> interface".
+  <p>Конструкция "<code>Foo</code> объект", где <code>Foo</code> является интерфейсом, иногда используется вместо более точного
+   "объект реализующий <code>Foo</code> интерфейс".
 
   <h2 id=interoperability><span class=secno>3. </span>Вопросы интероперабельности</h2>
 
-  <p><em>This section is non-normative.</em>
+  <p><em>Этот раздел не является нормативным.</em>
 
-  <p>Some implementations might have different levels of support for
-   Selectors. If some implementations lack support for some selectors, then
-   the use of such selectors will result in those implementations failing to
-   return the expected results. Authors are advised to check for the DOM
-   Exceptions thrown by these APIs and provide a fallback for graceful
-   degradation.
+  <p>Некоторые реализации могут иметь разные уровни поддержки Селекторов. Если некоторым реализациям не хватает поддержки некоторых селекторов, то использование этих селекторов выдаст ошибку при возвращении ожидаемых результатов. Авторы советуют проверять исключения DOM
+   выданные этими API и обеспечивать запасной вариант для плавной деградации.
 
   <h3 id=extensibility><span class=secno>3.1. </span>Расширяемость</h3>
 
-  <p><em>This section is non-normative.</em>
+  <p><em>Этот раздел не является нормативным.</em>
 
-  <p>Extensions of the APIs defined in this specification are <em>strongly
-   discouraged</em>. Implementors, Working Groups and other interested
-   parties should discuss extensions on a relevant public forum, such as <a
+  <p>Расширения для API определены в этой спецификации <em>настоятельно нерекомендуемыми</em>. Реализаторы, Рабочие группы и прочие заинтересованные стороны должны обсуждать расширения на соответствующем публичном форуме, таком как <a
    href="mailto:public-webapps@w3.org">public-webapps@w3.org</a>.
 
   <h2 id=security><span class=secno>4. </span>Вопросы безопасности</h2>
 
-  <p>It is expected that implementing this specification introduces no new
-   security risks for users.
+  <p>Ожидается, что реализация данной спецификации не вводит новых рисков безопасности для пользователей.
 
-  <p>If, at any time, the implementation detects a situation which would
-   violate security policies, the implementation <em class=ct>may</em> abort
-   and raise a security exception. If any other error condition occurs which
-   is not covered directly by this or any other relevant specification, the
-   implementation <em class=ct>may</em> abort and raise an appropriate,
-   language-binding-specific or implementation-specific exception.
+  <p>Если, в любое время, реализация обнаруживает ситуацию которая может нарушить политику безопасности, реализация может (<em class=ct>may</em>) прервать действие и выдать ошибку безопасности. Если возникает любое другое условие ошибки, которое
+   не покрывается напрямую этой или другой релевантной спецификацией, реализация может (<em class=ct>may</em>) прервать действие и выдать соответствующее исключение, основанное на особенностях языка или реализатора.
 
   <h2 id=privacy><span class=secno>5. </span>Вопросы приватности</h2>
 
-  <p>History theft is a potential privacy issue because the
-   <code>:visited</code> pseudo-class in Selectors <a href="#SELECT"
-   rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a> allows authors to query
-   which links have been visited.
+  <p>Кража истории это потенциальная проблема приватности, потому что
+   псевдо-класс <code>:visited</code> в Селекторах <a href="#SELECT"
+   rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a> позволяет авторам запрашивать
+   какие ссылки были посещены.
 
-  <p class=note>This is not a new problem, as it can already be exploited
-   using existing CSS and DOM APIs, such as <code>getComputedStyle()</code>
+  <p class=note>Это не новая проблема, это уже может использоваться
+   с помощью существующих CSS и DOM API, таких как <code>getComputedStyle()</code>
    <a href="#DOM-LEVEL-2-STYLE"
    rel=biblioentry>[DOM-LEVEL-2-STYLE]<!--{{DOM-LEVEL-2-STYLE}}--></a>.
 
   <div class=example>
-   <p>In this example, <var>vlinks</var> will acquire a list of links that
-    the user has visited. The author can then obtain the URIs and potentially
-    exploit this knowledge.
+   <p>В этом примере, <var>vlinks</var> получит список ссылок которые пользователь посетил. Затем автор может получить список URI и потенциально использовать это знание.
 
    <pre>var vlinks = document.querySelectorAll(":visited");
 for (var i = 0; i &lt; vlinks.length; i++) {
@@ -410,20 +373,16 @@ for (var i = 0; i &lt; vlinks.length; i++) {
 }</pre>
   </div>
 
-  <p>As <a href="http://www.w3.org/TR/css3-selectors/#link">defined in
-   <cite>Selectors</cite></a> (<a href="#SELECT"
-   rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a>, section 6.6.1), user
-   agents <em class=ct>may</em> treat all links as unvisited links. It is <em
-   class=ct>recommended</em> that implementations behave consistently with
-   other uses of Selectors supported by the user agent.
+  <p>Как <a href="http://www.w3.org/TR/css3-selectors/#link">определено в
+   <cite>Селекторах</cite></a> (<a href="#SELECT"
+   rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a>, раздел 6.6.1), пользовательские агенты могут (<em class=ct>may</em>) обработать все ссылки как непосещенные ссылки. Рекомендуется (<em
+   class=ct>recommended</em>), чтобы реализации вели себя стабильно с другими использованиями Селекторов поддерживаемыми агентом пользователя.
 
   <h2 id=the-apis><span class=secno>6. </span>API</h2>
 
-  <p>The term <dfn id=first>first</dfn> used in the definitions of the
-   methods defined in this specification means <em>first in document
-   order</em>. The term <dfn id=document-order>document order</dfn> means a
-   depth-first pre-order traversal of the DOM tree or subtree in question.
-   The term <dfn id=context-node>context node</dfn> refers to the node upon
+  <p>Термин <dfn id=first>первый</dfn> используемый в определениях
+   методов описанных этой спецификацией, означает <em>первый в порядке документа</em>. Термин <dfn id=document-order>порядок документа</dfn> означает поиск в глубину прямого порядка обхода дерева DOM или поддерева в вопросе.
+   Термин <dfn id=context-node>context node</dfn> refers to the node upon
    which the method was invoked. The term <dfn id=subtrees>subtrees</dfn>
    refers to the collection of elements that are descendants of the <a
    href="#context-node">context node</a>. The term <dfn
