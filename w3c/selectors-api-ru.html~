@@ -512,70 +512,62 @@ dom_selectors_group
      <code>dom_selectors_group</code> описанной выше.
 
    <li>
-    <p>If <var>result</var> is <a
-     href="http://www.w3.org/TR/css3-selectors/#Conformance">invalid</a> (<a
-     href="#SELECT" rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a>, section
+    <p>Если <var>result</var> является <a
+     href="http://www.w3.org/TR/css3-selectors/#Conformance">не валидным</a> (<a
+     href="#SELECT" rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a>, раздел
      12), <a
-     href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#DOMException-SYNTAX_ERR">raisea
-     a <code>SYNTAX_ERR</code> exception</a> (<a href="#DOM-LEVEL-3-CORE"
+     href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#DOMException-SYNTAX_ERR">выдать исключение <code>SYNTAX_ERR</code></a> (<a href="#DOM-LEVEL-3-CORE"
      rel=biblioentry>[DOM-LEVEL-3-CORE]<!--{{!DOM-LEVEL-3-CORE}}--></a>,
-     section 1.4) and abort this algorithm.
+     раздел 1.4) и прервать этот алгоритм.
 
-   <li>Return <var>result</var>.
+   <li>Возвратить <var>result</var>.
   </ol>
 
-  <p>The steps to <dfn id=evaluate-a-selector>evaluate a selector</dfn> are
-   as follows:
+  <p>Шаги для <dfn id=evaluate-a-selector>оценки селектора</dfn> являются следующими:
 
   <ol>
    <li>
-    <p>Let <var title="">element</var> be the element being evaluated.
+    <p>Сделать <var title="">element</var> оцениваемым элементом.
 
    <li>
-    <p>Let <var>selector group</var> be the selector input into this
-     algotihm.
+    <p>Сделать <var>selector group</var> входящим значением селекторов в этот алгоритм.
 
    <li>
-    <p>If any selector in <var>selector group</var> matches <var
-     title="">element</var>, return true. Otherwise, return false.
+    <p>Если любой селектор в <var>selector group</var> соответствует <var
+     title="">element</var>, возвратить true. В другом случае, возвратить false.
   </ol>
 
-  <p>Selectors are evaluated against a given element in the context of the
-   entire DOM tree in which the element is located.
+  <p>Селекторы оцениваются к заданному элементу в контексте всего
+   дерева DOM в котором элемент находится.
 
-  <p>If the user agent also supports some level of CSS, the implementation
-   <em class=ct>should</em> support the same set of selectors in both these
-   APIs and CSS.
+  <p>Если пользовательский агент также поддерживает какой-то уровень CSS, реализация должна
+   (<em class=ct>should</em>) поддерживать тот же набор селекторов вместе с этими API и CSS.
 
   <h3 id=resolving-namespaces><span class=secno>6.5. </span>Решение пространств имен</h3>
 
-  <p>If the group of selectors include <a
+  <p>Если группа селекторов включает <a
    href="#namespace-prefix-needs-to-be-resolved"
-   title=need-to-resolve>namespace prefixes that need to be resolved</a>, the
-   implementation <em class=ct>must</em> <a
-   href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#DOMException-SYNTAX_ERR">raise
-   a <code>SYNTAX_ERR</code> exception</a> (<a href="#DOM-LEVEL-3-CORE"
+   title=need-to-resolve>префиксы пространств имен которые должны быть решены</a>, реализация должна (<em class=ct>must</em>) <a
+   href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#DOMException-SYNTAX_ERR">выдать 
+   исключение <code>SYNTAX_ERR</code></a> (<a href="#DOM-LEVEL-3-CORE"
    rel=biblioentry>[DOM-LEVEL-3-CORE]<!--{{!DOM-LEVEL-3-CORE}}--></a>,
-   section 1.4).
+   раздел 1.4).
 
-  <p class=note>This specification does not provide support for resolving
-   arbitrary namespace prefixes. However, support for a namespace prefix
-   resolution mechanism may be considered for inclusion in a future version
-   of this specification.
+  <p class=note>Эта спецификация не предоставляет поддержки для решения
+   произвольных префиксов пространств имен. Однако, поддержка механизма разрешения 
+   префиксов пространств имен может быть рассмотрена для включения в будущую версию этой спецификации.
 
-  <p>A <dfn id=namespace-prefix-needs-to-be-resolved
-   title=need-to-resolve>namespace prefix needs to be resolved</dfn> if the
-   namespace component is neither empty (e.g. <code>|div</code>),
-   representing the null namespace, or an asterisk (e.g. <code>*|div</code>),
-   representing any namespace. Since the asterisk or empty namespace prefix
-   do not need to be resolved, implementations that support the namespace
-   syntax in Selectors <em class=ct>must</em> support these. <a
+  <p><dfn id=namespace-prefix-needs-to-be-resolved
+   title=need-to-resolve>Префиксы пространств имен должны быть разрешены</dfn> если компонент пространства имен не является ни пустым (например <code>|div</code>),
+   представляющим null пространство имен, либо звездочку (например <code>*|div</code>),
+   представляющую любое пространство имен. Так как звездочка или пустой префикс пространств имен
+   не требует разрешения, реализации которые поддерживают синтаксис пространства имен в Селекторах, должны (<em class=ct>must</em>) поддерживать их. <a
    href="#SELECT" rel=biblioentry>[SELECT]<!--{{!SELECT}}--></a>
 
   <h2 id=examples0><span class=secno>7. </span>Примеры</h2>
 
   <div class=example>
-   <p>The following examples make use of this sample XHTML document.
+   <p>Следующие примеры используют образец этого XHTML документа.
 
    <pre>&lt;html xmlns="http://www.w3.org/1999/xhtml">
   &lt;head>
@@ -592,49 +584,38 @@ dom_selectors_group
   &lt;/body>
 &lt;/html></pre>
 
-   <p>The methods accept a group of selectors (comma separated) as the
-    argument. The following example would select all <code>p</code> elements
-    in the document that have a class of either "<code>error</code>" or
-    "<code>warning</code>".
+   <p>Методы принимают группы селекторов (разделенные запятой) в качестве аргумента. Следующий пример выберет все элементы <code>p</code> в документе, которые имеют класс "<code>error</code>" или "<code>warning</code>".
 
    <pre>var alerts = document.querySelectorAll("p.warning, p.error");</pre>
 
-   <p>The <code title=document-selectelement>querySelector()</code> methods
-    also accept a group of selectors and they will return the first element
-    (if any) that matches any of the selectors in the group.
+   <p>Методы <code title=document-selectelement>querySelector()</code> также принимают группу селекторов и они вернут первый элемент
+    (если есть), который соответствует любому селектору в группе.
 
    <pre>var x = document.querySelector("#foo, #bar");</pre>
 
-   <p><var>x</var> would contain the first element in the document with an ID
-    of either <code>foo</code> or <code>bar</code>, or <code>null</code> if
-    there is no such element. In the sample document above, it would select
-    the <code>div</code> element with the ID of <code>foo</code> because it
-    is first in <a href="#document-order">document order</a>. The order of
-    the selectors used in the parameter has no effect and would have the same
-    result if the order were reversed, as in:
+   <p><var>x</var> будет содержать первый элемент в документе с ID
+    <code>foo</code> или <code>bar</code>, или <code>null</code> если нет такого элемента. В простом документе выше, он выберет элемент <code>div</code> с ID <code>foo</code>, потому что он первый в <a href="#document-order">порядке документа</a>. Порядок селекторов используемый в параметрах не имеет эффекта и будет давать тот же результат при перестановке порядка, как в:
 
    <pre>var x = document.querySelector("#bar, #foo");</pre>
 
-   <p>The methods can also be invoked on elements. In the following example,
-    assume the event handler is registered on an element, and thus the method
-    is invoked on the target element of the event.
+   <p>Методы также могут быть вызваны на элементах. В следующем примере,
+    предположим, обработчик события регистрируется на элементе, и таким образом
+    метод вызывается на целевом элементе события.
 
    <pre>function handle(evt) {
   var x = evt.target.querySelector("span");
   ...
-  // Do something with x
+  // Сделать что-то с x
 }</pre>
 
-   <p>Even though the method is invoked on an element, selectors are still
-    evaluated in the context of the entire document. In the following
-    example, the method will still match the <code>div</code> element's child
-    <code>p</code> element, even though the <code>body</code> element is not
-    a descendant of the <code>div</code> element itself.
+   <p>Даже при том что метод вызван на элементе, селекторы все еще
+    оцениваются в контексте всего документа. В следующем примере, метод будет по-прежнему соответствовать потомку <code>div</code> элемента,
+    элементу <code>p</code>, хотя элемент <code>body</code> не является потомком элемента <code>div</code>.
 
    <pre>var div = document.getElementById("bar");
 var p = div.querySelector("body p");</pre>
 
-   <p>Given this sample fragment that contains a list as a navigation menu:
+   <p>Возьмем в качестве примера этот фрагмент, который содержит список как меню навигации:
 
    <pre>&lt;ul class="nav"&gt;
   &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
@@ -642,8 +623,8 @@ var p = div.querySelector("body p");</pre>
   &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</pre>
 
-   <p>The following example selects all the <code>li</code> elements and
-    demonstrates how to iterate through the collection in a <a
+   <p>Следующий пример выберет все элементы <code>li</code> и
+    покажет как перебираются наборы в <a
     href="#nodelist"><code>NodeList</code></a>.
 
    <pre>var lis = document.querySelectorAll("ul.nav&gt;li");
@@ -651,39 +632,27 @@ for (var i = 0; i &lt; lis.length; i++) {
   process(lis.item(i));
 }</pre>
 
-   <p>In ECMAScript, the language binding also allows <a
-    href="#nodelist"><code>NodeList</code></a>s to be addressed using the
-    array notation, so that loop could be rewritten like this:
+   <p>В ECMAScript связывание языка также позволяет <a
+    href="#nodelist"><code>NodeList</code></a>-ам рассматриваться с помощью
+    обозначения массива, так что цикл может быть переписан таким образом:
 
    <pre>for (var i = 0; i &lt; lis.length; i++) {
   process(lis[i]);
 }</pre>
 
-   <p>Since the <a href="#nodelist"><code>NodeList</code></a> objects
-    returned by these methods are not live, changes to the DOM do not affect
-    the content of the list. Consider the <code>process()</code> function
-    called in the previous examples is defined as follows:
+   <p>Так как объекты <a href="#nodelist"><code>NodeList</code></a> возвращаемые этими методами не живые, изменения в DOM не затрагивают содержание списка. Рассмотрим функцию <code>process()</code>, названную в предыдущих примерах, определенную как:
 
    <pre>function process(elmt) {
   elmt.parentNode.removeChild(elmt);
 }</pre>
 
-   <p>This would cause each selected element to be removed from the DOM, but
-    each element will remain in the <a
-    href="#nodelist"><code>NodeList</code></a>. If the list were a live <a
-    href="#nodelist"><code>NodeList</code></a>, removing an item from the DOM
-    would also remove the element from the list and adjust the indexes of
-    subsequent elements. That would have adverse effects upon the loop
-    because not all selected elements would be processed.
+   <p>Это вызовет удаление каждого выбранного элемента из DOM, но каждый элемент будет оставаться в <a
+    href="#nodelist"><code>NodeList</code></a>. Если бы список был живым <a
+    href="#nodelist"><code>NodeList</code></a>, удаление элемента из DOM
+    также бы удалило элемент из списка и скорректировало бы показатели последующих элементов. Это бы негативно повлияло на цикл,
+    потому что не все выбранные элементы были бы обработаны.
 
-   <p>In documents comprising elements from multiple namespaces, it's
-    possible that some elements from different namespaces share the same
-    local name. Since this API does not natively support a namespace
-    resolution mechanism for selectors, obtaining a list of such elements
-    from a specific namespace, excluding all others, requires additional
-    processing to filter the result. The following example illustrates a
-    document containing <code>video</code> elements from both the SVG and
-    XHTML namespaces.
+   <p>В документах содержащих элементы с многими пространствами имен, некоторые элементы с разными пространствами имен могут разделять одно локальное имя. Так как этот API изначально не поддерживает механизм разрешения пространств имен для селекторов, получение списка таких элементов из определенного пространства имен, исключая все остальные, требует дополнительной обработки для фильтрации результата. Следующий пример иллюстрирует документ содержащий элементы <code>video</code> с пространствами имен SVG и XHTML.
 
    <pre>&lt;svg id=&quot;svg1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;
                xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
