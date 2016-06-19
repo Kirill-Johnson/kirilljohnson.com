@@ -662,9 +662,8 @@ for (var i = 0; i &lt; lis.length; i++) {
   &lt;/foreignObject&gt;
 &lt;/svg&gt;</pre>
 
-   <p>The following script demonstrates how to first select the
-    <code>video</code> elements and then filter out the unwanted elements
-    based on their namespace.
+   <p>Следующий скрипт демонстрирует как выбрать элементы
+    <code>video</code> и затем отфильтровать нежелательные элементы, основываясь на их пространстве имен.
 
    <pre>var elms = document.querySelectorAll("svg video");
 var result = new Array();
