@@ -240,7 +240,7 @@ input.task-list-item-checkbox {
  <li><a href="#nodes"><span class="secno">4 </span>Узлы</a>
   <ol>
    <li><a href="#introduction-to-the-dom"><span class="secno">4.1 </span>Введение в "The DOM"</a></li>
-   <li><a href="#node-tree"><span class="secno">4.2 </span>Дерево узлов</a>
+   <li><a href="#node-tree"><span class="secno">4.2 </span>Древо узлов</a>
     <ol>
      <li><a href="#mutation-algorithms"><span class="secno">4.2.1 </span>Алгоритмы изменений</a></li>
      <li><a href="#interface-nonelementparentnode"><span class="secno">4.2.2 </span>Интерфейс <code>NonElementParentNode</code></a></li>
@@ -1351,7 +1351,7 @@ concept is clear. Markup goes in, a <a href="#concept-tree" title="concept-tree"
 can be used to explore this matter in more detail.
 
 
-<h3 id="node-tree"><span class="secno">4.2 </span>Дерево узлов</h3>
+<h3 id="node-tree"><span class="secno">4.2 </span>Древо узлов</h3>
 
 <p>Objects implementing the <code><a href="#document">Document</a></code>,
 <code><a href="#documentfragment">DocumentFragment</a></code>, <code><a href="#documenttype">DocumentType</a></code>,
