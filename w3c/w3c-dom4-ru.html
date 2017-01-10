@@ -72,10 +72,16 @@ input.task-list-item-checkbox {
     margin: 0 0.35em 0.25em -1.6em;
     vertical-align: middle;
 }
-.translator { border: solid 2px black; background-color: #EEE9E9; padding: 5px; font-size: 15px; margin-bottom: 20px; }
 </style>
+
   <link rel="stylesheet" href="https://www.w3.org/TR/dom/style.css">
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/W3C-REC"><!--[if lt IE 9]><![endif]-->
+
+<style>
+  .translator { border: solid 2px black; background-color: #EEE9E9; padding: 5px; font-size: 15px; margin-bottom: 20px; }
+  dl.domintro:before { content: 'Эта рамка не является нормативной. Требования к реализации приведены ниже этой рамки.'; }
+</style>
+
 </head>
 
   <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter36816840 = new Ya.Metrika({ id:36816840, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/36816840" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
@@ -100,7 +106,6 @@ input.task-list-item-checkbox {
       <dd><a class="u-url" href="http://www.w3.org/TR/2015/REC-dom-20151119/">http://www.w3.org/TR/2015/REC-dom-20151119/</a></dd>
       <dt>Последняя опубликованая версия:</dt>
       <dd><a href="http://www.w3.org/TR/dom/">http://www.w3.org/TR/dom/</a></dd>
-
 
 
 
@@ -479,70 +484,64 @@ readonly attributes when it is language for implementors -->
 
 <h3 id="ordered-sets"><span class="secno">2.3 </span>Упорядоченные множества</h3>
 
-<p>The <dfn id="concept-ordered-set-parser" title="concept-ordered-set-parser">ordered set parser</dfn> takes a string
-<var>input</var> and then runs these steps:
+<p><dfn id="concept-ordered-set-parser" title="concept-ordered-set-parser">Парсер упорядоченных множеств</dfn> принимает строку
+<var>input</var> и затем выполняет следующие шаги:
 
 <ol>
- <li><p>Let <var>position</var> be a pointer into <var>input</var>,
- initially pointing at the start of the string.
+ <li><p>Сделать <var>position</var> указателем на <var>input</var>,
+ изначально указывающим на начало строки.
 
- <li><p>Let <var>tokens</var> be an ordered set of tokens, initially empty.
+ <li><p>Сделать <var>tokens</var> упорядоченным множеством токенов, изначально пустым.
 
- <li><p><a href="#skip-ascii-whitespace">Skip ASCII whitespace</a>.
+ <li><p><a href="#skip-ascii-whitespace">Пропустить ASCII пробелы</a>.
 
- <li><p>While <var>position</var> is not past the end of
+ <li><p>Пока <var>position</var> еще не после конца
  <var>input</var>:
 
   <ol>
-   <li><p><a href="#collect-a-code-point-sequence">Collect a code point sequence</a> of code points that are
-   not <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a>.
+   <li><p><a href="#collect-a-code-point-sequence">Собрать последовательность кодовых точек</a> из кодовых точек, которые
+   не являются <a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII пробелами</a>.
 
-   <li><p>If the collected string is not in <var>tokens</var>, append the
-   collected string to <var>tokens</var>.
+   <li><p>Если собраная строка не является <var>tokens</var>, добавить собранную строку к <var>tokens</var>.
 
-   <li><p><a href="#skip-ascii-whitespace">Skip ASCII whitespace</a>.
+   <li><p><a href="#skip-ascii-whitespace">Пропустить ASCII пробелы</a>.
   </ol>
 
- <li><p>Return <var>tokens</var>.
+ <li><p>Возвратить <var>tokens</var>.
 </ol>
 
-<p>To <dfn id="collect-a-code-point-sequence">collect a code point sequence</dfn> of
-<var>code points</var>, run these steps:
+<p>Чтобы <dfn id="collect-a-code-point-sequence">собрать последовательность кодовых точек</dfn> из
+<var>code points</var>, выполнить следующие шаги:
 
 <ol>
- <li><p>Let <var>input</var> and <var>position</var> be the same
- variables as those of the same name in the algorithm that invoked these
- steps.
+ <li><p>Сделать <var>input</var> и <var>position</var> теми же переменными как те с именем которых алгоритм вызвал эти шаги.
 
- <li><p>Let <var>result</var> be the empty string.
+ <li><p>Сделать <var>result</var> пустой строкой.
 
- <li><p>While <var>position</var> does not point past the end of
- <var>input</var> and the code point at <var>position</var> is
- one of <var>code points</var>, append that code point to the end
- of <var>result</var> and advance <var>position</var> to the
- next code point in <var>input</var>.
+ <li><p>Пока <var>position</var> не показывает на конец от
+ <var>input</var> и точка кода на <var>position</var> одна из <var>code points</var>, добавить эту точку кода в конец
+ <var>result</var> и предыдущую <var>position</var> к следующей точке кода в <var>input</var>.
 
- <li><p>Return <var>result</var>.
+ <li><p>Возвратить <var>result</var>.
 </ol>
 
-<p>To <dfn id="skip-ascii-whitespace">skip ASCII whitespace</dfn> means to
-<a href="#collect-a-code-point-sequence">collect a code point sequence</a> of
-<a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII whitespace</a> and discard the
-return value.
+<p><dfn id="skip-ascii-whitespace">Пропустить ASCII пробелы</dfn> означает
+<a href="#collect-a-code-point-sequence">собрать последовательность кодовых точек</a>
+<a class="external" data-anolis-spec="encoding" href="http://www.w3.org/TR/encoding/#ascii-whitespace">ASCII пробелов</a> и отбросить возвращаемое значение.
 
-<p>The <dfn id="concept-ordered-set-serializer" title="concept-ordered-set-serializer">ordered set serializer</dfn> takes a
-<var>set</var> and returns the concatenation of the strings in
-<var>set</var>, separated from each other by U+0020.
+<p><dfn id="concept-ordered-set-serializer" title="concept-ordered-set-serializer">Сериализатор упорядоченных множеств</dfn> принимает
+<var>set</var> и возвращает конкатенацию строк в
+<var>set</var>, отделенных друг от друга с помощью U+0020.
 
 
 <h3 id="namespaces"><span class="secno">2.4 </span>Пространства имен</h3>
-<p>The <dfn id="html-namespace">HTML namespace</dfn> is
+<p><dfn id="html-namespace">HTML пространство имен</dfn> это
 <code>http://www.w3.org/1999/xhtml</code>.
 
-<p>The <dfn id="xml-namespace">XML namespace</dfn> is
+<p><dfn id="xml-namespace">XML пространство имен</dfn> это
 <code>http://www.w3.org/XML/1998/namespace</code>.
 
-<p>The <dfn id="xmlns-namespace">XMLNS namespace</dfn> is
+<p><dfn id="xmlns-namespace">XMLNS пространство имен</dfn> это
 <code>http://www.w3.org/2000/xmlns/</code>.
 
 
@@ -550,95 +549,78 @@ return value.
 
 <h3 id="introduction-to-dom-events"><span class="secno">3.1 </span>Введение в "DOM Events"</h3>
 
-<p>Throughout the web platform <a href="#concept-event" title="concept-event">events</a> are
-<a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> to objects to signal an
-occurrence, such as network activity or user interaction. These objects
-implement the <code><a href="#eventtarget">EventTarget</a></code> interface and can therefore add
-<a href="#concept-event-listener" title="concept-event-listener">event listeners</a> to observe
-<a href="#concept-event" title="concept-event">events</a> by calling <a href="#dom-eventtarget-addeventlistener">addEventListener()</a>:
+<p>Во всех веб-платформах <a href="#concept-event" title="concept-event">события</a>
+<a href="#concept-event-dispatch" title="concept-event-dispatch">отправляются</a> к объектам чтобы сигнализировать
+возникновения, такие как активность сети или взаимодействие пользователя. Эти объекты
+реализуют интерфейс <code><a href="#eventtarget">EventTarget</a></code> и таким образом добавляют
+<a href="#concept-event-listener" title="concept-event-listener">слушатели событий</a> для наблюдения
+<a href="#concept-event" title="concept-event">событий</a> вызовом <a href="#dom-eventtarget-addeventlistener">addEventListener()</a>:
 
 <pre><code>obj.addEventListener("load", imgFetched)
 
 function imgFetched(ev) {
-  // great success
+  // успех
   …
 }</code></pre>
 
-<p><a href="#concept-event-listener" title="concept-event-listener">Event listeners</a> can be removed
-by utilizing the
-<code title="dom-EventTarget-removeEventListener"><a href="#dom-eventtarget-removeeventlistener">removeEventListener()</a></code>
-method, passing the same arguments.
+<p><a href="#concept-event-listener" title="concept-event-listener">Слушатели событий</a> могут быть удалены путем использования метода
+<code title="dom-EventTarget-removeEventListener"><a href="#dom-eventtarget-removeeventlistener">removeEventListener()</a></code>, передающего те же аргументы.
 
-<p><a href="#concept-event" title="concept-event">Events</a> are objects too and implement the
-<code><a href="#event">Event</a></code> interface (or a derived interface). In the example above
-<var>ev</var> is the <a href="#concept-event" title="concept-event">event</a>. It is
-passed as argument to
-<a href="#concept-event-listener" title="concept-event-listener">event listener</a>'s <b>callback</b>
-(typically a JavaScript Function as shown above).
-<a href="#concept-event-listener" title="concept-event-listener">Event listeners</a> key off the
-<a href="#concept-event" title="concept-event">event</a>'s
-<code title="dom-Event-type"><a href="#dom-event-type">type</a></code> attribute value
-("<code>load</code>" in the above example). The
-<a href="#concept-event" title="concept-event">event</a>'s
-<code title="dom-Event-target"><a href="#dom-event-target">target</a></code> attribute value returns the
-object to which the <a href="#concept-event" title="concept-event">event</a> was
-<a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> (<var>obj</var>
-above).
+<p><a href="#concept-event" title="concept-event">События</a> также являются объектами и реализуют интерфейс
+<code><a href="#event">Event</a></code> (или производный интерфейс). В примере выше
+<var>ev</var> является <a href="#concept-event" title="concept-event">событием</a>. Он передается как аргумент к <b>приемнику</b> (callback)
+<a href="#concept-event-listener" title="concept-event-listener">слушателя событий</a>
+(обычно это функция JavaScript, как показано выше).
+Ключ <a href="#concept-event-listener" title="concept-event-listener">слушателя событий</a> от
+<code title="dom-Event-type"><a href="#dom-event-type">type</a></code> <a href="#concept-event" title="concept-event">события</a>
+ значения атрибута
+("<code>load</code>" в примере выше). <code title="dom-Event-target"><a href="#dom-event-target">Target</a></code>
+значения атрибута <a href="#concept-event" title="concept-event">события</a>
+ возвращает объект к которому <a href="#concept-event" title="concept-event">событие</a> было
+<a href="#concept-event-dispatch" title="concept-event-dispatch">отправлено</a> (<var>obj</var>
+в примере выше).
 
-<p>Now while typically <a href="#concept-event" title="concept-event">events</a> are
-<a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> by the user agent as
-the result of user interaction or the completion of some task, applications
-can <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatch</a>
-<a href="#concept-event" title="concept-event">events</a> themselves, commonly known as
-synthetic events:
+<p>В то время как обычно <a href="#concept-event" title="concept-event">события</a>
+<a href="#concept-event-dispatch" title="concept-event-dispatch">отправляются</a> пользовательским агентом в
+результате взаимодействия пользователя или окончания некоторого задания, приложения могут <a href="#concept-event-dispatch" title="concept-event-dispatch">отправлять</a>
+<a href="#concept-event" title="concept-event">события</a> самостоятельно, широко известные как синтетические события:
 
-<pre><code>// add an appropriate event listener
+<pre><code>// добавить соответствующий слушатель событий
 obj.addEventListener("cat", function(e) { process(e.detail) })
 
-// create and dispatch the event
+// создать и отправить событие
 var event = new CustomEvent("cat", {"detail":{"hazcheeseburger":true}})
 obj.dispatchEvent(event)</code></pre>
 
-<p>Apart from signaling, <a href="#concept-event" title="concept-event">events</a> are
-sometimes also used to let an application control what happens next in an
-operation. For instance as part of form submission an
-<a href="#concept-event" title="concept-event">event</a> whose
-<code title="dom-Event-type"><a href="#dom-event-type">type</a></code> attribute value is
-"<code>submit</code>" is
-<a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a>. If this
-<a href="#concept-event" title="concept-event">event</a>'s
-<code title="dom-Event-preventDefault"><a href="#dom-event-preventdefault">preventDefault()</a></code> method is
-invoked, form submission will be terminated. Applications who wish to make
-use of this functionality through <a href="#concept-event" title="concept-event">events</a>
-<a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> by the application
-(synthetic events) can make use of the return value of the
-<code title="dom-EventTarget-dispatchEvent"><a href="#dom-eventtarget-dispatchevent">dispatchEvent()</a></code> method:
+<p>Кроме сигнализирования, <a href="#concept-event" title="concept-event">события</a> также иногда используются чтобы дать приложению контроль над тем что происходит дальше в операции. Например как часть отправки формы,
+<a href="#concept-event" title="concept-event">событие</a>, чье значение атрибута
+<code title="dom-Event-type"><a href="#dom-event-type">type</a></code> равняется
+"<code>submit</code>", является
+<a href="#concept-event-dispatch" title="concept-event-dispatch">отправленым</a>. Если метод <code title="dom-Event-preventDefault"><a href="#dom-event-preventdefault">preventDefault()</a></code> этого
+<a href="#concept-event" title="concept-event">события</a>
+ вызван, отправка формы будет прервана. Приложения, которые хотят использовать эту функциональность через <a href="#concept-event" title="concept-event">события</a>,
+<a href="#concept-event-dispatch" title="concept-event-dispatch">отправляемые</a> приложением
+(синтетические события) могут использовать возвращаемое значение метода
+<code title="dom-EventTarget-dispatchEvent"><a href="#dom-eventtarget-dispatchevent">dispatchEvent()</a></code>:
 
 <pre><code>if(obj.dispatchEvent(event)) {
-  // event was not canceled, time for some magic
+  // событие не было отменено, время для магии
   …
 }</code></pre>
 
-<p>When an <a href="#concept-event" title="concept-event">event</a> is
-<a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> to an object that
-<a href="#concept-tree-participate" title="concept-tree-participate">participates</a> in a
-<a href="#concept-tree" title="concept-tree">tree</a> (e.g. an
-<a href="#concept-element" title="concept-element">element</a>), it can reach
-<a href="#concept-event-listener" title="concept-event-listener">event listeners</a> on that object's
-<a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestors</a> too. First all object's
-<a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestor</a>
-<a href="#concept-event-listener" title="concept-event-listener">event listeners</a> whose
-<b>capture</b> variable is set to true are invoked, in
-<a href="#concept-tree-order" title="concept-tree-order">tree order</a>. Second, object's own
-<a href="#concept-event-listener" title="concept-event-listener">event listeners</a> are invoked. And
-finally, and only if <a href="#concept-event" title="concept-event">event</a>'s
-<a href="#dom-event-bubbles" title="dom-Event-bubbles">bubbles</a> attribute value is true,
-object's  <a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestor</a>
-<a href="#concept-event-listener" title="concept-event-listener">event listeners</a> are invoked again,
-but now in reverse <a href="#concept-tree-order" title="concept-tree-order">tree order</a>.
+<p>Когда <a href="#concept-event" title="concept-event">событие</a>
+<a href="#concept-event-dispatch" title="concept-event-dispatch">отправляется</a> на объект, который
+<a href="#concept-tree-participate" title="concept-tree-participate">участвует</a> в
+<a href="#concept-tree" title="concept-tree">дереве</a> (например
+<a href="#concept-element" title="concept-element">элемент</a>), оно может достигать также
+<a href="#concept-event-listener" title="concept-event-listener">слушателей событий</a> на
+<a href="#concept-tree-ancestor" title="concept-tree-ancestor">предках</a> объекта. Сначала все
+<a href="#concept-event-listener" title="concept-event-listener">слушатели событий</a> <a href="#concept-tree-ancestor" title="concept-tree-ancestor">предка</a>, чья переменная <b>capture</b> установлена на true и вызвана, в
+<a href="#concept-tree-order" title="concept-tree-order">порядке дерева</a>. Затем, собственные
+<a href="#concept-event-listener" title="concept-event-listener">слушатели событий</a> объекта вызываются. И наконец, если только значение атрибута <a href="#dom-event-bubbles" title="dom-Event-bubbles">bubbles</a> <a href="#concept-event" title="concept-event">события</a> является true, <a href="#concept-event-listener" title="concept-event-listener">слушатели событий</a> <a href="#concept-tree-ancestor" title="concept-tree-ancestor">предка</a> объекта вызываются заново,
+но теперь в обратном <a href="#concept-tree-order" title="concept-tree-order">порядке дерева</a>.
 
-<p>Lets look at an example of how <a href="#concept-event" title="concept-event">events</a>
-work in a <a href="#concept-tree" title="concept-tree">tree</a>:
+<p>Давайте взглянем на пример того как <a href="#concept-event" title="concept-event">события</a> работают в <a href="#concept-tree" title="concept-tree">дереве</a>:
 
 <pre><code>&lt;!doctype html&gt;
 &lt;html&gt;
@@ -659,20 +641,12 @@ work in a <a href="#concept-tree" title="concept-tree">tree</a>:
  &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-<p>The <code>debug</code> function will be invoked twice. Each time
-the <a href="#concept-event" title="concept-event">events</a>'s
-<code title="dom-Event-target"><a href="#dom-event-target">target</a></code> attribute value will be the
-<code>span</code> <a href="#concept-element" title="concept-element">element</a>. The
-first time <code title="dom-Event-currenttarget"><a href="#dom-event-target">currentTarget</a></code> attribute's
-value will be the <a href="#concept-document" title="concept-document">document</a>, the second
-time the <code>body</code> <a href="#concept-element" title="concept-element">element</a>.
-<code title="dom-Event-eventPhase"><a href="#dom-event-eventphase">eventPhase</a></code> attribute's value
-switches from <code title="dom-Event-CAPTURING_PHASE"><a href="#dom-event-capturing_phase">CAPTURING_PHASE</a></code>
-to <code title="dom-Event-BUBBLING_PHASE"><a href="#dom-event-bubbling_phase">BUBBLING_PHASE</a></code>. If an
-<a href="#concept-event-listener" title="concept-event-listener">event listener</a> was registered for
-the <code>span</code> <a href="#concept-element" title="concept-element">element</a>,
-<code title="dom-Event-eventPhase"><a href="#dom-event-eventphase">eventPhase</a></code> attribute's value
-would have been <code title="dom-Event-AT_TARGET"><a href="#dom-event-at_target">AT_TARGET</a></code>.
+<p>Функция <code>debug</code> будет вызвана дважды. Каждый раз значение атрибута <code title="dom-Event-target"><a href="#dom-event-target">target</a></code> <a href="#concept-event" title="concept-event">события</a> будет
+<code>span</code> <a href="#concept-element" title="concept-element">элементом</a>. В первый раз значение атрибута <code title="dom-Event-currenttarget"><a href="#dom-event-target">currentTarget</a></code> будет <a href="#concept-document" title="concept-document">document</a>, второй раз — <code>body</code> <a href="#concept-element" title="concept-element">элементом</a>. Значение атрибута
+<code title="dom-Event-eventPhase"><a href="#dom-event-eventphase">eventPhase</a></code> переключается с <code title="dom-Event-CAPTURING_PHASE"><a href="#dom-event-capturing_phase">CAPTURING_PHASE</a></code>
+на <code title="dom-Event-BUBBLING_PHASE"><a href="#dom-event-bubbling_phase">BUBBLING_PHASE</a></code>. Если бы
+<a href="#concept-event-listener" title="concept-event-listener">слушатель событий</a> был зарегистрирован для <code>span</code> <a href="#concept-element" title="concept-element">элемента</a>, то значение атрибута
+<code title="dom-Event-eventPhase"><a href="#dom-event-eventphase">eventPhase</a></code> было бы <code title="dom-Event-AT_TARGET"><a href="#dom-event-at_target">AT_TARGET</a></code>.
 
 
 <h3 id="interface-event"><span class="secno">3.2 </span>Интерфейс <code><a href="#event">Event</a></code></h3>
@@ -709,216 +683,184 @@ dictionary <dfn id="eventinit">EventInit</dfn> {
   boolean <span title="dom-EventInit-cancelable">cancelable</span> = false;
 };</pre>
 
-<p>An <dfn id="concept-event" title="concept-event">event</dfn> allows for signaling that
-something has occurred. E.g. that an image has completed downloading. It is
-represented by the <code><a href="#event">Event</a></code> interface or an interface that
-inherits from the <code><a href="#event">Event</a></code> interface.</p>
+<p><dfn id="concept-event" title="concept-event">Событие</dfn> позволяет сигнализировать, что что-то произошло. Например то, что картинка полностью загрузилась. Это представлено в интерфейсе <code><a href="#event">Event</a></code> или в интерфейсе, который наследует <code><a href="#event">Event</a></code> интерфейс.</p>
 
 <dl class="domintro">
  <dt><code><var>event</var> = new <a href="#concept-event-constructor" title="concept-event-constructor">Event</a>(<var>type</var> [, <var>eventInitDict</var>])</code>
- <dd><p>Returns a new <var>event</var> whose
- <code title="dom-Event-type"><a href="#dom-event-type">type</a></code> attribute value is set to
- <var>type</var>. The optional <var>eventInitDict</var> argument
- allows for setting the <code title="dom-Event-bubbles"><a href="#dom-event-bubbles">bubbles</a></code> and
- <code title="dom-Event-cancelable"><a href="#dom-event-cancelable">cancelable</a></code> attributes via object
- members of the same name.
+ <dd><p>Возвращает новое <var>событие</var> чье значение атрибута
+ <code title="dom-Event-type"><a href="#dom-event-type">type</a></code> установлено к
+ <var>type</var>. Опциональный аргумент <var>eventInitDict</var> позволяет устанавливать атрибуты <code title="dom-Event-bubbles"><a href="#dom-event-bubbles">bubbles</a></code> и <code title="dom-Event-cancelable"><a href="#dom-event-cancelable">cancelable</a></code> через члены объекта того же имени.
 
  <dt><code><var>event</var> . <a href="#dom-event-type" title="dom-Event-type">type</a></code>
- <dd><p>Returns the type of <var>event</var>, e.g.
- "<code>click</code>", "<code>hashchange</code>", or
+ <dd><p>Возвращает тип <var>события</var>, например
+ "<code>click</code>", "<code>hashchange</code>" или
  "<code>submit</code>".
 
  <dt><code><var>event</var> . <a href="#dom-event-target" title="dom-Event-target">target</a></code>
- <dd><p>Returns the object to which <var>event</var> is
- <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a>.
+ <dd><p>Возвращает объект к которому <var>событие</var> <a href="#concept-event-dispatch" title="concept-event-dispatch">отправлено</a>.
 
  <dt><code><var>event</var> . <a href="#dom-event-currenttarget" title="dom-Event-currentTarget">currentTarget</a></code>
- <dd><p>Returns the object whose
- <a href="#concept-event-listener" title="concept-event-listener">event listener</a>'s <b>callback</b>
- is currently being invoked.
+ <dd><p>Возвращает объект чей <b>приемник</b> (callback) <a href="#concept-event-listener" title="concept-event-listener">слушателя событий</a> в настоящее время вызывается.
 
  <dt><code><var>event</var> . <a href="#dom-event-eventphase" title="dom-Event-eventPhase">eventPhase</a></code>
- <dd><p>Returns the <a href="#concept-event" title="concept-event">event</a>'s phase, which is
- one of <code title="dom-Event-NONE"><a href="#dom-event-none">NONE</a></code>,
+ <dd><p>Возвращает фазу <a href="#concept-event" title="concept-event">события</a>, которая является одной из <code title="dom-Event-NONE"><a href="#dom-event-none">NONE</a></code>,
  <code title="dom-Event-CAPTURING_PHASE"><a href="#dom-event-capturing_phase">CAPTURING_PHASE</a></code>,
- <code title="dom-Event-AT_TARGET"><a href="#dom-event-at_target">AT_TARGET</a></code>, and
+ <code title="dom-Event-AT_TARGET"><a href="#dom-event-at_target">AT_TARGET</a></code> и
  <code title="dom-Event-BUBBLING_PHASE"><a href="#dom-event-bubbling_phase">BUBBLING_PHASE</a></code>.
 
  <dt><code><var>event</var> . <a href="#dom-event-stoppropagation" title="dom-Event-stopPropagation">stopPropagation</a>()</code>
- <dd><p>When <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> in a
- <a href="#concept-tree" title="concept-tree">tree</a>, invoking this method prevents
- <var>event</var> from reaching any objects other than the current object.
+ <dd><p>Когда <a href="#concept-event-dispatch" title="concept-event-dispatch">отправлено</a> в
+ <a href="#concept-tree" title="concept-tree">дерево</a>, вызов этого метода предотвращает
+ <var>событие</var> от достижения других объектов кроме текущего объекта.
 
  <dt><code><var>event</var> . <a href="#dom-event-stopimmediatepropagation" title="dom-Event-stopImmediatePropagation">stopImmediatePropagation</a>()</code>
- <dd><p>Invoking this method prevents <var>event</var> from reaching
- any registered <a href="#concept-event-listener" title="concept-event-listener">event listeners</a>
- after the current one finishes running and, when
- <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> in a
- <a href="#concept-tree" title="concept-tree">tree</a>, also prevents
- <var>event</var> from reaching any other objects.
+ <dd><p>Вызов этого метода предотвращает <var>событие</var> от достижения любых зарегистрированных <a href="#concept-event-listener" title="concept-event-listener">слушателей событий</a> после того как текущий завершает обход, когда
+ <a href="#concept-event-dispatch" title="concept-event-dispatch">отправляется</a> в
+ <a href="#concept-tree" title="concept-tree">дерево</a>, также предотвращает <var>событие</var> от достижения других объектов.
 
  <dt><code><var>event</var> . <a href="#dom-event-bubbles" title="dom-Event-bubbles">bubbles</a></code>
- <dd><p>Returns true or false depending on how event was initialized. True if <var>event</var>'s goes through its <code title="dom-Event-target"><a href="#dom-event-target">target</a></code> attribute value's <a href="#concept-tree-ancestor" title="concept-tree-ancestor">ancestors</a> in reverse <a href="#concept-tree-order" title="concept-tree-order">tree order</a>, and false otherwise.
+ <dd><p>Возвращает true или false в зависимости от того как событие было инициализировано. True если <var>событие</var> проходит через значение атрибута <code title="dom-Event-target"><a href="#dom-event-target">target</a></code> <a href="#concept-tree-ancestor" title="concept-tree-ancestor">предков</a> в обратном <a href="#concept-tree-order" title="concept-tree-order">порядке дерева</a>, и false в другом случае.
 
  <dt><code><var>event</var> . <a href="#dom-event-cancelable" title="dom-Event-cancelable">cancelable</a></code>
- <dd><p>Returns true or false depending on how <var>event</var> was
- initialized. Its return value does not always carry meaning, but true can
- indicate that part of the operation during which <var>event</var> was
- <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a>, can be canceled by
- invoking the <code title="dom-Event-preventDefault"><a href="#dom-event-preventdefault">preventDefault()</a></code>
- method.
+ <dd><p>Возвращает true или false в зависимости от того как <var>событие</var> было инициализировано. Его возвращаемое значение не всегда несет смысл, но true может указывать что часть операции в течение которой <var>событие</var> было
+ <a href="#concept-event-dispatch" title="concept-event-dispatch">отправлено</a>, может быть отменено вызовом метода <code title="dom-Event-preventDefault"><a href="#dom-event-preventdefault">preventDefault()</a></code>.
 
  <dt><code><var>event</var> . <a href="#dom-event-preventdefault" title="dom-Event-preventDefault">preventDefault</a>()</code>
- <dd><p>If invoked when the
- <code title="dom-Event-cancelable"><a href="#dom-event-cancelable">cancelable</a></code> attribute value is true,
- signals to the operation that caused <var>event</var> to be
- <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> that it needs to be
- canceled.
+ <dd><p>Если вызвано когда значение атрибута
+ <code title="dom-Event-cancelable"><a href="#dom-event-cancelable">cancelable</a></code> является true,
+ сигнализирует что операция вызвавшая <a href="#concept-event-dispatch" title="concept-event-dispatch">отправку</a> <var>события</var> должна быть отменена.
 
  <dt><code><var>event</var> . <a href="#dom-event-defaultprevented" title="dom-Event-defaultPrevented">defaultPrevented</a></code>
- <dd><p>Returns true if
- <code title="dom-Event-preventDefault"><a href="#dom-event-preventdefault">preventDefault()</a></code> was invoked
- while the <code title="dom-Event-cancelable"><a href="#dom-event-cancelable">cancelable</a></code> attribute
- value is true, and false otherwise.
+ <dd><p>Возвращает true если
+ <code title="dom-Event-preventDefault"><a href="#dom-event-preventdefault">preventDefault()</a></code> был вызван во время значения атрибута <code title="dom-Event-cancelable"><a href="#dom-event-cancelable">cancelable</a></code> true, и false в другом случае.
 
  <dt><code><var>event</var> . <a href="#dom-event-istrusted" title="dom-Event-isTrusted">isTrusted</a></code>
- <dd><p>Returns true if <var>event</var> was
- <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> by the user agent, and
- false otherwise.
+ <dd><p>Возвращает true если <var>событие</var> было
+ <a href="#concept-event-dispatch" title="concept-event-dispatch">отправлено</a> агентом пользователя, и false в другом случае.
 
  <dt><code><var>event</var> . <a href="#dom-event-timestamp" title="dom-Event-timeStamp">timeStamp</a></code>
- <dd><p>Returns the creation time of <var>event</var> as the number of
- milliseconds that passed since 00:00:00 UTC on 1 January 1970.
+ <dd><p>Возвращает время создания <var>события</var> в виде количества
+ миллисекунд прошедших с 00:00:00 UTC, 1 января 1970.
 
  <!-- initEvent is dead -->
 </dl>
 
-<p>The <dfn id="dom-event-type" title="dom-Event-type"><code>type</code></dfn> attribute must
-return the value it was initialized to. When an
-<a href="#concept-event" title="concept-event">event</a> is created the attribute must be
-initialized to the empty string.
+<p>Атрибут <dfn id="dom-event-type" title="dom-Event-type"><code>type</code></dfn> должен возвратить значение с которым он был инициализирован. Когда
+<a href="#concept-event" title="concept-event">событие</a> создано, атрибут должен быть
+инициализирован к пустой строке.
 
-<p>The <dfn id="dom-event-target" title="dom-Event-target"><code>target</code></dfn> and
+<p>Атрибуты <dfn id="dom-event-target" title="dom-Event-target"><code>target</code></dfn> и
 <dfn id="dom-event-currenttarget" title="dom-Event-currentTarget"><code>currentTarget</code></dfn>
-attributes must return the values they were initialized to. When an
-<a href="#concept-event" title="concept-event">event</a> is created the attributes must be
-initialized to null.
+должны возвратить значение с которыми они были инициализированы. Когда
+<a href="#concept-event" title="concept-event">событие</a> создано, атрибуты должны быть инициализированы к null.
 
-<p>The <dfn id="dom-event-eventphase" title="dom-Event-eventPhase"><code>eventPhase</code></dfn>
-attribute must return the value it was initialized to, which must be one of
-the following:</p>
+<p>Атрибут <dfn id="dom-event-eventphase" title="dom-Event-eventPhase"><code>eventPhase</code></dfn>
+должен возвратить значение с которым он был инициализирован, которое должно быть одним из следующих:</p>
 <dl>
- <dt><dfn id="dom-event-none" title="dom-Event-NONE"><code>NONE</code></dfn> (numeric value 0)
- <dd><p><a href="#concept-event" title="concept-event">Events</a> not currently
- <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> are in this phase.
- <dt><dfn id="dom-event-capturing_phase" title="dom-Event-CAPTURING_PHASE"><code>CAPTURING_PHASE</code></dfn> (numeric value 1)</dt>
- <dd><p>When an <a href="#concept-event" title="concept-event">event</a> is
- <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> to an object that
- <a href="#concept-tree-participate" title="concept-tree-participate">participates</a> in a
- <a href="#concept-tree" title="concept-tree">tree</a> it will be in this phase before it
- reaches its <code title="dom-Event-target"><a href="#dom-event-target">target</a></code> attribute value.
- <dt><dfn id="dom-event-at_target" title="dom-Event-AT_TARGET"><code>AT_TARGET</code></dfn> (numeric value 2)
- <dd><p>When an <a href="#concept-event" title="concept-event">event</a> is
- <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> it will be in this
- phase on its <code title="dom-Event-target"><a href="#dom-event-target">target</a></code> attribute value.
- <dt><dfn id="dom-event-bubbling_phase" title="dom-Event-BUBBLING_PHASE"><code>BUBBLING_PHASE</code></dfn> (numeric value 3)
- <dd><p>When an <a href="#concept-event" title="concept-event">event</a> is
- <a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> to an object that
- <a href="#concept-tree-participate" title="concept-tree-participate">participates</a> in a
- <a href="#concept-tree" title="concept-tree">tree</a> it will be in this phase after it
- reaches its <code title="dom-Event-target"><a href="#dom-event-target">target</a></code> attribute value.
+ <dt><dfn id="dom-event-none" title="dom-Event-NONE"><code>NONE</code></dfn> (числовое значение 0)
+ <dd><p><a href="#concept-event" title="concept-event">События</a> на данный момент не
+ <a href="#concept-event-dispatch" title="concept-event-dispatch">отправлены</a> в этой фазе.
+ <dt><dfn id="dom-event-capturing_phase" title="dom-Event-CAPTURING_PHASE"><code>CAPTURING_PHASE</code></dfn> (числовое значение 1)</dt>
+ <dd><p>Когда <a href="#concept-event" title="concept-event">событие</a>
+ <a href="#concept-event-dispatch" title="concept-event-dispatch">отправлено</a> к объекту который
+ <a href="#concept-tree-participate" title="concept-tree-participate">участвует</a> в
+ <a href="#concept-tree" title="concept-tree">дереве</a>, оно будет в этой фазе перед тем как
+ достигнет своеего значения атрибута <code title="dom-Event-target"><a href="#dom-event-target">target</a></code>.
+ <dt><dfn id="dom-event-at_target" title="dom-Event-AT_TARGET"><code>AT_TARGET</code></dfn> (числовое значение 2)
+ <dd><p>Когда <a href="#concept-event" title="concept-event">событие</a>
+ <a href="#concept-event-dispatch" title="concept-event-dispatch">отправлено</a>, оно будет в этой фазе
+ на своем значении атрибута <code title="dom-Event-target"><a href="#dom-event-target">target</a></code>.
+ <dt><dfn id="dom-event-bubbling_phase" title="dom-Event-BUBBLING_PHASE"><code>BUBBLING_PHASE</code></dfn> (числовое значение 3)
+ <dd><p>Когда <a href="#concept-event" title="concept-event">событие</a>
+ <a href="#concept-event-dispatch" title="concept-event-dispatch">отправлено</a> к объекту который
+ <a href="#concept-tree-participate" title="concept-tree-participate">участвует</a> в
+ <a href="#concept-tree" title="concept-tree">дереве</a>, оно будет в этой фазе после того
+ как достигнет своего значения атрибута <code title="dom-Event-target"><a href="#dom-event-target">target</a></code>.
 </dl>
-<p>Initially the attribute must be initialized to
+<p>Изначально атрибут должен быть инициализирован к значению
 <code title="dom-Event-NONE"><a href="#dom-event-none">NONE</a></code>.
 
 <hr>
 
-<p>Each <a href="#concept-event" title="concept-event">event</a> has the following associated
-flags that are all initially unset:</p>
+<p>Каждое <a href="#concept-event" title="concept-event">событие</a> имеет следующие ассоциированные с ним
+флаги, которые изначально сняты:</p>
 <ul>
- <li><dfn id="stop-propagation-flag">stop propagation flag</dfn>
- <li><dfn id="stop-immediate-propagation-flag">stop immediate propagation flag</dfn>
- <li><dfn id="canceled-flag">canceled flag</dfn>
- <li><dfn id="initialized-flag">initialized flag</dfn>
- <li><dfn id="dispatch-flag">dispatch flag</dfn>
+ <li><dfn id="stop-propagation-flag">флаг остановки распостранения</dfn>
+ <li><dfn id="stop-immediate-propagation-flag">флаг остановки немедленного распостранения</dfn>
+ <li><dfn id="canceled-flag">флаг отмены</dfn>
+ <li><dfn id="initialized-flag">флаг инициализации</dfn>
+ <li><dfn id="dispatch-flag">флаг отправки</dfn>
 </ul>
 
-<p>The
+<p>Метод
 <dfn id="dom-event-stoppropagation" title="dom-Event-stopPropagation"><code>stopPropagation()</code></dfn>
-method must set the <a href="#stop-propagation-flag">stop propagation flag</a>.
+должен устанавливать <a href="#stop-propagation-flag">флаг остановки распостранения</a>.
 
-<p>The
+<p>Метод
 <dfn id="dom-event-stopimmediatepropagation" title="dom-Event-stopImmediatePropagation"><code>stopImmediatePropagation()</code></dfn>
-method must set both the <a href="#stop-propagation-flag">stop propagation flag</a> and
-<a href="#stop-immediate-propagation-flag">stop immediate propagation flag</a>.
+должен устанавливать <a href="#stop-propagation-flag">флаг остановки распостранения</a> и
+<a href="#stop-immediate-propagation-flag">флаг остановки немедленного распостранения</a>.
 
-<p>The <dfn id="dom-event-bubbles" title="dom-Event-bubbles"><code>bubbles</code></dfn> and
-<dfn id="dom-event-cancelable" title="dom-Event-cancelable"><code>cancelable</code></dfn> attributes
-must return the values they were initialized to.
+<p>Атрибуты <dfn id="dom-event-bubbles" title="dom-Event-bubbles"><code>bubbles</code></dfn> и
+<dfn id="dom-event-cancelable" title="dom-Event-cancelable"><code>cancelable</code></dfn> должны возвращать значения к которым они были инициализированы.
 
-<p>The
+<p>Метод
 <dfn id="dom-event-preventdefault" title="dom-Event-preventDefault"><code>preventDefault()</code></dfn>
-method must set the <a href="#canceled-flag">canceled flag</a> if the
-<code title="dom-Event-cancelable"><a href="#dom-event-cancelable">cancelable</a></code> attribute value is true.
+должен устанавливать <a href="#canceled-flag">флаг отмены</a> если значение атрибута
+<code title="dom-Event-cancelable"><a href="#dom-event-cancelable">cancelable</a></code> является true.
 
-<p>The
+<p>Атрибут
 <dfn id="dom-event-defaultprevented" title="dom-Event-defaultPrevented"><code>defaultPrevented</code></dfn>
-attribute must return true if the <a href="#canceled-flag">canceled flag</a> is set and
-false otherwise.
+должен возвращать true если <a href="#canceled-flag">флаг отмены</a> установлен, и
+false в другом случае.
 
 <hr>
 
-<p>The <dfn id="dom-event-istrusted" title="dom-Event-isTrusted"><code>isTrusted</code></dfn> attribute
-must return the value it was initialized to. When an
-<a href="#concept-event" title="concept-event">event</a> is created the attribute must be
-initialized to false.
+<p>Атрибут <dfn id="dom-event-istrusted" title="dom-Event-isTrusted"><code>isTrusted</code></dfn> должен возвращать значение к которому был инициализирован. Когда
+<a href="#concept-event" title="concept-event">событие</a> создано, атрибут должен быть инициализирован к false.
 
-<p>The <dfn id="dom-event-timestamp" title="dom-Event-timeStamp"><code>timeStamp</code></dfn> attribute
-must return the value it was initialized to. When an
-<a href="#concept-event" title="concept-event">event</a> is created the attribute must be
-initialized to the number of milliseconds that have passed since
-00:00:00 UTC on 1 January 1970, ignoring leap seconds.
+<p>Атрибут <dfn id="dom-event-timestamp" title="dom-Event-timeStamp"><code>timeStamp</code></dfn>
+должен возвращать значение к которому был установлен. Когда
+<a href="#concept-event" title="concept-event">событие</a> создано, атрибут должен быть
+установлен к количеству миллисекунд которые прошли с
+00:00:00 UTC, 1 января 1970, игнорируя високосные секунды.
 <!-- leap seconds are ignored by JavaScript too -->
 
 <hr>
 
-<p>To <dfn id="concept-event-initialize" title="concept-event-initialize">initialize</dfn> an
-<var>event</var>, with <var>type</var>,
-<var>bubbles</var>, and <var>cancelable</var>, run these steps:
+<p>Чтобы <dfn id="concept-event-initialize" title="concept-event-initialize">инициализировать</dfn>
+<var>событие</var> с <var>type</var>,
+<var>bubbles</var> и <var>cancelable</var>, выполнить следующие шаги:
 
 <ol>
- <li><p>Set the <a href="#initialized-flag">initialized flag</a>.
- <li><p>Unset the <a href="#stop-propagation-flag">stop propagation flag</a>,
- <a href="#stop-immediate-propagation-flag">stop immediate propagation flag</a>, and
- <a href="#canceled-flag">canceled flag</a>.
- <li><p>Set the <code title="dom-Event-isTrusted"><a href="#dom-event-istrusted">isTrusted</a></code> attribute
- to false.
- <li><p>Set the <code title="dom-Event-target"><a href="#dom-event-target">target</a></code> attribute to
+ <li><p>Установить <a href="#initialized-flag">флаг инициализации</a>.
+ <li><p>Снять <a href="#stop-propagation-flag">флаг остановки распостранения</a>,
+ <a href="#stop-immediate-propagation-flag">флаг остановки немедленного распостранения распостранения</a> и
+ <a href="#canceled-flag">флаг отмены</a>.
+ <li><p>Установить атрибут <code title="dom-Event-isTrusted"><a href="#dom-event-istrusted">isTrusted</a></code> к false.
+ <li><p>Установить атрибут <code title="dom-Event-target"><a href="#dom-event-target">target</a></code> к
  null.
- <li><p>Set the <code title="dom-Event-type"><a href="#dom-event-type">type</a></code> attribute to
+ <li><p>Установить атрибут <code title="dom-Event-type"><a href="#dom-event-type">type</a></code> к
  <var>type</var>.
- <li><p>Set the <code title="dom-Event-bubbles"><a href="#dom-event-bubbles">bubbles</a></code> attribute to
+ <li><p>Установить атрибут <code title="dom-Event-bubbles"><a href="#dom-event-bubbles">bubbles</a></code> к
  <var>bubbles</var>.
- <li><p>Set the <code title="dom-Event-cancelable"><a href="#dom-event-cancelable">cancelable</a></code> attribute
- to <var>cancelable</var>.
+ <li><p>Установить атрибут <code title="dom-Event-cancelable"><a href="#dom-event-cancelable">cancelable</a></code> к <var>cancelable</var>.
 </ol>
 
-<p>The
-<dfn id="dom-event-initevent" title="dom-Event-initEvent"><code>initEvent(<var>type</var>, <var>bubbles</var>, <var>cancelable</var>)</code></dfn>
-method, when invoked, must run these steps:
+<p>Метод
+<dfn id="dom-event-initevent" title="dom-Event-initEvent"><code>initEvent(<var>type</var>, <var>bubbles</var>, <var>cancelable</var>)</code></dfn>, когда вызван, должен выполнить следующие шаги:
 
 <ol>
- <li><p>If <a href="#context-object">context object</a>'s <a href="#dispatch-flag">dispatch flag</a> is set, terminate
- these steps.
+ <li><p>Если <a href="#dispatch-flag">флаг отправки</a> <a href="#context-object">объекта контекста</a> установлен, прервать эти шаги.
 
- <li><p><a href="#concept-event-initialize" title="concept-event-initialize">Initialize</a> the
- <a href="#context-object">context object</a> with <var>type</var>, <var>bubbles</var>, and
+ <li><p><a href="#concept-event-initialize" title="concept-event-initialize">Инициализировать</a>
+ <a href="#context-object">объект контекста</a> с <var>type</var>, <var>bubbles</var> и
  <var>cancelable</var>.
 </ol>
 
-<p class="note">Note: As <a href="#concept-event" title="concept-event">events</a> have constructors
-<code title="dom-Event-initEvent"><a href="#dom-event-initevent">initEvent()</a></code> is superfluous. However,
-it has to be supported for legacy content.
+<p class="note">Заметка: Так как <a href="#concept-event" title="concept-event">события</a> имеют конструкторы
+<code title="dom-Event-initEvent"><a href="#dom-event-initevent">initEvent()</a></code>, это является лишним. Тем не менее,
+это должно поддерживаться для наследия.
 
 
 <h3 id="interface-customevent"><span class="secno">3.3 </span>Интерфейс <code><a href="#customevent">CustomEvent</a></code></h3>
@@ -935,81 +877,68 @@ dictionary <dfn id="customeventinit">CustomEventInit</dfn> : <a href="#eventinit
   any <span title="dom-CustomEventInit-detail">detail</span> = null;
 };</pre>
 
-<p><a href="#concept-event" title="concept-event">Events</a> using the
-<code><a href="#customevent">CustomEvent</a></code> interface can be used to carry custom data.</p>
+<p><a href="#concept-event" title="concept-event">События</a> с использованием интерфейса
+<code><a href="#customevent">CustomEvent</a></code> могут использоваться для кастомных данных.</p>
 
 <dl class="domintro">
  <dt><code><var>event</var> = new <a href="#concept-event-constructor" title="concept-event-constructor">CustomEvent</a>(<var>type</var> [, <var>eventInitDict</var>])</code>
- <dd><p>Works analogously to the constructor for <code><a href="#event">Event</a></code> except
- that the optional <var>eventInitDict</var> argument now
- allows for setting the <code title="dom-Event-detail">detail</code> attribute
- too.
+ <dd><p>Работает анологично конструктору для <code><a href="#event">Event</a></code>, кроме того что
+ опциональный аргумент <var>eventInitDict</var> теперь позволяет
+ устанавливать атрибут <code title="dom-Event-detail">detail</code> также.
 
  <dt><code><var>event</var> . <a href="#dom-customevent-detail" title="dom-CustomEvent-detail">detail</a></code>
- <dd><p>Returns any custom data <var>event</var> was created with.
- Typically used for synthetic events.
+ <dd><p>Возвращает любые кастомные данные с которыми <var>событие</var> было создано.
+ Обычно используется для синтетических событий.
 
  <!-- initCustomEvent is dead -->
 </dl>
 
-<p>The <dfn id="dom-customevent-detail" title="dom-CustomEvent-detail"><code>detail</code></dfn> attribute
-must return the value it was initialized to.
+<p>Атрибут <dfn id="dom-customevent-detail" title="dom-CustomEvent-detail"><code>detail</code></dfn> должен возвращать значение с которым был инициализирован.
 
-<p>The
+<p>Метод
 <dfn id="dom-customevent-initcustomevent" title="dom-CustomEvent-initCustomEvent"><code>initCustomEvent(<var>type</var>, <var>bubbles</var>, <var>cancelable</var>, <var>detail</var>)</code></dfn>
-method must, when invoked, run these steps:
+должен, когда вызван, выполнить следующие шаги:
 
 <ol>
- <li><p>If <a href="#context-object">context object</a>'s <a href="#dispatch-flag">dispatch flag</a> is set, terminate
- these steps.
+ <li><p>Если <a href="#dispatch-flag">флаг отправки</a> <a href="#context-object">контекста события</a> установлен, прервать эти шаги.
 
- <li><p><a href="#concept-event-initialize" title="concept-event-initialize">Initialize</a> the
- <a href="#context-object">context object</a> with <var>type</var>, <var>bubbles</var>, and
+ <li><p><a href="#concept-event-initialize" title="concept-event-initialize">Инициализировать</a>
+ <a href="#context-object">объект контекста</a> с <var>type</var>, <var>bubbles</var> и
  <var>cancelable</var>.
 
- <li><p>Set <a href="#context-object">context object</a>'s <code title="dom-CustomEvent-detail"><a href="#dom-customevent-detail">detail</a></code>
- attribute to <var>detail</var>.
+ <li><p>Установить атрибут <code title="dom-CustomEvent-detail"><a href="#dom-customevent-detail">detail</a></code> <a href="#context-object">объекта контекста</a> к <var>detail</var>.
 </ol>
 
 
 <h3 id="constructing-events"><span class="secno">3.4 </span>Создание событий</h3>
 
-<p>When a <dfn id="concept-event-constructor" title="concept-event-constructor">constructor</dfn> of the <code><a href="#event">Event</a></code>
-interface, or of an interface that inherits from the <code><a href="#event">Event</a></code> interface, is
-invoked, these steps must be run:
+<p>Когда <dfn id="concept-event-constructor" title="concept-event-constructor">конструктор</dfn> интерфейса <code><a href="#event">Event</a></code>, или интерфейс который наследует <code><a href="#event">Event</a></code> интерфейс, вызван, следующие шаги должны быть выполнены:
 
 <ol>
- <li><p>Create an <a href="#concept-event" title="concept-event">event</a> that uses the
- interface the constructor was invoked upon.
+ <li><p>Создать <a href="#concept-event" title="concept-event">событие</a> которое использует интерфейс с которым конструктор был вызван выше.
 
- <li><p>Set its <a href="#initialized-flag">initialized flag</a>.
+ <li><p>Установить его <a href="#initialized-flag">флаг инициализации</a>.
 
- <li><p>Initialize the <code title="dom-Event-type"><a href="#dom-event-type">type</a></code> attribute to
- the <var>type</var> argument.
+ <li><p>Инициализировать атрибут <code title="dom-Event-type"><a href="#dom-event-type">type</a></code> к аргументу <var>type</var>.
 
- <li><p>If there is an <var>eventInitDict</var> argument then for each
- <a class="external" data-anolis-spec="webidl" href="http://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member">dictionary member</a> defined therein find
- the attribute on <a href="#concept-event" title="concept-event">event</a> whose
- <a class="external" data-anolis-spec="webidl" href="http://www.w3.org/TR/WebIDL-1/#dfn-identifier">identifier</a> matches the key of
- the <a class="external" data-anolis-spec="webidl" href="http://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member">dictionary member</a> and then
- set the attribute to the value of that
- <a class="external" data-anolis-spec="webidl" href="http://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member">dictionary member</a>.
+ <li><p>Если есть аргумент <var>eventInitDict</var>, то для каждого
+ <a class="external" data-anolis-spec="webidl" href="http://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member">члена словаря</a> определенного в нем найти атрибут на <a href="#concept-event" title="concept-event">событии</a>, чей
+ <a class="external" data-anolis-spec="webidl" href="http://www.w3.org/TR/WebIDL-1/#dfn-identifier">идентификатор</a> совпадает с ключем
+ <a class="external" data-anolis-spec="webidl" href="http://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member">члена словаря</a> и затем установить атрибут к значению этого
+ <a class="external" data-anolis-spec="webidl" href="http://www.w3.org/TR/WebIDL-1/#dfn-dictionary-member">члена словаря</a>.
 
- <li><p>Return the <a href="#concept-event" title="concept-event">event</a>.
+ <li><p>Возвратить <a href="#concept-event" title="concept-event">событие</a>.
 </ol>
 
 
 <h3 id="defining-event-interfaces"><span class="secno">3.5 </span>Определение интерфейсов событий</h3>
 
-<p>In general, when defining a new interface that inherits from
-<code><a href="#event">Event</a></code> please always ask feedback from the WHATWG or the
-W3C www-dom@w3.org mailing list.
+<p>В общем, при определении нового интерфейса который наследует
+<code><a href="#event">Event</a></code>, пожалуйства, всегда просите обратной связи от WHATWG или почтового архива W3C www-dom@w3.org.
 
-<p>The <code><a href="#customevent">CustomEvent</a></code> interface can be used as starting point.
-However, do not introduce any <code>init<var>*</var>Event()</code>
-methods as they are redundant with constructors. Interfaces that inherit
-from the <code><a href="#event">Event</a></code> interface that have such a method only have it
-for historical reasons.
+<p>Интерфейс <code><a href="#customevent">CustomEvent</a></code> может использоваться как стартовая точка.
+Тем не менее, не вводите каких-либо методов <code>init<var>*</var>Event()</code>, так как они являются избыточными с конструкторами. Интерфейсы которые наследуют
+интерфейс <code><a href="#event">Event</a></code>, которые имеют такой метод, имеют его только по историческим причинам.
 
 
 <h3 id="interface-eventtarget"><span class="secno">3.6 </span>Интерфейс <code><a href="#eventtarget">EventTarget</a></code></h3>
@@ -1025,11 +954,10 @@ callback interface <dfn id="eventlistener">EventListener</dfn> {
   void <span title="dom-EventListener-handleEvent">handleEvent</span>(<a href="#event">Event</a> <var>event</var>);
 };</pre>
 
-<p><code><a href="#eventtarget">EventTarget</a></code> is an object to which an
-<a href="#concept-event" title="concept-event">event</a> is
-<a href="#concept-event-dispatch" title="concept-event-dispatch">dispatched</a> when something has
-occurred. Each <code><a href="#eventtarget">EventTarget</a></code> has an associated list of
-<a href="#concept-event-listener" title="concept-event-listener">event listeners</a>.
+<p><code><a href="#eventtarget">EventTarget</a></code> это объект к которому
+<a href="#concept-event" title="concept-event">событие</a>
+<a href="#concept-event-dispatch" title="concept-event-dispatch">отправляется</a> когда что-то произошло. Каждый <code><a href="#eventtarget">EventTarget</a></code> имеет связанный с ним список
+<a href="#concept-event-listener" title="concept-event-listener">слушателей событий</a>.
 
 <p>An <dfn id="concept-event-listener" title="concept-event-listener">event listener</dfn> associates a
 callback with a specific <a href="#concept-event" title="concept-event">event</a>. Each
