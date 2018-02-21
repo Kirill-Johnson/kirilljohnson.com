@@ -1,0 +1,1213 @@
+
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="ReSpec 19.0.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+div.example-title {
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.example-title span {
+    text-transform: uppercase;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example div.example-title {
+    color: #999;
+}
+</style><style>/* --- ISSUES/NOTES --- */
+div.issue-title, div.note-title , div.ednote-title, div.warning-title {
+    padding-right:  1em;
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.issue-title { color: #e05252; }
+div.note-title, div.ednote-title { color: #2b2; }
+div.warning-title { color: #f22; }
+div.issue-title span, div.note-title span, div.ednote-title span, div.warning-title span {
+    text-transform: uppercase;
+}
+div.note, div.issue, div.ednote, div.warning {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.note > p:first-child, .ednote > p:first-child, .issue > p:first-child, .warning > p:first-child { margin-top: 0 }
+.issue, .note, .ednote, .warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+div.issue, div.note , div.ednote,  div.warning {
+    padding: 1em 1.2em 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+span.note, span.ednote, span.issue, span.warning { padding: .1em .5em .15em; }
+
+.issue {
+    border-color: #e05252;
+    background: #fbe9e9;
+}
+.note, .ednote {
+    border-color: #52e052;
+    background: #e9fbe9;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+</style><style>/* --- WEB IDL --- */
+
+pre.idl {
+  padding: 1em;
+}
+
+.respec-idl-separator {
+  padding: 0 0 0.4cm 0;
+}
+
+.respec-idl-separator:last-child {
+  padding: 0;
+}
+
+@media print {
+  pre.idl {
+    white-space: pre-wrap;
+  }
+}
+
+pre.idl::before {
+  content: "WebIDL";
+  display: block;
+  width: 150px;
+  background: #90b8de;
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin: -1em 0 1em -1em;
+  height: 28px;
+  line-height: 28px;  
+}
+
+.idlType {
+  color: #ff4500;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+/*.idlModule*/
+
+
+/*.idlModuleID*/
+
+
+/*.idlInterface*/
+
+.idlInterfaceID,
+.idlDictionaryID,
+.idlCallbackID,
+.idlEnumID {
+  font-weight: bold;
+  color: #005a9c;
+}
+
+a.idlEnumItem {
+  color: #000;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+.idlSuperclass {
+  font-style: italic;
+  color: #005a9c;
+}
+
+
+/*.idlAttribute*/
+
+.idlAttrType,
+.idlFieldType,
+.idlMemberType {
+  color: #005a9c;
+}
+
+.idlAttrName,
+.idlFieldName,
+.idlMemberName {
+  color: #ff4500;
+}
+
+.idlAttrName a,
+.idlFieldName a,
+.idlMemberName a {
+  color: #ff4500;
+  border-bottom: 1px dotted #ff4500;
+  text-decoration: none;
+}
+
+
+/*.idlMethod*/
+
+.idlMethType,
+.idlCallbackType {
+  color: #005a9c;
+}
+
+.idlMethName {
+  color: #ff4500;
+}
+
+.idlMethName a {
+  color: #ff4500;
+  border-bottom: 1px dotted #ff4500;
+  text-decoration: none;
+}
+
+
+/*.idlCtor*/
+
+.idlCtorName {
+  color: #ff4500;
+}
+
+.idlCtorName a {
+  color: #ff4500;
+  border-bottom: 1px dotted #ff4500;
+  text-decoration: none;
+}
+
+
+/*.idlParam*/
+
+.idlParamType {
+  color: #005a9c;
+}
+
+.idlParamName,
+.idlDefaultValue {
+  font-style: italic;
+}
+
+.extAttr {
+  color: #666;
+}
+
+
+/*.idlSectionComment*/
+
+.idlSectionComment {
+  color: gray;
+}
+
+
+/*.idlIterable*/
+
+.idlIterableKeyType,
+.idlIterableValueType {
+  color: #005a9c;
+}
+
+
+/*.idlMaplike*/
+
+.idlMaplikeKeyType,
+.idlMaplikeValueType {
+  color: #005a9c;
+}
+
+
+/*.idlConst*/
+
+.idlConstType {
+  color: #005a9c;
+}
+
+.idlConstName {
+  color: #ff4500;
+}
+
+.idlConstName a {
+  color: #ff4500;
+  border-bottom: 1px dotted #ff4500;
+  text-decoration: none;
+}
+
+
+/*.idlException*/
+
+.idlExceptionID {
+  font-weight: bold;
+  color: #c00;
+}
+
+.idlTypedefID,
+.idlTypedefType {
+  color: #005a9c;
+}
+
+.idlRaises,
+.idlRaises a.idlType,
+.idlRaises a.idlType code,
+.excName a,
+.excName a code {
+  color: #c00;
+  font-weight: normal;
+}
+
+.excName a {
+  font-family: monospace;
+}
+
+.idlRaises a.idlType,
+.excName a.idlType {
+  border-bottom: 1px dotted #c00;
+}
+
+.excGetSetTrue,
+.excGetSetFalse,
+.prmNullTrue,
+.prmNullFalse,
+.prmOptTrue,
+.prmOptFalse {
+  width: 45px;
+  text-align: center;
+}
+
+.excGetSetTrue,
+.prmNullTrue,
+.prmOptTrue {
+  color: #0c0;
+}
+
+.excGetSetFalse,
+.prmNullFalse,
+.prmOptFalse {
+  color: #c00;
+}
+
+.idlImplements a {
+  font-weight: bold;
+}
+
+dl.attributes,
+dl.methods,
+dl.constants,
+dl.constructors,
+dl.fields,
+dl.dictionary-members {
+  margin-left: 2em;
+}
+
+.attributes dt,
+.methods dt,
+.constants dt,
+.constructors dt,
+.fields dt,
+.dictionary-members dt {
+  font-weight: normal;
+}
+
+.attributes dt code,
+.methods dt code,
+.constants dt code,
+.constructors dt code,
+.fields dt code,
+.dictionary-members dt code {
+  font-weight: bold;
+  color: #000;
+  font-family: monospace;
+}
+
+.attributes dt code,
+.fields dt code,
+.dictionary-members dt code {
+  background: #ffffd2;
+}
+
+.attributes dt .idlAttrType code,
+.fields dt .idlFieldType code,
+.dictionary-members dt .idlMemberType code {
+  color: #005a9c;
+  background: transparent;
+  font-family: inherit;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.methods dt code {
+  background: #d9e6f8;
+}
+
+.constants dt code {
+  background: #ddffd2;
+}
+
+.constructors dt code {
+  background: #cfc;
+}
+
+.attributes dd,
+.methods dd,
+.constants dd,
+.constructors dd,
+.fields dd,
+.dictionary-members dd {
+  margin-bottom: 1em;
+}
+
+table.parameters,
+table.exceptions {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 0.5em 0;
+  width: 100%;
+}
+
+table.parameters {
+  border-bottom: 1px solid #90b8de;
+}
+
+table.exceptions {
+  border-bottom: 1px solid #deb890;
+}
+
+.parameters th,
+.exceptions th {
+  color: inherit;
+  padding: 3px 5px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.parameters th {
+  color: #fff;
+  background: #005a9c;
+}
+
+.exceptions th {
+  background: #deb890;
+}
+
+.parameters td,
+.exceptions td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.parameters tr:first-child td,
+.exceptions tr:first-child td {
+  border-top: none;
+}
+
+.parameters td.prmName,
+.exceptions td.excName,
+.exceptions td.excCodeName {
+  width: 100px;
+}
+
+.parameters td.prmType {
+  width: 120px;
+}
+
+table.exceptions table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.respec-button-copy-paste:focus {
+  text-decoration: none;
+  border-color: #51a7e8;
+  outline: none;
+  box-shadow: 0 0 5px rgba(81, 167, 232, 0.5);
+}
+
+.respec-button-copy-paste:focus:hover,
+.respec-button-copy-paste.selected:focus {
+  border-color: #51a7e8;
+}
+
+.respec-button-copy-paste:hover,
+.respec-button-copy-paste:active,
+.respec-button-copy-paste.zeroclipboard-is-hover,
+.respec-button-copy-paste.zeroclipboard-is-active {
+  text-decoration: none;
+  background-color: #ddd;
+  background-image: linear-gradient(#eee, #ddd);
+  border-color: #ccc;
+}
+
+.respec-button-copy-paste:active,
+.respec-button-copy-paste.selected,
+.respec-button-copy-paste.zeroclipboard-is-active {
+  background-color: #dcdcdc;
+  background-image: none;
+  border-color: #b5b5b5;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15)
+}
+
+.respec-button-copy-paste.selected:hover {
+  background-color: #cfcfcf;
+}
+
+.respec-button-copy-paste:disabled,
+.respec-button-copy-paste:disabled:hover,
+.respec-button-copy-paste.disabled,
+.respec-button-copy-paste.disabled:hover {
+  color: rgba(102, 102, 102, 0.5);
+  cursor: default;
+  background-color: rgba(229, 229, 229, 0.5);
+  background-image: none;
+  border-color: rgba(197, 197, 197, 0.5);
+  box-shadow: none;
+}
+</style>
+    <title>
+      HTML Media Capture
+    </title>
+    
+    
+    
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd > p:first-child {
+  margin-top: 0;
+}
+
+.section dd > p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary > ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details > * {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: .3em;
+  background-color: white;
+  padding-bottom: .5em;
+}
+
+details.respec-tests-details[open] > summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details > ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details > li {
+  padding-left: 1em;
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-REC"><link rel="canonical" href="https://www.w3.org/TR/html-media-capture/"><script id="initialUserConfig" type="application/json">{
+  "specStatus": "REC",
+  "errata": "https://github.com/w3c/html-media-capture/labels/errata",
+  "shortName": "html-media-capture",
+  "editors": [
+    {
+      "name": "Anssi Kostiainen",
+      "company": "Intel"
+    },
+    {
+      "name": "Ilkka Oksanen",
+      "company": "Nokia (until May 10, 2012)"
+    },
+    {
+      "name": "Dominique Hazaël-Massieux",
+      "company": "W3C (until May 10, 2012)"
+    }
+  ],
+  "publishDate": "2018-02-01",
+  "previousPublishDate": "2017-11-28",
+  "previousMaturity": "PR",
+  "edDraftURI": "https://w3c.github.io/html-media-capture/",
+  "crEnd": "2017-06-20",
+  "prEnd": "2017-12-26",
+  "wg": "Device and Sensors Working Group",
+  "wgURI": "https://www.w3.org/2009/dap/",
+  "wgPublicList": "public-device-apis",
+  "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/43696/status",
+  "testSuiteURI": "https://w3c-test.org/html-media-capture/",
+  "implementationReportURI": "https://www.w3.org/2009/dap/wiki/ImplementationStatus",
+  "otherLinks": [
+    {
+      "key": "Participate",
+      "data": [
+        {
+          "value": "public-device-apis@w3.org",
+          "href": "https://lists.w3.org/Archives/Public/public-device-apis/"
+        },
+        {
+          "value": "GitHub w3c/html-media-capture",
+          "href": "https://github.com/w3c/html-media-capture/"
+        },
+        {
+          "value": "GitHub w3c/html-media-capture/issues",
+          "href": "https://github.com/w3c/html-media-capture/issues"
+        },
+        {
+          "value": "GitHub w3c/html-media-capture/commits",
+          "href": "https://github.com/w3c/html-media-capture/commits/"
+        }
+      ]
+    }
+  ],
+  "publishISODate": "2018-02-01T00:00:00.000Z",
+  "generatedSubtitle": "Рекомендация от 01 февраля 2018"
+}</script>
+
+<style>
+  .translator { border: solid 1px black; background-color: #EEE9E9; padding: 5px; font-size: 15px; margin-bottom: 20px; }
+</style>
+
+</head>
+
+  <body aria-busy="false" class="h-entry">
+
+<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter36816840 = new Ya.Metrika({ id:36816840, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/36816840" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+
+<p class="translator">
+Этот документ является неофициальным переводом исходной английской версии <a href="https://www.w3.org/TR/html-media-capture/" target="_blank" rel="nofollow">HTML Media Capture</a>. Обратите внимание на то, что оригинальная версия документа существует только на английском языке. Данный перевод может содержать неточности и ошибки. Перевод выполнил <a href="http://topolyan.com/" target="_blank">Кирилл Топольян</a>, 2018.</p>
+
+<div class="head">
+    <p>
+      <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
+    </p>
+  <p><!--_hyper: -1561793047;--></p>
+  <h1 class="title p-name" id="title">HTML Media Capture</h1>
+  <h2 id="w3c-recommendation-01-february-2018">Рекомендация <abbr title="World Wide Web Consortium">W3C</abbr> от <time class="dt-published" datetime="2018-02-01">01 февраля 2018</time></h2>
+  <dl>
+      <dt>Эта версия:</dt>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2018/REC-html-media-capture-20180201/">https://www.w3.org/TR/2018/REC-html-media-capture-20180201/</a></dd>
+      <dt>Последняя опубликованная версия:</dt>
+      <dd><a href="https://www.w3.org/TR/html-media-capture/">https://www.w3.org/TR/html-media-capture/</a></dd>
+      <dt>Последний редакторский черновик:</dt>
+      <dd><a href="https://w3c.github.io/html-media-capture/">https://w3c.github.io/html-media-capture/</a></dd>
+      <dt>Набор тестов:</dt>
+      <dd><a href="https://w3c-test.org/html-media-capture/">https://w3c-test.org/html-media-capture/</a></dd>
+      <dt>Отчет о реализации:</dt>
+      <dd><a href="https://www.w3.org/2009/dap/wiki/ImplementationStatus">https://www.w3.org/2009/dap/wiki/ImplementationStatus</a></dd>
+      <dt>Предыдущая версия:</dt>
+      <dd><a href="https://www.w3.org/TR/2017/PR-html-media-capture-20171128/">https://www.w3.org/TR/2017/PR-html-media-capture-20171128/</a></dd>
+    <dt>Редакторы:</dt>
+    <dd class="p-author h-card vcard"><span class="p-name fn">Anssi Kostiainen</span>, Intel</dd>
+<dd class="p-author h-card vcard"><span class="p-name fn">Ilkka Oksanen</span>, Nokia (до 10 мая, 2012)</dd>
+<dd class="p-author h-card vcard"><span class="p-name fn">Dominique Hazaël-Massieux</span>, <abbr title="World Wide Web Consortium">W3C</abbr> (до 10 мая, 2012)</dd>
+
+          <dt>Участие:</dt>
+                  <dd>
+                    <a href="https://lists.w3.org/Archives/Public/public-device-apis/">
+                      public-device-apis@w3.org
+                    </a>
+                  </dd>
+                  <dd>
+                    <a href="https://github.com/w3c/html-media-capture/">
+                      GitHub w3c/html-media-capture
+                    </a>
+                  </dd>
+                  <dd>
+                    <a href="https://github.com/w3c/html-media-capture/issues">
+                      GitHub w3c/html-media-capture/issues
+                    </a>
+                  </dd>
+                  <dd>
+                    <a href="https://github.com/w3c/html-media-capture/commits/">
+                      GitHub w3c/html-media-capture/commits
+                    </a>
+                  </dd>
+  </dl>
+    <p>
+      Пожалуйста, проверьте <a href="https://github.com/w3c/html-media-capture/labels/errata"><strong>страницу исправлений</strong></a>, чтобы узнать о любых ошибках или проблемах, о которых сообщили после публикации.
+    </p>
+    <p>
+      Также смотрите <a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=html-media-capture">
+      <strong>переводы</strong></a> (база данных переводов больше не пополняется — прим. переводчика).
+    </p>
+      <p class="copyright">
+        <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
+        2018
+        
+        <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
+        (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+        <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+        <a href="https://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). Применяются правила <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">ответственности</a>,
+        <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">торговой марки</a> и
+            <a rel="license" href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">разрешительной лицензии</a> <abbr title="World Wide Web Consortium">W3C</abbr>.
+      </p>
+  <hr title="Separator for header">
+</div>
+    <section id="abstract" class="introductory"><h2 id="abstract-0">Аннотация</h2>
+      Спецификация <cite>HTML Media Capture</cite> определяет расширение HTML, которое облегчает доступ пользователя к <a href="#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">механизму захвата медиа</a>, такому как камера или микрофон, изнутри элемента управления загрузкой файлов.
+    </section>
+    <section id="sotd" class="introductory"><h2 id="status-of-this-document">Статус Документа</h2>
+      <p>
+        <em>Данный раздел описывает статус этого документа на момент публикации. Другие документы могут заменять этот документ. Список текущих публикаций <abbr title="World Wide Web Consortium">W3C</abbr> и последнюю ревизию его технического отчета можно найти в <a href="https://www.w3.org/TR/">индексе технических отчетов <abbr title="World Wide Web Consortium">W3C</abbr></a> по адресу https://www.w3.org/TR/.</em>
+      </p>
+        
+      <p>
+        <a href="https://www.w3.org/TR/2017/PR-html-media-capture-20171128/">Предлагаемая Рекомендация</a> HTML Media Capture была опубликована 28 ноября 2017, с того момента не было сделано никаких нормативных изменений.
+
+        Опечатки для данного документа записываются в качестве вопросов.
+
+        <a href="https://www.w3.org/2009/dap/wiki/ImplementationStatus">Отчет о реализации</a>, выпущенный для этой версии, демонстрирует наличие двух независимых совместимых реализаций.
+      </p>
+    
+        <p>
+          Этот документ был опубликован <a href="https://www.w3.org/2009/dap/">Рабочей Группой Девайсов и Сенсоров</a> в качестве Рекомендации.
+            Комментарии по поводу документа приветствуются. Пожалуйста, отправляйте их на
+            <a href="mailto:public-device-apis@w3.org">public-device-apis@w3.org</a>
+            (<a href="mailto:public-device-apis-request@w3.org?subject=subscribe">подписка</a>,
+            <a href="https://lists.w3.org/Archives/Public/public-device-apis/">архивы</a>) или <a href="https://github.com/w3c/html-media-capture/issues/">откройте вопрос</a> на GitHub.
+        </p>
+          <p>
+            Пожалуйста, посмотрите <a href="https://www.w3.org/2009/dap/wiki/ImplementationStatus">отчет о реализации</a> Рабочей Группы.
+          </p>
+          <p>
+            Этот документ был рассмотрен Участниками <abbr title="World Wide Web Consortium">W3C</abbr>, разработчиками программного обеспечения, другими группами <abbr title="World Wide Web Consortium">W3C</abbr> и заинтересованными сторонами, и одобрен Директором в качестве Рекомендации <abbr title="World Wide Web Consortium">W3C</abbr>.
+            Это стабильный документ, и он может использоваться в качестве справочного материала или цитироваться другими документами. Роль <abbr title="World Wide Web Consortium">W3C</abbr> в создании Рекоммендации заключается в привлечении внимания к спецификации
+            и содействии ее широкомасштабному развертыванию. Это повышает функциональность и совместимость Сети.
+          </p>
+        <p>
+            Этот документ был подготовлен группой, действующей в соответствии с
+            <a href="https://www.w3.org/Consortium/Patent-Policy/">Патентной политикой <abbr title="World Wide Web Consortium">W3C</abbr></a>.
+              <abbr title="World Wide Web Consortium">W3C</abbr> поддерживает <a href="https://www.w3.org/2004/01/pp-impl/43696/status" rel="disclosure">публичный список раскрытий патентов</a>, сделанных в связи с результатами работы группы; эта страница также содержит инструкции по раскрытию патента. Лицо, имеющее фактическое знание патента, которое, по мнению физического лица, содержит
+            <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">существенные требования (претензии)</a>, должно раскрывать информацию в соответствии с
+            <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">разделом 6 патентной политики <abbr title="World Wide Web Consortium">W3C</abbr></a>.
+        </p>
+          <p>Данный документ регуляруется <a id="w3c_process_revision" href="https://www.w3.org/2017/Process-20170301/">Документом процесса <abbr title="World Wide Web Consortium">W3C</abbr> от 1 марта 2017</a>.
+          </p>
+        
+
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Содержание</h2><ol class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>
+        Введение
+      </a></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Соответствие</a></li><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">3. </span>
+        Терминология
+      </a></li><li class="tocline"><a href="#security" class="tocxref"><span class="secno">4. </span>
+        Вопросы безопасности и конфиденциальности
+      </a></li><li class="tocline"><a href="#the-capture-attribute" class="tocxref"><span class="secno">5. </span>
+        Атрибут <span data-dfn-for="htmlinputelement" data-dfn-type="dfn" data-idl="" data-title="capture"><code>capture</code></span>
+      </a></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">A. </span>
+        Примеры
+      </a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">B. </span>Ссылки</a><ol class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">B.1 </span>Нормативные ссылки</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">B.2 </span>Информационные ссылки</a></li></ol></li></ol></nav>
+    <section class="informative" id="introduction">
+      <!--OddPage--><h2 id="x1-introduction"><span class="secno">1. </span>
+        Введение
+      </h2><p><em>Данный раздел не является нормативным.</em></p>
+      <p data-link-for="HTMLInputElement">
+        Спецификация <cite>HTML Media Capture</cite> расширяет интерфейс
+        <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#htmlinputelement-htmlinputelement"><code>HTMLInputElement</code></a> атрибутом <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a>. Атрибут
+        <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> позволяет авторам декларативно запросить использование <a href="#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">механизма захвата медиа</a>, такого как камера или микрофон, изнутри элемента управления загрузкой файлов, для захвата носителя на месте.
+      </p>
+      <p>
+        Это расширение специально разработано простым и декларативным, и охватывает подмножество функций захвата медиа-данных веб-платформы. В частности, расширение не обеспечивает подробный авторский контроль над захватом. Случаи, требующие более точного контроля авторов, могут быть достигнуты с использованием другой спецификации, <cite>Media Capture
+        and Streams</cite> [<cite><a class="bibref" href="#bib-MEDIACAPTURE-STREAMS">MEDIACAPTURE-STREAMS</a></cite>]. К примеру, доступ к медиа-потокам в реальном времени с хост-устройства выходит за рамки этой спецификации.
+      </p>
+    </section>
+    <section id="conformance"><!--OddPage--><h2 id="x2-conformance"><span class="secno">2. </span>Соответствие</h2>
+<p>
+  Как и разделы, обозначенные как ненормативные, все рекомендации авторам, диаграммы, примеры и примечания в этом описании являются ненормативными. Всё остальное в этой спецификации является нормативным.
+</p>
+<p id="respecRFC2119">Ключевые слова <em class="rfc2119">MUST</em>, <em class="rfc2119">MUST NOT</em> и <em class="rfc2119">SHOULD</em> следует интерпретировать, как описано в [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
+</p>
+
+      <p>
+        Эта спецификация определяет критерии соответствия, которые применяются к одному продукту: <dfn data-dfn-type="dfn" id="dfn-user-agent">агенту пользователя</dfn>, который реализует интерфейсы, которые она содержит.
+      </p>
+      <p>
+        Реализации, которые используют ECMAScript для реализации API, определенных в этой спецификации, должны реализовывать их в соответствии с ECMAScript Bindings, определенными в спецификации Web IDL [<cite><a class="bibref" href="#bib-WEBIDL-1">WEBIDL-1</a></cite>], так как данная спецификация использует эту спецификацию и терминологию.
+      </p>
+    </section>
+    <section id="terminology">
+      <!--OddPage--><h2 id="x3-terminology"><span class="secno">3. </span>
+        Терминология
+      </h2>
+      <p>
+        Элемент <dfn data-dfn-type="dfn" id="dfn-input"><a href="https://www.w3.org/TR/html51/sec-forms.html#the-input-element"><code>input</code></a></dfn>, его атрибут <dfn data-dfn-type="dfn" id="dfn-type"><a href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-type"><code>type</code></a></dfn>, интерфейс
+        <dfn data-dfn-type="dfn" id="dom-htmlinputelement" data-idl="" data-title="HTMLInputElement" data-dfn-for=""><a href="https://www.w3.org/TR/html51/sec-forms.html#htmlinputelement-htmlinputelement"><code>HTMLInputElement</code></a></dfn>, атрибут
+        <dfn data-dfn-type="dfn" id="dfn-accept"><a href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a></dfn>, состояние <dfn data-dfn-type="dfn" id="dfn-file-upload"><a href="https://www.w3.org/TR/html51/sec-forms.html#element-statedef-input-file-upload">Загрузки Файла</a></dfn>, <dfn data-dfn-type="dfn" id="dfn-enumerated-attribute"><a href="https://www.w3.org/TR/html51/infrastructure.html#enumerated-attributes">перечислимый атрибут</a></dfn>,
+        <dfn data-dfn-type="dfn" id="dfn-missing-value-default"><a href="https://www.w3.org/TR/html51/infrastructure.html#missing-value-default">отсутствующее значение по умолчанию</a></dfn>, <dfn data-dfn-type="dfn" id="dfn-invalid-value-default"><a href="https://www.w3.org/TR/html51/infrastructure.html#invalid-value-default">недопустимое значение по умолчанию</a></dfn> и <dfn data-dfn-type="dfn" id="dfn-reflect"><a href="https://www.w3.org/TR/html51/infrastructure.html#reflection">reflect</a></dfn>
+        определены в [<cite><a class="bibref" href="#bib-HTML51">HTML51</a></cite>].
+      </p>
+      <p>Расширенный атрибут <dfn data-dfn-type="dfn" id="dfn-cereactions"><a href="https://www.w3.org/TR/custom-elements/#cereactions"><code>[CEReactions]</code></a></dfn> WebIDL определен в [<cite><a class="bibref" href="#bib-custom-elements">custom-elements</a></cite>].</p>
+      <p>
+        Перечисление <dfn data-dfn-type="dfn" id="dfn-videofacingmodeenum"><a href="https://www.w3.org/TR/mediacapture-streams/#def-constraint-facingMode"><code>VideoFacingModeEnum</code></a></dfn>
+        определено в [<cite><a class="bibref" href="#bib-MEDIACAPTURE-STREAMS">MEDIACAPTURE-STREAMS</a></cite>].
+      </p>
+      <p>
+        Интерфейс <dfn data-dfn-type="dfn" id="dfn-filelist"><a href="https://www.w3.org/TR/FileAPI/#dfn-filelist"><code>FileList</code></a></dfn> определен в [<cite><a class="bibref" href="#bib-FILE-API">FILE-API</a></cite>].
+      </p>
+      <p>
+        В данной спецификации, термин <dfn data-dfn-type="dfn" id="dfn-capture-control-type">тип управления захватом</dfn> относится к специализированному типу управления средством выбора файлов, который оптимизирован для пользователя для непосредственного захвата носителя типа MIME, указанного в атрибуте <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a>, использующем <a href="#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">механизм захвата медиа</a> в своем
+        <a href="#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">предпочтительном режиме просмотра</a>.
+      </p>
+      <p>
+        Термин <dfn data-dfn-type="dfn" id="dfn-media-capture-mechanism">механизм захвата медиа</dfn> относится к локальному устройству захвата данных устройства, например, к камере или микрофону.
+      </p>
+      <p>
+        <dfn data-dfn-type="dfn" id="dfn-preferred-facing-mode">Предпочтительный режим просмотра</dfn> — это подсказка для направления используемого <a href="#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">механизма захвата данных</a> устройства.
+      </p>
+    </section>
+    <section id="security" class="informative">
+      <h2 id="x4-security-and-privacy-considerations"><span class="secno">4. </span>
+        Вопросы безопасности и конфиденциальности
+      </h2><p><em>Данный раздел не является нормативным</em></p>
+      <p>
+        Реализациям пользовательского агента рекомендуется спрашивать разрешения пользователя перед началом захвата контента с помощью микрофона или камеры. Это может быть обязательным для соответствия нормативным, юридическим и передовым требованиям, связанным с приватностью данных пользователя. К тому же, реализации пользовательского агента советуется предоставлять пользователю индекатор, когда устройство ввода включено, и давать возможность пользователю на прекращение такого захвата. Схожим образом, пользовательским агентам рекомендуется предлагать элементы контроля, например, чтобы позволить пользователю следующее:
+      </p>
+      <ul>
+        <li>выбрать конкретное устройство захвата медиа для использования, если есть несколько устройств того же типа (например, фронтальная камера вдобавок к основной камере).
+        </li>
+        <li>выключить захват звука, когда используется запись видео.
+        </li>
+      </ul>
+      <p>
+        Данная спецификация опирается на безопасность и защиту персональных данных, предоставленные спецификациями <code>&lt;input type="file"&gt;</code> [<cite><a class="bibref" href="#bib-HTML51">HTML51</a></cite>] и
+        [<cite><a class="bibref" href="#bib-FILE-API">FILE-API</a></cite>]; в частности, ожидается, что любое
+        предложение начать захватывать контент пользовательским устройством потребует конкретного взаимодействия пользователя с HTML-элементом, который полностью контролируется агентом пользователя.
+      </p>
+      <p>
+        Разработчики должны позаботиться о том, чтобы предотвратить утечку конфиденциальных данных с записанных медиа. К примеру, вложение местоположения пользователя в метаданные записанных медиа (например, EXIF) может передавать больше личных данных, чем ожидает пользователь.
+      </p>
+    </section>
+    <section data-dfn-for="HTMLInputElement" data-link-for="HTMLInputElement" id="the-capture-attribute">
+      <!--OddPage--><h2 id="x5-the-capture-attribute"><span class="secno">5. </span>
+        Атрибут <dfn data-dfn-for="htmlinputelement" data-dfn-type="dfn" id="dom-htmlinputelement-capture" data-idl="" data-title="capture"><code>capture</code></dfn>
+      </h2>
+      <p>
+        Когда атрибут <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-type"><code>type</code></a> элемента <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#the-input-element"><code>input</code></a> находится в состоянии <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-statedef-input-file-upload">File
+        Upload</a>, и его атрибут <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a> указан, могут применяться правила из данного раздела.
+      </p>
+      <div><pre class="def idl"><span class="idlInterface" id="idl-def-htmlinputelement-partial-1" data-idl="" data-title="HTMLInputElement">partial interface <span class="idlInterfaceID"><a data-no-default="" data-link-for="" data-lt="" data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#htmlinputelement-htmlinputelement"><code>HTMLInputElement</code></a></span> {
+<span class="idlAttribute" id="idl-def-htmlinputelement-capture" data-idl="" data-title="capture" data-dfn-for="htmlinputelement">    [<span class="extAttr"><span class="extAttrName"><a href="https://html.spec.whatwg.org/multipage/#cereactions">CEReactions</a></span></span>]
+    attribute <span class="idlAttrType"><a href="https://heycam.github.io/webidl/#idl-DOMString">DOMString</a></span> <span class="idlAttrName"><a data-no-default="" data-link-for="htmlinputelement" data-lt="" href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a></span>;</span>
+};</span></pre></div>
+      <div>
+        <p>
+          Атрибут <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> является <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#enumerated-attributes">перечислимым атрибутом</a>, чье состояние определяет <a href="#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">предпочтительный режим просмотра</a> для <a href="#dfn-media-capture-mechanism" class="internalDFN" data-link-type="dfn">механизма захвата медиа</a>.
+        </p>
+        <p>
+          Ключевыми словами атрибута являются <dfn data-dfn-type="dfn" id="dfn-user"><code>user</code></dfn> и
+          <dfn data-dfn-type="dfn" id="dfn-environment"><code>environment</code></dfn>, которые сопоставляются с соответствующими
+          состояниями <var>user</var> и <var>environment</var>. Семантика состояний <var>user</var> и <var>environment</var> отражает названные схожим образом перечислимые значения, определенные в
+          <a data-link-type="dfn" href="https://www.w3.org/TR/mediacapture-streams/#def-constraint-facingMode"><code><code>VideoFacingModeEnum</code></code></a>.
+        </p>
+        <p>
+          К тому же, есть третье состояние, состояние <var>implementation-specific</var>.
+        </p>
+        <p>
+          <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#missing-value-default">Отсутствующее значение по умолчанию</a> является
+          <var>implementation-specific</var> состоянием. <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#invalid-value-default">Некорректное значение по умолчанию</a> также является <var>implementation-specific</var> состоянием.
+        </p>
+        <div class="note"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Заметка</span></div><p class="">
+          Если пользовательский агент не может поддерживать <a href="#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">предпочтительный режим просмотра</a>, он может вернуться к режиму просмотра по умолчанию для данной реализации, что соответствует <var>implementation-specific</var> состоянию, которое указывает, что реализация должна действовать в соответствии со своим поведением по умолчанию.
+        </p></div>
+        <p>
+          IDL атрибут <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> должен (<em class="rfc2119" title="MUST">MUST</em>) <a data-link-type="dfn" href="https://www.w3.org/TR/html51/infrastructure.html#reflection">отражать</a> соответствующий атрибут контента с тем же именем.
+        </p>
+        <p>
+          Когда атрибут <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> указан, <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">пользовательский агент</a> должен
+          (<em class="rfc2119" title="SHOULD">SHOULD</em>) вызвать средство выбора файла определенного <a href="#dfn-capture-control-type" class="internalDFN" data-link-type="dfn">типа управления захватом</a>.
+        </p>
+        <p>
+          Когда атрибут <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> указан, <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">пользовательский агент</a> не должен
+          (<em class="rfc2119" title="MUST NOT">MUST NOT</em>) сохранять захваченные медиа в какое-либо хранилище, локальное или удаленное.
+        </p>
+        <div class="note"><div role="heading" class="note-title marker" id="h-note-0" aria-level="3"><span>Заметка</span></div><div class="">
+          Когда скрипты получают доступ к файлам, выбранным из средства выбора файлов
+          (представленным объектом <a data-link-type="dfn" href="https://www.w3.org/TR/FileAPI/#dfn-filelist"><code>FileList</code></a>), они могут использовать различные механизмы для хранения захваченных медиа. Эти механизмы не входят в рамки данной спецификации.
+        </div></div>
+        <p>
+          Если значение атрибута <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a> установлено к типу MIME, у которого нет ассоциированного <a href="#dfn-capture-control-type" class="internalDFN" data-link-type="dfn">типа управления захватом</a>, <a href="#dfn-user-agent" class="internalDFN" data-link-type="dfn">пользовательский агент</a> должен (<em class="rfc2119" title="MUST">MUST</em>) действовать так, как если бы не было атрибута <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a>.
+        </p>
+      </div>
+    </section>
+    <section class="appendix informative" id="examples">
+      <!--OddPage--><h2 id="a-examples"><span class="secno">A. </span>
+        Примеры
+      </h2><p><em>Данный раздел не является нормативным.</em></p>
+      <p>
+        Следующие примеры демонстрируют, как давать подсказки, что пользователю предпочтительно захватывать медиа определенного типа MIME с использованием возможностей захвата медиа-данных устройства. Представлены как простой декларативный пример с использованием HTML-формы, так и более продвинутый пример, включающий скрипты.
+      </p>
+      <ul>
+        <li id="example-1">Чтобы сделать снимок, используя камеру, обращенную к пользователю, и загрузить снимок с помощью HTML-формы:
+          <div class="example"><div class="example-title marker"><span>Пример 1</span></div><pre class="hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"server.cgi"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"image"</span> <span class="hljs-attr">accept</span>=<span class="hljs-string">"image/*"</span> <span class="hljs-attr">capture</span>=<span class="hljs-string">"user"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Upload"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre></div>
+        </li>
+        <li>Или, альтернативно, для захвата видео с использованием локальной видеокамеры устройства, обращенной к окружающей среде:
+          <div class="example"><div class="example-title marker"><span>Пример 2</span></div><pre class="hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"server.cgi"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"video"</span> <span class="hljs-attr">accept</span>=<span class="hljs-string">"video/*"</span> <span class="hljs-attr">capture</span>=<span class="hljs-string">"environment"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Upload"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre></div>
+        </li>
+        <li>Или, альтернативно, для захвата звука с использованием локального микрофона устройства (если не определен <a href="#dfn-preferred-facing-mode" class="internalDFN" data-link-type="dfn">предпочтительный режим просмотра</a>, возвращается к режиму просмотра по умолчанию для данной реализации:
+          <div class="example"><div class="example-title marker"><span>Пример 3</span></div><pre class="hljs xml" aria-busy="false" aria-live="polite"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"server.cgi"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"audio"</span> <span class="hljs-attr">accept</span>=<span class="hljs-string">"audio/*"</span> <span class="hljs-attr">capture</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Upload"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre></div>
+        </li>
+        <li id="example-4" data-link-for="HTMLInputElement">Для более продвинутых вариантов использования, укажите атрибут <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> в разметке:
+          <div class="example"><div class="example-title marker"><span>Пример 4</span></div><pre class="hljs javascript" aria-busy="false" aria-live="polite">&lt;input type=<span class="hljs-string">"file"</span> accept=<span class="hljs-string">"image/*"</span> capture&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></span></pre></div>И обработайте загрузку файла в скрипте с помощью <code>XMLHttpRequest</code>:
+          <div class="example"><div class="example-title marker"><span>Пример 5</span></div><pre class="hljs javascript" aria-busy="false" aria-live="polite"><span class="hljs-keyword">var</span> input = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'input[type=file]'</span>); <span class="hljs-comment">// смотрите Пример 4</span>
+
+input.onchange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> file = input.files[<span class="hljs-number">0</span>];
+
+  upload(file);
+  drawOnCanvas(file);   <span class="hljs-comment">// смотрите Пример 6</span>
+  displayAsImage(file); <span class="hljs-comment">// смотрите Пример 7</span>
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload</span>(<span class="hljs-params">file</span>) </span>{
+  <span class="hljs-keyword">var</span> form = <span class="hljs-keyword">new</span> FormData(),
+      xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+
+  form.append(<span class="hljs-string">'image'</span>, file);
+  xhr.open(<span class="hljs-string">'post'</span>, <span class="hljs-string">'server.php'</span>, <span class="hljs-literal">true</span>);
+  xhr.send(form);
+}</pre></div>Изображение также может отображаться на стороне клиента без его загрузки, например для редактирования изображений на стороне клиента, с помощью <code>
+          FileReader</code> и элемента <code>canvas</code>:
+          <div class="example"><div class="example-title marker"><span>Пример 6</span></div><pre class="hljs javascript" aria-busy="false" aria-live="polite"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drawOnCanvas</span>(<span class="hljs-params">file</span>) </span>{
+  <span class="hljs-keyword">var</span> reader = <span class="hljs-keyword">new</span> FileReader();
+
+  reader.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-keyword">var</span> dataURL = e.target.result,
+        c = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'canvas'</span>), <span class="hljs-comment">// смотрите Пример 4</span>
+        ctx = c.getContext(<span class="hljs-string">'2d'</span>),
+        img = <span class="hljs-keyword">new</span> Image();
+
+    img.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      c.width = img.width;
+      c.height = img.height;
+      ctx.drawImage(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    };
+
+    img.src = dataURL;
+  };
+
+  reader.readAsDataURL(file);
+}</pre></div>Или, альтернативно, можно просто отобразить изображение, используя метод <code>
+          createObjectURL()</code> и элемент <code>img</code>:
+          <div class="example"><div class="example-title marker"><span>Пример 7</span></div><pre class="hljs javascript" aria-busy="false" aria-live="polite"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayAsImage</span>(<span class="hljs-params">file</span>) </span>{
+  <span class="hljs-keyword">var</span> imgURL = URL.createObjectURL(file),
+      img = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'img'</span>);
+
+  img.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    URL.revokeObjectURL(imgURL);
+  };
+
+  img.src = imgURL;
+  <span class="hljs-built_in">document</span>.body.appendChild(img);
+}</pre></div>
+        </li>
+      </ul>
+      <p data-link-for="HTMLInputElement">
+        Когда атрибут <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#element-attrdef-input-accept"><code>accept</code></a> элемента <a data-link-type="dfn" href="https://www.w3.org/TR/html51/sec-forms.html#the-input-element"><code>input</code></a> установлен к
+        <code>image/*</code> и атрибут <a href="#dom-htmlinputelement-capture" class="internalDFN" data-link-type="dfn"><code>capture</code></a> указан как в <a href="#example-1">Примере 1</a> или <a href="#example-4">Примере 4</a>, средство выбора файла можно отобразить, как показано ниже:
+      </p>
+      <p style="overflow: visible;">
+        <img alt="A File picker control in the Image Capture state." src="https://www.w3.org/TR/html-media-capture/images/image-capture-state.png">
+      </p>
+      <p>
+        Когда атрибут не указан, средство выбора файлов можно отобразить, как показано ниже:
+      </p>
+      <p style="overflow: visible;">
+        <img alt="A File picker control in the File Upload state." src="https://www.w3.org/TR/html-media-capture/images/file-upload-state.png">
+      </p>
+    </section>
+  
+
+<section id="references" class="appendix"><!--OddPage--><h2 id="b-references"><span class="secno">B. </span>Ссылки</h2><section id="normative-references"><h3 id="b-1-normative-references"><span class="secno">B.1 </span>Нормативные ссылки</h3><dl class="bibliography"><dt id="bib-custom-elements">[custom-elements]</dt><dd><a href="https://www.w3.org/TR/custom-elements/"><cite>Custom Elements</cite></a>. Domenic Denicola. W3C. 13 октября 2016. Рабочий проект W3C. URL: <a href="https://www.w3.org/TR/custom-elements/">https://www.w3.org/TR/custom-elements/</a>
+</dd><dt id="bib-HTML51">[HTML51]</dt><dd><a href="https://www.w3.org/TR/html51/"><cite>HTML 5.1 2nd Edition</cite></a>. Steve Faulkner; Arron Eicholz; Travis Leithead; Alex Danilo. W3C. 3 октября 2017. Рекомендация W3C. URL: <a href="https://www.w3.org/TR/html51/">https://www.w3.org/TR/html51/</a>
+</dd><dt id="bib-MEDIACAPTURE-STREAMS">[MEDIACAPTURE-STREAMS]</dt><dd><a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Daniel Burnett; Adam Bergkvist; Cullen Jennings; Anant Narayanan; Bernard Aboba. W3C. 3 октября 2017. Предлагаемая Рекомендация W3C. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
+</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner. IETF. Март 1997. Лучшая современная практика. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
+</dd><dt id="bib-WEBIDL-1">[WEBIDL-1]</dt><dd><a href="https://www.w3.org/TR/2016/REC-WebIDL-1-20161215/"><cite>WebIDL Level 1</cite></a>. Cameron McCormack. W3C. 15 декабря 2016. Рекомендация W3C. URL: <a href="https://www.w3.org/TR/2016/REC-WebIDL-1-20161215/">https://www.w3.org/TR/2016/REC-WebIDL-1-20161215/</a>
+</dd></dl></section><section id="informative-references"><h3 id="b-2-informative-references"><span class="secno">B.2 </span>Информационные ссылки</h3><dl class="bibliography"><dt id="bib-FILE-API">[FILE-API]</dt><dd><a href="https://www.w3.org/TR/FileAPI/"><cite>File API</cite></a>. Marijn Kruisselbrink. W3C. 26 октября 2017. Рабочий проект W3C. URL: <a href="https://www.w3.org/TR/FileAPI/">https://www.w3.org/TR/FileAPI/</a>
+</dd><dt id="bib-HTML">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters. WHATWG. Живой Стандарт. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+</dd><dt id="bib-WEBIDL">[WEBIDL]</dt><dd><a href="https://heycam.github.io/webidl/"><cite>Web IDL</cite></a>. Cameron McCormack; Boris Zbarsky; Tobie Langel. W3C. 15 декабря 2016. Редакторский черновик W3C. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
+</dd></dl></section></section><p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
