@@ -1,64 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Kirill Topolyan — full-stack web developer</title>
-  </head>
+<head>
+	<meta charset="utf-8">
+	<title>Entrepreneur, Softare Engineer</title>
+	<meta name="description" content="Software engineer, IT entrepreneur.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+	<!--[if lt IE 9]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+	<![endif]-->
+	<!--[if lte IE 8]>
+		<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+	<![endif]-->
+	<!--[if gt IE 8]><!-->
+		<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+	<!--<![endif]-->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+	<style>
+		body {
+			line-height: 1.7em;
+			color: #000;
+			background-color: #222;
+			font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+			text-shadow: 1px 1px 16px rgba(255, 255, 255, 0.8);
+			font-size: 34px;
+			text-align: center;
+			margin-top: 100px;
+			margin-bottom: 100px;
+		}
+		h1, h2, h3, h4, h5, h6, label, a { color: #fff; }
+		h1 { text-transform: uppercase; }
+		#countdown { line-height: 1.1em; }
 
-  <body>
-  <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter36816840 = new Ya.Metrika({ id:36816840, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/36816840" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+		#canvas{
+			position: absolute;
+			display: block;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
 
-    <div id="container">
-      <div class="inner">
+	</style>
+</head>
 
-        <header>
-          <h1>Kirill Topolyan</h1>
-          <h2>Full-stack web developer</h2>
-        </header>
+<body>
+<canvas id="canvas"></canvas>
+	<div class="pure-g">
+		<div class="pure-u-1">
+			<h1>Stay tuned</h1>
+			<h2>Something new is coming here.</h2>
+			<div id="countdown">
+				<span class="days">00</span>&nbsp;<span class="timeRefDays">days</span>
+				<span class="hours">00</span>&nbsp;<span class="timeRefHours">hours</span>
+				<span class="minutes">00</span>&nbsp;<span class="timeRefMinutes">minutes</span>
+				<span class="seconds">00</span>&nbsp;<span class="timeRefSeconds">seconds</span>
+			</div>
+			<h3>Meanwhile you may check <a href="https://blog.topolyan.com" title="Ruby on Rails на русском" target="_blank">my blog</a>.</h3>
+		</div>
 
-        <hr>
+	</div>
 
-        <section id="main_content">
-<h3>About me</h3>
+<script>
+/*
+* Canvas animation
+*/
 
-<p><img src="/me_2017.jpg" width="160" align="right" style="transform: scale(-1, 1); margin-left:5px">
+let resizeReset = function() {
+	w = canvasBody.width = window.innerWidth;
+	h = canvasBody.height = window.innerHeight;
+}
 
-Hi. My name is Kirill Topolyan, and I love the Web and technologies.
+const opts = { 
+	particleColor: "rgb(200,200,200)",
+	lineColor: "rgb(200,200,200)",
+	particleAmount: 30,
+	defaultSpeed: 1,
+	variantSpeed: 1,
+	defaultRadius: 2,
+	variantRadius: 2,
+	linkRadius: 200,
+};
 
-<p>I am highly purposeful, I am learning extremely fast, and am willing to accept new challenges.
+window.addEventListener("resize", function(){
+	deBouncer();
+});
 
-<p>Currently I'm mostly focused on North American, Western European, and Japanese markets.
- 
-<p>My personal interests include learning languages (currently Japanese), sports, reading, cryptocurrency.
+let deBouncer = function() {
+    clearTimeout(tid);
+    tid = setTimeout(function() {
+        resizeReset();
+    }, delay);
+};
 
-<h3>About work</h3>
+let checkDistance = function(x1, y1, x2, y2){ 
+	return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+};
 
-<p>I prefer working with Ruby on Rails, but am open to other development environments and have worked with a diverse range of skills and technologies.
+let linkPoints = function(point1, hubs){ 
+	for (let i = 0; i < hubs.length; i++) {
+		let distance = checkDistance(point1.x, point1.y, hubs[i].x, hubs[i].y);
 
-<p>I also own my own online projects, and sometimes I write about various things or experiences on <a href="https://blog.topolyan.com/" target="_blank">my blog</a>.
+		let opacity = 1 - distance / opts.linkRadius;
+		if (opacity > 0) { 
+			drawArea.lineWidth = 0.5;
+			drawArea.strokeStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`;
+			drawArea.beginPath();
+			drawArea.moveTo(point1.x, point1.y);
+			drawArea.lineTo(hubs[i].x, hubs[i].y);
+			drawArea.closePath();
+			drawArea.stroke();
+		}
+	}
+}
 
-<p>If we cooperate, I'd gladly accept cryptocurrency for my services.
+Particle = function(xPos, yPos){ 
+	this.x = Math.random() * w; 
+	this.y = Math.random() * h;
+	this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed; 
+	this.directionAngle = Math.floor(Math.random() * 360); 
+	this.color = opts.particleColor;
+	this.radius = opts.defaultRadius + Math.random() * opts. variantRadius; 
+	this.vector = {
+		x: Math.cos(this.directionAngle) * this.speed,
+		y: Math.sin(this.directionAngle) * this.speed
+	};
+	this.update = function(){ 
+		this.border(); 
+		this.x += this.vector.x; 
+		this.y += this.vector.y; 
+	};
+	this.border = function(){ 
+		if (this.x >= w || this.x <= 0) { 
+			this.vector.x *= -1;
+		}
+		if (this.y >= h || this.y <= 0) {
+			this.vector.y *= -1;
+		}
+		if (this.x > w) this.x = w;
+		if (this.y > h) this.y = h;
+		if (this.x < 0) this.x = 0;
+		if (this.y < 0) this.y = 0;	
+	};
+	this.draw = function(){ 
+		drawArea.beginPath();
+		drawArea.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+		drawArea.closePath();
+		drawArea.fillStyle = this.color;
+		drawArea.fill();
+	};
+};
 
-<h3>Contacts</h3>
+function setup(){ 
+	particles = [];
+	resizeReset();
+	for (let i = 0; i < opts.particleAmount; i++){
+		particles.push( new Particle() );
+	}
+	window.requestAnimationFrame(loop);
+}
 
-<p>If you have a project for me or just want to know me better, you can write me an email.
+function loop(){ 
+	window.requestAnimationFrame(loop);
+	drawArea.clearRect(0,0,w,h);
+	for (let i = 0; i < particles.length; i++){
+		particles[i].update();
+		particles[i].draw();
+	}
+	for (let i = 0; i < particles.length; i++){
+		linkPoints(particles[i], particles);
+	}
+}
 
-<p>Email: <a href="mailto:kirill@topolyan.com">kirill@topolyan.com</a>. Telegram: <a href="https://t.me/thebigbossk" target="_blank">@TheBigBossK</a>.
+const canvasBody = document.getElementById("canvas"),
+drawArea = canvasBody.getContext("2d");
+let delay = 200, tid,
+rgb = opts.lineColor.match(/\d+/g);
+resizeReset();
+setup();
 
-        <footer>
-          <a href="https://topolyan.com/">Topolyan.com</a><br>
-          Copyright © 2020.
-        </footer>
-        
-      </div>
-    </div>
-  </body>
+
+/*
+* Basic Countcown
+*/
+!function(a){a.fn.countdown=function(b,c){function d(){eventDate=Date.parse(f.date)/1e3,currentDate=Math.floor(a.now()/1e3),eventDate<=currentDate&&(c.call(this),clearInterval(interval)),seconds=eventDate-currentDate,days=Math.floor(seconds/86400),seconds-=60*days*60*24,hours=Math.floor(seconds/3600),seconds-=60*hours*60,minutes=Math.floor(seconds/60),seconds-=60*minutes,1==days?e.find(".timeRefDays").text("day"):e.find(".timeRefDays").text("days"),1==hours?e.find(".timeRefHours").text("hour"):e.find(".timeRefHours").text("hours"),1==minutes?e.find(".timeRefMinutes").text("minute"):e.find(".timeRefMinutes").text("minutes"),1==seconds?e.find(".timeRefSeconds").text("second"):e.find(".timeRefSeconds").text("seconds"),"on"==f.format&&(days=String(days).length>=2?days:"0"+days,hours=String(hours).length>=2?hours:"0"+hours,minutes=String(minutes).length>=2?minutes:"0"+minutes,seconds=String(seconds).length>=2?seconds:"0"+seconds),isNaN(eventDate)?(alert("Invalid date. Example: 30 Tuesday 2013 15:50:00"),clearInterval(interval)):(e.find(".days").text(days),e.find(".hours").text(hours),e.find(".minutes").text(minutes),e.find(".seconds").text(seconds))}var e=a(this),f={date:null,format:null};b&&a.extend(f,b),d(),interval=setInterval(d,1e3)}}(jQuery),$(document).ready(function(){
+
+  $("#countdown").countdown({date:"20 March 2023 12:00:00",format:"on"})});
+</script>
+</body>
 </html>
