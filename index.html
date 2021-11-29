@@ -51,13 +51,7 @@
 		<div class="pure-u-1">
 			<h1>Stay tuned</h1>
 			<h2>Something new is coming here.</h2>
-			<div id="countdown">
-				<span class="days">00</span>&nbsp;<span class="timeRefDays">days</span>
-				<span class="hours">00</span>&nbsp;<span class="timeRefHours">hours</span>
-				<span class="minutes">00</span>&nbsp;<span class="timeRefMinutes">minutes</span>
-				<span class="seconds">00</span>&nbsp;<span class="timeRefSeconds">seconds</span>
-			</div>
-			<h3>Meanwhile you may check <a href="https://blog.kirilljohnson.com/" title="Ruby on Rails на русском" target="_blank">my blog</a>.</h3>
+			<h5>Interests: algorithms, cryptography, free markets, Japan. You may drop me a line on <a href="mailto:kirilljohnson@protonmail.com">kirilljohnson@protonmail.com</a> or check out <a href="https://blog.kirilljohnson.com/" title="Ruby on Rails на русском" target="_blank">my blog</a>.</h5>
 		</div>
 
 	</div>
@@ -180,13 +174,6 @@ rgb = opts.lineColor.match(/\d+/g);
 resizeReset();
 setup();
 
-
-/*
-* Basic Countcown
-*/
-!function(a){a.fn.countdown=function(b,c){function d(){eventDate=Date.parse(f.date)/1e3,currentDate=Math.floor(a.now()/1e3),eventDate<=currentDate&&(c.call(this),clearInterval(interval)),seconds=eventDate-currentDate,days=Math.floor(seconds/86400),seconds-=60*days*60*24,hours=Math.floor(seconds/3600),seconds-=60*hours*60,minutes=Math.floor(seconds/60),seconds-=60*minutes,1==days?e.find(".timeRefDays").text("day"):e.find(".timeRefDays").text("days"),1==hours?e.find(".timeRefHours").text("hour"):e.find(".timeRefHours").text("hours"),1==minutes?e.find(".timeRefMinutes").text("minute"):e.find(".timeRefMinutes").text("minutes"),1==seconds?e.find(".timeRefSeconds").text("second"):e.find(".timeRefSeconds").text("seconds"),"on"==f.format&&(days=String(days).length>=2?days:"0"+days,hours=String(hours).length>=2?hours:"0"+hours,minutes=String(minutes).length>=2?minutes:"0"+minutes,seconds=String(seconds).length>=2?seconds:"0"+seconds),isNaN(eventDate)?(alert("Invalid date. Example: 30 Tuesday 2013 15:50:00"),clearInterval(interval)):(e.find(".days").text(days),e.find(".hours").text(hours),e.find(".minutes").text(minutes),e.find(".seconds").text(seconds))}var e=a(this),f={date:null,format:null};b&&a.extend(f,b),d(),interval=setInterval(d,1e3)}}(jQuery),$(document).ready(function(){
-
-  $("#countdown").countdown({date:"20 March 2023 12:00:00",format:"on"})});
 </script>
 </body>
 </html>
